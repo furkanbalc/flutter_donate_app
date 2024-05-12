@@ -1,0 +1,28 @@
+{
+  "app_name": "Bende Fazla",
+  "form_fields": {
+    "name": "Ad",
+    "surname": "Soyad",
+    "email": "E-posta",
+    "password": "Şifre",
+    "confirm_password": "Şifre Onay",
+    "phone_number": "Telefon Numarası",
+    "gender": "Cinsiyet",
+    "select": "Seçim"
+  },
+  "auth": {
+    "signup": "Kayıt Ol",
+    "signin": "Giriş Yap",
+    "create_account": "Hesap Oluştur",
+    "complete_your_profile": "Profilini Tamamla",
+    "forgot_password": "Şifremi Unuttum",
+    "fill_your_info": "Kayıt olmak için bilgilerinizi doldurun veya diğer yöntemleri deneyin.",
+    "welcome_back": "Tekrar hoşgeldiniz, giriş yaparak kaldığınız yerden devam edebilirsiniz.",
+    "enter_your_personal_info": "Kayıt işlemini tamamlamak için kişisel bilgileriniz giriniz.",
+    "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var.",
+    "apply_and_continue": "Onayla ve Devam et",
+    "or_with": "Veya",
+    "already_have_an_account": "Zaten bir hesabınız var mı?",
+    "dont_have_an_account": "Hesabınız yok mu?"
+  }
+}
