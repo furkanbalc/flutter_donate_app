@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: LocaleKeys.app_name.tr(),
@@ -33,6 +34,13 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
+      home: Scaffold(
+        appBar: AppBar(),
+        body: Column(
+          children: [
+          ],
+        ),
+      ),
     );
   }
 }
