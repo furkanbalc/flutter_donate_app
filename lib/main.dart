@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 Future<void> main() async {
@@ -34,13 +35,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Column(
-          children: [
-          ],
-        ),
-      ),
+      home: const SigninView()
     );
   }
 }

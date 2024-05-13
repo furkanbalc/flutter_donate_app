@@ -1,0 +1,92 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/enums/auth_method.dart';
+import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_size.dart';
+import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
+import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/core/extensions/string_extension.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_text_rich_button.dart';
+import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
+
+part 'auth_method_button.dart';
+
+class AuthFooter extends StatelessWidget {
+  const AuthFooter({super.key, required this.method});
+
+  final AuthMethod method;
+
+  bool get isSignup => method == AuthMethod.signup;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        /// Or Widget
+        Padding(
+          padding: context.paddings.horizontalUltra + context.paddings.onlyTopUltra,
+          child: _buildOrWidget(context),
+        ),
+
+        /// Other Method Buttons
+        Padding(
+          padding: context.paddings.verticalUltra,
+          child: _buildOtherAuthMethods(context),
+        ),
+
+        /// Text Rich Button
+        _buildAuthTextRichButton(context),
+      ],
+    );
+  }
+
+  /// Or Widget
+  Widget _buildOrWidget(BuildContext context) {
+    return Row(
+      children: [
+        const Expanded(child: Divider(color: AppColors.greyLight)),
+        Padding(
+          padding: context.paddings.horizontalNormal,
+          child: Text(
+            LocaleKeys.auth_or_with.tr(),
+            style: context.textStyles.titleSmall.copyWith(color: AppColors.steel),
+          ),
+        ),
+        const Expanded(child: Divider(color: AppColors.greyLight)),
+      ],
+    );
+  }
+
+  /// Other Method Buttons
+  Widget _buildOtherAuthMethods(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        /// Apple Method Button
+        _AuthMethodButton(icon: AppAssets.apple.toSvg),
+        context.sizedBoxWidthMedium,
+
+        /// Google Method Button
+        _AuthMethodButton(icon: AppAssets.google.toSvg),
+        context.sizedBoxWidthMedium,
+
+        /// Facebook Method Button
+        _AuthMethodButton(icon: AppAssets.facebook.toSvg),
+      ],
+    );
+  }
+
+  /// Text Rich Button
+  Widget _buildAuthTextRichButton(BuildContext context) {
+    return AuthTextRichButton(
+      onPressed: () {},
+      text: isSignup
+          ? '${LocaleKeys.auth_dont_have_an_account.tr()} '
+          : '${LocaleKeys.auth_already_have_an_account.tr()} ',
+      buttonText: isSignup ? LocaleKeys.auth_signin.tr() : LocaleKeys.auth_signup.tr(),
+    );
+  }
+}

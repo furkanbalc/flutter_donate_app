@@ -30,9 +30,9 @@ flutter:
 
   assets:
     - assets/lang/
-    - assets/svg/
-    - assets/png/
-    - assets/lotties/
+    - assets/images/svg/
+    - assets/images/png/
+    - assets/images/lotties/
     - assets/fonts/
 
   fonts:
