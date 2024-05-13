@@ -16,6 +16,9 @@ dependencies:
   flutter_svg: ^2.0.10+1
   lottie: ^3.1.0
 
+  # Utils
+  intl_phone_number_input: ^0.7.4
+  
   # Localization
   easy_localization: ^3.0.7
 
