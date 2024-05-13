@@ -18,7 +18,7 @@ dependencies:
 
   # Utils
   intl_phone_number_input: ^0.7.4
-  
+
   # Localization
   easy_localization: ^3.0.7
 
