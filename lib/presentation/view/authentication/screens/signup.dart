@@ -1,0 +1,66 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/enums/auth_method.dart';
+import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_footer.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/signup/signup_form_widget.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
+
+class SignupView extends StatefulWidget {
+  const SignupView({super.key});
+
+  @override
+  State<SignupView> createState() => _SignupViewState();
+}
+
+class _SignupViewState extends State<SignupView> {
+  late final GlobalKey<FormState> _formKey;
+  @override
+  void initState() {
+    _formKey = GlobalKey();
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _formKey.currentState?.dispose();
+    super.dispose();
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
+      body: Padding(
+        padding: context.paddings.horizontalMedium,
+        child: _buildBody(context: context),
+      ),
+    );
+  }
+  /// Body
+  Widget _buildBody({required BuildContext context}) {
+    return Form(
+      key: _formKey,
+      child: SingleChildScrollView(
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        child: Column(
+          children: [
+            /// Signup Title
+            AuthHeader(
+              title: LocaleKeys.auth_create_account.tr(),
+              subTitle: LocaleKeys.auth_fill_your_info.tr(),
+            ),
+            context.sizedBoxHeightMedium,
+
+            /// Signup Forms
+            const SignupFormWidget(),
+
+            /// Signup Already Have An Account
+            const AuthFooter(method: AuthMethod.signup),
+          ],
+        ),
+      ),
+    );
+  }
+}

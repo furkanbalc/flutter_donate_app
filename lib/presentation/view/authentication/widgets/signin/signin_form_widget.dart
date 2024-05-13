@@ -34,6 +34,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   }
 
   bool passObscure = true;
+
   void _togglePassObscure() {
     setState(() {
       passObscure = !passObscure;
@@ -44,10 +45,12 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
   Widget build(BuildContext context) {
     return Padding(
       padding: context.paddings.verticalNormal,
+
       /// Signin Forms
       child: _buildForms(context),
     );
   }
+
   /// Signin Forms
   Widget _buildForms(BuildContext context) {
     return Column(
@@ -91,9 +94,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
 
         /// Signin Button
         CustomElevatedButton(
-          onPressed: () {
-
-          },
+          onPressed: () {},
           text: LocaleKeys.auth_signin.tr(),
         ),
       ],
