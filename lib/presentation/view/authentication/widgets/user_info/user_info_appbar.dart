@@ -24,6 +24,8 @@ class _UserInfoAppBarState extends State<UserInfoAppBar> {
   @override
   Widget build(BuildContext context) {
     return AppBar(
+      backgroundColor: AppColors.whiteColor,
+      elevation: 0,
       title: SizedBox(
         height: kToolbarHeight,
         child: Row(

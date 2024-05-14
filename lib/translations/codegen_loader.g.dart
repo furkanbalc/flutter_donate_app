@@ -30,16 +30,22 @@ class CodegenLoader extends AssetLoader{
     "signup": "Sign Up",
     "signin": "Sign In",
     "create_account": "Create Account",
-    "complete_your_profile": "Complete Your Profile",
     "forgot_password": "Forgot Password",
-    "fill_your_info": "Fill out your information to register or try other methods.",
-    "welcome_back": "Welcome back! You can continue where you left off by signing in.",
-    "enter_your_personal_info": "Enter your personal information to complete the registration process.",
-    "forgot_password_send_connection_link": "We need your registered email address to send the password reset link.",
-    "apply_and_continue": "Apply and Continue",
+    "fill_your_info": "Fill out your information to register or try other methods",
+    "welcome_back": "Welcome back! You can continue where you left off by signing in",
+    "forgot_password_send_connection_link": "We need your registered email address to send the password reset link",
     "or_with": "Or with",
     "already_have_an_account": "Already have an account?",
     "dont_have_an_account": "Don't have an account?"
+  },
+  "user_info": {
+    "complete_your_profile": "Complete Your Profile",
+    "enter_your_personal_info": "Enter your personal information to complete the registration process",
+    "apply_and_continue": "Apply and Continue",
+    "tell_us_about_yourself": "Tell us about yourself!",
+    "share_your_gender": "Share your gender with us to improve your experience",
+    "how_old_are_you": "How old are you?",
+    "share_your_age": "Please share your age with us"
   }
 };
 static const Map<String,dynamic> tr = {
@@ -58,16 +64,22 @@ static const Map<String,dynamic> tr = {
     "signup": "Kayıt Ol",
     "signin": "Giriş Yap",
     "create_account": "Hesap Oluştur",
-    "complete_your_profile": "Profilini Tamamla",
     "forgot_password": "Şifremi Unuttum",
-    "fill_your_info": "Kayıt olmak için bilgilerinizi doldurun veya diğer yöntemleri deneyin.",
-    "welcome_back": "Tekrar hoşgeldiniz, giriş yaparak kaldığınız yerden devam edebilirsiniz.",
-    "enter_your_personal_info": "Kayıt işlemini tamamlamak için kişisel bilgileriniz giriniz.",
-    "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var.",
-    "apply_and_continue": "Onayla ve Devam et",
+    "fill_your_info": "Kayıt olmak için bilgilerinizi doldurun veya diğer yöntemleri deneyin",
+    "welcome_back": "Tekrar hoşgeldiniz, giriş yaparak kaldığınız yerden devam edebilirsiniz",
+    "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var",
     "or_with": "Veya",
     "already_have_an_account": "Zaten bir hesabınız var mı?",
     "dont_have_an_account": "Hesabınız yok mu?"
+  },
+  "user_info": {
+    "complete_your_profile": "Profilini Tamamla",
+    "enter_your_personal_info": "Kayıt işlemini tamamlamak için kişisel bilgileriniz giriniz",
+    "apply_and_continue": "Onayla ve Devam et",
+    "tell_us_about_yourself": "Bize kendinden bahset!",
+    "share_your_gender": "Deneyiminizi geliştirmek için cinsiyetinizi bizimle paylaşın",
+    "how_old_are_you": "Kaç yaşındasınız?",
+    "share_your_age": "Lütfen yaşınızı bizimle paylaşın"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};

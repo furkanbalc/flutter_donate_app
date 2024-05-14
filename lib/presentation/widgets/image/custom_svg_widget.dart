@@ -24,6 +24,8 @@ class CustomSvgWidget extends StatelessWidget {
       width: width,
       height: height,
       fit: fit ?? BoxFit.cover,
+      color: color,
+
     );
   }
 }

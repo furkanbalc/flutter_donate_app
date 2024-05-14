@@ -73,7 +73,7 @@ class _UserInfoFormWidgetState extends State<UserInfoFormWidget> {
         /// Apply Button
         CustomElevatedButton(
           onPressed: () {},
-          text: LocaleKeys.auth_apply_and_continue.tr(),
+          text: LocaleKeys.user_info_apply_and_continue.tr(),
         ),
       ],
     );
