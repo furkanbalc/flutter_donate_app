@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/auth_method.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_footer.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_elevated_button.dart';
@@ -38,9 +40,7 @@ class _SigninViewState extends State<SigninView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: context.paddings.horizontalMedium,
+      body: AuthBody(
         child: _buildBody(context: context),
       ),
     );
@@ -51,9 +51,10 @@ class _SigninViewState extends State<SigninView> {
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
         child: Column(
           children: [
+            SizedBox(height: context.getAppBarHeight()),
             /// Signin Title
             AuthHeader(
               title: LocaleKeys.auth_signin.tr(),

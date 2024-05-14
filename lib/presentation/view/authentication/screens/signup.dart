@@ -4,8 +4,10 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/auth_method.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_footer.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_elevated_button.dart';
@@ -39,9 +41,7 @@ class _SignupViewState extends State<SignupView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: Padding(
-        padding: context.paddings.horizontalMedium,
+      body: AuthBody(
         child: _buildBody(context: context),
       ),
     );
@@ -52,9 +52,10 @@ class _SignupViewState extends State<SignupView> {
     return Form(
       key: _formKey,
       child: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.onDrag,
+        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
         child: Column(
           children: [
+            SizedBox(height: context.getAppBarHeight()),
             /// Signup Title
             AuthHeader(
               title: LocaleKeys.auth_create_account.tr(),
