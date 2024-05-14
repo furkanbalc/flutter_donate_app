@@ -14,15 +14,21 @@
     "signup": "Kayıt Ol",
     "signin": "Giriş Yap",
     "create_account": "Hesap Oluştur",
-    "complete_your_profile": "Profilini Tamamla",
     "forgot_password": "Şifremi Unuttum",
-    "fill_your_info": "Kayıt olmak için bilgilerinizi doldurun veya diğer yöntemleri deneyin.",
-    "welcome_back": "Tekrar hoşgeldiniz, giriş yaparak kaldığınız yerden devam edebilirsiniz.",
-    "enter_your_personal_info": "Kayıt işlemini tamamlamak için kişisel bilgileriniz giriniz.",
-    "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var.",
-    "apply_and_continue": "Onayla ve Devam et",
+    "fill_your_info": "Kayıt olmak için bilgilerinizi doldurun veya diğer yöntemleri deneyin",
+    "welcome_back": "Tekrar hoşgeldiniz, giriş yaparak kaldığınız yerden devam edebilirsiniz",
+    "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var",
     "or_with": "Veya",
     "already_have_an_account": "Zaten bir hesabınız var mı?",
     "dont_have_an_account": "Hesabınız yok mu?"
+  },
+  "user_info": {
+    "complete_your_profile": "Profilini Tamamla",
+    "enter_your_personal_info": "Kayıt işlemini tamamlamak için kişisel bilgileriniz giriniz",
+    "apply_and_continue": "Onayla ve Devam et",
+    "tell_us_about_yourself": "Bize kendinden bahset!",
+    "share_your_gender": "Deneyiminizi geliştirmek için cinsiyetinizi bizimle paylaşın",
+    "how_old_are_you": "Kaç yaşındasınız?",
+    "share_your_age": "Lütfen yaşınızı bizimle paylaşın"
   }
 }
