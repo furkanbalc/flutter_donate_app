@@ -5,12 +5,10 @@ import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 
 class UserInfoAppBar extends StatefulWidget implements PreferredSizeWidget {
   final double progressValue;
-  final VoidCallback onBack;
 
   const UserInfoAppBar({
     super.key,
     required this.progressValue,
-    required this.onBack,
   });
 
   @override
@@ -30,14 +28,12 @@ class _UserInfoAppBarState extends State<UserInfoAppBar> {
         height: kToolbarHeight,
         child: Row(
           children: [
-            IconButton(
-              icon: const Icon(Icons.arrow_back),
-              onPressed: widget.onBack,
-            ),
             Expanded(
               child: Padding(
                 padding: context.paddings.horizontalMedium,
                 child: LinearProgressIndicator(
+                  minHeight: 10,
+                  borderRadius: BorderRadius.circular(20),
                   value: widget.progressValue,
                   valueColor: const AlwaysStoppedAnimation<Color>(AppColors.electricViolet),
                   backgroundColor: Colors.grey,

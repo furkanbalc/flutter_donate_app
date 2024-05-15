@@ -1,4 +1,14 @@
-part of 'user_info.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
+import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/user_info_appbar.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 class AgeInfoView extends StatefulWidget {
   const AgeInfoView({super.key});
@@ -8,34 +18,26 @@ class AgeInfoView extends StatefulWidget {
 }
 
 class _AgeInfoViewState extends State<AgeInfoView> {
-  final int minAge = 1;
-  late ScrollController _scrollController;
-  late double itemExtent;
   int selectedAge = 1;
 
   @override
   void initState() {
     super.initState();
-    _scrollController = ScrollController();
-    itemExtent = 50; // Her bir elemanın yüksekliği
-    _scrollToSelectedAge();
-  }
-
-  void _scrollToSelectedAge() {
-    final double initialOffset =
-        (selectedAge - minAge) * itemExtent - (3 * itemExtent); // Imleci listenin ortasına getir
-    _scrollController.animateTo(
-      initialOffset,
-      duration: Duration(milliseconds: 500),
-      curve: Curves.easeInOut,
-    );
   }
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddings.horizontalMedium,
-      child: _buildBody(context: context),
+    return Scaffold(
+      appBar: UserInfoAppBar(progressValue: 3 / 3),
+      floatingActionButton: AuthBottomButton(
+        onPressed: () {},
+        text: LocaleKeys.user_info_apply_and_continue.tr(),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: Padding(
+        padding: context.paddings.horizontalMedium,
+        child: _buildBody(context: context),
+      ),
     );
   }
 
@@ -56,7 +58,7 @@ class _AgeInfoViewState extends State<AgeInfoView> {
             squeeze: 1.5,
             looping: true,
             selectionOverlay: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   border: Border.symmetric(
                 horizontal: BorderSide(color: AppColors.electricViolet, width: 5),
               )),
@@ -64,7 +66,6 @@ class _AgeInfoViewState extends State<AgeInfoView> {
             itemExtent: 80,
             onSelectedItemChanged: (index) {
               setState(() {
-                print(index + 18);
                 selectedAge = index + 18; // Seçilen yaş, 18'den başlayacak şekilde ayarlanır
               });
             },

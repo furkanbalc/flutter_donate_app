@@ -1,4 +1,17 @@
-part of 'user_info.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/extensions/context_size.dart';
+import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
+import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/core/extensions/string_extension.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/user_info_appbar.dart';
+import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 class GenderInfoView extends StatefulWidget {
   const GenderInfoView({super.key});
@@ -10,11 +23,20 @@ class GenderInfoView extends StatefulWidget {
 class _GenderInfoViewState extends State<GenderInfoView> {
   bool isMan = false;
   bool isWoman = false;
+
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: context.paddings.horizontalMedium,
-      child: _buildBody(context: context),
+    return Scaffold(
+      appBar: UserInfoAppBar(progressValue: 2 / 3),
+      floatingActionButton: AuthBottomButton(
+        onPressed: () {},
+        text: LocaleKeys.user_info_apply_and_continue.tr(),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      body: Padding(
+        padding: context.paddings.horizontalMedium,
+        child: _buildBody(context: context),
+      ),
     );
   }
 
@@ -38,7 +60,7 @@ class _GenderInfoViewState extends State<GenderInfoView> {
                   svg: AppAssets.man.toSvg,
                   onTap: () {
                     setState(() {
-                      if(isWoman) {
+                      if (isWoman) {
                         isMan = true;
                         isWoman = false;
                       } else {
@@ -54,7 +76,7 @@ class _GenderInfoViewState extends State<GenderInfoView> {
                   svg: AppAssets.woman.toSvg,
                   onTap: () {
                     setState(() {
-                      if(isMan) {
+                      if (isMan) {
                         isWoman = true;
                         isMan = false;
                       } else {
