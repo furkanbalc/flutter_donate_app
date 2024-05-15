@@ -3,4 +3,5 @@ class AppConstants {
 
   /// -- FONT FAMILY NAME --
   static const fontFamily = 'InterFontFamily';
+  static const appName = 'Bende Fazla';
 }

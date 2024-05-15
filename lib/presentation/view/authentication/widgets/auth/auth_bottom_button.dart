@@ -1,17 +1,19 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_elevated_button.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 class AuthBottomButton extends StatelessWidget {
   const AuthBottomButton({
     super.key,
     required this.onPressed,
-    required this.text,
+     this.text,
   });
 
   final Function() onPressed;
-  final String text;
+  final String? text;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +32,7 @@ class AuthBottomButton extends StatelessWidget {
       ),
       child: CustomElevatedButton(
         onPressed: onPressed,
-        text: text,
+        text: text ??  LocaleKeys.user_info_apply_and_continue.tr(),
       ),
     );
   }

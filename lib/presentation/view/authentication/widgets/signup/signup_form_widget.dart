@@ -1,6 +1,5 @@
 part of '../../screens/signup.dart';
 
-
 class SignupFormWidget extends StatefulWidget {
   const SignupFormWidget({super.key});
 
@@ -100,36 +99,7 @@ class _SignupFormWidgetState extends State<SignupFormWidget> {
         context.sizedBoxHeightMedium,
 
         /// Terms and Conditions
-        CheckboxListTile(
-          contentPadding: context.paddings.zero,
-          title: Text.rich(
-            textAlign: TextAlign.center,
-            TextSpan(
-              text: 'Kayıt koşullarını',
-              style: context.textStyles.titleSmall.copyWith(
-                color: AppColors.electricViolet,
-                decoration: TextDecoration.underline,
-                decorationColor: AppColors.electricViolet,
-              ),
-              children: [
-                TextSpan(
-                  text: 'okudum, kabul ediyorum.',
-                  style: context.textStyles.titleSmall.copyWith(
-                    color: AppColors.verifiedBlack,
-                    decoration: TextDecoration.none,
-                    decorationColor: AppColors.electricViolet,
-                  ),
-                ),
-              ],
-            ),
-          ),
-          value: isCheck,
-          onChanged: (value) {
-            setState(() {
-              isCheck = value!;
-            });
-          },
-        ),
+        CustomCheckBoxListTile(title: 'Kayıt koşullarını okudum, kabul ediyorum.'),
         context.sizedBoxHeightCustom,
 
         /// Signup Button

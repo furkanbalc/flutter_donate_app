@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 
 extension AnimatedNavigation on Widget {
-  Future fadeTransitionPush({required BuildContext context}) => Navigator.push(
+  Future fadeTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -13,7 +13,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future fadeTransitionReplace({required BuildContext context}) => Navigator.pushReplacement(
+  Future fadeTransitionReplace(BuildContext context) => Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -25,7 +25,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future slideTransitionPush({required BuildContext context}) => Navigator.push(
+  Future slideTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -43,7 +43,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future slideTransitionReplace({required BuildContext context}) => Navigator.pushReplacement(
+  Future slideTransitionReplace(BuildContext context) => Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -58,10 +58,11 @@ extension AnimatedNavigation on Widget {
               child: child,
             );
           },
+          transitionDuration: Duration(milliseconds: 500),
         ),
       );
 
-  Future scaleTransitionPush({required BuildContext context}) => Navigator.push(
+  Future scaleTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -76,7 +77,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future scaleTransitionReplace({required BuildContext context}) => Navigator.pushReplacement(
+  Future scaleTransitionReplace(BuildContext context) => Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -91,7 +92,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future rotateTransitionPush({required BuildContext context}) => Navigator.push(
+  Future rotateTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -106,7 +107,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future rotateTransitionReplace({required BuildContext context}) => Navigator.pushReplacement(
+  Future rotateTransitionReplace(BuildContext context) => Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -121,7 +122,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future sizeTransitionPush({required BuildContext context}) => Navigator.push(
+  Future sizeTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -136,7 +137,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future sizeTransitionReplace({required BuildContext context}) => Navigator.pushReplacement(
+  Future sizeTransitionReplace(BuildContext context) => Navigator.pushReplacement(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {
@@ -151,7 +152,7 @@ extension AnimatedNavigation on Widget {
         ),
       );
 
-  Future fadeScaleTransitionPush({required BuildContext context}) => Navigator.push(
+  Future fadeScaleTransitionPush(BuildContext context) => Navigator.push(
         context,
         PageRouteBuilder(
           pageBuilder: (BuildContext context, _, __) {

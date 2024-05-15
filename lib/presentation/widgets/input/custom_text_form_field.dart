@@ -62,7 +62,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    FocusScopeNode currentFocus = FocusScope.of(context);
+    // FocusScopeNode currentFocus = FocusScope.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,7 +75,7 @@ class CustomTextFormField extends StatelessWidget {
         context.sizedBoxHeightMin,
         TextFormField(
           controller: controller,
-          onTapOutside: (event) => currentFocus.unfocus(),
+          // onTapOutside: (event) => currentFocus.unfocus(),
           onChanged: onChanged,
           focusNode: focusNode,
           onFieldSubmitted: onFieldSubmitted,

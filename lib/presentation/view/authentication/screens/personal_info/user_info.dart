@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
@@ -47,27 +46,32 @@ class _UserInfoViewState extends State<UserInfoView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: AuthBottomButton(
-        onPressed: () {
-          GenderInfoView().slideTransitionPush(context);
-        },
-        text: LocaleKeys.user_info_apply_and_continue.tr(),
-      ),
+      resizeToAvoidBottomInset: false,
+      floatingActionButton: _getApplyButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: SafeArea(
-        child: Column(
-          children: [
-            context.sizedBoxHeightCustom,
-            UserInfoAppBar(progressValue: 1 / 3),
-            Expanded(
-              child: Padding(
-                padding: context.paddings.horizontalMedium,
-                child: _buildBody(context: context),
-              ),
+      body: Column(
+        children: [
+          context.sizedBoxHeightMedium,
+
+          /// Progress Bar
+          const UserInfoAppBar(progressValue: 1 / 3),
+          Expanded(
+            child: Padding(
+              padding: context.paddings.horizontalMedium,
+              child: _buildBody(context: context),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
+    );
+  }
+
+  /// Apply Button
+  AuthBottomButton _getApplyButton(BuildContext context) {
+    return AuthBottomButton(
+      onPressed: () {
+        const GenderInfoView().slideTransitionReplace(context);
+      },
     );
   }
 

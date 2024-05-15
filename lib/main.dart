@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
-import 'package:flutter_donate_app/translations/locale_keys.g.dart';
+import 'package:flutter_donate_app/core/constants/app_constants.dart';
+import 'package:flutter_donate_app/core/theme/light_theme.dart';
+import 'presentation/view/authentication/screens/personal_info/user_info.dart';
+
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -27,15 +29,12 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: LocaleKeys.app_name.tr(),
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      title: AppConstants.appName,
+      theme: lightTheme,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
-      home: const SigninView()
+      home: const UserInfoView()
     );
   }
 }

@@ -67,7 +67,7 @@ class _SigninFormWidgetState extends State<SigninFormWidget> {
           suffixOnPressed: _togglePassObscure,
           keyboardType: TextInputType.text,
           autofillHints: const [AutofillHints.email],
-          textInputAction: TextInputAction.next,
+          textInputAction: TextInputAction.done,
           obscureText: passObscure,
         ),
         context.sizedBoxHeightLow,

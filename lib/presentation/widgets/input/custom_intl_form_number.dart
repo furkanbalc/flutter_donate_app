@@ -40,7 +40,6 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
         ),
         context.sizedBoxHeightMin,
         InternationalPhoneNumberInput(
-          validator: widget.validator,
           locale: 'TR',
           selectorConfig: const SelectorConfig(
             selectorType: PhoneInputSelectorType.BOTTOM_SHEET,
@@ -58,7 +57,7 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
             border: InputBorder.none,
           ),
           textFieldController: widget.controller,
-          keyboardAction: TextInputAction.next,
+          keyboardAction: TextInputAction.done,
           spaceBetweenSelectorAndTextField: MediaQuery.sizeOf(context).width / 51.75,
           keyboardType: TextInputType.phone,
           searchBoxDecoration: InputDecoration(
