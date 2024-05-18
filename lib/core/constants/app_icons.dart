@@ -4,6 +4,14 @@ import 'package:iconsax/iconsax.dart';
 class AppIcons {
   const AppIcons._();
 
+  static const IconData kHomeOutlinedIcon = Iconsax.home;
+  static const IconData kHomeFilledIcon = Iconsax.home_15;
+  static const IconData kGiftOutlinedIcon = Iconsax.gift;
+  static const IconData kGiftFilledIcon = Iconsax.gift5;
+  static const IconData kMessageOutlinedIcon = Iconsax.message;
+  static const IconData kMessageFilledIcon = Iconsax.message5;
+  static const IconData kUserOutlinedIcon = Iconsax.user;
+  static const IconData kUserFilledIcon = Icons.person;
   static const IconData kEditIcon = Iconsax.user_edit;
   static const IconData kPasswordIcon = Iconsax.password_check;
   static const IconData kVisibility = Iconsax.eye;
@@ -17,17 +25,13 @@ class AppIcons {
   static const IconData kSearchIcon = Iconsax.search_normal;
   static const IconData kLocationIcon = Iconsax.location;
   static const IconData kFavouriteIcon = Iconsax.heart5;
-  static const IconData kHomeIcon = Iconsax.home;
-  static const IconData kGiftIcon = Iconsax.gift;
   static const IconData kAddCircleIcon = Iconsax.add;
   static const IconData kAddSquareIcon = Iconsax.add_square;
-  static const IconData kUserIcon = Iconsax.user;
   static const IconData kGalleryIcon = Iconsax.gallery;
   static const IconData kCameraIcon = Iconsax.camera;
   static const IconData kAddCameraIcon = Icons.add_a_photo_outlined;
   static const IconData kEditPhotoIcon = Iconsax.edit_2;
   static const IconData kRemoveIcon = Iconsax.close_square;
-  static const IconData kMessageIcon = Iconsax.message;
   static const IconData kFilterIcon = Iconsax.setting_4;
   static const IconData kSettingsIcon = Iconsax.setting_2;
   static const IconData kInfoIcon = Iconsax.info_circle;

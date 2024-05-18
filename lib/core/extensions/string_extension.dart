@@ -4,9 +4,9 @@ extension AppSvgExtension on String {
 }
 /// -- TO PNG EXTENSION --
 extension AppPngExtension on String {
-  String get toPng => 'assets/images/svg/$this.png';
+  String get toPng => 'assets/images/png/$this.png';
 }
 /// -- TO LOTTIE EXTENSION --
 extension AppLottieExtension on String {
-  String get toLottie => 'assets/images/svg/$this.json';
+  String get toLottie => 'assets/images/lottie/$this.json';
 }
