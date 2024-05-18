@@ -8,6 +8,7 @@ import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 import 'package:flutter_donate_app/core/extensions/string_extension.dart';
+import 'package:flutter_donate_app/presentation/view/app/widgets/home/home_sliver_appbar.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 
@@ -24,96 +25,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          SliverAppBar(
-            pinned: true,
-            expandedHeight: context.dynamicHeight(.25),
-            backgroundColor: AppColors.electricViolet,
-            flexibleSpace: FlexibleSpaceBar(
-              background: Container(
-                decoration: BoxDecoration(image: DecorationImage(image: AssetImage(AppAssets.linesBg.toPng),fit: BoxFit.fill)),
-                child: Padding(
-                  padding: context.paddings.allMedium,
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text('Konum', style: context.textStyles.titleSmall.copyWith(color: AppColors.whiteColor)),
-                              context.sizedBoxHeightMin,
-                              Row(
-                                children: [
-                                  const Icon(AppIcons.kLocationIcon, color: AppColors.whiteColor, size: 20),
-                                  Text('Kahramanmaraş, Türkiye',
-                                      style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
-                                  const Icon(AppIcons.kArrowDown, color: AppColors.whiteColor),
-                                ],
-                              ),
-                            ],
-                          ),
-                          IconButton(
-                            padding: context.paddings.zero,
-                            onPressed: () {},
-                            icon: Container(
-                              padding: context.paddings.allLow,
-                              decoration: BoxDecoration(
-                                color: AppColors.blueTang,
-                                borderRadius: context.borders.circularBorderRadiusNormal,
-                              ),
-                              child: const Badge(child: Icon(AppIcons.kNotificationIcon, color: AppColors.whiteColor)),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-            bottom: PreferredSize(
-              preferredSize: Size.fromHeight(56),
-              child: Padding(
-                padding: context.paddings.allMedium,
-                child: Column(
-                  children: [
-                    context.sizedBoxHeightMedium,
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Expanded(
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Search',
-                              filled: true,
-                              fillColor: AppColors.whiteColor,
-                              contentPadding: context.paddings.zero,
-                              prefixIcon: const Icon(AppIcons.kSearchIcon, color: AppColors.steel),
-                            ),
-                          ),
-                        ),
-                        context.sizedBoxWidthLow,
-                        IconButton(
-                          style: IconButton.styleFrom(padding: context.paddings.zero),
-                          onPressed: () {},
-                          icon: Container(
-                            padding: const EdgeInsets.all(12),
-                            decoration: BoxDecoration(
-                              color: AppColors.whiteColor,
-                              borderRadius: context.borders.circularBorderRadiusNormal,
-                            ),
-                            child: const Icon(AppIcons.kFilterIcon, color: AppColors.electricViolet),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
+          HomeSliverAppBar(),
           SliverPadding(
             padding: const EdgeInsets.all(16.0),
             sliver: SliverList(
