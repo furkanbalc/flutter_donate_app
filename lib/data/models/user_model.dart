@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 class UserModel extends UserEntity {
@@ -31,6 +32,23 @@ class UserModel extends UserEntity {
       isActive: json['isActive'] ?? false,
       isAdmin: json['isAdmin'] ?? false,
       data: json['data'] == null ? null : Data.fromJson(json['data']),
+    );
+  }
+
+  factory UserModel.fromFirebaseUser(User firebaseUser) {
+    return UserModel(
+      data: Data(
+        id: firebaseUser.uid.toString(),
+        email: firebaseUser.email ?? '',
+      ),
+    );
+  }
+
+  UserEntity convertToEntity() {
+    return UserEntity(
+      isActive: isActive,
+      isAdmin: isAdmin,
+      data: data,
     );
   }
 }
