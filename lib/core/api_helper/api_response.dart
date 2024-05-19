@@ -10,7 +10,7 @@ class ApiResponse<T> {
 
   ApiResponse.completed(this.data) : status = Status.completed;
 
-  ApiResponse.error(this.message) : status = Status.error;
+  ApiResponse.error(this.message, StackTrace stacTrace) : status = Status.error;
   /// teken düsmüsse
   // ApiResponse.error(this.message, this.stackTrace) : status = Status.error {
     // if (message is UnauthorisedException&&Constants.tokenIsInvalid==false) {

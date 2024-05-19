@@ -15,7 +15,6 @@ class CodegenLoader extends AssetLoader{
   }
 
   static const Map<String,dynamic> en = {
-  "app_name": "Bende Fazla",
   "form_fields": {
     "name": "First Name",
     "surname": "Last Name",
@@ -25,6 +24,29 @@ class CodegenLoader extends AssetLoader{
     "phone_number": "Phone Number",
     "gender": "Gender",
     "select": "Select"
+  },
+  "validator": {
+    "upper_case_validator": "Must contain at least one uppercase letter (A-Z)",
+    "digit_validator": "Must contain at least one digit (0-9)",
+    "special_char_validator": "Must contain at least one special character (!@#%^&*(),.?\":{}|<>+-)",
+    "email_not_null": "Email cannot be empty!",
+    "invalid_email": "Invalid email address!",
+    "password_not_null": "Password cannot be empty!",
+    "password_min_character": "Password must contain at least 6 characters!",
+    "passwords_same": "Passwords must match!",
+    "surname_is_not_empty": "Surname cannot be empty!",
+    "name_is_not_empty": "Name cannot be empty!",
+    "name_only_string": "Name must contain only letters!",
+    "sur_name_only_string": "Surname must contain only letters!"
+  },
+  "messages": {
+    "creating_account": "Creating account ...",
+    "signing": "Signing in ...",
+    "sign_outing": "Signing out ...",
+    "email_already_in_use": "This email address is already in use. Try a different one.",
+    "user_not_found": "This email address is not registered. Try a different one.",
+    "wrong_password": "Incorrect password",
+    "wrong_email_or_password": "Incorrect email or password"
   },
   "auth": {
     "signup": "Sign Up",
@@ -49,7 +71,6 @@ class CodegenLoader extends AssetLoader{
   }
 };
 static const Map<String,dynamic> tr = {
-  "app_name": "Bende Fazla",
   "form_fields": {
     "name": "Ad",
     "surname": "Soyad",
@@ -59,6 +80,29 @@ static const Map<String,dynamic> tr = {
     "phone_number": "Telefon Numarası",
     "gender": "Cinsiyet",
     "select": "Seçim"
+  },
+  "validator": {
+    "upper_case_validator": "En az bir büyük harf içermelidir(A-Z)",
+    "digit_validator": "En az bir rakam harf içermelidir(0-9)",
+    "special_char_validator": "En az bir özel karakter içermelidir(!@#%^&*(),.?\":{}|<>+-)",
+    "email_not_null": "E-posta boş olamaz!",
+    "invalid_email": "Geçersiz e-posta adresi!",
+    "password_not_null": "Şifre boş olamaz!",
+    "password_min_character": "Şifre en az 6 karakter içermelidir!",
+    "passwords_same": "Şifreler aynı olmalıdır!",
+    "surname_is_not_empty": "Ad boş olamaz!",
+    "name_is_not_empty": "Soyad boş olamaz!",
+    "name_only_string": "Ad sadece harf içermelidir!",
+    "sur_name_only_string": "Ad sadece harf içermelidir!"
+  },
+  "messages": {
+    "creating_account": "Hesap oluşturuluyor ...",
+    "signing": "Giriş yapılıyor ...",
+    "sign_outing": "Hesap oluşturuluyor ...",
+    "email_already_in_use": "Bu e-posta adresi zaten kullanımda. Farklı bir tane deneyin.",
+    "user_not_found": "Bu e-posta adresi kayıtlı değil. Farklı bir tane deneyin.",
+    "wrong_password": "Hatalı şifre",
+    "wrong_email_or_password": "Hatalı e-posta veya şifre"
   },
   "auth": {
     "signup": "Kayıt Ol",

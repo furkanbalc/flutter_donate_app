@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "981088501982",
+    "project_id": "donate-app-71bba",
+    "storage_bucket": "donate-app-71bba.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:981088501982:android:1f7105e01baf845823c24f",
+        "android_client_info": {
+          "package_name": "com.fb1dev.flutter_donate_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAMV09VbTeQ0NBm53CuQVlh-vJQN5VeeX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

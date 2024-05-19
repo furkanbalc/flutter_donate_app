@@ -19,6 +19,7 @@ dependencies:
   # Utils
   intl_phone_number_input: ^0.7.4
   flutter_floating_bottom_bar: ^1.2.0
+  flutter_spinkit: ^5.1.0
 
   # Core
   easy_localization: ^3.0.7
