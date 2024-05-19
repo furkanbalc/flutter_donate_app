@@ -1,7 +1,6 @@
 // DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
 
 abstract class  LocaleKeys {
-  static const app_name = 'app_name';
   static const form_fields_name = 'form_fields.name';
   static const form_fields_surname = 'form_fields.surname';
   static const form_fields_email = 'form_fields.email';
@@ -11,6 +10,27 @@ abstract class  LocaleKeys {
   static const form_fields_gender = 'form_fields.gender';
   static const form_fields_select = 'form_fields.select';
   static const form_fields = 'form_fields';
+  static const validator_upper_case_validator = 'validator.upper_case_validator';
+  static const validator_digit_validator = 'validator.digit_validator';
+  static const validator_special_char_validator = 'validator.special_char_validator';
+  static const validator_email_not_null = 'validator.email_not_null';
+  static const validator_invalid_email = 'validator.invalid_email';
+  static const validator_password_not_null = 'validator.password_not_null';
+  static const validator_password_min_character = 'validator.password_min_character';
+  static const validator_passwords_same = 'validator.passwords_same';
+  static const validator_surname_is_not_empty = 'validator.surname_is_not_empty';
+  static const validator_name_is_not_empty = 'validator.name_is_not_empty';
+  static const validator_name_only_string = 'validator.name_only_string';
+  static const validator_sur_name_only_string = 'validator.sur_name_only_string';
+  static const validator = 'validator';
+  static const messages_creating_account = 'messages.creating_account';
+  static const messages_signing = 'messages.signing';
+  static const messages_sign_outing = 'messages.sign_outing';
+  static const messages_email_already_in_use = 'messages.email_already_in_use';
+  static const messages_user_not_found = 'messages.user_not_found';
+  static const messages_wrong_password = 'messages.wrong_password';
+  static const messages_wrong_email_or_password = 'messages.wrong_email_or_password';
+  static const messages = 'messages';
   static const auth_signup = 'auth.signup';
   static const auth_signin = 'auth.signin';
   static const auth_create_account = 'auth.create_account';
