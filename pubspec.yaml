@@ -20,8 +20,20 @@ dependencies:
   intl_phone_number_input: ^0.7.4
   flutter_floating_bottom_bar: ^1.2.0
 
-  # Localization
+  # Core
   easy_localization: ^3.0.7
+  equatable: ^2.0.5
+  get_it: ^7.7.0
+
+  # State Management
+  flutter_riverpod: ^2.5.1
+
+  # Firebase
+  firebase_core: ^2.28.0
+  firebase_auth: ^4.19.0
+  cloud_firestore: ^4.16.0
+  firebase_storage: ^11.7.0
+  firebase_crashlytics: ^3.5.4
 
 dev_dependencies:
   flutter_test:
