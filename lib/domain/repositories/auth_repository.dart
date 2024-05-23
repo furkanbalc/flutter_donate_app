@@ -2,13 +2,13 @@ import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
   /// -- SIGN UP --
-  Future<UserEntity> signUp({
+  Future<void> signUp({
     required String email,
     required String password,
   });
 
   /// -- SIGN IN --
-  Future<UserEntity> signIn({
+  Future<void> signIn({
     required String email,
     required String password,
   });

@@ -29,7 +29,7 @@ class _AgeInfoViewState extends State<AgeInfoView> {
           context.sizedBoxHeightMedium,
 
           /// Progress Bar
-          const UserInfoAppBar(progressValue: 3 / 3),
+          const UserInfoAppBar(progressValue: 2 / 3),
           context.sizedBoxHeightMedium,
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),

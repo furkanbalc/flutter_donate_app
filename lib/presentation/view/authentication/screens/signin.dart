@@ -1,6 +1,5 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/auth_method.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
@@ -9,6 +8,7 @@ import 'package:flutter_donate_app/core/extensions/response_event.dart';
 import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
 import 'package:flutter_donate_app/core/mixin/validator.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
+import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/app/screens/app.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/service/signin_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
@@ -18,9 +18,9 @@ import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_vi
 import 'package:flutter_donate_app/presentation/widgets/button/custom_elevated_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_text_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/input/custom_text_form_field.dart';
+import 'package:flutter_donate_app/presentation/widgets/progress/custom_loading_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../main.dart';
 
 class SigninView extends ConsumerStatefulWidget {
   const SigninView({super.key});
@@ -33,6 +33,8 @@ class _SigninViewState extends ConsumerState<SigninView> with Validator, SignInW
   late final GlobalKey<FormState> _formKey;
   late final TextEditingController _emailController;
   late final TextEditingController _passController;
+  bool isCheck = false;
+  bool passObscure = true;
 
   @override
   void initState() {
@@ -50,49 +52,70 @@ class _SigninViewState extends ConsumerState<SigninView> with Validator, SignInW
     super.dispose();
   }
 
-  bool passObscure = true;
-
   void _togglePassObscure() {
     setState(() {
       passObscure = !passObscure;
     });
   }
 
+  void _toggleAutoValidate() {
+    setState(() {
+      isCheck = !isCheck;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     AuthViewModel authViewModel = ref.watch(authViewModelImp);
-    return Scaffold(
-      body: AuthBody(
-        child: _buildBody(context: context, authViewModel: authViewModel),
-      ),
+    return Stack(
+      children: [
+        Scaffold(
+          body: AuthBody(
+            child: _buildBody(context: context, authViewModel: authViewModel),
+          ),
+        ),
+        Visibility(
+          visible: authViewModel.signInResponse.isLoading(),
+          child: const CustomLoadingWidget(),
+        ),
+      ],
     );
   }
 
   /// Body
   Widget _buildBody({required BuildContext context, required AuthViewModel authViewModel}) {
-    return Form(
-      key: _formKey,
-      child: SingleChildScrollView(
-        keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
-        child: Column(
-          children: [
-            SizedBox(height: context.getAppBarHeight()),
+    return Stack(
+      children: [
+        Form(
+          key: _formKey,
+          autovalidateMode: isCheck ? AutovalidateMode.always : AutovalidateMode.disabled,
+          child: SingleChildScrollView(
+            keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
+            child: Column(
+              children: [
+                SizedBox(height: context.getAppBarHeight()),
 
-            /// Signin Title
-            AuthHeader(
-              title: LocaleKeys.auth_signin.tr(),
-              subTitle: LocaleKeys.auth_welcome_back.tr(),
+                /// Signin Title
+                AuthHeader(
+                  title: LocaleKeys.auth_signin.tr(),
+                  subTitle: LocaleKeys.auth_welcome_back.tr(),
+                ),
+                context.sizedBoxHeightMedium,
+
+                /// Signin Forms
+                _buildForms(context, authViewModel),
+
+                /// Signin Dont Have An Account
+                const AuthFooter(method: AuthMethod.sigin),
+              ],
             ),
-            context.sizedBoxHeightMedium,
-
-            /// Signin Forms
-            _buildForms(context, authViewModel),
-
-            /// Signin Dont Have An Account
-            const AuthFooter(method: AuthMethod.sigin),
-          ],
+          ),
         ),
-      ),
+        Visibility(
+          visible: authViewModel.signUpResponse.isLoading(),
+          child: const CustomLoadingWidget(),
+        ),
+      ],
     );
   }
 
@@ -149,9 +172,7 @@ class _SigninViewState extends ConsumerState<SigninView> with Validator, SignInW
                 password: _passController.text,
               )
                   .then((value) {
-                if (authViewModel.signInResponse.isLoading()) {
-                  Utils.showLoadingDialog(context: context);
-                } else if (authViewModel.signInResponse.isLoading()) {
+                if (authViewModel.signInResponse.isCompleted()) {
                   Utils.successSnackBar(
                     mesaj: 'Giriş Başarılı',
                     context: context,
@@ -163,8 +184,9 @@ class _SigninViewState extends ConsumerState<SigninView> with Validator, SignInW
                     context: context,
                   );
                 }
-
               });
+            } else {
+              _toggleAutoValidate();
             }
           },
           text: LocaleKeys.auth_signin.tr(),

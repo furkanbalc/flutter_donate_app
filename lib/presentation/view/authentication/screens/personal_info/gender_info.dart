@@ -33,7 +33,7 @@ class _GenderInfoViewState extends State<GenderInfoView> {
           context.sizedBoxHeightMedium,
 
           /// Progress Bar
-          const UserInfoAppBar(progressValue: 2 / 3),
+          const UserInfoAppBar(progressValue: 1 / 3),
           Expanded(
             child: Padding(
               padding: context.paddings.horizontalMedium,
@@ -49,7 +49,7 @@ class _GenderInfoViewState extends State<GenderInfoView> {
   AuthBottomButton _getApplyButton(BuildContext context) {
     return AuthBottomButton(
       onPressed: () {
-        const AgeInfoView().slideTransitionReplace(context);
+        const AgeInfoView().slideTransitionPush(context);
       },
     );
   }

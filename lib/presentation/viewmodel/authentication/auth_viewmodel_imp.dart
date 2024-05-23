@@ -9,27 +9,27 @@ import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_vi
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 class AuthViewModelImp with ChangeNotifier implements AuthViewModel {
-  ApiResponse<UserEntity> _signUpResponse = ApiResponse.initial('initial');
-  ApiResponse<UserEntity> _signInResponse = ApiResponse.initial('initial');
+  ApiResponse<bool> _signUpResponse = ApiResponse.initial('initial');
+  ApiResponse<bool> _signInResponse = ApiResponse.initial('initial');
   ApiResponse<UserEntity> _saveUserInfoToFirestoreResponse = ApiResponse.initial('initial');
 
   @override
-  ApiResponse<UserEntity> get signUpResponse => _signUpResponse;
+  ApiResponse<bool> get signUpResponse => _signUpResponse;
 
   @override
-  ApiResponse<UserEntity> get signInResponse => _signInResponse;
+  ApiResponse<bool> get signInResponse => _signInResponse;
 
   @override
   ApiResponse<UserEntity> get saveUserInfoToFirestoreResponse => _saveUserInfoToFirestoreResponse;
 
   @override
-  set signUpResponse(ApiResponse<UserEntity> value) {
+  set signUpResponse(ApiResponse<bool> value) {
     _signUpResponse = value;
     notifyListeners();
   }
 
   @override
-  set signInResponse(ApiResponse<UserEntity> value) {
+  set signInResponse(ApiResponse<bool> value) {
     _signInResponse = value;
     notifyListeners();
   }
@@ -47,11 +47,11 @@ class AuthViewModelImp with ChangeNotifier implements AuthViewModel {
   }) async {
     signUpResponse = ApiResponse.loading("loading");
     try {
-      final UserEntity userEntity = await injector<SignUp>().execute(ParamsForAuth(
+      await injector<SignUp>().execute(ParamsForAuth(
         email: email,
         password: password,
       ));
-      signUpResponse = ApiResponse.completed(userEntity);
+      signUpResponse = ApiResponse.completed(true);
     } on FirebaseAuthException catch (e, stacTrace) {
       if (e.code == 'email-already-in-use') {
         signUpResponse = ApiResponse.error(LocaleKeys.messages_email_already_in_use.tr(), stacTrace);
@@ -68,8 +68,8 @@ class AuthViewModelImp with ChangeNotifier implements AuthViewModel {
   }) async {
     signInResponse = ApiResponse.loading("loading");
     try {
-      final UserEntity userEntity = await injector<SignIn>().execute(ParamsForAuth(email: email, password: password));
-      signInResponse = ApiResponse.completed(userEntity);
+       await injector<SignIn>().execute(ParamsForAuth(email: email, password: password));
+      signInResponse = ApiResponse.completed(true);
     } on FirebaseAuthException catch (e, stacTrace) {
       if (e.code == 'user-not-found') {
         signInResponse = ApiResponse.error(LocaleKeys.messages_user_not_found.tr(), stacTrace);

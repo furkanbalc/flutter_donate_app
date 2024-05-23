@@ -21,22 +21,20 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
   /// -- SIGN UP --
   @override
-  Future<UserModel> signUp({required String email, required String password}) async {
-    var response = await firebaseAuth.createUserWithEmailAndPassword(
+  Future<void> signUp({required String email, required String password}) async {
+   await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
-    return UserModel.fromFirebaseUser(response.user!);
   }
 
   /// -- SIGN IN --
   @override
-  Future<UserModel> signIn({required String email, required String password}) async {
-    var response = await firebaseAuth.signInWithEmailAndPassword(
+  Future<void> signIn({required String email, required String password}) async {
+    await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
-    return UserModel.fromFirebaseUser(response.user!);
   }
 
   /// -- SAVE USER INFO --

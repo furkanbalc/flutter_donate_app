@@ -15,26 +15,26 @@ mixin Validator {
   }
 
   /// PASSWORD VALIDATOR
-  String? passwordValidator({required String? value, required String? confirmPass}) {
-    if (value == null || value.isEmpty) {
+  String? passwordValidator({required String? pass1, required String? pass2}) {
+    if (pass1 == null || pass1.isEmpty) {
       return LocaleKeys.validator_password_not_null.tr();
     }
-    if (value.length < 6) {
+    if (pass1.length < 6) {
       return LocaleKeys.validator_password_min_character.tr();
     }
 
-    bool containsUppercase = RegExp(r'[A-Z]').hasMatch(value);
-    bool containsSpecialChar = RegExp(r'[!@#$%^&*(),.?":{}|<>+-]').hasMatch(value);
-    bool containsDigit = RegExp(r'\d').hasMatch(value);
+    bool containsUppercase = RegExp(r'[A-Z]').hasMatch(pass1);
+    bool containsSpecialChar = RegExp(r'[!@#$%^&*(),.?":{}|<>+-]').hasMatch(pass1);
+    bool containsDigit = RegExp(r'\d').hasMatch(pass1);
 
     if (!containsUppercase && !containsSpecialChar && !containsDigit) {
-      return '${LocaleKeys.validator_upper_case_validator.tr()}\n + ${LocaleKeys.validator_special_char_validator.tr()}\n + ${LocaleKeys.validator_digit_validator.tr()}\n';
+      return '${LocaleKeys.validator_upper_case_validator.tr()}\n${LocaleKeys.validator_special_char_validator.tr()}\n${LocaleKeys.validator_digit_validator.tr()}\n';
     } else if (!containsUppercase && !containsSpecialChar) {
-      return '${LocaleKeys.validator_upper_case_validator.tr()}\n + ${LocaleKeys.validator_special_char_validator.tr()}\n';
+      return '${LocaleKeys.validator_upper_case_validator.tr()}\n${LocaleKeys.validator_special_char_validator.tr()}\n';
     } else if (!containsUppercase && !containsDigit) {
-      return '${LocaleKeys.validator_upper_case_validator.tr()}\n + ${LocaleKeys.validator_special_char_validator.tr()}\n';
+      return '${LocaleKeys.validator_upper_case_validator.tr()}\n${LocaleKeys.validator_special_char_validator.tr()}\n';
     } else if (!containsSpecialChar && !containsDigit) {
-      return '${LocaleKeys.validator_special_char_validator.tr()}\n + ${LocaleKeys.validator_digit_validator.tr()}\n';
+      return '${LocaleKeys.validator_special_char_validator.tr()}\n${LocaleKeys.validator_digit_validator.tr()}\n';
     } else if (!containsUppercase) {
       return LocaleKeys.validator_upper_case_validator.tr();
     } else if (!containsSpecialChar) {
@@ -46,11 +46,11 @@ mixin Validator {
   }
 
   /// VERIFY PASSWORD VALIDATOR
-  String? confirmPasswordValidator({required String? value, required String? pass}) {
-    if (value == null || value.isEmpty) {
+  String? confirmPasswordValidator({required String? pass1, required String? pass2}) {
+    if (pass1 == null || pass1.isEmpty) {
       return LocaleKeys.validator_password_not_null.tr();
     }
-    if (value != pass) {
+    if (pass1 != pass2) {
       return LocaleKeys.validator_passwords_same.tr();
     }
     return null;

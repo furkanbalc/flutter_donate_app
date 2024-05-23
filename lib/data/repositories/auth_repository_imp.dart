@@ -11,16 +11,14 @@ class AuthRepositoryImp implements AuthRepository {
 
   /// -- SIGN UP --
   @override
-  Future<UserEntity> signUp({required String email, required String password}) async {
-    UserModel userModel = await remoteDataSource.signUp(email: email, password: password);
-    return userModel.convertToEntity();
+  Future<void> signUp({required String email, required String password}) async {
+    await remoteDataSource.signUp(email: email, password: password);
   }
 
   /// -- SIGN IN --
   @override
-  Future<UserEntity> signIn({required String email, required String password}) async {
-    UserModel userModel = await remoteDataSource.signIn(email: email, password: password);
-    return userModel.convertToEntity();
+  Future<void> signIn({required String email, required String password}) async {
+    await remoteDataSource.signIn(email: email, password: password);
   }
 
   /// -- SAVE USER INFO --

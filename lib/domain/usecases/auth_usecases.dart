@@ -13,14 +13,14 @@ class ParamsForAuth {
 }
 
 /// -- SIGN UP --
-class SignUp extends BaseUseCase<Future<UserEntity>, ParamsForAuth> {
+class SignUp extends BaseUseCase<Future<void>, ParamsForAuth> {
   final AuthRepository authRepository;
 
   SignUp({required this.authRepository});
 
   @override
-  Future<UserEntity> execute(ParamsForAuth params) async {
-    return await authRepository.signUp(
+  Future<void> execute(ParamsForAuth params) async {
+    await authRepository.signUp(
       email: params.email,
       password: params.password,
     );
@@ -28,13 +28,13 @@ class SignUp extends BaseUseCase<Future<UserEntity>, ParamsForAuth> {
 }
 
 /// -- SIGN IN --
-class SignIn extends BaseUseCase<Future<UserEntity>, ParamsForAuth> {
+class SignIn extends BaseUseCase<Future<void>, ParamsForAuth> {
   final AuthRepository authRepository;
 
   SignIn({required this.authRepository});
 
   @override
-  Future<UserEntity> execute(ParamsForAuth params) async {
+  Future<void> execute(ParamsForAuth params) async {
     return await authRepository.signIn(email: params.email, password: params.password);
   }
 }

@@ -24,7 +24,7 @@ class _UserInfoViewState extends State<UserInfoView> {
   late final TextEditingController _nameController;
   late final TextEditingController _surnameController;
   late final TextEditingController _phoneNumberController;
-
+  double _progressValue = 0 / 3;
   @override
   void initState() {
     _formKey = GlobalKey();
@@ -54,7 +54,7 @@ class _UserInfoViewState extends State<UserInfoView> {
           context.sizedBoxHeightMedium,
 
           /// Progress Bar
-          const UserInfoAppBar(progressValue: 1 / 3),
+          const UserInfoAppBar(progressValue: 0 / 3),
           Expanded(
             child: Padding(
               padding: context.paddings.horizontalMedium,
@@ -70,7 +70,12 @@ class _UserInfoViewState extends State<UserInfoView> {
   AuthBottomButton _getApplyButton(BuildContext context) {
     return AuthBottomButton(
       onPressed: () {
-        const GenderInfoView().slideTransitionReplace(context);
+        setState(() {
+          _progressValue = 1 / 3;
+        });
+        Future.delayed(const Duration(milliseconds: 2000), () {
+          const GenderInfoView().slideTransitionPush(context);
+        });
       },
     );
   }

@@ -4,9 +4,9 @@ import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 abstract class AuthViewModel with ChangeNotifier {
   /// -- SIGN UP --
-  ApiResponse<UserEntity> get signUpResponse;
+  ApiResponse<bool> get signUpResponse;
 
-  set signUpResponse(ApiResponse<UserEntity> value);
+  set signUpResponse(ApiResponse<bool> value);
 
   Future<void> signUp({
     required String email,
@@ -14,9 +14,9 @@ abstract class AuthViewModel with ChangeNotifier {
   });
 
   /// -- SIGN IN --
-  ApiResponse<UserEntity> get signInResponse;
+  ApiResponse<bool> get signInResponse;
 
-  set signInResponse(ApiResponse<UserEntity> value);
+  set signInResponse(ApiResponse<bool> value);
 
   Future<void> signIn({
     required String email,

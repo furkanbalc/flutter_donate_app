@@ -76,7 +76,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
       ),
     ),
     bottom: PreferredSize(
-      preferredSize: Size.fromHeight(24),
+      preferredSize: const Size.fromHeight(24),
       child: Padding(
         padding: context.paddings.horizontalMedium + context.paddings.onlyBottomMedium,
         child: Column(

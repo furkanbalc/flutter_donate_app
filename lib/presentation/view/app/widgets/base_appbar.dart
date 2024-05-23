@@ -5,7 +5,7 @@ import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const BaseAppBar();
+  const BaseAppBar({super.key});
 
   @override
   Widget build(BuildContext context) {

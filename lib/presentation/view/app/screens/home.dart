@@ -25,7 +25,7 @@ class _HomeViewState extends State<HomeView> {
     return SafeArea(
       child: CustomScrollView(
         slivers: [
-          HomeSliverAppBar(),
+          const HomeSliverAppBar(),
           SliverPadding(
             padding: const EdgeInsets.all(16.0),
             sliver: SliverList(

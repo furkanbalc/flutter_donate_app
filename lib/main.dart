@@ -6,7 +6,9 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/screens/signup.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -44,13 +46,14 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: AppConstants.appName,
-        theme: lightTheme,
-        supportedLocales: context.supportedLocales,
-        locale: context.locale,
-        localizationsDelegates: context.localizationDelegates,
-        home: const SigninView());
+      debugShowCheckedModeBanner: false,
+      title: AppConstants.appName,
+      theme: lightTheme,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
+      localizationsDelegates: context.localizationDelegates,
+      home: const UserInfoView(),
+    );
   }
 }
 
