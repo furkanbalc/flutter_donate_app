@@ -6,13 +6,19 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/screens/signup.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/auth_viewmodel_imp.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel_imp.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel_imp.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'injection.dart' as di;
+import 'presentation/view/authentication/screens/personal_info/gender_info.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,9 +58,11 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
-      home: const UserInfoView(),
+      home: const SignupView(),
     );
   }
 }
 
-final authViewModelImp = ChangeNotifierProvider<AuthViewModel>((ref) => AuthViewModelImp());
+final signupViewModelImp = ChangeNotifierProvider<SignupViewModel>((ref) => SignupViewModelImp());
+final signinViewModelImp = ChangeNotifierProvider<SigninViewModel>((ref) => SigninViewModelImp());
+final personalInfoViewModelImp = ChangeNotifierProvider<PersonalInfoViewModel>((ref) => PersonalInfoViewModelImp());

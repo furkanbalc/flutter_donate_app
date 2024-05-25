@@ -1,4 +1,5 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 
 extension AnimatedNavigation on Widget {
   Future fadeTransitionPush(BuildContext context) => Navigator.push(
@@ -40,6 +41,8 @@ extension AnimatedNavigation on Widget {
               child: child,
             );
           },
+          transitionDuration: const Duration(milliseconds: 500),
+
         ),
       );
 

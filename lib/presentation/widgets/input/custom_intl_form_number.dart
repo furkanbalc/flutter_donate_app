@@ -11,12 +11,12 @@ import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 class CustomIntlPhoneNumberInput extends StatefulWidget {
   final String? Function(String?)? validator;
-  final TextEditingController controller;
+  final void Function(PhoneNumber)? onChanged;
 
   const CustomIntlPhoneNumberInput({
     super.key,
-    required this.controller,
      this.validator,
+     this.onChanged,
   });
 
   @override
@@ -56,7 +56,6 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
             contentPadding: EdgeInsets.only(bottom: 14, top: 14, left: 8),
             border: InputBorder.none,
           ),
-          textFieldController: widget.controller,
           keyboardAction: TextInputAction.done,
           spaceBetweenSelectorAndTextField: MediaQuery.sizeOf(context).width / 51.75,
           keyboardType: TextInputType.phone,
@@ -67,7 +66,7 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
             suffixIcon: const Icon(AppIcons.kSearchIcon),
 
           ),
-          onInputChanged: (PhoneNumber value) {},
+          onInputChanged: widget.onChanged,
         ),
       ],
     );
