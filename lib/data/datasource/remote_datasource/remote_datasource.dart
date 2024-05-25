@@ -9,8 +9,6 @@ abstract class RemoteDataSource {
 
   /// -- SAVE USER INFO --
   Future<UserModel> saveUserInfoToFirestore({
-    required String id,
-    required String email,
     required String name,
     required String surname,
     required String phoneNumber,

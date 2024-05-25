@@ -19,10 +19,12 @@ class RemoteDataSourceImp implements RemoteDataSource {
   final FirebaseStorage firebaseStorage;
   final StorageService storageService;
 
+  UserCredential? userCredential;
+
   /// -- SIGN UP --
   @override
   Future<void> signUp({required String email, required String password}) async {
-   await firebaseAuth.createUserWithEmailAndPassword(
+    await firebaseAuth.createUserWithEmailAndPassword(
       email: email,
       password: password,
     );
@@ -40,8 +42,6 @@ class RemoteDataSourceImp implements RemoteDataSource {
   /// -- SAVE USER INFO --
   @override
   Future<UserModel> saveUserInfoToFirestore({
-    required String id,
-    required String email,
     required String name,
     required String surname,
     required String phoneNumber,
@@ -50,30 +50,41 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required dynamic profileImage,
   }) async {
     User? currentUser = firebaseAuth.currentUser;
-    String profileImageUrl = profileImage is String ? profileImage : '';
-    if (profileImage != null && profileImage is! String) {
-      profileImageUrl = await storageService.storeFileToFirebase(
-        'profileImage/${currentUser!.uid}',
-        profileImage,
-      );
-    }
-    UserModel user = UserModel(
-      data: Data(
-        id: id,
-        fullName: FullName(
-          name: name,
-          surname: surname,
-        ),
-        email: email,
-        phoneNumber: phoneNumber,
-        gender: gender,
-        age: age,
-        profileImgUrl: profileImageUrl,
-      ),
-      isActive: false,
-      isAdmin: false,
-    );
-    await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).set(user.toJson());
-    return user;
+    // String profileImageUrl = profileImage is String ? profileImage : '';
+    // if (profileImage != null && profileImage is! String) {
+    //   profileImageUrl = await storageService.storeFileToFirebase(
+    //     'profileImage/${currentUser!.uid}',
+    //     profileImage,
+    //   );
+    // }
+    Map<String, dynamic> user = {
+      "data": {
+        "id": currentUser?.uid ?? 'invalid_id', //randomId
+        "fullName": {
+          "name": name,
+          "surname": surname,
+        },
+        "adress": {
+          "city": null,
+          "country": null,
+          "desc": null,
+          "location": {
+            "lang": null,
+            "lat": null
+          },
+          "town": null,
+        },
+        "email": currentUser?.email ?? 'invalid_email',
+        "phoneNumber": phoneNumber,
+        "gender": gender,
+        "age": age,
+        "profileImgUrl": profileImage,
+      },
+      "isActive": false,
+      "isAdmin": false,
+    };
+
+    await firebaseFirestore.collection(FirebaseCollections.users.name).doc(currentUser?.uid).set(user);
+    return UserModel.fromJson(user);
   }
 }

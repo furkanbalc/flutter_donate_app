@@ -1,56 +1,41 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
-import 'package:flutter_donate_app/core/extensions/context_padding.dart';
-import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
-import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/age_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/custom_linear_progress_bar.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/select_gender_widget.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/user_info_appbar.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class GenderInfoView extends StatefulWidget {
+class GenderInfoView extends ConsumerStatefulWidget {
   const GenderInfoView({super.key});
 
   @override
-  State<GenderInfoView> createState() => _GenderInfoViewState();
+  ConsumerState createState() => _GenderInfoViewState();
 }
 
-class _GenderInfoViewState extends State<GenderInfoView> {
-  bool isMan = false;
-  bool isWoman = false;
+class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
+  late PersonalInfoViewModel _personalInfoViewModel;
+
+  @override
+  void initState() {
+    _personalInfoViewModel = ref.read(personalInfoViewModelImp);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
+    _personalInfoViewModel = ref.watch(personalInfoViewModelImp);
     return Scaffold(
       floatingActionButton: _getApplyButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: Column(
-        children: [
-          context.sizedBoxHeightMedium,
-
-          /// Progress Bar
-          const UserInfoAppBar(progressValue: 1 / 3),
-          Expanded(
-            child: Padding(
-              padding: context.paddings.horizontalMedium,
-              child: _buildBody(context: context),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Apply Button
-  AuthBottomButton _getApplyButton(BuildContext context) {
-    return AuthBottomButton(
-      onPressed: () {
-        const AgeInfoView().slideTransitionPush(context);
-      },
+      body: AuthBody(child: _buildBody(context: context)),
     );
   }
 
@@ -58,53 +43,54 @@ class _GenderInfoViewState extends State<GenderInfoView> {
   Widget _buildBody({required BuildContext context}) {
     return Column(
       children: [
+        /// Linear Progress Bar
+        CustomLinearProgressBar(personalInfoViewModel: _personalInfoViewModel),
+
         /// Gender Info Title
         AuthHeader(
           title: LocaleKeys.user_info_tell_us_about_yourself.tr(),
           subTitle: LocaleKeys.user_info_share_your_gender.tr(),
         ),
         context.sizedBoxHeightCustom,
-        Expanded(
-          child: Padding(
-            padding: context.paddings.onlyBottomUltra,
-            child: Column(
-              children: [
-                SelectGenderWidget(
-                  gender: 'Erkek',
-                  svg: AppAssets.man.toSvg,
-                  onTap: () {
-                    setState(() {
-                      if (isWoman) {
-                        isMan = true;
-                        isWoman = false;
-                      } else {
-                        isMan = true;
-                      }
-                    });
-                  },
-                  isSelect: isMan,
-                ),
-                context.sizedBoxHeightCustom,
-                SelectGenderWidget(
-                  gender: 'Kadın',
-                  svg: AppAssets.woman.toSvg,
-                  onTap: () {
-                    setState(() {
-                      if (isMan) {
-                        isWoman = true;
-                        isMan = false;
-                      } else {
-                        isWoman = true;
-                      }
-                    });
-                  },
-                  isSelect: isWoman,
-                ),
-              ],
-            ),
+        Padding(
+          padding: context.paddings.onlyBottomUltra,
+          child: Column(
+            children: [
+              SelectGenderWidget(
+                gender: 'Erkek',
+                svg: AppAssets.man.toSvg,
+                onTap: () {
+                  _personalInfoViewModel.gender = 'Erkek';
+                },
+                isSelect: _personalInfoViewModel.gender == 'Erkek',
+              ),
+              context.sizedBoxHeightCustom,
+              SelectGenderWidget(
+                gender: 'Kadın',
+                svg: AppAssets.woman.toSvg,
+                onTap: () {
+                  _personalInfoViewModel.gender = 'Kadın';
+                },
+                isSelect: _personalInfoViewModel.gender == 'Kadın',
+              ),
+            ],
           ),
         ),
       ],
+    );
+  }
+
+  /// Apply Button
+  AuthBottomButton _getApplyButton(BuildContext context) {
+    return AuthBottomButton(
+      onPressed: _personalInfoViewModel.gender.isNotEmpty
+          ? () {
+              _personalInfoViewModel.endProgress = 2 / 3;
+              Future.delayed(Durations.extralong4).then((value) {
+                const AgeInfoView().slideTransitionPush(context);
+              });
+            }
+          : null,
     );
   }
 }

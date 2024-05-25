@@ -8,17 +8,18 @@ import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 class AuthBottomButton extends StatelessWidget {
   const AuthBottomButton({
     super.key,
-    required this.onPressed,
+     this.onPressed,
      this.text,
   });
 
-  final Function() onPressed;
+  final Function()? onPressed;
   final String? text;
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: context.paddings.allMedium,
+      margin: context.paddings.zero,
+      padding: context.paddings.allNormal,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         boxShadow: [
