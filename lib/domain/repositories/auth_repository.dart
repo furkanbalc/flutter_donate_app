@@ -15,8 +15,6 @@ abstract class AuthRepository {
 
   /// -- SAVE USER INFO --
   Future<UserEntity> saveUserInfoToFirestore({
-    required String id,
-    required String email,
     required String name,
     required String surname,
     required String phoneNumber,

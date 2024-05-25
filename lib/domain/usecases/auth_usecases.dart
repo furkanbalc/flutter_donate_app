@@ -20,10 +20,7 @@ class SignUp extends BaseUseCase<Future<void>, ParamsForAuth> {
 
   @override
   Future<void> execute(ParamsForAuth params) async {
-    await authRepository.signUp(
-      email: params.email,
-      password: params.password,
-    );
+    return await authRepository.signUp(email: params.email, password: params.password);
   }
 }
 
@@ -41,8 +38,6 @@ class SignIn extends BaseUseCase<Future<void>, ParamsForAuth> {
 
 /// -- SAVE USER INFO --
 class ParamsForSaveUserInfoToFirestore {
-  final String id;
-  final String email;
   final String name;
   final String surname;
   final String phoneNumber;
@@ -51,8 +46,6 @@ class ParamsForSaveUserInfoToFirestore {
   final dynamic profileImage;
 
   ParamsForSaveUserInfoToFirestore({
-    required this.id,
-    required this.email,
     required this.name,
     required this.surname,
     required this.phoneNumber,
@@ -70,8 +63,6 @@ class SaveUserInfoToFirestore extends BaseUseCase<Future<UserEntity>, ParamsForS
   @override
   Future<UserEntity> execute(ParamsForSaveUserInfoToFirestore params) async {
     return await authRepository.saveUserInfoToFirestore(
-      id: params.id,
-      email: params.email,
       name: params.name,
       surname: params.surname,
       phoneNumber: params.phoneNumber,

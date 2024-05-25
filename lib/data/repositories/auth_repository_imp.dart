@@ -1,4 +1,3 @@
-
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
@@ -24,8 +23,6 @@ class AuthRepositoryImp implements AuthRepository {
   /// -- SAVE USER INFO --
   @override
   Future<UserEntity> saveUserInfoToFirestore({
-    required String id,
-    required String email,
     required String name,
     required String surname,
     required String phoneNumber,
@@ -34,8 +31,6 @@ class AuthRepositoryImp implements AuthRepository {
     required dynamic profileImage,
   }) async {
     UserModel userModel = await remoteDataSource.saveUserInfoToFirestore(
-      id: id,
-      email: email,
       name: name,
       surname: surname,
       phoneNumber: phoneNumber,
