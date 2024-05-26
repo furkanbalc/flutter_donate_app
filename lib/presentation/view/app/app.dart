@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/presentation/view/app/screens/home.dart';
+import 'package:flutter_donate_app/presentation/view/app/home.dart';
 import 'package:flutter_donate_app/presentation/view/app/widgets/bottom_nav_items.dart';
 
 class App extends StatefulWidget {

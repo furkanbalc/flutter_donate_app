@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/extensions/response_event.dart';
-import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/app/screens/app.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
+import 'package:flutter_donate_app/presentation/view/app/app.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
 
 mixin SigninService on State<SigninView> {

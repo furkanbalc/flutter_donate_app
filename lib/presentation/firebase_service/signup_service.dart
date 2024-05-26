@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/response_event.dart';
 import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/app/screens/app.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/user_info.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/signup.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 
 mixin SignupService on State<SignupView> {

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/response_event.dart';
 import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/age_info.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 
 mixin SaveUserInfoService on State<AgeInfoView> {

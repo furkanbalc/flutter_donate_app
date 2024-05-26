@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/age_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';

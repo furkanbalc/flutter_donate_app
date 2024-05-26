@@ -3,10 +3,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/firebase_service/save_user_info_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
@@ -23,14 +21,12 @@ class AgeInfoView extends ConsumerStatefulWidget {
   ConsumerState createState() => _AgeInfoViewState();
 }
 
-class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoService{
+class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoService {
   late PersonalInfoViewModel _personalInfoViewModel;
-  late SignupViewModel _signupViewModel;
 
   @override
   void initState() {
     _personalInfoViewModel = ref.read(personalInfoViewModelImp);
-    _signupViewModel = ref.read(signupViewModelImp);
     super.initState();
   }
 
