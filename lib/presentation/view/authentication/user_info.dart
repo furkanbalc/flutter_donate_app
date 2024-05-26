@@ -1,13 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/firebase_service/user_info_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/screens/personal_info/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/sliver_appbar.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,7 +18,7 @@ class UserInfoView extends ConsumerStatefulWidget {
   ConsumerState createState() => _UserInfoViewState();
 }
 
-class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoService{
+class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoService {
   late PersonalInfoViewModel _personalInfoViewModel;
 
   @override
@@ -64,7 +63,21 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
 
                   /// Add Profile Photo
                   ProfilePhotoWidget(
-                    onTap: () {},
+                    imagePath: _personalInfoViewModel.image?.path,
+                    onTap: () {
+                      imagePickerBottomSheet(
+                        context: context,
+                        cameraTap: () {
+                          Navigator.pop(context);
+                          _personalInfoViewModel.getImageFromCamera();
+                        },
+                        galleryTap: () {
+                          Navigator.pop(context);
+                          _personalInfoViewModel.getImageFromGallery();
+                        },
+                        removeTap: _personalInfoViewModel.image != null ? () => _personalInfoViewModel.pickImageRemove(context: context) : null,
+                      );
+                    },
                   ),
                   context.sizedBoxHeightHigh,
 
@@ -134,4 +147,3 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
     );
   }
 }
-

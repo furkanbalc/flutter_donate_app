@@ -5,14 +5,13 @@ import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
-
-import '../../../../main.dart';
 
 class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements PersonalInfoViewModel {
   /// -- VARIABLES --
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  XFile? _image;
   String _name = '';
   String _surname = '';
   PhoneNumber _phoneNumber = PhoneNumber();
@@ -25,6 +24,9 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
 
   @override
   GlobalKey<FormState> get formKey => _formKey;
+
+  @override
+  XFile? get image => _image;
 
   @override
   String get name => _name;
@@ -52,6 +54,12 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
 
   @override
   double get endProgress => _endProgress;
+
+  @override
+  set image(XFile? value) {
+    _image = value;
+    notifyListeners();
+  }
 
   @override
   set gender(String value) {
@@ -133,6 +141,29 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   @override
   String? surnameValidation() {
     return surnameValidator(surname);
+  }
+
+  @override
+  Future getImageFromGallery() async {
+    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+
+    image = selectedImage;
+    notifyListeners();
+  }
+
+  @override
+  Future getImageFromCamera() async {
+    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+
+    image = selectedImage;
+    notifyListeners();
+  }
+
+  @override
+  Future<void> pickImageRemove({required BuildContext context}) async {
+    Navigator.pop(context);
+    image = null;
+    notifyListeners();
   }
 
   /// -- SAVE USER INFO --

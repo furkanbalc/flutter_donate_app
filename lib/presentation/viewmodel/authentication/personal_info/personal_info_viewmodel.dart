@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 abstract class PersonalInfoViewModel with ChangeNotifier {
   /// -- VARIABLES --
   GlobalKey<FormState> get formKey;
+
+  XFile? get image;
 
   String get name;
 
@@ -24,6 +27,8 @@ abstract class PersonalInfoViewModel with ChangeNotifier {
   double get beginProgress;
 
   double get endProgress;
+
+  set image(XFile? value);
 
   set profilePhotoUrl(String value);
 
@@ -51,6 +56,12 @@ abstract class PersonalInfoViewModel with ChangeNotifier {
   String? surnameValidation();
 
   bool emptyCheck();
+
+  Future getImageFromGallery();
+
+  Future getImageFromCamera();
+
+  Future<void> pickImageRemove({required BuildContext context});
 
   /// -- SAVE USER INFO --
   ApiResponse<UserEntity> get saveUserInfoToFirestoreResponse;
