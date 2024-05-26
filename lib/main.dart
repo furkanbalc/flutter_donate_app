@@ -6,7 +6,7 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel_imp.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
@@ -54,7 +54,7 @@ class MyApp extends StatelessWidget {
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
-      home: const UserInfoView(),
+      home: const SignupView(),
     );
   }
 }

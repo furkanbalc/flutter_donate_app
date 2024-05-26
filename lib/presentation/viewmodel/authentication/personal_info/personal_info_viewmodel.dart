@@ -16,8 +16,6 @@ abstract class PersonalInfoViewModel with ChangeNotifier {
 
   PhoneNumber get phoneNumber;
 
-  String get profilePhotoUrl;
-
   String get gender;
 
   int get age;
@@ -29,8 +27,6 @@ abstract class PersonalInfoViewModel with ChangeNotifier {
   double get endProgress;
 
   set image(XFile? value);
-
-  set profilePhotoUrl(String value);
 
   set gender(String value);
 

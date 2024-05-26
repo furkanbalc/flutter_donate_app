@@ -50,13 +50,13 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required dynamic profileImage,
   }) async {
     User? currentUser = firebaseAuth.currentUser;
-    // String profileImageUrl = profileImage is String ? profileImage : '';
-    // if (profileImage != null && profileImage is! String) {
-    //   profileImageUrl = await storageService.storeFileToFirebase(
-    //     'profileImage/${currentUser!.uid}',
-    //     profileImage,
-    //   );
-    // }
+    String profileImageUrl = profileImage is String ? profileImage : '';
+    if (profileImage != null && profileImage is! String) {
+      profileImageUrl = await storageService.storeFileToFirebase(
+        ref: 'profileImage/${currentUser!.uid}',
+        file: profileImage,
+      );
+    }
     Map<String, dynamic> user = {
       "data": {
         "id": currentUser?.uid ?? 'invalid_id', //randomId
@@ -68,17 +68,14 @@ class RemoteDataSourceImp implements RemoteDataSource {
           "city": null,
           "country": null,
           "desc": null,
-          "location": {
-            "lang": null,
-            "lat": null
-          },
+          "location": {"lang": null, "lat": null},
           "town": null,
         },
         "email": currentUser?.email ?? 'invalid_email',
         "phoneNumber": phoneNumber,
         "gender": gender,
         "age": age,
-        "profileImgUrl": profileImage,
+        "profileImgUrl": profileImageUrl,
       },
       "isActive": false,
       "isAdmin": false,

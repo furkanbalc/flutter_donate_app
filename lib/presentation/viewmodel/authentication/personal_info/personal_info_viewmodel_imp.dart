@@ -16,7 +16,6 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   String _name = '';
   String _surname = '';
   PhoneNumber _phoneNumber = PhoneNumber();
-  String _profilePhotoUrl = '';
   String _gender = '';
   int _age = 18;
   bool _isCheck = false;
@@ -37,9 +36,6 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
 
   @override
   PhoneNumber get phoneNumber => _phoneNumber;
-
-  @override
-  String get profilePhotoUrl => _profilePhotoUrl;
 
   @override
   String get gender => _gender;
@@ -65,12 +61,6 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   @override
   set gender(String value) {
     _gender = value;
-    notifyListeners();
-  }
-
-  @override
-  set profilePhotoUrl(String value) {
-    _profilePhotoUrl = value;
     notifyListeners();
   }
 
@@ -151,9 +141,9 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   @override
   Future getImageFromGallery() async {
     // if (await Permission.photos.isGranted) {
-      final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-      image = selectedImage;
-      notifyListeners();
+    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    image = selectedImage;
+    notifyListeners();
     // } else {
     //   await _requestPermission(Permission.photos);
     // }
@@ -213,7 +203,7 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
           phoneNumber: phoneNumber.phoneNumber ?? '',
           age: age.toString(),
           gender: gender,
-          profileImage: profilePhotoUrl,
+          profileImage: image,
         ),
       );
       saveUserInfoToFirestoreResponse = ApiResponse.completed(userEntity);

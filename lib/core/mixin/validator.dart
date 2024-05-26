@@ -91,7 +91,7 @@ mixin Validator {
       return 'En az 3 karakter içermelidir';
     }
     final RegExp regex = RegExp(r'^[a-zA-ZğĞüÜşŞıİöÖçÇ]+$');
-    if (!regex.hasMatch(surname)) {
+    if (!regex.hasMatch(surname.trim())) {
       return LocaleKeys.validator_sur_name_only_string.tr();
     }
     return null;

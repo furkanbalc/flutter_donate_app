@@ -1,21 +1,17 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:image_picker/image_picker.dart';
 
 class StorageService {
   StorageService({required this.firebaseStorage});
   final FirebaseStorage firebaseStorage;
 
-  storeFileToFirebase(String ref, var file) async {
+  Future<String> storeFileToFirebase({required String ref, required var file}) async {
     UploadTask? uploadTask;
-    if (file is File) {
-      uploadTask = firebaseStorage.ref().child(ref).putFile(file);
+    if (file is XFile) {
+      uploadTask = firebaseStorage.ref().child(ref).putFile(File(file.path));
     }
-    if (file is Uint8List) {
-      uploadTask = firebaseStorage.ref().child(ref).putData(file);
-    }
-
     TaskSnapshot snapshot = await uploadTask!;
     String imageUrl = await snapshot.ref.getDownloadURL();
     return imageUrl;
