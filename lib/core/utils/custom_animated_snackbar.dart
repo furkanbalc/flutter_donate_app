@@ -1,8 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 
 class AnimatedSnackbar extends StatefulWidget {
   final Function()? onTap;
@@ -76,7 +74,7 @@ class _AnimatedSnackbarState extends State<AnimatedSnackbar> with SingleTickerPr
                               ),
                             ),
                             Text(
-                              widget.message ?? '',
+                              widget.message,
                               style: const TextStyle(
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
@@ -87,7 +85,7 @@ class _AnimatedSnackbarState extends State<AnimatedSnackbar> with SingleTickerPr
                         )
                       : Center(
                           child: Text(
-                            widget.message ?? '',
+                            widget.message,
                             style: const TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.w300,

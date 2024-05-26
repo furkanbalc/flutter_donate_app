@@ -20,11 +20,15 @@ dependencies:
   intl_phone_number_input: ^0.7.4
   flutter_floating_bottom_bar: ^1.2.0
   flutter_spinkit: ^5.1.0
+  photo_view: ^0.15.0
+  image_picker: ^1.1.1
+  photo_manager: ^3.1.1
 
   # Core
   easy_localization: ^3.0.7
   equatable: ^2.0.5
   get_it: ^7.7.0
+  permission_handler: ^11.3.1
 
   # State Management
   flutter_riverpod: ^2.5.1

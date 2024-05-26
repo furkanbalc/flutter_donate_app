@@ -36,8 +36,6 @@ class UserModel extends UserEntity {
   }
 
   factory UserModel.fromFirebaseUser(User firebaseUser) {
-    print(firebaseUser.uid ?? '');
-    print(firebaseUser.email ?? '');
     return UserModel(
       data: Data(
         id: firebaseUser.uid.toString(),
