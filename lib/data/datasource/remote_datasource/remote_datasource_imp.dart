@@ -50,6 +50,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required dynamic profileImage,
   }) async {
     User? currentUser = firebaseAuth.currentUser;
+    /// -- profile image upload firebase storage
     String profileImageUrl = profileImage is String ? profileImage : '';
     if (profileImage != null && profileImage is! String) {
       profileImageUrl = await storageService.storeFileToFirebase(

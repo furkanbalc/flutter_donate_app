@@ -10,7 +10,6 @@ import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_header.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/custom_linear_progress_bar.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

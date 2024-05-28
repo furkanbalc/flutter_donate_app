@@ -6,6 +6,8 @@ class AppAssets {
   static const String linesBg = 'lines-bg';
   static const String sofa = 'sofa';
   static const String emptyNotification = 'empty-notification';
+  static const String phone = 'phone';
+  static const String ellips = 'ellips';
 
   /// -- SVG --
   static const String apple = 'apple';

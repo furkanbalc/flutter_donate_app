@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 /// extension ile context uzerinden kolay erisim saglandi
 extension CustomScreenSizeExtension on BuildContext {
   /// -- screen width
-  double dynamicWidth(double? factor) {
+  double dynamicWidth([double? factor]) {
     return MediaQuery.of(this).size.width * (factor ?? 1.0);
   }
 
   /// -- screen height
-  double dynamicHeight(double? factor) {
+  double dynamicHeight([double? factor]) {
     return MediaQuery.of(this).size.height * (factor ?? 1.0);
   }
 

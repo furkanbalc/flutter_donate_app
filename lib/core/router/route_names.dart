@@ -1,16 +1,6 @@
-class RouteNames {
-  static const splash = 'splash';
-  static const onboard = 'onboard';
-  static const signin = 'signin';
-  static const signup = 'signup';
-  static const userInfo = 'userInfo';
-  static const genderInfo = 'genderInfo';
-  static const ageInfo = 'ageInfo';
-  static const home = 'home';
-}
 enum AppRouteName {
-  splash('/','Splash'),
-  onboard('/onboard','Onboard'),
+  splash('/splash','Splash'),
+  onboard('/','Onboard'),
   signin('/signin','Signin'),
   signup('/signup','Signup'),
   userInfo('/userInfo','UserInfo'),

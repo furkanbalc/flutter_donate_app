@@ -1,6 +1,7 @@
 import 'package:flutter_donate_app/core/usecase/base_usecase.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/auth_repository.dart';
+import 'package:flutter_donate_app/domain/repositories/splash_repository.dart';
 
 class ParamsForAuth {
   final String email;

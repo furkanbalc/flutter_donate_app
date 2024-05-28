@@ -1,12 +1,12 @@
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/presentation/splash/onboard.dart';
-import 'package:flutter_donate_app/presentation/splash/splash.dart';
 import 'package:flutter_donate_app/presentation/view/app/home.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
+import 'package:flutter_donate_app/presentation/view/splash/onboard.dart';
+import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoutes {
