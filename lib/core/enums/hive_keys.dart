@@ -1,0 +1,1 @@
+enum HiveKeys { firstOpen }

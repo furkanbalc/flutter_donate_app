@@ -6,6 +6,7 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel_imp.dart';
@@ -13,13 +14,19 @@ import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel_imp.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel_imp.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_donate_app/core/router/go_router.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'injection.dart' as di;
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await Hive.initFlutter();
+  await Hive.openBox('settingsBox');
   di.initializeDependencies();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
@@ -47,18 +54,19 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return MaterialApp.router(
       debugShowCheckedModeBanner: false,
       title: AppConstants.appName,
       theme: lightTheme,
       supportedLocales: context.supportedLocales,
       locale: context.locale,
       localizationsDelegates: context.localizationDelegates,
-      home: const SignupView(),
+      routerConfig: AppRoutes.instance.router,
     );
   }
 }
 
+final splashViewModelImp = ChangeNotifierProvider<SplashViewModel>((ref) => SplashViewModelImp());
 final signupViewModelImp = ChangeNotifierProvider<SignupViewModel>((ref) => SignupViewModelImp());
 final signinViewModelImp = ChangeNotifierProvider<SigninViewModel>((ref) => SigninViewModelImp());
 final personalInfoViewModelImp = ChangeNotifierProvider<PersonalInfoViewModel>((ref) => PersonalInfoViewModelImp());
