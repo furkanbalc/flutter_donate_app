@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/theme/custom_theme/appbar_theme.dart';
 import 'package:flutter_donate_app/core/theme/custom_theme/elevated_button_theme.dart';
 import 'package:flutter_donate_app/core/theme/custom_theme/input_decoration_theme.dart';
 
@@ -11,4 +12,5 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: AppColors.whiteColor,
   inputDecorationTheme: CustomInputDecorationTheme.lightInputDecorationTheme,
   elevatedButtonTheme: CustomElevatedButtonTheme.lightElevatedButtonTheme,
+  appBarTheme: CustomAppBarTheme.lightAppBarTheme,
 );
