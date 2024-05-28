@@ -48,6 +48,20 @@ class CodegenLoader extends AssetLoader{
     "wrong_password": "Incorrect password",
     "wrong_email_or_password": "Incorrect email or password"
   },
+  "on_board": {
+    "title_1": "Welcome!",
+    "title_2": "Posting an Ad is Easy!",
+    "title_3": "Set Your Location",
+    "title_4": "Get Started Now!",
+    "sub_title_1": "Take a Look Around, What Do You Have Extra?",
+    "sub_title_2": "Make Use of Extras",
+    "sub_title_3": "Reach Nearby People in Need",
+    "sub_title_4": "Sharing Feels Good",
+    "desc_1": "Join us to prevent waste by sharing excess food and items with those in need.",
+    "desc_2": "Take a photo and create an ad for any unused items you have; it might be important to someone else.",
+    "desc_3": "Add a location to your ads to ensure items reach the right people as quickly as possible.",
+    "desc_4": "Explore our app and start contributing now to prevent waste."
+  },
   "auth": {
     "signup": "Sign Up",
     "signin": "Sign In",
@@ -103,6 +117,20 @@ static const Map<String,dynamic> tr = {
     "user_not_found": "Bu e-posta adresi kayıtlı değil. Farklı bir tane deneyin.",
     "wrong_password": "Hatalı şifre",
     "wrong_email_or_password": "Hatalı e-posta veya şifre"
+  },
+  "on_board": {
+    "title_1": "Hoş Geldiniz! ",
+    "title_2": "İlan Vermek Çok Kolay! ",
+    "title_3": "Konumunuzu Belirleyin ",
+    "title_4": "Şimdi Başlayın! ",
+    "sub_title_1": "Şöyle bir etrafına bak, Fazladan kullanmadığın ne var ?",
+    "sub_title_2": "Fazlalıkları Değerlendir",
+    "sub_title_3": "Yakınınızdaki İhtiyaç Sahiplerine Ulaşın",
+    "sub_title_4": "Paylaşmak İyi Hissettirir",
+    "desc_1": "Fazla bulunan gıda ve nesneleri ihtiyaç sahipleriyle paylaşarak israfı önlemek için bize katılın.",
+    "desc_2": "Ne kadar kullanmadğın eşya varsa hemen resmini çek ve ilan oluştur, başkası için önemli olabilir.",
+    "desc_3": "İlanlarınıza konum ekleyerek, eşyaların en kısa sürede doğru kişilere ulaşmasını sağlayın.",
+    "desc_4": "Uygulamamızı keşfedin ve israfı önlemek için hemen şimdi katkıda bulunun."
   },
   "auth": {
     "signup": "Kayıt Ol",

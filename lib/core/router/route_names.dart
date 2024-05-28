@@ -7,6 +7,7 @@ enum AppRouteName {
   genderInfo('/genderInfo','GenderInfo'),
   ageInfo('/ageInfo','AgeInfo'),
   home('/home','Home'),
+  app('/app','App'),
   ;
 
   const AppRouteName(this.path,this.name);

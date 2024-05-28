@@ -32,6 +32,20 @@
     "wrong_password": "Hatalı şifre",
     "wrong_email_or_password": "Hatalı e-posta veya şifre"
   },
+  "on_board": {
+    "title_1": "Hoş Geldiniz! ",
+    "title_2": "İlan Vermek Çok Kolay! ",
+    "title_3": "Konumunuzu Belirleyin ",
+    "title_4": "Şimdi Başlayın! ",
+    "sub_title_1": "Şöyle bir etrafına bak, Fazladan kullanmadığın ne var ?",
+    "sub_title_2": "Fazlalıkları Değerlendir",
+    "sub_title_3": "Yakınınızdaki İhtiyaç Sahiplerine Ulaşın",
+    "sub_title_4": "Paylaşmak İyi Hissettirir",
+    "desc_1": "Fazla bulunan gıda ve nesneleri ihtiyaç sahipleriyle paylaşarak israfı önlemek için bize katılın.",
+    "desc_2": "Ne kadar kullanmadğın eşya varsa hemen resmini çek ve ilan oluştur, başkası için önemli olabilir.",
+    "desc_3": "İlanlarınıza konum ekleyerek, eşyaların en kısa sürede doğru kişilere ulaşmasını sağlayın.",
+    "desc_4": "Uygulamamızı keşfedin ve israfı önlemek için hemen şimdi katkıda bulunun."
+  },
   "auth": {
     "signup": "Kayıt Ol",
     "signin": "Giriş Yap",

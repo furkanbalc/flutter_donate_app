@@ -1,11 +1,15 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_tab_page_selector.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class CustomClipPathContainer extends StatelessWidget {
+class CustomClipPathContainer extends ConsumerStatefulWidget {
   const CustomClipPathContainer({
     super.key,
     required this.title,
@@ -18,6 +22,11 @@ class CustomClipPathContainer extends StatelessWidget {
   final String desc;
 
   @override
+  ConsumerState createState() => _CustomClipPathContainerState();
+}
+
+class _CustomClipPathContainerState extends ConsumerState<CustomClipPathContainer> {
+  @override
   Widget build(BuildContext context) {
     return ClipPath(
       clipper: HalfMoonClipper(),
@@ -27,60 +36,30 @@ class CustomClipPathContainer extends StatelessWidget {
         height: context.dynamicHeight(.45),
         child: Padding(
           padding: context.paddings.horizontalHigh,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              _getTitleAndDescription(context),
-              context.sizedBoxHeightNormal,
-              const SizedBox(height: 50),
-              _getNavigationWidget(),
-            ],
-          ),
+          child: _getTitleAndDescription(),
         ),
       ),
     );
   }
 
-  /// Navigation Page Widget
-  Widget _getNavigationWidget() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        CustomIconButton(
-          onPressed: () {},
-          icon: const Icon(AppIcons.kArrowLeft, color: AppColors.electricViolet, size: 28),
-          border: Border.all(color: AppColors.electricViolet),
-          shape: BoxShape.circle,
-        ),
-        const CustomTabPageSelector(selectedIndex: 1, tabLenght: 3),
-        CustomIconButton(
-          onPressed: () {},
-          icon: const Icon(AppIcons.kArrowRight, color: AppColors.whiteColor, size: 28),
-          border: Border.all(color: AppColors.electricViolet),
-          shape: BoxShape.circle,
-          backgroundColor: AppColors.electricViolet,
-        ),
-      ],
-    );
-  }
-
   /// Title And Description
-  Widget _getTitleAndDescription(BuildContext context) {
+  Widget _getTitleAndDescription() {
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         RichText(
           textAlign: TextAlign.center,
           text: TextSpan(
             children: [
               TextSpan(
-                text: title,
+                text: widget.title,
                 style: context.textStyles.headlineSmall.copyWith(
                   color: AppColors.electricViolet,
                   fontWeight: FontWeight.w800,
                 ),
               ),
               TextSpan(
-                text: subTitle,
+                text: widget.subTitle,
                 style: context.textStyles.headlineSmall.copyWith(
                   color: AppColors.blackColor,
                   fontWeight: FontWeight.w800,
@@ -89,8 +68,9 @@ class CustomClipPathContainer extends StatelessWidget {
             ],
           ),
         ),
+        context.sizedBoxHeightNormal,
         Text(
-          desc,
+          widget.desc,
           textAlign: TextAlign.center,
           style: context.textStyles.titleSmall.copyWith(
             color: AppColors.blackColor,

@@ -1,4 +1,5 @@
 import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/presentation/view/app/app.dart';
 import 'package:flutter_donate_app/presentation/view/app/home.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
@@ -52,6 +53,11 @@ class AppRoutes {
         name: AppRouteName.ageInfo.name,
         path: AppRouteName.ageInfo.path,
         builder: (context, state) => const AgeInfoView(),
+      ),
+      GoRoute(
+        name: AppRouteName.app.name,
+        path: AppRouteName.app.path,
+        builder: (context, state) => const App(),
       ),
       GoRoute(
         name: AppRouteName.home.name,
