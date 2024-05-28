@@ -1,4 +1,5 @@
 import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/presentation/splash/onboard.dart';
 import 'package:flutter_donate_app/presentation/splash/splash.dart';
 import 'package:flutter_donate_app/presentation/view/app/home.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
@@ -21,7 +22,13 @@ class AppRoutes {
         name: AppRouteName.splash.name,
         path: AppRouteName.splash.path,
         builder: (context, state) => const SplashView(),
-      ),      GoRoute(
+      ),
+      GoRoute(
+        name: AppRouteName.onboard.name,
+        path: AppRouteName.onboard.path,
+        builder: (context, state) => const OnboardView(),
+      ),
+      GoRoute(
         name: AppRouteName.signin.name,
         path: AppRouteName.signin.path,
         builder: (context, state) => const SigninView(),
