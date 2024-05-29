@@ -7,7 +7,11 @@ class AppAssets {
   static const String sofa = 'sofa';
   static const String emptyNotification = 'empty-notification';
   static const String phone = 'phone';
-  static const String ellips = 'ellips';
+  static const String ellipsis = 'ellipsis';
+  static const String img1 = 'img1';
+  static const String img2 = 'img2';
+  static const String img3 = 'img3';
+  static const String img4 = 'img4';
 
   /// -- SVG --
   static const String apple = 'apple';
