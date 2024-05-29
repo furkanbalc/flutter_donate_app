@@ -14,7 +14,7 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   int _currentPage = 0;
 
   @override
-  bool get isLastPage => _lastIndex  == currentPage;
+  bool get isLastPage => _lastIndex == currentPage;
 
   @override
   bool get isFirstPage => currentPage == 0;

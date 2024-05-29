@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
@@ -100,7 +99,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
   /// Navigation Page Widget
   Widget _getNavigationWidget() {
     return Positioned(
-      bottom: AppSizes.high.value,
+      bottom: AppSizes.custom.value,
       right: AppSizes.medium.value,
       left: AppSizes.medium.value,
       child: Row(
@@ -111,7 +110,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             icon: Icon(
               AppIcons.kArrowLeft,
               color: splashViewModel.isFirstPage ? AppColors.electricViolet : AppColors.whiteColor,
-              size: 28,
+              size: AppSizes.ultra.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,
@@ -128,7 +127,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             icon: Icon(
               splashViewModel.isLastPage ? Iconsax.like_1 : AppIcons.kArrowRight,
               color: AppColors.whiteColor,
-              size: 28,
+              size: AppSizes.ultra.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,

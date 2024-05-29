@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/presentation/view/app/app.dart';
 import 'package:flutter_donate_app/presentation/view/app/home.dart';
@@ -17,12 +18,19 @@ class AppRoutes {
 
   static AppRoutes get instance => _instance ??= AppRoutes._();
 
+  final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey(debugLabel: 'root');
+  final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey(debugLabel: 'shell');
+
   final router = GoRouter(
     routes: [
       GoRoute(
         name: AppRouteName.splash.name,
         path: AppRouteName.splash.path,
+
         builder: (context, state) => const SplashView(),
+        redirect: (context, state) {
+
+        },
       ),
       GoRoute(
         name: AppRouteName.onboard.name,

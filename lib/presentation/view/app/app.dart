@@ -17,6 +17,7 @@ class _AppState extends State<App> with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: AppColors.cascadingWhite,
       body: const HomeView(),
       floatingActionButton: InkWell(
         onTap: () {
