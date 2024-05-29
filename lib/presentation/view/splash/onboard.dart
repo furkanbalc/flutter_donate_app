@@ -39,14 +39,6 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
   @override
   Widget build(BuildContext context) {
     splashViewModel = ref.watch(splashViewModelImp);
-    //
-    // /// Status bar bu sayfada beyaz olacak
-    // SystemChrome.setSystemUIOverlayStyle(
-    //   const SystemUiOverlayStyle(
-    //     statusBarColor: AppColors.transparentColor,
-    //     statusBarIconBrightness: Brightness.dark,
-    //   ),
-    // );
     return Scaffold(
       backgroundColor: AppColors.cascadingWhite,
       body: SafeArea(child: _buildBody(context)),
