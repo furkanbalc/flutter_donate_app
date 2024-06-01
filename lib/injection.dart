@@ -7,10 +7,13 @@ import 'package:flutter_donate_app/data/datasource/local_datasource/local_dataso
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource_imp.dart';
 import 'package:flutter_donate_app/data/repositories/auth_repository_imp.dart';
+import 'package:flutter_donate_app/data/repositories/profile_repository_imp.dart';
 import 'package:flutter_donate_app/data/repositories/splash_repository_imp.dart';
 import 'package:flutter_donate_app/domain/repositories/auth_repository.dart';
+import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 import 'package:flutter_donate_app/domain/repositories/splash_repository.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
+import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:hive_flutter/hive_flutter.dart' as hive;
 import 'package:flutter_donate_app/domain/usecases/splash_usecase.dart';
 import 'package:get_it/get_it.dart';
@@ -41,17 +44,20 @@ void initializeDependencies() async {
         storageService: injector(),
       ));
 
-  //local
+  // local
   injector.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImp(box: injector()));
 
   // Repository
   injector.registerLazySingleton<SplashRepository>(() => SplashRepositoryImp(localDataSource: injector()));
   injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImp(remoteDataSource: injector()));
+  injector.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImp(remoteDataSource: injector()));
 
   // UseCases
   injector.registerLazySingleton<GetInitialScreen>(() => GetInitialScreen(splashRepository: injector()));
   injector.registerLazySingleton<SetInitialScreen>(() => SetInitialScreen(splashRepository: injector()));
   injector.registerLazySingleton<SignUp>(() => SignUp(authRepository: injector()));
   injector.registerLazySingleton<SignIn>(() => SignIn(authRepository: injector()));
+  injector.registerLazySingleton<SignOut>(() => SignOut(profileRepository: injector()));
   injector.registerLazySingleton<SaveUserInfoToFirestore>(() => SaveUserInfoToFirestore(authRepository: injector()));
+  injector.registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
 }
