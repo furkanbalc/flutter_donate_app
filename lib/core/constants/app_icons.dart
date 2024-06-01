@@ -6,12 +6,22 @@ class AppIcons {
 
   static const IconData kHomeOutlinedIcon = Iconsax.home;
   static const IconData kHomeFilledIcon = Iconsax.home_15;
+  //
   static const IconData kGiftOutlinedIcon = Iconsax.gift;
   static const IconData kGiftFilledIcon = Iconsax.gift5;
+  //
   static const IconData kMessageOutlinedIcon = Iconsax.message;
   static const IconData kMessageFilledIcon = Iconsax.message5;
+  //
   static const IconData kUserOutlinedIcon = Iconsax.user;
   static const IconData kUserFilledIcon = Icons.person;
+  //
+  static const IconData kInfoIcon = Iconsax.info_circle;
+
+  static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
+  static const IconData kStatisticFilledIcon = Iconsax.chart_215;
+  static const IconData kLocationOutlinedIcon = Iconsax.location;
+  static const IconData kLocationFilledIcon = Iconsax.location5;
   static const IconData kEditIcon = Iconsax.user_edit;
   static const IconData kPasswordIcon = Iconsax.password_check;
   static const IconData kVisibility = Iconsax.eye;
@@ -23,7 +33,6 @@ class AppIcons {
   static const IconData kArrowDown = Iconsax.arrow_down_1;
   static const IconData kDirectIcon = Iconsax.direct_right;
   static const IconData kSearchIcon = Iconsax.search_normal;
-  static const IconData kLocationIcon = Iconsax.location;
   static const IconData kFavouriteIcon = Iconsax.heart5;
   static const IconData kAddCircleIcon = Iconsax.add;
   static const IconData kAddSquareIcon = Iconsax.add_square;
@@ -33,8 +42,7 @@ class AppIcons {
   static const IconData kEditPhotoIcon = Iconsax.edit_2;
   static const IconData kRemoveIcon = Iconsax.close_square;
   static const IconData kFilterIcon = Iconsax.setting_4;
-  static const IconData kSettingsIcon = Iconsax.setting_2;
-  static const IconData kInfoIcon = Iconsax.info_circle;
+  static const IconData kSettingsOutlinedIcon = Iconsax.setting_2;
   static const IconData kLogoutIcon = Iconsax.logout;
-  static const IconData kStatisticIcon = Iconsax.chart_2;
+
 }

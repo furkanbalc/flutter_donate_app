@@ -1,13 +1,13 @@
 enum AppRouteName {
   splash('/splash','Splash'),
   onboard('/onboard','Onboard'),
-  signin('/signin','Signin'),
+  signin('/','Signin'),
   signup('/signup','Signup'),
   userInfo('/userInfo','UserInfo'),
   genderInfo('/genderInfo','GenderInfo'),
   ageInfo('/ageInfo','AgeInfo'),
   home('/home','Home'),
-  app('/','App'),
+  app('/app','App'),
   ;
 
   const AppRouteName(this.path,this.name);

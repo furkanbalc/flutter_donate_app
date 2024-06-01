@@ -7,6 +7,7 @@ enum AppSizes {
   high(20.0),
   ultra(24.0),
   custom(36),
+  profilePageIconSize(28),
   ;
 
   final double value;

@@ -3,9 +3,9 @@ import 'package:flutter_donate_app/data/datasource/local_datasource/local_dataso
 import 'package:flutter_donate_app/domain/repositories/splash_repository.dart';
 
 class SplashRepositoryImp implements SplashRepository {
-  final LocalDataSource localDataSource;
-
   SplashRepositoryImp({required this.localDataSource});
+
+  final LocalDataSource localDataSource;
 
   @override
   Future<bool?> getInitialScreen() async {

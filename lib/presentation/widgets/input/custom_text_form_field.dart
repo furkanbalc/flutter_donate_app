@@ -32,6 +32,7 @@ class CustomTextFormField extends StatelessWidget {
     this.onFieldSubmitted,
     this.fillColor,
     this.contentPadding,
+    this.unFocus,
   });
 
   final TextEditingController? controller;
@@ -55,6 +56,7 @@ class CustomTextFormField extends StatelessWidget {
   final String? labelText;
   final String? hintText;
   final bool? autoFocus;
+  final bool? unFocus;
   final TextAlign? textAlign;
   final int? maxLines;
   final int? minLines;
@@ -62,7 +64,7 @@ class CustomTextFormField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // FocusScopeNode currentFocus = FocusScope.of(context);
+    FocusScopeNode currentFocus = FocusScope.of(context);
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
@@ -75,7 +77,7 @@ class CustomTextFormField extends StatelessWidget {
         context.sizedBoxHeightMin,
         TextFormField(
           controller: controller,
-          // onTapOutside: (event) => currentFocus.unfocus(),
+         onTapOutside: (event) => (unFocus ?? false) ? currentFocus.unfocus() : null,
           onChanged: onChanged,
           focusNode: focusNode,
           onFieldSubmitted: onFieldSubmitted,

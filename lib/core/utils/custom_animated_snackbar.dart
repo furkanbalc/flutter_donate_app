@@ -79,6 +79,7 @@ class _AnimatedSnackbarState extends State<AnimatedSnackbar> with SingleTickerPr
                                 fontSize: 14,
                                 fontWeight: FontWeight.w300,
                                 color: AppColors.blackColor,
+                                overflow: TextOverflow.ellipsis,
                               ),
                             ),
                           ],

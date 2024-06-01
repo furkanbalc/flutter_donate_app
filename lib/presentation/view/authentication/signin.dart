@@ -7,6 +7,7 @@ import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/firebase_service/signin_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,20 +21,30 @@ class SigninView extends ConsumerStatefulWidget {
 
 class _SigninViewState extends ConsumerState<SigninView> with SigninService {
   late SigninViewModel _signinViewModel;
+  late ProfileViewModel _profileViewModel;
 
   @override
   void initState() {
     _signinViewModel = ref.read(signinViewModelImp);
+    _profileViewModel = ref.read(profileViewModelImp);
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    _signinViewModel.emailController.text = '';
+    _signinViewModel.passController.text = '';
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     _signinViewModel = ref.watch(signinViewModelImp);
+    _profileViewModel = ref.watch(profileViewModelImp);
     return Stack(
       children: [
         Scaffold(
-          resizeToAvoidBottomInset: true,
+          resizeToAvoidBottomInset: false,
           body: AuthBody(child: _buildBody(context)),
         ),
 
@@ -88,6 +99,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
           keyboardType: TextInputType.emailAddress,
           autofillHints: const [AutofillHints.email],
           textInputAction: TextInputAction.next,
+          unFocus: true,
         ),
         context.sizedBoxHeightMedium,
 
@@ -100,9 +112,10 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
           suffixIcon: _signinViewModel.passObscure ? AppIcons.kVisibility : AppIcons.kVisibilityOff,
           suffixOnPressed: _signinViewModel.togglePassObscure,
           keyboardType: TextInputType.text,
-          autofillHints: const [AutofillHints.email],
+          autofillHints: const [AutofillHints.password],
           textInputAction: TextInputAction.done,
           obscureText: _signinViewModel.passObscure,
+          unFocus: true,
         ),
         context.sizedBoxHeightLow,
 
@@ -120,7 +133,11 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
 
         /// Signin Button
         CustomElevatedButton(
-          onPressed: () => signInProcess(signinViewModel: _signinViewModel),
+          onPressed: () => signInProcess(
+            context: context,
+            signinViewModel: _signinViewModel,
+            profileViewModel: _profileViewModel,
+          ),
           text: LocaleKeys.auth_signin.tr(),
         ),
       ],

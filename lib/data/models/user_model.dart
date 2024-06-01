@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
@@ -27,11 +28,11 @@ class UserModel extends UserEntity {
     };
   }
 
-  factory UserModel.fromJson(Map<String, dynamic> json) {
+  factory UserModel.fromJson(Map<String, dynamic>? json) {
     return UserModel(
-      isActive: json['isActive'] ?? false,
-      isAdmin: json['isAdmin'] ?? false,
-      data: json['data'] == null ? null : Data.fromJson(json['data']),
+      isActive: json?['isActive'] ?? false,
+      isAdmin: json?['isAdmin'] ?? false,
+      data: json?['data'] == null ? null : Data.fromJson(json?['data']),
     );
   }
 

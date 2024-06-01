@@ -14,6 +14,8 @@ import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel_imp.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel_imp.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel_imp.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -70,3 +72,4 @@ final splashViewModelImp = ChangeNotifierProvider<SplashViewModel>((ref) => Spla
 final signupViewModelImp = ChangeNotifierProvider<SignupViewModel>((ref) => SignupViewModelImp());
 final signinViewModelImp = ChangeNotifierProvider<SigninViewModel>((ref) => SigninViewModelImp());
 final personalInfoViewModelImp = ChangeNotifierProvider<PersonalInfoViewModel>((ref) => PersonalInfoViewModelImp());
+final profileViewModelImp = ChangeNotifierProvider<ProfileViewModel>((ref) => ProfileViewModelImp());

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomSvgWidget extends StatelessWidget {
@@ -24,7 +25,7 @@ class CustomSvgWidget extends StatelessWidget {
       width: width,
       height: height,
       fit: fit ?? BoxFit.cover,
-      color: color,
+      colorFilter:  color !=null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
     );
   }
 }
