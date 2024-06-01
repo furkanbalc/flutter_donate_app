@@ -26,13 +26,13 @@ class SignUp extends BaseUseCase<Future<void>, ParamsForAuth> {
 }
 
 /// -- SIGN IN --
-class SignIn extends BaseUseCase<Future<void>, ParamsForAuth> {
+class SignIn extends BaseUseCase<Future<String>, ParamsForAuth> {
   final AuthRepository authRepository;
 
   SignIn({required this.authRepository});
 
   @override
-  Future<void> execute(ParamsForAuth params) async {
+  Future<String> execute(ParamsForAuth params) async {
     return await authRepository.signIn(email: params.email, password: params.password);
   }
 }

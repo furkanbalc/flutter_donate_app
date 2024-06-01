@@ -5,7 +5,10 @@ abstract class RemoteDataSource {
   Future<void> signUp({required String email, required String password});
 
   /// -- SIGN IN --
-  Future<void> signIn({required String email, required String password});
+  Future<String> signIn({required String email, required String password});
+
+  /// -- SIGN OUT --
+  Future<void> signOut();
 
   /// -- SAVE USER INFO --
   Future<UserModel> saveUserInfoToFirestore({
@@ -15,5 +18,10 @@ abstract class RemoteDataSource {
     required String age,
     required String gender,
     required dynamic profileImage,
+  });
+
+  /// -- GET CURRENT USER INFO --
+  Future<UserModel> getUserInfoFromFirestore({
+    required String id,
   });
 }

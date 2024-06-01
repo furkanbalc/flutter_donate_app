@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
+import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:go_router/go_router.dart';
 
 mixin UserInfoService on State<UserInfoView> {
   void userInfoProcess({required PersonalInfoViewModel personalInfoViewModel}) {
@@ -12,7 +14,7 @@ mixin UserInfoService on State<UserInfoView> {
           personalInfoViewModel.formKey.currentState!.validate()) {
         personalInfoViewModel.endProgress = 1 / 3;
         Future.delayed(Durations.extralong4).then((value) {
-          const GenderInfoView().slideTransitionPush(context);
+          context.goNamed(AppRouteName.genderInfo.name);
         });
       } else {
         personalInfoViewModel.toggleValidateMode();

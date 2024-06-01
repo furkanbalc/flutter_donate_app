@@ -19,24 +19,32 @@ class RemoteDataSourceImp implements RemoteDataSource {
   final FirebaseStorage firebaseStorage;
   final StorageService storageService;
 
-  UserCredential? userCredential;
+   UserCredential? userCredential;
 
   /// -- SIGN UP --
   @override
   Future<void> signUp({required String email, required String password}) async {
     await firebaseAuth.createUserWithEmailAndPassword(
-      email: email,
-      password: password,
+      email: email.trim(),
+      password: password.trim(),
     );
   }
 
   /// -- SIGN IN --
   @override
-  Future<void> signIn({required String email, required String password}) async {
-    await firebaseAuth.signInWithEmailAndPassword(
+  Future<String> signIn({required String email, required String password}) async {
+    userCredential = await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
     );
+    return userCredential!.user!.uid;
+  }
+
+  /// -- SIGN OUT --
+  @override
+  Future<void> signOut() async {
+    await firebaseAuth.signOut();
+    userCredential = null;
   }
 
   /// -- SAVE USER INFO --
@@ -50,6 +58,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required dynamic profileImage,
   }) async {
     User? currentUser = firebaseAuth.currentUser;
+
     /// -- profile image upload firebase storage
     String profileImageUrl = profileImage is String ? profileImage : '';
     if (profileImage != null && profileImage is! String) {
@@ -62,8 +71,8 @@ class RemoteDataSourceImp implements RemoteDataSource {
       "data": {
         "id": currentUser?.uid ?? 'invalid_id', //randomId
         "fullName": {
-          "name": name,
-          "surname": surname,
+          "name": name.trim(),
+          "surname": surname.trim(),
         },
         "adress": {
           "city": null,
@@ -72,7 +81,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
           "location": {"lang": null, "lat": null},
           "town": null,
         },
-        "email": currentUser?.email ?? 'invalid_email',
+        "email": currentUser?.email?.trim() ?? 'invalid_email',
         "phoneNumber": phoneNumber,
         "gender": gender,
         "age": age,
@@ -84,5 +93,15 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
     await firebaseFirestore.collection(FirebaseCollections.users.name).doc(currentUser?.uid).set(user);
     return UserModel.fromJson(user);
+  }
+
+  /// -- GET CURRENT USER INFO --
+  @override
+  Future<UserModel> getUserInfoFromFirestore({
+    required String id,
+  }) async {
+    DocumentSnapshot<Map<String, dynamic>> userModelSnapshot =
+        await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).get();
+    return UserModel.fromJson(userModelSnapshot.data());
   }
 }

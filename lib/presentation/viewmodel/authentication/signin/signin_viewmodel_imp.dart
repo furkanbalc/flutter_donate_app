@@ -11,6 +11,8 @@ import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 class SigninViewModelImp extends ChangeNotifier with Validator implements SigninViewModel {
   /// -- VARIABLES --
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // final TextEditingController _emailController = TextEditingController(text: 'frknblc1903@gmail.com');
+  // final TextEditingController _passController = TextEditingController(text: '112233A.');
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passController = TextEditingController();
   bool _isCheck = false;
@@ -68,13 +70,13 @@ class SigninViewModelImp extends ChangeNotifier with Validator implements Signin
   }
 
   /// -- SIGN IN --
-  ApiResponse<bool> _signInResponse = ApiResponse.initial('initial');
+  ApiResponse<String> _signInResponse = ApiResponse.initial('initial');
 
   @override
-  ApiResponse<bool> get signInResponse => _signInResponse;
+  ApiResponse<String> get signInResponse => _signInResponse;
 
   @override
-  set signInResponse(ApiResponse<bool> value) {
+  set signInResponse(ApiResponse<String> value) {
     _signInResponse = value;
     notifyListeners();
   }
@@ -83,13 +85,13 @@ class SigninViewModelImp extends ChangeNotifier with Validator implements Signin
   Future<void> signIn() async {
     signInResponse = ApiResponse.loading("loading");
     try {
-      await injector<SignIn>().execute(
+      String uid = await injector<SignIn>().execute(
         ParamsForAuth(
           email: emailController.text,
           password: passController.text,
         ),
       );
-      signInResponse = ApiResponse.completed(true);
+      signInResponse = ApiResponse.completed(uid);
     } on FirebaseAuthException catch (e, stacTrace) {
       if (e.code == 'user-not-found') {
         signInResponse = ApiResponse.error(LocaleKeys.messages_user_not_found.tr(), stacTrace);

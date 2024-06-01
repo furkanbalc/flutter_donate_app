@@ -28,9 +28,9 @@ abstract class SigninViewModel with ChangeNotifier {
   String? passwordValidation();
 
   /// -- SIGN IN --
-  ApiResponse<bool> get signInResponse;
+  ApiResponse<String> get signInResponse;
 
-  set signInResponse(ApiResponse<bool> value);
+  set signInResponse(ApiResponse<String> value);
 
   Future<void> signIn();
 }

@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/extensions/response_event.dart';
 import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
+import 'package:flutter_donate_app/core/router/go_router.dart';
+import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
+import 'package:go_router/go_router.dart';
 
 mixin SignupService on State<SignupView> {
   void signUpProcess({required SignupViewModel signupViewModel}) {
@@ -16,7 +20,7 @@ mixin SignupService on State<SignupView> {
             title: 'Başarılı',
             message: 'Kayıt Başarılı',
           );
-          const UserInfoView().slideTransitionReplace(context);
+          context.goNamed(AppRouteName.userInfo.name);
         } else {
           Utils.errorSnackBar(
             context: context,

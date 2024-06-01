@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_body.dart';
@@ -12,6 +13,7 @@ import 'package:flutter_donate_app/presentation/view/authentication/widgets/pers
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class GenderInfoView extends ConsumerStatefulWidget {
   const GenderInfoView({super.key});
@@ -87,7 +89,7 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
           ? () {
               _personalInfoViewModel.endProgress = 2 / 3;
               Future.delayed(Durations.extralong4).then((value) {
-                const AgeInfoView().slideTransitionPush(context);
+                context.goNamed(AppRouteName.ageInfo.name);
               });
             }
           : null,

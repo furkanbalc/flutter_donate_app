@@ -4,9 +4,9 @@ import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImp implements AuthRepository {
-  final RemoteDataSource remoteDataSource;
-
   AuthRepositoryImp({required this.remoteDataSource});
+
+  final RemoteDataSource remoteDataSource;
 
   /// -- SIGN UP --
   @override
@@ -16,8 +16,8 @@ class AuthRepositoryImp implements AuthRepository {
 
   /// -- SIGN IN --
   @override
-  Future<void> signIn({required String email, required String password}) async {
-    await remoteDataSource.signIn(email: email, password: password);
+  Future<String> signIn({required String email, required String password}) async {
+    return await remoteDataSource.signIn(email: email, password: password);
   }
 
   /// -- SAVE USER INFO --
