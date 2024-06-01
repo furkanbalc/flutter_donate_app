@@ -177,7 +177,7 @@ class HorizontalProductList extends StatelessWidget {
                                         color: AppColors.cascadingWhite,
                                         shape: BoxShape.circle,
                                       ),
-                                      child: const Icon(AppIcons.kLocationIcon,
+                                      child: const Icon(AppIcons.kLocationOutlinedIcon,
                                           color: AppColors.electricViolet, size: 20),
                                     ),
                                     context.sizedBoxWidthLow,

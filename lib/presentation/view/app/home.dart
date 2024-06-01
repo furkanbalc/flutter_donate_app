@@ -1,46 +1,50 @@
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
+import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/app/widgets/home/auto_page_slider.dart';
 import 'package:flutter_donate_app/presentation/view/app/widgets/home/home_sliver_appbar.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/core/extensions/context_borders.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
 import 'package:flutter_donate_app/presentation/view/app/widgets/home/horizontal_product_cart.dart';
 import 'package:flutter_donate_app/presentation/view/app/widgets/home/vertical_product_cart.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
-import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
-import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
 
-class HomeView extends StatefulWidget {
+class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
 
   @override
-  State<HomeView> createState() => _HomeViewState();
+  ConsumerState createState() => _HomeViewState();
 }
 
-class _HomeViewState extends State<HomeView> {
+class _HomeViewState extends ConsumerState<HomeView> {
+  late ProfileViewModel profileViewModel;
+
+  @override
+  void initState() {
+    super.initState();
+    profileViewModel = ref.read(profileViewModelImp);
+    print('************************${profileViewModel.getUserInfoFromFirestoreResponse.data.data?.userName}');
+  }
+
   @override
   Widget build(BuildContext context) {
+    profileViewModel = ref.watch(profileViewModelImp);
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [const HomeSliverAppBar()];
+          return [ HomeSliverAppBar(profileViewModel: profileViewModel)];
         },
         body: CustomScrollView(
           slivers: [
             SliverToBoxAdapter(child: AutoPageSlider()),
-            SliverToBoxAdapter(
-              child: buildCatergoriesList(context),
-            ),
+            SliverToBoxAdapter(child: buildCatergoriesList(context)),
             SliverToBoxAdapter(child: buildHorizontalList(context)),
             SliverToBoxAdapter(child: buildSectionHeader(context, 'Yakınlardakiler', 'Tümünü Gör')),
             SliverPadding(padding: context.paddings.zero, sliver: buildVerticalList(context)),
@@ -54,7 +58,6 @@ class _HomeViewState extends State<HomeView> {
     return SizedBox(
       height: context.dynamicHeight(.1),
       child: ListView.separated(
-
         padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
         itemCount: 15,
         scrollDirection: Axis.horizontal,

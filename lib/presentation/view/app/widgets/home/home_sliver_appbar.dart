@@ -8,10 +8,16 @@ import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 import 'package:flutter_donate_app/core/extensions/string_extension.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 
 class HomeSliverAppBar extends StatefulWidget {
-  const HomeSliverAppBar({super.key});
+  const HomeSliverAppBar({
+    super.key,
+    required this.profileViewModel,
+  });
+
+  final ProfileViewModel profileViewModel;
 
   @override
   State<HomeSliverAppBar> createState() => _HomeSliverAppbarState();
@@ -43,11 +49,11 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text('Konum', style: context.textStyles.titleSmall.copyWith(color: AppColors.whiteColor)),
+                          Text(widget.profileViewModel.getUserInfoFromFirestoreResponse.data.data?.userName ?? '', style: context.textStyles.titleSmall.copyWith(color: AppColors.whiteColor)),
                           context.sizedBoxHeightMin,
                           Row(
                             children: [
-                              const Icon(AppIcons.kLocationIcon, color: AppColors.whiteColor, size: 20),
+                              const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.whiteColor, size: 20),
                               Text('Kahramanmaraş, Türkiye',
                                   style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
                               const Icon(AppIcons.kArrowDown, color: AppColors.whiteColor),

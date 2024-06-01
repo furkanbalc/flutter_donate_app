@@ -116,7 +116,7 @@ mixin ProductCardComponents {
                 color: AppColors.cascadingWhite,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(AppIcons.kLocationIcon, color: AppColors.electricViolet, size: 16),
+              child: const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.electricViolet, size: 16),
             ),
             context.sizedBoxWidthLow,
             Text(distance, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),
