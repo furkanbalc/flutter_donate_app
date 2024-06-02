@@ -8,6 +8,7 @@ abstract class  LocaleKeys {
   static const form_fields_confirm_password = 'form_fields.confirm_password';
   static const form_fields_phone_number = 'form_fields.phone_number';
   static const form_fields_gender = 'form_fields.gender';
+  static const form_fields_age = 'form_fields.age';
   static const form_fields_select = 'form_fields.select';
   static const form_fields = 'form_fields';
   static const validator_upper_case_validator = 'validator.upper_case_validator';
@@ -31,6 +32,7 @@ abstract class  LocaleKeys {
   static const messages_wrong_password = 'messages.wrong_password';
   static const messages_wrong_email_or_password = 'messages.wrong_email_or_password';
   static const messages = 'messages';
+  static const on_board_skip = 'on_board.skip';
   static const on_board_title_1 = 'on_board.title_1';
   static const on_board_title_2 = 'on_board.title_2';
   static const on_board_title_3 = 'on_board.title_3';
@@ -54,6 +56,7 @@ abstract class  LocaleKeys {
   static const auth_or_with = 'auth.or_with';
   static const auth_already_have_an_account = 'auth.already_have_an_account';
   static const auth_dont_have_an_account = 'auth.dont_have_an_account';
+  static const auth_i_have_read_registration_conditions = 'auth.i_have_read_registration_conditions';
   static const auth = 'auth';
   static const user_info_complete_your_profile = 'user_info.complete_your_profile';
   static const user_info_enter_your_personal_info = 'user_info.enter_your_personal_info';
@@ -62,6 +65,20 @@ abstract class  LocaleKeys {
   static const user_info_share_your_gender = 'user_info.share_your_gender';
   static const user_info_how_old_are_you = 'user_info.how_old_are_you';
   static const user_info_share_your_age = 'user_info.share_your_age';
+  static const user_info_man = 'user_info.man';
+  static const user_info_woman = 'user_info.woman';
   static const user_info = 'user_info';
+  static const home_search = 'home.search';
+  static const home = 'home';
+  static const profile_my_profile = 'profile.my_profile';
+  static const profile_my_profile_info = 'profile.my_profile_info';
+  static const profile_my_address_info = 'profile.my_address_info';
+  static const profile_my_statistics = 'profile.my_statistics';
+  static const profile_settings = 'profile.settings';
+  static const profile_contact_us = 'profile.contact_us';
+  static const profile_sign_out = 'profile.sign_out';
+  static const profile_delete_account = 'profile.delete_account';
+  static const profile_save = 'profile.save';
+  static const profile = 'profile';
 
 }

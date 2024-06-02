@@ -23,6 +23,7 @@ class CodegenLoader extends AssetLoader{
     "confirm_password": "Confirm Password",
     "phone_number": "Phone Number",
     "gender": "Gender",
+    "age": "Age",
     "select": "Select"
   },
   "validator": {
@@ -49,6 +50,7 @@ class CodegenLoader extends AssetLoader{
     "wrong_email_or_password": "Incorrect email or password"
   },
   "on_board": {
+    "skip": "Skip",
     "title_1": "Welcome!",
     "title_2": "Posting an Ad is Easy!",
     "title_3": "Set Your Location",
@@ -72,7 +74,8 @@ class CodegenLoader extends AssetLoader{
     "forgot_password_send_connection_link": "We need your registered email address to send the password reset link",
     "or_with": "Or with",
     "already_have_an_account": "Already have an account?",
-    "dont_have_an_account": "Don't have an account?"
+    "dont_have_an_account": "Don't have an account?",
+    "i_have_read_registration_conditions": "I have read the registration conditions, I accept."
   },
   "user_info": {
     "complete_your_profile": "Complete Your Profile",
@@ -81,7 +84,23 @@ class CodegenLoader extends AssetLoader{
     "tell_us_about_yourself": "Tell us about yourself!",
     "share_your_gender": "Share your gender with us to improve your experience",
     "how_old_are_you": "How old are you?",
-    "share_your_age": "Please share your age with us"
+    "share_your_age": "Please share your age with us",
+    "man": "Man",
+    "woman": "Woman"
+  },
+  "home": {
+    "search": "Search"
+  },
+  "profile": {
+    "my_profile": "My Profile",
+    "my_profile_info": "My Profile Information",
+    "my_address_info": "My Address Information",
+    "my_statistics": "My Statistics",
+    "settings": "Settings",
+    "contact_us": "Contact Us",
+    "sign_out": "Sign Out",
+    "delete_account": "Delete Account",
+    "save": "Save"
   }
 };
 static const Map<String,dynamic> tr = {
@@ -93,6 +112,7 @@ static const Map<String,dynamic> tr = {
     "confirm_password": "Şifre Onay",
     "phone_number": "Telefon Numarası",
     "gender": "Cinsiyet",
+    "age": "Yaş",
     "select": "Seçim"
   },
   "validator": {
@@ -119,6 +139,7 @@ static const Map<String,dynamic> tr = {
     "wrong_email_or_password": "Hatalı e-posta veya şifre"
   },
   "on_board": {
+    "skip": "Geç",
     "title_1": "Hoş Geldiniz! ",
     "title_2": "İlan Vermek Çok Kolay! ",
     "title_3": "Konumunuzu Belirleyin ",
@@ -142,7 +163,8 @@ static const Map<String,dynamic> tr = {
     "forgot_password_send_connection_link": "Şifre sıfırlama bağlantısını gönderebilmemiz için hesabınıza kayıtlı e-posta adresinize ihtiyacımız var",
     "or_with": "Veya",
     "already_have_an_account": "Zaten bir hesabınız var mı?",
-    "dont_have_an_account": "Hesabınız yok mu?"
+    "dont_have_an_account": "Hesabınız yok mu?",
+    "i_have_read_registration_conditions": "Kayıt koşullarını okudum, kabul ediyorum."
   },
   "user_info": {
     "complete_your_profile": "Profilini Tamamla",
@@ -151,7 +173,23 @@ static const Map<String,dynamic> tr = {
     "tell_us_about_yourself": "Bize kendinden bahset!",
     "share_your_gender": "Deneyiminizi geliştirmek için cinsiyetinizi bizimle paylaşın",
     "how_old_are_you": "Kaç yaşındasınız?",
-    "share_your_age": "Lütfen yaşınızı bizimle paylaşın"
+    "share_your_age": "Lütfen yaşınızı bizimle paylaşın",
+    "man": "Erkek",
+    "woman": "Kadın"
+  },
+  "home": {
+    "search": "Arama Yap"
+  },
+  "profile": {
+    "my_profile": "Profilim",
+    "my_profile_info": "Profil Bilgilerim",
+    "my_address_info": "Adres Bilgilerim",
+    "my_statistics": "İstatistiklerim",
+    "settings": "Ayarlar",
+    "contact_us": "Bize Ulaşın",
+    "sign_out": "Çıkış Yap",
+    "delete_account": "Hesabı Sil",
+    "save": "Kaydet"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};
