@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/app/profile/profile.dart';
+import 'package:flutter_donate_app/presentation/view/profile/profile.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 

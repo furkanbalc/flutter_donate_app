@@ -45,21 +45,27 @@ class _SplashViewState extends ConsumerState<SplashView> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.electricViolet,
-      body: SafeArea(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            /// App Logo
-            _getAppLogo(context),
+      body: _buildBody(context),
+    );
+  }
 
-            /// Loading Circular
-            const CustomCenteredProgressIndicator(),
-          ],
-        ),
+  /// Body
+  Widget _buildBody(BuildContext context) {
+    return SafeArea(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          /// App Logo
+          _getAppLogo(context),
+
+          /// Loading Circular
+          const CustomCenteredProgressIndicator(),
+        ],
       ),
     );
   }
 
+  /// App Logo
   Widget _getAppLogo(BuildContext context) {
     return Align(
       alignment: Alignment.topCenter,

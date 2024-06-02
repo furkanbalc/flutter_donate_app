@@ -10,23 +10,23 @@ class ProfileListTileWidget extends StatelessWidget {
     required this.title,
     required this.icon,
     required this.onPressed,
-     this.color,
   });
 
   final String title;
   final IconData icon;
   final VoidCallback onPressed;
-  final Color? color;
 
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      splashColor: AppColors.transparentColor,
+      splashColor: AppColors.whiteColor,
+      tileColor: AppColors.whiteColor,
+      shape: RoundedRectangleBorder(borderRadius: context.borders.circularBorderRadiusMedium),
       onTap: onPressed,
-      contentPadding: context.paddings.zero,
+      contentPadding: context.paddings.horizontalLow,
       title: Text(title, style: context.textStyles.bodyLarge),
-      leading: Icon(icon, color:  color ??  AppColors.electricViolet, size: AppSizes.profilePageIconSize.value),
-      trailing: title == 'Çıkış Yap' ? context.sizedBoxShrink : const Icon(AppIcons.kArrowRight, color:AppColors.electricViolet),
+      leading: Icon(icon, color: AppColors.electricViolet, size: AppSizes.profilePageIconSize.value),
+      trailing: const Icon(AppIcons.kArrowRight, color: AppColors.electricViolet),
     );
   }
 }

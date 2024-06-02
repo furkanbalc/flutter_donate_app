@@ -1,7 +1,7 @@
 import 'dart:typed_data';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:photo_manager/photo_manager.dart';
@@ -95,7 +95,7 @@ class _ImagePickerViewState extends State<ImagePickerView> {
       appBar: AppBar(
         backgroundColor: Theme.of(context).scaffoldBackgroundColor,
         leading: CustomIconButton(onPressed: () => Navigator.pop(context), icon: const Icon(AppIcons.kArrowLeft)),
-        title: const Text('bende fazla', style: TextStyle(color: AppColors.blackPrimary)),
+        title: const Text(AppConstants.appName, style: TextStyle(color: AppColors.blackPrimary)),
         actions: [CustomIconButton(onPressed: () {}, icon: const Icon(Icons.more_vert))],
       ),
       body: Padding(

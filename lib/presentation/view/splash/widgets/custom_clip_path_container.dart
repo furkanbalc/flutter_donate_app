@@ -1,10 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_tab_page_selector.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';

@@ -33,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.contentPadding,
     this.unFocus,
+    this.isTitle,
   });
 
   final TextEditingController? controller;
@@ -61,6 +62,7 @@ class CustomTextFormField extends StatelessWidget {
   final int? maxLines;
   final int? minLines;
   final int? maxLenght;
+  final bool? isTitle;
 
   @override
   Widget build(BuildContext context) {
@@ -69,15 +71,18 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(
-          labelText ?? '',
-          textAlign: TextAlign.left,
-          style: context.textStyles.titleSmall.copyWith(color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
-        ),
+        isTitle ?? false
+            ? context.sizedBoxShrink
+            : Text(
+                labelText ?? '',
+                textAlign: TextAlign.left,
+                style:
+                    context.textStyles.titleSmall.copyWith(color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
+              ),
         context.sizedBoxHeightMin,
         TextFormField(
           controller: controller,
-         onTapOutside: (event) => (unFocus ?? false) ? currentFocus.unfocus() : null,
+          onTapOutside: (event) => (unFocus ?? false) ? currentFocus.unfocus() : null,
           onChanged: onChanged,
           focusNode: focusNode,
           onFieldSubmitted: onFieldSubmitted,
@@ -98,6 +103,7 @@ class CustomTextFormField extends StatelessWidget {
           decoration: InputDecoration(
             contentPadding: contentPadding ?? context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
             hintText: hintText,
+            labelText: isTitle ?? false ? labelText : null ,
             prefixIcon: prefixIcon,
             suffixIcon: InkWell(
               highlightColor: AppColors.transparentColor,

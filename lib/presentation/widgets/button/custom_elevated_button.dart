@@ -9,12 +9,16 @@ class CustomElevatedButton extends StatelessWidget {
     required this.text,
     this.buttonWidth,
     this.backgroundColor,
+    this.textStyle,
+    this.padding,
   });
 
   final VoidCallback? onPressed;
   final double? buttonWidth;
   final Color? backgroundColor;
   final String text;
+  final TextStyle? textStyle;
+  final EdgeInsetsGeometry? padding;
 
   @override
   Widget build(BuildContext context) {
@@ -24,11 +28,10 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          textStyle: context.textStyles.titleMedium
-              .copyWith(fontWeight: FontWeight.w600),
+          textStyle: textStyle ?? context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600),
         ),
         child: Padding(
-          padding: context.paddings.verticalMedium,
+          padding: padding ?? context.paddings.verticalMedium,
           child: Text(text),
         ),
       ),

@@ -123,7 +123,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
         context.sizedBoxHeightMedium,
 
         /// Terms and Conditions
-        CustomCheckBoxListTile(title: 'Kayıt koşullarını okudum, kabul ediyorum.'),
+        CustomCheckBoxListTile(title: LocaleKeys.auth_i_have_read_registration_conditions.tr()),
         context.sizedBoxHeightMedium,
 
         /// Signup Button

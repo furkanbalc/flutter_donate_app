@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
@@ -8,6 +9,7 @@ import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_clip_
 import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_tab_page_selector.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_text_button.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
@@ -15,7 +17,6 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:go_router/go_router.dart';
-import 'package:iconsax/iconsax.dart';
 
 part 'widgets/onboard_widget.dart';
 
@@ -83,7 +84,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
       top: AppSizes.low.value,
       child: CustomTextButton(
         onPressed: () => splashViewModel.animateToLastPage(),
-        text: 'Geç',
+        text: LocaleKeys.on_board_skip.tr(),
       ),
     );
   }
@@ -97,6 +98,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          /// Back Button
           CustomIconButton(
             onPressed: () => splashViewModel.animateToPrevPage(),
             icon: Icon(
@@ -108,16 +110,18 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             shape: BoxShape.circle,
             backgroundColor: splashViewModel.isFirstPage ? AppColors.whiteColor : AppColors.electricViolet,
           ),
+          /// Page Dots
           CustomTabPageSelector(
             selectedIndex: splashViewModel.currentPage,
             tabLenght: splashViewModel.pages.length,
           ),
+          /// Next Button
           CustomIconButton(
             onPressed: () => splashViewModel.isLastPage
                 ? context.goNamed(AppRouteName.app.name)
                 : splashViewModel.animateToNextPage(),
             icon: Icon(
-              splashViewModel.isLastPage ? Iconsax.like_1 : AppIcons.kArrowRight,
+              splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,
               color: AppColors.whiteColor,
               size: AppSizes.ultra.value,
             ),

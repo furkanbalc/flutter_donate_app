@@ -2,15 +2,15 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/view/app/widgets/home/auto_page_slider.dart';
-import 'package:flutter_donate_app/presentation/view/app/widgets/home/home_sliver_appbar.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/presentation/view/app/widgets/home/horizontal_product_cart.dart';
-import 'package:flutter_donate_app/presentation/view/app/widgets/home/vertical_product_cart.dart';
+import 'package:flutter_donate_app/presentation/view/home/widgets/auto_page_slider.dart';
+import 'package:flutter_donate_app/presentation/view/home/widgets/home_sliver_appbar.dart';
+import 'package:flutter_donate_app/presentation/view/home/widgets/horizontal_product_cart.dart';
+import 'package:flutter_donate_app/presentation/view/home/widgets/vertical_product_cart.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -30,7 +30,6 @@ class _HomeViewState extends ConsumerState<HomeView> {
   void initState() {
     super.initState();
     profileViewModel = ref.read(profileViewModelImp);
-    print('************************${profileViewModel.getUserInfoFromFirestoreResponse.data.data?.userName}');
   }
 
   @override

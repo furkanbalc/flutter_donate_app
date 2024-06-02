@@ -2,34 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/presentation/view/app/widgets/home/product_card_components.dart';
-import 'package:flutter_donate_app/presentation/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/view/home/widgets/product_card_components.dart';
+import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 
-class HorizontalProductCart extends StatefulWidget {
-  const HorizontalProductCart({super.key});
+class VerticalProductCard extends StatefulWidget {
+  const VerticalProductCard({super.key});
 
   @override
-  State<HorizontalProductCart> createState() => _HorizontalProductCartState();
+  State<VerticalProductCard> createState() => _VerticalProductCardState();
 }
 
-class _HorizontalProductCartState extends State<HorizontalProductCart> with ProductCardComponents {
+class _VerticalProductCardState extends State<VerticalProductCard> with ProductCardComponents{
   @override
   Widget build(BuildContext context) {
     return Card(
       elevation: 0,
       color: AppColors.whiteColor,
       child: Padding(
-        padding: context.paddings.allMedium,
-        child: Row(
+        padding: context.paddings.allMin,
+        child: Column(
           children: [
-            Expanded(
-              flex: 2,
+            Padding(
+              padding: context.paddings.allLow,
               child: ClipRRect(
                 borderRadius: context.borders.circularBorderRadiusLow,
                 child: Stack(
                   children: [
-                    CustomImageWidget(
-                        image: AppAssets.sofa.toPng, fit: BoxFit.cover, height: context.dynamicHeight(.20)),
+                    CustomImageWidget(image: AppAssets.sofa.toPng, fit: BoxFit.cover),
                     Positioned(
                       left: 5,
                       top: 5,
@@ -44,9 +43,8 @@ class _HorizontalProductCartState extends State<HorizontalProductCart> with Prod
                 ),
               ),
             ),
-            context.sizedBoxWidthMedium,
-            Expanded(
-              flex: 3,
+            Padding(
+              padding: context.paddings.allLow,
               child: Column(
                 children: [
                   buildTags(context, ['Bağış', 'Yeni Gibi', 'Mobilya']),

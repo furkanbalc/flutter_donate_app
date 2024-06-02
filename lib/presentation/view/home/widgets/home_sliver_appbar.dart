@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
@@ -10,6 +11,7 @@ import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 import 'package:flutter_donate_app/core/extensions/string_extension.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
 class HomeSliverAppBar extends StatefulWidget {
   const HomeSliverAppBar({
@@ -93,7 +95,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                   Expanded(
                     child: TextField(
                       decoration: InputDecoration(
-                        hintText: 'Search',
+                        hintText: LocaleKeys.home_search.tr(),
                         filled: true,
                         fillColor: AppColors.whiteColor,
                         contentPadding: context.paddings.zero,
