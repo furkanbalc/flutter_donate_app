@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/presentation/view/app/app.dart';
-import 'package:flutter_donate_app/presentation/view/app/home.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
+import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
+import 'package:flutter_donate_app/presentation/view/home/home.dart';
+import 'package:flutter_donate_app/presentation/view/profile/profile.dart';
+import 'package:flutter_donate_app/presentation/view/profile/profile_infos.dart';
 import 'package:flutter_donate_app/presentation/view/splash/onboard.dart';
 import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
 import 'package:go_router/go_router.dart';
@@ -26,11 +28,7 @@ class AppRoutes {
       GoRoute(
         name: AppRouteName.splash.name,
         path: AppRouteName.splash.path,
-
         builder: (context, state) => const SplashView(),
-        redirect: (context, state) {
-
-        },
       ),
       GoRoute(
         name: AppRouteName.onboard.name,
@@ -66,12 +64,25 @@ class AppRoutes {
         name: AppRouteName.app.name,
         path: AppRouteName.app.path,
         builder: (context, state) => const App(),
+        routes: [
+          GoRoute(
+            name: AppRouteName.profileInfos.name,
+            path: AppRouteName.profileInfos.path,
+            builder: (context, state) => const ProfileInfosView(),
+          ),
+        ],
       ),
       GoRoute(
         name: AppRouteName.home.name,
         path: AppRouteName.home.path,
         builder: (context, state) => const HomeView(),
       ),
+      GoRoute(
+        name: AppRouteName.profile.name,
+        path: AppRouteName.profile.path,
+        builder: (context, state) => const ProfileView(),
+      ),
+
     ],
   );
 }

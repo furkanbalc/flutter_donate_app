@@ -7,6 +7,8 @@ enum AppRouteName {
   genderInfo('/genderInfo','GenderInfo'),
   ageInfo('/ageInfo','AgeInfo'),
   home('/home','Home'),
+  profile('/profile','Profile'),
+  profileInfos('profileInfos','ProfileInfos'),
   app('/app','App'),
   ;
 
