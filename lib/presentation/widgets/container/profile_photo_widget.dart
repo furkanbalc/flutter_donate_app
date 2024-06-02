@@ -28,56 +28,53 @@ class ProfilePhotoWidget extends StatelessWidget {
   final String? imagePath;
   final EdgeInsetsGeometry? padding;
 
+  /// URL mi yoksa yerel bir dosya yolu mu olduğunu kontrol eder. URL ise true değilse false döner.
+  bool get isUrl => imagePath != null && Uri.tryParse(imagePath!)?.hasAbsolutePath == true;
+
   @override
   Widget build(BuildContext context) {
+    final double imageSize = height ?? 150;
+    final bool showBadge = badge ?? true;
+
     return InkWell(
       onTap: onTap,
       splashFactory: NoSplash.splashFactory,
       highlightColor: AppColors.transparentColor,
-      child: badge ?? false
+      child: showBadge
           ? Badge(
               offset: const Offset(-15, 120),
               label: const Icon(AppIcons.kEditPhotoIcon, color: Colors.white, size: 20),
               largeSize: 30,
-              padding: const EdgeInsets.all(5),
+              padding: context.paddings.allMin,
               backgroundColor: AppColors.electricViolet,
-              child: Container(
-                height: height ?? 150,
-                width: width ?? 150,
-                margin: context.paddings.allLow,
-                padding: padding ?? context.paddings.allCustom,
-                decoration: BoxDecoration(
-                  color: AppColors.cascadingWhite,
-                  shape: BoxShape.circle,
-                  image:
-                      imagePath == null ? null : DecorationImage(image: FileImage(File(imagePath!)), fit: BoxFit.cover),
-                ),
-                child: imagePath == null
-                    ? CustomSvgWidget(
-                        svg: AppAssets.profile.toSvg,
-                        width: width ?? context.dynamicWidth(.20),
-                      )
-                    : context.sizedBoxShrink,
-              ),
+              child: buildProfileImage(context, imageSize),
             )
-          : Container(
-              height: height ?? 150,
-              width: width ?? 150,
-              margin: context.paddings.allLow,
-              padding: padding ?? context.paddings.allCustom,
-              decoration: BoxDecoration(
-                color: AppColors.cascadingWhite,
-                shape: BoxShape.circle,
-                image:
-                    imagePath == null ? null : DecorationImage(image: FileImage(File(imagePath!)), fit: BoxFit.cover),
+          : buildProfileImage(context, imageSize),
+    );
+  }
+  /// Build photo widget
+  Widget buildProfileImage(BuildContext context, double imageSize) {
+    return Container(
+      height: imageSize,
+      width: imageSize,
+      margin: context.paddings.allLow,
+      padding: padding ?? context.paddings.allCustom,
+      decoration: BoxDecoration(
+        color: AppColors.cascadingWhite,
+        shape: BoxShape.circle,
+        image: imagePath == null
+            ? null
+            : DecorationImage(
+                image: isUrl ? NetworkImage(imagePath!) : FileImage(File(imagePath!)) as ImageProvider,
+                fit: BoxFit.cover,
               ),
-              child: imagePath == null
-                  ? CustomSvgWidget(
-                      svg: AppAssets.profile.toSvg,
-                      width: width ?? context.dynamicWidth(.20),
-                    )
-                  : context.sizedBoxShrink,
-            ),
+      ),
+      child: imagePath == null
+          ? CustomSvgWidget(
+              svg: AppAssets.profile.toSvg,
+              width: width ?? context.dynamicWidth(.20),
+            )
+          : context.sizedBoxShrink,
     );
   }
 }

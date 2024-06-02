@@ -1,5 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
+import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/data/models/user_model.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
@@ -58,7 +61,36 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   @override
   String get getUserEmail => getUserInfoFromFirestoreResponse.data.data!.email!;
 
+  /// get current user full name
+  @override
+  String get getUserFullname => getUserInfoFromFirestoreResponse.data.data!.userName!;
+
   /// get current user name
   @override
-  String get getUsername => getUserInfoFromFirestoreResponse.data.data!.userName!;
+  String get getUserName => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').first;
+
+  /// get current user surname
+  @override
+  String get getUserSurname => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').last;
+
+  /// get current user gender
+  @override
+  String get getUserGender => getUserInfoFromFirestoreResponse.data.data!.gender!;
+
+  /// get current user gender icon
+  @override
+  String get getUserGenderIcon =>
+      getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek' ? AppAssets.man.toSvg : AppAssets.woman.toSvg;
+
+  /// get current user age
+  @override
+  String get getUserAge => getUserInfoFromFirestoreResponse.data.data!.age!;
+
+  /// get current user phone number
+  @override
+  String get getUserPhoneNumber => getUserInfoFromFirestoreResponse.data.data!.phoneNumber!;
+
+  /// get current user photo url
+  @override
+  String get getUserProfilPhoto => getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
 }

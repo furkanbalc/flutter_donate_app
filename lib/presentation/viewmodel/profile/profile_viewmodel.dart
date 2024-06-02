@@ -20,6 +20,27 @@ abstract class ProfileViewModel extends ChangeNotifier {
   /// get current user email
   String get getUserEmail;
 
-  /// get current user name
-  String get getUsername;
+  /// get current user full name
+  String get getUserFullname;
+
+   /// get current user name
+  String get getUserName;
+
+   /// get current user surname
+  String get getUserSurname;
+
+  /// get current user gender
+  String get getUserGender;
+
+  /// get current user gender icon
+  String get getUserGenderIcon;
+
+  /// get current user age
+  String get getUserAge;
+
+  /// get current user phone number
+  String get getUserPhoneNumber;
+
+  /// get current user photo url
+  String get getUserProfilPhoto;
 }
