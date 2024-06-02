@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
@@ -28,8 +27,11 @@ class ProfilePhotoWidget extends StatelessWidget {
   final String? imagePath;
   final EdgeInsetsGeometry? padding;
 
-  /// URL mi yoksa yerel bir dosya yolu mu olduğunu kontrol eder. URL ise true değilse false döner.
-  bool get isUrl => imagePath != null && Uri.tryParse(imagePath!)?.hasAbsolutePath == true;
+  bool get isUrl {
+    if (imagePath == null) return false;
+    final uri = Uri.tryParse(imagePath!);
+    return uri != null && uri.hasAbsolutePath && (uri.scheme == 'http' || uri.scheme == 'https');
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -45,14 +47,14 @@ class ProfilePhotoWidget extends StatelessWidget {
               offset: const Offset(-15, 120),
               label: const Icon(AppIcons.kEditPhotoIcon, color: Colors.white, size: 20),
               largeSize: 30,
-              padding: context.paddings.allMin,
+              padding: const EdgeInsets.all(5),
               backgroundColor: AppColors.electricViolet,
               child: buildProfileImage(context, imageSize),
             )
           : buildProfileImage(context, imageSize),
     );
   }
-  /// Build photo widget
+
   Widget buildProfileImage(BuildContext context, double imageSize) {
     return Container(
       height: imageSize,
@@ -65,7 +67,7 @@ class ProfilePhotoWidget extends StatelessWidget {
         image: imagePath == null
             ? null
             : DecorationImage(
-                image: isUrl ? NetworkImage(imagePath!) : FileImage(File(imagePath!)) as ImageProvider,
+                image: _getImageProvider(),
                 fit: BoxFit.cover,
               ),
       ),
@@ -76,5 +78,15 @@ class ProfilePhotoWidget extends StatelessWidget {
             )
           : context.sizedBoxShrink,
     );
+  }
+
+  ImageProvider _getImageProvider() {
+    if (imagePath == null) {
+      return AssetImage(AppAssets.profile.toSvg);
+    } else if (isUrl) {
+      return NetworkImage(imagePath!);
+    } else {
+      return FileImage(File(imagePath!));
+    }
   }
 }

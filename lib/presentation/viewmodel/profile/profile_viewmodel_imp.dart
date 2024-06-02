@@ -1,14 +1,98 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
-import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/data/models/user_model.dart';
+import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
+  /// VARIABLES
+  late final TextEditingController _nameController;
+  late final TextEditingController _surnameController;
+  late final TextEditingController _emailController;
+  late final TextEditingController _phoneController;
+  late final TextEditingController _genderController;
+  late final TextEditingController _ageController;
+  late String? _profilPhotoUrl;
+  late XFile? _image;
+  late bool _isEditing;
+
+  @override
+  TextEditingController get nameController => _nameController;
+
+  @override
+  TextEditingController get surnameController => _surnameController;
+
+  @override
+  TextEditingController get emailController => _emailController;
+
+  @override
+  TextEditingController get phoneController => _phoneController;
+
+  @override
+  TextEditingController get genderController => _genderController;
+
+  @override
+  TextEditingController get ageController => _ageController;
+
+  @override
+  XFile? get image => _image;
+
+  @override
+  String? get profilPhotoUrl => _profilPhotoUrl;
+
+  @override
+  bool get isEditing => _isEditing;
+
+  @override
+  set image(XFile? value) {
+    _image = value;
+    notifyListeners();
+  }
+
+  @override
+  set profilPhotoUrl(String? value) {
+    _profilPhotoUrl = value;
+    notifyListeners();
+  }
+
+  @override
+  void setIsEditing() {
+    _isEditing = !_isEditing;
+    notifyListeners();
+  }
+
+  /// -- INITSTATE METHOD --
+  @override
+  void init() {
+    _nameController = TextEditingController(text: getUserName);
+    _surnameController = TextEditingController(text: getUserSurname);
+    _emailController = TextEditingController(text: getUserEmail);
+    _phoneController = TextEditingController(text: getUserPhoneNumber);
+    _genderController = TextEditingController(text: getUserGender);
+    _ageController = TextEditingController(text: getUserAge);
+    _profilPhotoUrl = getUserProfilPhoto;
+    _isEditing = false;
+    _image = null;
+  }
+
+  /// -- DEACTIVE METHOD --
+  @override
+  void deactive() {
+    _nameController.clear();
+    _surnameController.clear();
+    _emailController.clear();
+    _phoneController.clear();
+    _genderController.clear();
+    _ageController.clear();
+    _profilPhotoUrl = null;
+    _isEditing = false;
+    _image = null;
+  }
+
   /// -- GET USER INFO --
   ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.loading('loading');
 
@@ -57,6 +141,44 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     }
   }
 
+  ///  -- UPDATE USER INFO --
+  ApiResponse<void> _updateUserInfoResponse = ApiResponse.initial('initial');
+
+  @override
+  ApiResponse<void> get updateUserInfoResponse => _updateUserInfoResponse;
+
+  @override
+  set updateUserInfoResponse(ApiResponse<void> value) {
+    _updateUserInfoResponse = value;
+    notifyListeners();
+  }
+
+  @override
+  Future<void> updateUserInfo() async {
+    updateUserInfoResponse = ApiResponse.loading("loading");
+    try {
+      await injector<UpdateProfileUser>().execute(
+        ParamsForUpdateUser(
+          id: getUserId,
+          name: _nameController.text.trim(),
+          surname: _surnameController.text.trim(),
+          email: _emailController.text.trim(),
+          phoneNumber: _phoneController.text.trim(),
+          gender: _genderController.text,
+          age: _ageController.text,
+          profileImage: image,
+        ),
+      );
+      updateUserInfoResponse = ApiResponse.completed("completed");
+    } catch (e, stackTrace) {
+      updateUserInfoResponse = ApiResponse.error(e, stackTrace);
+    }
+  }
+
+  /// get current user id
+  @override
+  String get getUserId => getUserInfoFromFirestoreResponse.data.data!.id!;
+
   /// get current user email
   @override
   String get getUserEmail => getUserInfoFromFirestoreResponse.data.data!.email!;
@@ -79,8 +201,11 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
 
   /// get current user gender icon
   @override
-  String get getUserGenderIcon =>
-      getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek' ? AppAssets.man.toSvg : AppAssets.woman.toSvg;
+  IconData get getUserGenderIcon => isMan ? AppIcons.kManIcon : AppIcons.kWomanIcon;
+
+  /// get current user gender icon
+  @override
+  bool get isMan => getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek';
 
   /// get current user age
   @override
@@ -93,4 +218,33 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// get current user photo url
   @override
   String get getUserProfilPhoto => getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
+
+  /// -- SELECT IMAGE FROM GALLERY --
+  @override
+  Future getImageFromGallery() async {
+    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    image = selectedImage;
+  }
+
+  /// -- OPEN CAMERA --
+  @override
+  Future getImageFromCamera() async {
+    PermissionStatus permissionStatus = await Permission.camera.status;
+    if (permissionStatus.isGranted) {
+      final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+      image = selectedImage;
+    } else if (permissionStatus.isDenied) {
+      await _requestPermission(Permission.camera);
+      getImageFromCamera();
+    } else {
+      await _requestPermission(Permission.camera);
+    }
+  }
+
+  Future<void> _requestPermission(Permission permission) async {
+    final status = await permission.request();
+    if (status.isDenied || status.isPermanentlyDenied) {
+      openAppSettings();
+    }
+  }
 }

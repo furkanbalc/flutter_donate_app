@@ -1,8 +1,40 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:image_picker/image_picker.dart';
 
 abstract class ProfileViewModel extends ChangeNotifier {
+  /// VARIABLES
+  TextEditingController get nameController;
+
+  TextEditingController get surnameController;
+
+  TextEditingController get emailController;
+
+  TextEditingController get phoneController;
+
+  TextEditingController get genderController;
+
+  TextEditingController get ageController;
+
+  XFile? get image;
+
+  String? get profilPhotoUrl;
+
+  bool get isEditing;
+
+  set image(XFile? value);
+
+  set profilPhotoUrl(String? value);
+
+  void setIsEditing();
+
+  /// -- INITSTATE METHOD --
+  void init();
+
+  /// -- DEACTIVE METHOD --
+  void deactive();
+
   ///  -- GET USER INFO --
   ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse;
 
@@ -17,23 +49,36 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   Future<void> signOut();
 
+  ///  -- UPDATE USER INFO --
+  ApiResponse<void> get updateUserInfoResponse;
+
+  set updateUserInfoResponse(ApiResponse<void> value);
+
+  Future<void> updateUserInfo();
+
+  /// get current user id
+  String get getUserId;
+
   /// get current user email
   String get getUserEmail;
 
   /// get current user full name
   String get getUserFullname;
 
-   /// get current user name
+  /// get current user name
   String get getUserName;
 
-   /// get current user surname
+  /// get current user surname
   String get getUserSurname;
 
   /// get current user gender
   String get getUserGender;
 
   /// get current user gender icon
-  String get getUserGenderIcon;
+  IconData get getUserGenderIcon;
+
+  /// get current user gender is man ?
+  bool get isMan;
 
   /// get current user age
   String get getUserAge;
@@ -43,4 +88,10 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   /// get current user photo url
   String get getUserProfilPhoto;
+
+  /// -- SELECT IMAGE FROM GALLERY --
+  Future getImageFromGallery();
+
+  /// -- OPEN CAMERA --
+  Future getImageFromCamera();
 }

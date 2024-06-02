@@ -60,4 +60,5 @@ void initializeDependencies() async {
   injector.registerLazySingleton<SignOut>(() => SignOut(profileRepository: injector()));
   injector.registerLazySingleton<SaveUserInfoToFirestore>(() => SaveUserInfoToFirestore(authRepository: injector()));
   injector.registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
+  injector.registerLazySingleton<UpdateProfileUser>(() => UpdateProfileUser(profileRepository: injector()));
 }

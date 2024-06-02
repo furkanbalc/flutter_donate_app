@@ -79,6 +79,7 @@ abstract class  LocaleKeys {
   static const profile_sign_out = 'profile.sign_out';
   static const profile_delete_account = 'profile.delete_account';
   static const profile_save = 'profile.save';
+  static const profile_edit = 'profile.edit';
   static const profile = 'profile';
 
 }

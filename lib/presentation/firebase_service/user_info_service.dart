@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/extensions/widget_animated_navigation.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:go_router/go_router.dart';

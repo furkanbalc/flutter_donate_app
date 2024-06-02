@@ -76,7 +76,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
                     ),
                   ),
                   context.sizedBoxWidthNormal,
-                  CustomSvgWidget(svg: _profileViewModel.getUserGenderIcon),
+                  Icon(_profileViewModel.getUserGenderIcon,size: 20,color: _profileViewModel.isMan ? AppColors.blueTang: AppColors.tomatoFrog),
+                  context.sizedBoxWidthLow,
                   Text(
                     _profileViewModel.getUserAge,
                     style: context.textStyles.titleSmall.copyWith(

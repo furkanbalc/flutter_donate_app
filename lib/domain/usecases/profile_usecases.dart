@@ -24,6 +24,7 @@ class GetUserInfoFromFirestore extends BaseUseCase<Future<UserEntity>, ParamsFor
 class ParamsBase {
   const ParamsBase();
 }
+
 class SignOut extends BaseUseCase<Future<void>, ParamsBase> {
   final ProfileRepository profileRepository;
 
@@ -32,5 +33,48 @@ class SignOut extends BaseUseCase<Future<void>, ParamsBase> {
   @override
   Future<void> execute(ParamsBase params) async {
     await profileRepository.signOut();
+  }
+}
+
+/// -- UPDATE USER INFO --
+class ParamsForUpdateUser {
+  final String id;
+  final String name;
+  final String surname;
+  final String email;
+  final String phoneNumber;
+  final String gender;
+  final String age;
+  final dynamic profileImage;
+
+  ParamsForUpdateUser({
+    required this.id,
+    required this.name,
+    required this.surname,
+    required this.email,
+    required this.phoneNumber,
+    required this.gender,
+    required this.age,
+    required this.profileImage,
+  });
+}
+
+class UpdateProfileUser extends BaseUseCase<Future<void>, ParamsForUpdateUser> {
+  final ProfileRepository profileRepository;
+
+  UpdateProfileUser({required this.profileRepository});
+
+  @override
+  Future<void> execute(ParamsForUpdateUser params) async {
+    await profileRepository.updateUserInfo(
+      id: params.id,
+      name: params.name,
+      surname: params.surname,
+      email: params.email,
+      phoneNumber: params.phoneNumber,
+      gender: params.gender,
+      age: params.id,
+      profileImage: params.profileImage,
+    );
   }
 }

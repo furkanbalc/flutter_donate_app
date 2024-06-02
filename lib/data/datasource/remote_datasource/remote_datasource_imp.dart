@@ -19,7 +19,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
   final FirebaseStorage firebaseStorage;
   final StorageService storageService;
 
-   UserCredential? userCredential;
+  UserCredential? userCredential;
 
   /// -- SIGN UP --
   @override
@@ -103,5 +103,44 @@ class RemoteDataSourceImp implements RemoteDataSource {
     DocumentSnapshot<Map<String, dynamic>> userModelSnapshot =
         await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).get();
     return UserModel.fromJson(userModelSnapshot.data());
+  }
+
+  /// -- UPDATE USER INFO --
+  @override
+  Future<void> updateUserInfo({
+    required String id,
+    required String name,
+    required String surname,
+    required String email,
+    required String phoneNumber,
+    required String gender,
+    required String age,
+    required dynamic profileImage,
+  }) async {
+    /// -- profile image upload firebase storage
+    String profileImageUrl = profileImage is String ? profileImage : '';
+    if (profileImage != null && profileImage is! String) {
+      profileImageUrl = await storageService.storeFileToFirebase(
+        ref: 'profileImage/$id',
+        file: profileImage,
+      );
+    }
+
+    Map<String, dynamic> user = {
+      "data": {
+        "id": id,
+        "fullName": {
+          "name": name,
+          "surname": surname,
+        },
+        "email": email.trim(),
+        "phoneNumber": phoneNumber,
+        "gender": gender,
+        "age": age,
+        "profileImgUrl": profileImageUrl,
+      },
+    };
+
+    await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).update(user);
   }
 }

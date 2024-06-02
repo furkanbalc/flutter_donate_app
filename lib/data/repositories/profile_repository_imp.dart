@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
@@ -15,9 +14,25 @@ class ProfileRepositoryImp implements ProfileRepository {
     UserModel userModel = await remoteDataSource.getUserInfoFromFirestore(id: id);
     return userModel.convertToEntity();
   }
+
   ///  -- SIGN OUT --
   @override
   Future<void> signOut() async {
+    await remoteDataSource.signOut();
+  }
+
+  /// -- UPDATE USER INFO --
+  @override
+  Future<void> updateUserInfo({
+    required String id,
+    required String name,
+    required String surname,
+    required String email,
+    required String phoneNumber,
+    required String gender,
+    required String age,
+    required dynamic profileImage,
+  }) async {
     await remoteDataSource.signOut();
   }
 }

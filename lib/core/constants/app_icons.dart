@@ -17,6 +17,12 @@ class AppIcons {
   static const IconData kUserFilledIcon = Icons.person;
   //
   static const IconData kInfoIcon = Iconsax.info_circle;
+  static const IconData kLikeIcon = Iconsax.like_1;
+  static const IconData kLockIcon = Iconsax.lock;
+  static const IconData kManIcon = Iconsax.man;
+  static const IconData kWomanIcon = Iconsax.woman;
+  static const IconData kEmailIcon = Iconsax.sms;
+  static const IconData kPhoneIcon = Iconsax.mobile4;
 
   static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
   static const IconData kStatisticFilledIcon = Iconsax.chart_215;

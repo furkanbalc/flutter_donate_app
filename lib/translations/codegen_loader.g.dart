@@ -100,7 +100,8 @@ class CodegenLoader extends AssetLoader{
     "contact_us": "Contact Us",
     "sign_out": "Sign Out",
     "delete_account": "Delete Account",
-    "save": "Save"
+    "save": "Save",
+    "edit": "Edit"
   }
 };
 static const Map<String,dynamic> tr = {
@@ -189,7 +190,8 @@ static const Map<String,dynamic> tr = {
     "contact_us": "Bize Ulaşın",
     "sign_out": "Çıkış Yap",
     "delete_account": "Hesabı Sil",
-    "save": "Kaydet"
+    "save": "Kaydet",
+    "edit": "Düzenle"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};

@@ -101,6 +101,7 @@ class CustomTextFormField extends StatelessWidget {
           readOnly: readOnly ?? false,
           style: context.textStyles.titleSmall.copyWith(color: AppColors.blackColor, fontWeight: FontWeight.w400),
           decoration: InputDecoration(
+            fillColor: fillColor,
             contentPadding: contentPadding ?? context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
             hintText: hintText,
             labelText: isTitle ?? false ? labelText : null ,

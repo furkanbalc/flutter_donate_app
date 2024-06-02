@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class CustomSvgWidget extends StatelessWidget {

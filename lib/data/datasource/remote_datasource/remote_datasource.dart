@@ -24,4 +24,16 @@ abstract class RemoteDataSource {
   Future<UserModel> getUserInfoFromFirestore({
     required String id,
   });
+
+  /// -- UPDATE USER INFO --
+  Future<void> updateUserInfo({
+    required String id,
+    required String name,
+    required String surname,
+    required String email,
+    required String phoneNumber,
+    required String gender,
+    required String age,
+    required dynamic profileImage,
+  });
 }

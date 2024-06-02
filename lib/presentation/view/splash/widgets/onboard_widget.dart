@@ -2,7 +2,6 @@ part of '../onboard.dart';
 
 class _OnboardWidget extends ConsumerStatefulWidget {
   const _OnboardWidget({
-    super.key,
     required this.onBoardingModel,
     required this.splashViewModel,
   });
