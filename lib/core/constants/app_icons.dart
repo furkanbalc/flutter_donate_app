@@ -23,6 +23,7 @@ class AppIcons {
   static const IconData kWomanIcon = Iconsax.woman;
   static const IconData kEmailIcon = Iconsax.sms;
   static const IconData kPhoneIcon = Iconsax.mobile4;
+  static const IconData kTickIcon = Iconsax.tick_square;
 
   static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
   static const IconData kStatisticFilledIcon = Iconsax.chart_215;
