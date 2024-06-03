@@ -4,6 +4,7 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,21 +19,32 @@ class SplashView extends ConsumerStatefulWidget {
 
 class _SplashViewState extends ConsumerState<SplashView> {
   late SplashViewModel splashViewModel;
+  late ProfileViewModel profileViewModel;
 
   @override
   void initState() {
     super.initState();
     splashViewModel = ref.read(splashViewModelImp);
+    profileViewModel = ref.read(profileViewModelImp);
     init();
   }
 
   init() async {
+    splashViewModel.isLoggedIn();
     splashViewModel.getInitialScreen().then((value) {
       Future.delayed(const Duration(seconds: 2)).then((value) {
         /// onboard ekrani bir kere gorulduyse true doner ve
         if (splashViewModel.getInitialScreenResponse.data) {
-          /// kullanici login ekrani ile devam eder
-          context.goNamed(AppRouteName.signin.name);
+          /// kullanıcı logiysa yani içerde kullanıcı varsa true döner
+          if (splashViewModel.isLoggedInResponse.data != null) {
+            /// uygulama başlar
+            profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!).then((value) {
+              context.goNamed(AppRouteName.app.name);
+            });
+          } else {
+            /// kullanici login ekrani ile devam eder
+            context.goNamed(AppRouteName.signin.name);
+          }
         } else {
           /// onboard gorunmemis demektir onboarda atar
           context.goNamed(AppRouteName.onboard.name);

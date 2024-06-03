@@ -5,6 +5,8 @@ import 'package:flutter_donate_app/data/models/on_board_model.dart';
 abstract class SplashViewModel with ChangeNotifier {
   ApiResponse<bool> get getInitialScreenResponse;
 
+  ApiResponse<String?> get isLoggedInResponse;
+
   ApiResponse<void> get setInitialScreenResponse;
 
   PageController get pageController;
@@ -25,11 +27,15 @@ abstract class SplashViewModel with ChangeNotifier {
 
   set getInitialScreenResponse(ApiResponse<bool> value);
 
+  set isLoggedInResponse(ApiResponse<String?> value);
+
   set setInitialScreenResponse(ApiResponse<void> value);
 
   Future<void> getInitialScreen();
 
   Future<void> setInitialScreen();
+
+  Future<void> isLoggedIn();
 
   void onPageChanged(int pageNumber);
 }

@@ -21,6 +21,13 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
   UserCredential? userCredential;
 
+  /// -- IS LOGGED IN --
+  @override
+  Future<String?> isUserLoggedIn() async {
+    final user = firebaseAuth.currentUser;
+    return user?.uid;
+  }
+
   /// -- SIGN UP --
   @override
   Future<void> signUp({required String email, required String password}) async {

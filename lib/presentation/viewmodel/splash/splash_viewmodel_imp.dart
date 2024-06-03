@@ -2,12 +2,14 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
+import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/splash_usecase.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 
 class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   ApiResponse<bool> _getInitialScreenResponse = ApiResponse.loading('loading');
+  ApiResponse<String?> _isLoggedInResponse = ApiResponse.loading('loading');
   ApiResponse<void> _setInitialScreenResponse = ApiResponse.loading('loading');
   final PageController _pageController = PageController(initialPage: 0);
   final List<OnBoardingModel> _pages = OnBoardingItems().onBoarditems;
@@ -29,6 +31,9 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   ApiResponse<bool> get getInitialScreenResponse => _getInitialScreenResponse;
 
   @override
+  ApiResponse<String?> get isLoggedInResponse => _isLoggedInResponse;
+
+  @override
   ApiResponse<void> get setInitialScreenResponse => _setInitialScreenResponse;
 
   @override
@@ -47,12 +52,28 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   }
 
   @override
+  set isLoggedInResponse(ApiResponse<String?> value) {
+    _isLoggedInResponse = value;
+    notifyListeners();
+  }
+
+  @override
   set setInitialScreenResponse(ApiResponse<void> value) {
     _setInitialScreenResponse = value;
     notifyListeners();
   }
 
   /// -- SPLASH --
+  @override
+  Future<void> isLoggedIn() async {
+    try {
+      String? currentUserId = await injector<IsLoggedIn>().execute(ParamsForAny());
+      isLoggedInResponse = ApiResponse.completed(currentUserId);
+    } catch (e, stackTrace) {
+      isLoggedInResponse = ApiResponse.error(e, stackTrace);
+    }
+  }
+
   @override
   Future<void> getInitialScreen() async {
     try {

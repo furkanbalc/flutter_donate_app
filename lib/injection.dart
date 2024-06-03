@@ -48,17 +48,22 @@ void initializeDependencies() async {
   injector.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImp(box: injector()));
 
   // Repository
-  injector.registerLazySingleton<SplashRepository>(() => SplashRepositoryImp(localDataSource: injector()));
+  injector.registerLazySingleton<SplashRepository>(() => SplashRepositoryImp(
+        localDataSource: injector(),
+        remoteDataSource: injector(),
+      ));
   injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImp(remoteDataSource: injector()));
   injector.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImp(remoteDataSource: injector()));
 
   // UseCases
+  injector.registerLazySingleton<IsLoggedIn>(() => IsLoggedIn(splashRepository: injector()));
   injector.registerLazySingleton<GetInitialScreen>(() => GetInitialScreen(splashRepository: injector()));
   injector.registerLazySingleton<SetInitialScreen>(() => SetInitialScreen(splashRepository: injector()));
   injector.registerLazySingleton<SignUp>(() => SignUp(authRepository: injector()));
   injector.registerLazySingleton<SignIn>(() => SignIn(authRepository: injector()));
   injector.registerLazySingleton<SignOut>(() => SignOut(profileRepository: injector()));
   injector.registerLazySingleton<SaveUserInfoToFirestore>(() => SaveUserInfoToFirestore(authRepository: injector()));
-  injector.registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
+  injector
+      .registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
   injector.registerLazySingleton<UpdateProfileUser>(() => UpdateProfileUser(profileRepository: injector()));
 }

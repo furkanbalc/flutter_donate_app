@@ -1,6 +1,9 @@
 import 'package:flutter_donate_app/data/models/user_model.dart';
 
 abstract class RemoteDataSource {
+  /// -- IS LOGGED IN --
+  Future<String?> isUserLoggedIn();
+
   /// -- SIGN UP --
   Future<void> signUp({required String email, required String password});
 
