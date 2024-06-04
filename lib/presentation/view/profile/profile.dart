@@ -1,8 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
@@ -11,6 +12,8 @@ import 'package:flutter_donate_app/presentation/view/profile/widgets/profile_lis
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
+import 'package:flutter_donate_app/presentation/widgets/shimmer_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -43,60 +46,74 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
 
   /// Profile Photo & Username & Email & Gender & Age
   Widget _buildProfileHeader(BuildContext context) {
-    return Container(
-      padding: context.paddings.allLow,
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        image: DecorationImage(
-          fit: BoxFit.fitWidth,
-          colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
-          image: AssetImage(AppAssets.linesBg.toPng),
-        ),
-      ),
-      child: Row(
-        children: [
-          ProfilePhotoWidget(
-            badge: false,
-            width: context.dynamicWidth(.25),
-            height: context.dynamicWidth(.25),
-            padding: context.paddings.allUltra,
-            imagePath: _profileViewModel.getUserProfilPhoto,
-            onTap: () {},
+    switch (_profileViewModel.getUserInfoFromFirestoreResponse.status) {
+      case Status.loading:
+        return const ShimmerWidget();
+      case Status.completed:
+        return Container(
+          padding: context.paddings.allLow,
+          decoration: BoxDecoration(
+            color: AppColors.whiteColor,
+            image: DecorationImage(
+              fit: BoxFit.fitWidth,
+              colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
+              image: AssetImage(AppPng.linesBg.toPng),
+            ),
           ),
-          context.sizedBoxWidthMedium,
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          child: Row(
             children: [
-              Row(
+              ProfilePhotoWidget(
+                badge: false,
+                width: context.dynamicWidth(.25),
+                height: context.dynamicWidth(.25),
+                padding: context.paddings.allUltra,
+                imagePath: _profileViewModel.getUserProfilPhoto,
+                onTap: () {},
+              ),
+              context.sizedBoxWidthMedium,
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    _profileViewModel.getUserFullname,
-                    style: context.textStyles.titleMedium.copyWith(
-                      fontWeight: FontWeight.w800,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        _profileViewModel.getUserFullname,
+                        style: context.textStyles.titleMedium.copyWith(
+                          fontWeight: FontWeight.w800,
+                        ),
+                      ),
+                      context.sizedBoxWidthNormal,
+                      Icon(_profileViewModel.getUserGenderIcon,
+                          size: 20, color: _profileViewModel.isMan ? AppColors.blueTang : AppColors.tomatoFrog),
+                      context.sizedBoxWidthLow,
+                      Text(
+                        _profileViewModel.getUserAge,
+                        style: context.textStyles.titleSmall.copyWith(
+                          color: AppColors.steel,
+                        ),
+                      ),
+                    ],
                   ),
-                  context.sizedBoxWidthNormal,
-                  Icon(_profileViewModel.getUserGenderIcon,size: 20,color: _profileViewModel.isMan ? AppColors.blueTang: AppColors.tomatoFrog),
-                  context.sizedBoxWidthLow,
                   Text(
-                    _profileViewModel.getUserAge,
+                    _profileViewModel.getUserEmail,
                     style: context.textStyles.titleSmall.copyWith(
                       color: AppColors.steel,
                     ),
                   ),
                 ],
               ),
-              Text(
-                _profileViewModel.getUserEmail,
-                style: context.textStyles.titleSmall.copyWith(
-                  color: AppColors.steel,
-                ),
-              ),
             ],
           ),
-        ],
-      ),
-    );
+        );
+      case Status.error:
+        return  CustomErrorWidget(
+          onPressed: () {
+
+          },
+        );
+      default:
+        return const SizedBox();
+    }
   }
 
   /// Profile Body

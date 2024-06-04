@@ -1,12 +1,11 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/enums/app_svg.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 
 class ProfilePhotoWidget extends StatelessWidget {
@@ -64,25 +63,26 @@ class ProfilePhotoWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: AppColors.cascadingWhite,
         shape: BoxShape.circle,
-        image: imagePath == null
+        image: imagePath == null || imagePath!.isEmpty
             ? null
             : DecorationImage(
                 image: _getImageProvider(),
                 fit: BoxFit.cover,
               ),
       ),
-      child: imagePath == null
+      child: imagePath == null || imagePath!.isEmpty
           ? CustomSvgWidget(
-              svg: AppAssets.profile.toSvg,
+              svg: AppSvg.profile.toSvg,
               width: width ?? context.dynamicWidth(.20),
             )
           : context.sizedBoxShrink,
     );
   }
 
+  /// resim hangi formatta gösterilecek profil resmi seçerken önemli
   ImageProvider _getImageProvider() {
-    if (imagePath == null) {
-      return AssetImage(AppAssets.profile.toSvg);
+    if (imagePath == null || imagePath!.isEmpty) {
+      return AssetImage(AppSvg.profile.toSvg);
     } else if (isUrl) {
       return NetworkImage(imagePath!);
     } else {
