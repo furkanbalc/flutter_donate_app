@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/enums/app_png.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/product_card_components.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
@@ -29,7 +29,7 @@ class _HorizontalProductCartState extends State<HorizontalProductCart> with Prod
                 child: Stack(
                   children: [
                     CustomImageWidget(
-                        image: AppAssets.sofa.toPng, fit: BoxFit.cover, height: context.dynamicHeight(.20)),
+                        image: AppPng.sofa.toPng, fit: BoxFit.cover, height: context.dynamicHeight(.20)),
                     Positioned(
                       left: 5,
                       top: 5,

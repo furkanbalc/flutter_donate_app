@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/extensions/context_borders.dart';
@@ -8,7 +8,6 @@ import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 
@@ -59,7 +58,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                     borderRadius: context.borders.circularBorderRadiusLow,
                                     child: Stack(
                                       children: [
-                                        CustomImageWidget(image: AppAssets.sofa.toPng, fit: BoxFit.cover),
+                                        CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
                                         Positioned(
                                           left: 5,
                                           top: 5,
@@ -165,7 +164,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                   color: AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: CustomSvgWidget(svg: AppAssets.profile.toSvg, width: 20),
+                                                child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(
@@ -240,7 +239,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                     borderRadius: context.borders.circularBorderRadiusLow,
                                     child: Stack(
                                       children: [
-                                        CustomImageWidget(image: AppAssets.sofa.toPng, fit: BoxFit.cover),
+                                        CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
                                         Positioned(
                                           left: 5,
                                           top: 5,
@@ -346,7 +345,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                   color: AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: CustomSvgWidget(svg: AppAssets.profile.toSvg, width: 20),
+                                                child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(

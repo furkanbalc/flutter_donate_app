@@ -1,14 +1,13 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/context_borders.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
@@ -38,7 +37,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
             Positioned(
               left: 0,
               right: 0,
-              child: CustomImageWidget(image: AppAssets.linesBg.toPng),
+              child: CustomImageWidget(image: AppPng.linesBg.toPng),
             ),
             Padding(
               padding: context.paddings.allMedium,

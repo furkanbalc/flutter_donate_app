@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/enums/app_svg.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 
@@ -102,7 +102,7 @@ mixin ProductCardComponents {
                 color: AppColors.cascadingWhite,
                 shape: BoxShape.circle,
               ),
-              child: CustomSvgWidget(svg: AppAssets.profile.toSvg, width: 16),
+              child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 16),
             ),
             context.sizedBoxWidthLow,
             Text(username, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),

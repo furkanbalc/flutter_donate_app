@@ -1,16 +1,17 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/enums/app_svg.dart';
 import 'package:flutter_donate_app/core/enums/auth_method.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/core/extensions/string_extension.dart';
+import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_text_rich_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
+import 'package:go_router/go_router.dart';
 
 part 'auth_method_button.dart';
 
@@ -66,15 +67,15 @@ class AuthFooter extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         /// Apple Method Button
-        _AuthMethodButton(icon: AppAssets.apple.toSvg),
+        _AuthMethodButton(icon: AppSvg.apple.toSvg),
         context.sizedBoxWidthMedium,
 
         /// Google Method Button
-        _AuthMethodButton(icon: AppAssets.google.toSvg),
+        _AuthMethodButton(icon: AppSvg.google.toSvg),
         context.sizedBoxWidthMedium,
 
         /// Facebook Method Button
-        _AuthMethodButton(icon: AppAssets.facebook.toSvg),
+        _AuthMethodButton(icon: AppSvg.facebook.toSvg),
       ],
     );
   }
@@ -82,7 +83,9 @@ class AuthFooter extends StatelessWidget {
   /// Text Rich Button
   Widget _buildAuthTextRichButton(BuildContext context) {
     return AuthTextRichButton(
-      onPressed: () {},
+      onPressed: () {
+        isSignup ? context.goNamed(AppRouteName.signin.name) : context.goNamed(AppRouteName.signup.name);
+      },
       text: isSignup
           ? '${LocaleKeys.auth_dont_have_an_account.tr()} '
           : '${LocaleKeys.auth_already_have_an_account.tr()} ',

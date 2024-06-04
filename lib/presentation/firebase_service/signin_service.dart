@@ -16,14 +16,14 @@ mixin SigninService on State<SigninView> {
     if (signinViewModel.formKey.currentState != null && signinViewModel.formKey.currentState!.validate()) {
       signinViewModel.signIn().then((value) async {
         if (signinViewModel.signInResponse.isCompleted()) {
+          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
+            context.goNamed(AppRouteName.app.name);
+          });
           Utils.successSnackBar(
             context: context,
             title: 'Başarılı',
             message: 'Giriş Başarılı',
           );
-          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
-            context.goNamed(AppRouteName.app.name);
-          });
         } else {
           Utils.errorSnackBar(
             context: context,

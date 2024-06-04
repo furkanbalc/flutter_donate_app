@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -82,7 +81,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
     return Align(
       alignment: Alignment.topCenter,
       child: CustomImageWidget(
-        image: AppAssets.appLogo.toPng,
+        image: AppPng.appLogo.toPng,
         width: context.dynamicWidth(.5),
       ),
     );

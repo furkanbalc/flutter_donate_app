@@ -10,9 +10,11 @@ class AuthBottomButton extends StatelessWidget {
     super.key,
      this.onPressed,
      this.text,
+     this.child,
   });
 
   final Function()? onPressed;
+  final Widget? child;
   final String? text;
 
   @override
@@ -31,7 +33,7 @@ class AuthBottomButton extends StatelessWidget {
           ),
         ],
       ),
-      child: CustomElevatedButton(
+      child: child ?? CustomElevatedButton(
         onPressed: onPressed,
         text: text ??  LocaleKeys.user_info_apply_and_continue.tr(),
       ),

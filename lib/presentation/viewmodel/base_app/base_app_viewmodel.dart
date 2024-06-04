@@ -9,5 +9,7 @@ abstract class BaseAppViewModel extends ChangeNotifier {
 
   Widget body();
 
+  void reset();
+
   bool get isSeenFabButton;
 }

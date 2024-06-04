@@ -88,6 +88,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           keyboardType: TextInputType.emailAddress,
           autofillHints: const [AutofillHints.email],
           textInputAction: TextInputAction.next,
+          unFocus: true,
         ),
         context.sizedBoxHeightMedium,
 
@@ -103,6 +104,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           autofillHints: const [AutofillHints.email],
           textInputAction: TextInputAction.next,
           obscureText: _signupViewModel.passObscure,
+          unFocus: true,
           onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         ),
         context.sizedBoxHeightMedium,
@@ -118,6 +120,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           keyboardType: TextInputType.emailAddress,
           autofillHints: const [AutofillHints.email],
           textInputAction: TextInputAction.done,
+          unFocus: true,
           obscureText: _signupViewModel.confirmPassObscure,
         ),
         context.sizedBoxHeightMedium,

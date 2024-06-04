@@ -57,29 +57,34 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
         /// Age Select Picker
         SizedBox(
           height: context.dynamicHeight(.6),
-          child: CupertinoPicker.builder(
-            squeeze: 1.5,
-            itemExtent: 80,
-            onSelectedItemChanged: (value) {
-              _personalInfoViewModel.age = value + 18;
-            },
-            childCount: 73,
-            itemBuilder: (context, index) {
-              var age = index + 18;
-              return Center(
-                child: Text(
-                  age.toString(),
-                  style: TextStyle(
-                    fontSize: _personalInfoViewModel.age == index + 18 ? 65 : 60,
-                    fontWeight: _personalInfoViewModel.age == index + 18 ? FontWeight.bold : FontWeight.w800,
-                    color: _personalInfoViewModel.age == index + 18 ? AppColors.electricViolet : null,
-                  ),
-                ),
-              );
-            },
-          ),
+          child: _buildAgeSelectPicker(),
         ),
       ],
+    );
+  }
+
+  /// Age Select Picker
+  Widget _buildAgeSelectPicker() {
+    return CupertinoPicker.builder(
+      squeeze: 1.5,
+      itemExtent: 80,
+      onSelectedItemChanged: (value) {
+        _personalInfoViewModel.age = value + 18;
+      },
+      childCount: 73,
+      itemBuilder: (context, index) {
+        var age = index + 18;
+        return Center(
+          child: Text(
+            age.toString(),
+            style: TextStyle(
+              fontSize: _personalInfoViewModel.age == index + 18 ? 65 : 60,
+              fontWeight: _personalInfoViewModel.age == index + 18 ? FontWeight.bold : FontWeight.w800,
+              color: _personalInfoViewModel.age == index + 18 ? AppColors.electricViolet : null,
+            ),
+          ),
+        );
+      },
     );
   }
 

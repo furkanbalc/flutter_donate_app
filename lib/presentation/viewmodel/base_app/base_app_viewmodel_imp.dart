@@ -15,6 +15,11 @@ class BaseAppViewModelImp extends ChangeNotifier implements BaseAppViewModel {
   @override
   int get selectedIndex => _selectedIndex;
 
+  set selectedIndex(int value) {
+    _selectedIndex = value;
+    notifyListeners();
+  }
+
   @override
   void onDestinationSelected(int index) {
     _selectedIndex = index;
@@ -35,6 +40,11 @@ class BaseAppViewModelImp extends ChangeNotifier implements BaseAppViewModel {
       default:
         return const Center(child: Text('Home'));
     }
+  }
+
+  @override
+  void reset() {
+    _selectedIndex = 0;
   }
 
   @override

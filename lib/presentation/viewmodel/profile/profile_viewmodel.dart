@@ -32,8 +32,8 @@ abstract class ProfileViewModel extends ChangeNotifier {
   /// -- INITSTATE METHOD --
   void init();
 
-  /// -- DEACTIVE METHOD --
-  void deactive();
+  // /// -- DEACTIVE METHOD --
+  // void deactive();
 
   ///  -- GET USER INFO --
   ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse;

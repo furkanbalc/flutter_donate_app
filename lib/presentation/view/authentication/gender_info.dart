@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/enums/app_svg.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
@@ -57,32 +57,41 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
           padding: context.paddings.onlyBottomUltra,
           child: Column(
             children: [
-              SelectGenderWidget(
-                gender: 'Erkek',
-                svg: AppAssets.man.toSvg,
-                onTap: () {
-                  _personalInfoViewModel.gender = 'Erkek';
-                },
-                isSelect: _personalInfoViewModel.gender == 'Erkek',
-              ),
+              _buildManButton(),
               context.sizedBoxHeightCustom,
-              SelectGenderWidget(
-                gender: 'Kadın',
-                svg: AppAssets.woman.toSvg,
-                onTap: () {
-                  _personalInfoViewModel.gender = 'Kadın';
-                },
-                isSelect: _personalInfoViewModel.gender == 'Kadın',
-              ),
+              _buildWomanButton(),
             ],
           ),
         ),
       ],
     );
   }
+  /// Woman Button
+  Widget _buildWomanButton() {
+    return SelectGenderWidget(
+      gender: LocaleKeys.user_info_woman.tr(),
+      svg: AppSvg.woman.toSvg,
+      onTap: () {
+        _personalInfoViewModel.gender = LocaleKeys.user_info_woman.tr();
+      },
+      isSelect: _personalInfoViewModel.gender == LocaleKeys.user_info_woman.tr(),
+    );
+  }
+
+  /// Man Button
+  Widget _buildManButton() {
+    return SelectGenderWidget(
+      gender: LocaleKeys.user_info_man.tr(),
+      svg: AppSvg.man.toSvg,
+      onTap: () {
+        _personalInfoViewModel.gender = LocaleKeys.user_info_man.tr();
+      },
+      isSelect: _personalInfoViewModel.gender == LocaleKeys.user_info_man.tr(),
+    );
+  }
 
   /// Apply Button
-  AuthBottomButton _getApplyButton(BuildContext context) {
+  Widget _getApplyButton(BuildContext context) {
     return AuthBottomButton(
       onPressed: _personalInfoViewModel.gender.isNotEmpty
           ? () {

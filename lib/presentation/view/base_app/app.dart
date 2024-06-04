@@ -24,6 +24,12 @@ class _AppState extends ConsumerState<App> {
   }
 
   @override
+  void deactivate() {
+    super.deactivate();
+    baseAppViewModel.reset();
+  }
+
+  @override
   Widget build(BuildContext context) {
     baseAppViewModel = ref.watch(baseAppViewModelImp);
     return Scaffold(

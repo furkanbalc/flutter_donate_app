@@ -73,7 +73,7 @@ class UpdateProfileUser extends BaseUseCase<Future<void>, ParamsForUpdateUser> {
       email: params.email,
       phoneNumber: params.phoneNumber,
       gender: params.gender,
-      age: params.id,
+      age: params.age,
       profileImage: params.profileImage,
     );
   }

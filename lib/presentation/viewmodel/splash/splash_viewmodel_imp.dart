@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
-import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/splash_usecase.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';

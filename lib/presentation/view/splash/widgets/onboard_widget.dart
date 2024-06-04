@@ -30,7 +30,7 @@ class _OnboarWidgetState extends ConsumerState<_OnboardWidget> {
           padding: context.paddings.onlyBottomUltra,
           child: Center(
             child: CustomImageWidget(
-              image: AppAssets.ellipsis.toPng,
+              image: AppPng.ellipsis.toPng,
               color: AppColors.electricViolet,
               width: context.dynamicWidth(.85),
             ),

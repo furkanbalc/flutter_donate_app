@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 import 'package:flutter_donate_app/main.dart';
@@ -15,6 +14,7 @@ import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmo
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:toastification/toastification.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
@@ -38,7 +38,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [ HomeSliverAppBar(profileViewModel: profileViewModel)];
+          return [HomeSliverAppBar(profileViewModel: profileViewModel)];
         },
         body: CustomScrollView(
           slivers: [
@@ -64,7 +64,32 @@ class _HomeViewState extends ConsumerState<HomeView> {
           return Column(
             children: [
               CustomIconButton(
-                onPressed: () {},
+                onPressed: () {
+                  toastification.show(
+                    context: context,
+                    type: ToastificationType.success,
+                    style: ToastificationStyle.fillColored,
+                    autoCloseDuration: (Durations.extralong4) * 4,
+                    title: const Text('Hello, World!'),
+                    description: RichText(text: const TextSpan(text: 'This is a sample toast message. ')),
+                    alignment: Alignment.topRight,
+                    direction: TextDirection.ltr,
+                    animationDuration: Durations.medium2,
+                    animationBuilder: (context, animation, alignment, child) {
+                      return FadeTransition(
+                        opacity: kAlwaysCompleteAnimation,
+                        child: child,
+                      );
+                    },
+                    icon: const Icon(Iconsax.tick_square),
+                    primaryColor: Colors.green,
+                    foregroundColor: Colors.black,
+                    closeButtonShowType: CloseButtonShowType.always,
+                    closeOnClick: true,
+                    dragToClose: true,
+                    showProgressBar: false,
+                  );
+                },
                 backgroundColor: AppColors.electricViolet,
                 shape: BoxShape.circle,
                 icon: Icon(Iconsax.monitor, color: AppColors.whiteColor, size: AppSizes.custom.value),

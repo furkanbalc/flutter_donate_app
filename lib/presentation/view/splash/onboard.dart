@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/core/enums/app_sizes.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
 import 'package:flutter_donate_app/main.dart';
@@ -11,7 +11,6 @@ import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_butto
 import 'package:flutter_donate_app/presentation/widgets/button/custom_text_button.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
@@ -118,7 +117,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
           /// Next Button
           CustomIconButton(
             onPressed: () => splashViewModel.isLastPage
-                ? context.goNamed(AppRouteName.app.name)
+                ? context.goNamed(AppRouteName.signin.name)
                 : splashViewModel.animateToNextPage(),
             icon: Icon(
               splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,

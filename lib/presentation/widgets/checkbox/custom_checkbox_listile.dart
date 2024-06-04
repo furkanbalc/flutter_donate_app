@@ -7,7 +7,7 @@ class CustomCheckBoxListTile extends FormField<bool> {
     super.key,
   }) : super(
     initialValue: false,
-    validator: (bool? value) => value == false ? null : '',
+    validator: (bool? value) => value == false ? '' : null,
     builder: (FormFieldState<bool> state) {
       return Row(
         children: [

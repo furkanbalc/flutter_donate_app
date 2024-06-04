@@ -33,6 +33,15 @@ class ProfileRepositoryImp implements ProfileRepository {
     required String age,
     required dynamic profileImage,
   }) async {
-    await remoteDataSource.signOut();
+    await remoteDataSource.updateUserInfo(
+      id: id,
+      name: name,
+      surname: surname,
+      email: email,
+      phoneNumber: phoneNumber,
+      gender: gender,
+      age: age,
+      profileImage: profileImage,
+    );
   }
 }

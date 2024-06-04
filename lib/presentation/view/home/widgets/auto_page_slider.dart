@@ -1,6 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 
@@ -8,10 +8,10 @@ class AutoPageSlider extends StatelessWidget {
   AutoPageSlider({super.key});
 
   final List<String> _items = [
-    AppAssets.img1.toPng,
-    AppAssets.img2.toPng,
-    AppAssets.img3.toPng,
-    AppAssets.img4.toPng,
+    AppPng.img1.toPng,
+    AppPng.img2.toPng,
+    AppPng.img3.toPng,
+    AppPng.img4.toPng,
   ];
 
   @override
