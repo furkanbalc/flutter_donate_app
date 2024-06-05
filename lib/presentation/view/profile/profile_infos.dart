@@ -1,15 +1,23 @@
+import 'package:awesome_dialog/awesome_dialog.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_assets.dart';
+import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/core/utils/are_you_sure_dialog.dart';
+import 'package:flutter_donate_app/core/utils/custom_alert_dialog.dart';
 import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/firebase_service/update_user_info.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
+import 'package:flutter_donate_app/presentation/widgets/shimmer/custom_profile_shimmer.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -32,35 +40,63 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
   }
 
   @override
-  void deactivate() {
-    super.deactivate();
-    _profileViewModel = ref.read(profileViewModelImp);
-    _profileViewModel.deactive();
-  }
-
-  @override
   Widget build(BuildContext context) {
     _profileViewModel = ref.watch(profileViewModelImp);
-    return Scaffold(
-      backgroundColor: AppColors.cascadingWhite,
-      appBar: CustomAppBar(title: LocaleKeys.profile_my_profile_info.tr()),
-      floatingActionButton: _buildDeleteAccountAndSaveButtons(),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      body: _buildBody(),
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (bool didPop) async {
+        if (didPop) {
+          return;
+        }
+        if (!_profileViewModel.isChangesSaved()) {
+          Navigator.pop(context);
+        } else {
+          showBackDialog(
+            context: context,
+            continuePress: () {
+              _profileViewModel.undoUnsavedChanges();
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+          );
+        }
+      },
+      child: Scaffold(
+        resizeToAvoidBottomInset: false,
+        backgroundColor: AppColors.whiteColor,
+        appBar: CustomAppBar(title: LocaleKeys.profile_my_profile_info.tr()),
+        floatingActionButton: _buildDeleteAccountAndSaveButtons(),
+        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+        body: _buildBody(),
+      ),
     );
   }
 
   /// Body
   Widget _buildBody() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          _buildProfilPhoto(),
-          context.sizedBoxHeightMedium,
-          _buildUserInfoFields(),
-        ],
-      ),
-    );
+    switch (_profileViewModel.getUserInfoFromFirestoreResponse.status) {
+      case Status.loading:
+        return const CustomProfileInfoShimmer();
+      case Status.completed:
+        return SingleChildScrollView(
+          child: Column(
+            children: [
+              _buildProfilPhoto(),
+              context.sizedBoxHeightMedium,
+              _buildUserInfoFields(),
+            ],
+          ),
+        );
+      case Status.error:
+        return CustomErrorWidget(
+          onPressed: () {
+            _profileViewModel.getUserInfoFromFirestore(id: _profileViewModel.getUserId);
+          },
+        );
+
+      default:
+        return const SizedBox();
+    }
   }
 
   /// Profil Photo Widget
@@ -73,33 +109,34 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
         image: DecorationImage(
           fit: BoxFit.fitWidth,
           colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
-          image: AssetImage(AppAssets.linesBg.toPng),
+          image: AssetImage(AppPng.linesBg.toPng),
         ),
       ),
       child: Center(
         child: ProfilePhotoWidget(
-          imagePath: _profileViewModel.image?.path ?? _profileViewModel.profilPhotoUrl,
+          imagePath: _profileViewModel.profilPhotoUrl,
           padding: context.paddings.allUltra,
-          onTap: () {
-            imagePickerBottomSheet(
-              context: context,
-              cameraTap: () async {
-                context.pop();
-                _profileViewModel.getImageFromCamera();
-              },
-              galleryTap: () async {
-                context.pop();
-                _profileViewModel.getImageFromGallery();
-              },
-              removeTap: _profileViewModel.image != null || _profileViewModel.profilPhotoUrl != null
-                  ? () {
+          onTap: _profileViewModel.isEditing
+              ? () {
+                  imagePickerBottomSheet(
+                    context: context,
+                    cameraTap: () async {
                       context.pop();
-                      _profileViewModel.image = null;
-                      _profileViewModel.profilPhotoUrl = null;
-                    }
-                  : null,
-            );
-          },
+                      _profileViewModel.getImageFromCamera();
+                    },
+                    galleryTap: () async {
+                      context.pop();
+                      _profileViewModel.getImageFromGallery();
+                    },
+                    removeTap: _profileViewModel.profilPhotoUrl != null || _profileViewModel.profilPhotoUrl != ''
+                        ? () {
+                            _profileViewModel.profilPhotoUrl = null;
+                            context.pop();
+                          }
+                        : null,
+                  );
+                }
+              : null,
         ),
       ),
     );
@@ -152,6 +189,62 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
     );
   }
 
+  /// Delete Account And Edit & Save Button
+  Widget _buildDeleteAccountAndSaveButtons() {
+    switch (_profileViewModel.getUserInfoFromFirestoreResponse.status) {
+      case Status.completed:
+        return AuthBottomButton(
+          child: Row(
+            children: [
+              Expanded(child: _buildDeleteButton()),
+              context.sizedBoxWidthNormal,
+              Expanded(child: _buildSaveButton()),
+            ],
+          ),
+        );
+      case Status.error:
+        return context.sizedBoxShrink;
+      default:
+        return context.sizedBoxShrink;
+    }
+  }
+
+  /// Save Button
+  Widget _buildSaveButton() {
+    return CustomElevatedButton(
+      padding: context.paddings.verticalNormal,
+      textStyle: context.textStyles.titleMedium,
+      onPressed: () => updateProcess(
+        context: context,
+        profileViewModel: _profileViewModel,
+      ),
+      text: LocaleKeys.profile_save.tr(),
+    );
+  }
+
+  /// Delete Button
+  Widget _buildDeleteButton() {
+    return CustomElevatedButton(
+      padding: context.paddings.verticalNormal,
+      textStyle: context.textStyles.titleMedium,
+      backgroundColor: AppColors.tomatoFrog,
+      onPressed: () {},
+      text: LocaleKeys.profile_delete_account.tr(),
+    );
+  }
+
+  /// Edit Button // FIXME
+// Widget _buildEditButton() {
+//   return CustomElevatedButton(
+//     padding: context.paddings.verticalNormal,
+//     textStyle: context.textStyles.titleMedium,
+//     onPressed: () {
+//       _profileViewModel.setIsEditing();
+//     },
+//     text: LocaleKeys.profile_edit.tr(),
+//   );
+// }
+
   /// Text Form Field
   Widget _buildProfileInfoField({
     required TextEditingController controller,
@@ -162,72 +255,10 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
       isTitle: true,
       controller: controller,
       labelText: label,
-      readOnly: !_profileViewModel.isEditing,
+      // readOnly: !_profileViewModel.isEditing,
       unFocus: true,
-      suffixIcon: !_profileViewModel.isEditing ? AppIcons.kLockIcon : null,
+      // suffixIcon: !_profileViewModel.isEditing ? AppIcons.kLockIcon : null,// FIXME
       prefixIcon: Icon(prefixIcon, size: 20),
-    );
-  }
-
-  /// Delete Account And Edit & Save Button
-  Widget _buildDeleteAccountAndSaveButtons() {
-    return Container(
-      padding: context.paddings.horizontalMedium + context.paddings.verticalNormal,
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black.withOpacity(0.2),
-            spreadRadius: 1,
-            blurRadius: 1,
-            offset: const Offset(0, -1),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Expanded(
-            child: _buildDeleteIcon(),
-          ),
-          context.sizedBoxWidthNormal,
-          Expanded(
-            child: !_profileViewModel.isEditing ? _buildEditIcon() : _buildSaveIcon(),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Save Button
-  Widget _buildSaveIcon() {
-    return CustomElevatedButton(
-      padding: context.paddings.verticalNormal,
-      textStyle: context.textStyles.titleMedium,
-      onPressed: () => updateProcess(profileViewModel: _profileViewModel),
-      text: LocaleKeys.profile_save.tr(),
-    );
-  }
-
-  /// Edit Button
-  Widget _buildEditIcon() {
-    return CustomElevatedButton(
-      padding: context.paddings.verticalNormal,
-      textStyle: context.textStyles.titleMedium,
-      onPressed: () {
-        _profileViewModel.setIsEditing();
-      },
-      text: LocaleKeys.profile_edit.tr(),
-    );
-  }
-
-  /// Delete Button
-  Widget _buildDeleteIcon() {
-    return CustomElevatedButton(
-      padding: context.paddings.verticalNormal,
-      textStyle: context.textStyles.titleMedium,
-      backgroundColor: AppColors.tomatoFrog,
-      onPressed: () {},
-      text: LocaleKeys.profile_delete_account.tr(),
     );
   }
 }

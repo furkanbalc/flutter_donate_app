@@ -10,12 +10,13 @@ import 'package:permission_handler/permission_handler.dart';
 
 class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// VARIABLES
-  late final TextEditingController _nameController;
-  late final TextEditingController _surnameController;
-  late final TextEditingController _emailController;
-  late final TextEditingController _phoneController;
-  late final TextEditingController _genderController;
-  late final TextEditingController _ageController;
+  late final TextEditingController _nameController = TextEditingController(text: getUserName);
+  late final TextEditingController _surnameController = TextEditingController(text: getUserSurname);
+  late final TextEditingController _emailController = TextEditingController(text: getUserEmail);
+  late final TextEditingController _phoneController = TextEditingController(text: getUserPhoneNumber);
+  late final TextEditingController _genderController = TextEditingController(text: getUserGender);
+  late final TextEditingController _ageController = TextEditingController(text: getUserAge);
+
   late String? _profilPhotoUrl;
   late XFile? _image;
   late bool _isEditing;
@@ -68,33 +69,33 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// -- INITSTATE METHOD --
   @override
   void init() {
-    _nameController = TextEditingController(text: getUserName);
-    _surnameController = TextEditingController(text: getUserSurname);
-    _emailController = TextEditingController(text: getUserEmail);
-    _phoneController = TextEditingController(text: getUserPhoneNumber);
-    _genderController = TextEditingController(text: getUserGender);
-    _ageController = TextEditingController(text: getUserAge);
+    // _nameController = TextEditingController(text: getUserName);
+    // _surnameController = TextEditingController(text: getUserSurname);
+    // _emailController = TextEditingController(text: getUserEmail);
+    // _phoneController = TextEditingController(text: getUserPhoneNumber);
+    // _genderController = TextEditingController(text: getUserGender);
+    // _ageController = TextEditingController(text: getUserAge);
     _profilPhotoUrl = getUserProfilPhoto;
     _isEditing = false;
-    _image = null;
+    // _image = null;
   }
 
   /// -- DEACTIVE METHOD --
-  @override
-  void deactive() {
-    _nameController.clear();
-    _surnameController.clear();
-    _emailController.clear();
-    _phoneController.clear();
-    _genderController.clear();
-    _ageController.clear();
-    _profilPhotoUrl = null;
-    _isEditing = false;
-    _image = null;
-  }
+  // @override
+  // void deactive() {
+  //   _nameController.clear();
+  //   _surnameController.clear();
+  //   _emailController.clear();
+  //   _phoneController.clear();
+  //   _genderController.clear();
+  //   _ageController.clear();
+  //   _profilPhotoUrl = null;
+  //   _isEditing = false;
+  //   // _image = null;
+  // }
 
   /// -- GET USER INFO --
-  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.loading('loading');
+  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.initial('initial');
 
   @override
   ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse => _getUserInfoFromFirestoreResponse;
@@ -166,7 +167,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
           phoneNumber: _phoneController.text.trim(),
           gender: _genderController.text,
           age: _ageController.text,
-          profileImage: image,
+          profileImage: _profilPhotoUrl,
         ),
       );
       updateUserInfoResponse = ApiResponse.completed("completed");
@@ -223,7 +224,8 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   @override
   Future getImageFromGallery() async {
     final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-    image = selectedImage;
+    _image = selectedImage;
+    profilPhotoUrl = _image?.path;
   }
 
   /// -- OPEN CAMERA --
@@ -232,7 +234,8 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     PermissionStatus permissionStatus = await Permission.camera.status;
     if (permissionStatus.isGranted) {
       final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
-      image = selectedImage;
+      _image = selectedImage;
+      profilPhotoUrl = _image?.path;
     } else if (permissionStatus.isDenied) {
       await _requestPermission(Permission.camera);
       getImageFromCamera();
@@ -246,5 +249,32 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     if (status.isDenied || status.isPermanentlyDenied) {
       openAppSettings();
     }
+  }
+
+  ///  Are there any unsaved changes?
+  @override
+  bool isChangesSaved() {
+    if (_nameController.text.trim() != getUserName ||
+        _surnameController.text.trim() != getUserSurname ||
+        _emailController.text.trim() != getUserEmail ||
+        _phoneController.text.trim() != getUserPhoneNumber ||
+        _genderController.text.trim() != getUserGender ||
+        _ageController.text.trim() != getUserAge ||
+        _profilPhotoUrl != getUserProfilPhoto) {
+      return true;
+    }
+    return false;
+  }
+
+  /// undo unsaved changes
+  @override
+  void undoUnsavedChanges() {
+    _nameController.text = getUserName;
+    _surnameController.text = getUserSurname;
+    _emailController.text = getUserEmail;
+    _phoneController.text = getUserPhoneNumber;
+    _genderController.text = getUserGender;
+    _ageController.text = getUserAge;
+    _profilPhotoUrl = getUserProfilPhoto;
   }
 }

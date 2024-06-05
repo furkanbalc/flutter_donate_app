@@ -89,9 +89,15 @@ abstract class ProfileViewModel extends ChangeNotifier {
   /// get current user photo url
   String get getUserProfilPhoto;
 
-  /// -- SELECT IMAGE FROM GALLERY --
+  /// select image from gallery
   Future getImageFromGallery();
 
-  /// -- OPEN CAMERA --
+  /// open camera
   Future getImageFromCamera();
+
+  ///  Are there any unsaved changes?
+  bool isChangesSaved();
+
+  /// undo unsaved changes
+  void undoUnsavedChanges();
 }
