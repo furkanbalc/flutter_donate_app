@@ -10,6 +10,7 @@ class CustomTextButton extends StatelessWidget {
     this.decoration,
     this.color,
     this.fontSize,
+    this.textStyle,
   });
 
   final TextDecoration? decoration;
@@ -17,6 +18,7 @@ class CustomTextButton extends StatelessWidget {
   final String text;
   final Color? color;
   final double? fontSize;
+  final TextStyle? textStyle;
 
   @override
   Widget build(BuildContext context) {
@@ -25,12 +27,13 @@ class CustomTextButton extends StatelessWidget {
       onPressed: onPressed,
       child: Text(
         text,
-        style: context.textStyles.titleMedium.copyWith(
-          color: color ?? AppColors.electricViolet,
-          fontWeight: FontWeight.w600,
-          fontSize: fontSize,
-          decoration: decoration,
-        ),
+        style: textStyle ??
+            context.textStyles.titleMedium.copyWith(
+              color: color ?? AppColors.electricViolet,
+              fontWeight: FontWeight.w600,
+              fontSize: fontSize,
+              decoration: decoration,
+            ),
       ),
     );
   }

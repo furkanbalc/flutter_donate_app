@@ -4,6 +4,7 @@ import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 
@@ -12,13 +13,16 @@ mixin SigninService on State<SigninView> {
     required BuildContext context,
     required SigninViewModel signinViewModel,
     required ProfileViewModel profileViewModel,
+    required AddressViewModel addressViewModel,
   }) {
     if (signinViewModel.formKey.currentState != null && signinViewModel.formKey.currentState!.validate()) {
       signinViewModel.signIn().then((value) async {
         if (signinViewModel.signInResponse.isCompleted()) {
-          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
+          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data);
+          await addressViewModel.getAdressesFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
             context.goNamed(AppRouteName.app.name);
           });
+
           Utils.successSnackBar(
             context: context,
             title: 'Başarılı',

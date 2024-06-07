@@ -7,6 +7,7 @@ import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/firebase_service/signin_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
@@ -22,11 +23,13 @@ class SigninView extends ConsumerStatefulWidget {
 class _SigninViewState extends ConsumerState<SigninView> with SigninService {
   late SigninViewModel _signinViewModel;
   late ProfileViewModel _profileViewModel;
+  late AddressViewModel _addressViewModel;
 
   @override
   void initState() {
     _signinViewModel = ref.read(signinViewModelImp);
     _profileViewModel = ref.read(profileViewModelImp);
+    _addressViewModel = ref.read(addressViewModelImp);
     super.initState();
   }
 
@@ -41,6 +44,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
   Widget build(BuildContext context) {
     _signinViewModel = ref.watch(signinViewModelImp);
     _profileViewModel = ref.watch(profileViewModelImp);
+    _addressViewModel = ref.watch(addressViewModelImp);
     return Stack(
       children: [
         Scaffold(
@@ -137,6 +141,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
             context: context,
             signinViewModel: _signinViewModel,
             profileViewModel: _profileViewModel,
+            addressViewModel: _addressViewModel,
           ),
           text: LocaleKeys.auth_signin.tr(),
         ),

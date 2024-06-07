@@ -3,18 +3,26 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/presentation/view/profile/profile_infos.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
+import 'package:go_router/go_router.dart';
 
-mixin UpdateUserInfo on State<ProfileInfosView> {
-  void updateProcess({required ProfileViewModel profileViewModel}) {
+mixin UpdateUserInfoService on State<ProfileInfosView> {
+  void updateProcess({
+    required BuildContext context,
+    required ProfileViewModel profileViewModel,
+  }) {
     profileViewModel.updateUserInfo().then((value) async {
       if (profileViewModel.updateUserInfoResponse.isCompleted()) {
+        profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId).then((value) {
+          // context.goNamed(AppRouteName.app.name);
+          if(profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
+            profileViewModel.setIsEditing();
+          }
+        });
         Utils.successSnackBar(
           context: context,
           title: 'Başarılı',
           message: 'Bilgileriniz güncellendi',
         );
-        profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId);
-        profileViewModel.setIsEditing();
       } else {
         Utils.errorSnackBar(
           context: context,
