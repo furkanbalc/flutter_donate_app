@@ -1,3 +1,4 @@
+import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 abstract class ProfileRepository {
@@ -17,5 +18,18 @@ abstract class ProfileRepository {
     required String gender,
     required String age,
     required dynamic profileImage,
+  });
+
+  /// -- GET USER ADDRESS INFO --
+  Future<AddressesEntity> getAdressesFromFirestore({required String id});
+
+  /// -- ADD ADDRESS INFO --
+  Future<AddressesEntity> addAddressInfoToFirestore({
+    required String country,
+    required String city,
+    required String town,
+    required String desc,
+    required String lat,
+    required String long,
   });
 }

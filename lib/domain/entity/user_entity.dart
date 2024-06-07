@@ -27,7 +27,6 @@ class DataEntity extends Equatable {
   final String? gender;
   final String? age;
   final String? profileImgUrl;
-  final AddressEntity? address;
   final List<StatisticsEntity>? statistics;
 
   const DataEntity({
@@ -38,7 +37,6 @@ class DataEntity extends Equatable {
     required this.gender,
     required this.age,
     required this.profileImgUrl,
-    required this.address,
     required this.statistics,
   });
 
@@ -51,46 +49,7 @@ class DataEntity extends Equatable {
         gender,
         age,
         profileImgUrl,
-        address,
         statistics,
-      ];
-}
-
-class AddressEntity extends Equatable {
-  final String? country;
-  final String? city;
-  final String? town;
-  final GeoEntity? geo;
-
-  const AddressEntity({
-    required this.country,
-    required this.city,
-    required this.town,
-    required this.geo,
-  });
-
-  @override
-  List<Object?> get props => [
-        country,
-        city,
-        town,
-        geo,
-      ];
-}
-
-class GeoEntity extends Equatable {
-  final String? lat;
-  final String? lng;
-
-  const GeoEntity({
-    required this.lat,
-    required this.lng,
-  });
-
-  @override
-  List<Object?> get props => [
-        lat,
-        lng,
       ];
 }
 

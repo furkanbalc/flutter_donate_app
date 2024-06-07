@@ -68,8 +68,6 @@ class Data extends DataEntity {
   @override
   String? profileImgUrl;
   @override
-  Address? address;
-  @override
   List<Statistics>? statistics;
 
   Data({
@@ -80,7 +78,6 @@ class Data extends DataEntity {
     this.gender,
     this.age,
     this.profileImgUrl,
-    this.address,
     this.statistics,
   }) : super(
           id: id,
@@ -90,7 +87,6 @@ class Data extends DataEntity {
           gender: gender,
           age: age,
           profileImgUrl: profileImgUrl,
-          address: address,
           statistics: statistics,
         );
 
@@ -103,7 +99,6 @@ class Data extends DataEntity {
       'gender': gender,
       'age': age,
       'profileImgUrl': profileImgUrl,
-      'address': address,
       'statistics': statistics,
     };
   }
@@ -117,7 +112,6 @@ class Data extends DataEntity {
       gender: json['gender'],
       age: json['age'],
       profileImgUrl: json['profileImgUrl'],
-      address: json['address'] == null ? null : Address.fromJson(json['address']),
       statistics: (json['statistics'])?.map((e) => Statistics.fromJson(e)).toList(),
     );
   }
@@ -148,76 +142,6 @@ class FullName {
 
   String getUserName() {
     return '$name $surname';
-  }
-}
-
-class Address extends AddressEntity {
-  @override
-  String? country;
-  @override
-  String? city;
-  @override
-  String? town;
-  @override
-  Geo? geo;
-
-  Address({
-    this.country,
-    this.city,
-    this.town,
-    this.geo,
-  }) : super(
-          country: country,
-          city: city,
-          town: town,
-          geo: geo,
-        );
-
-  Map<String, dynamic> toJson() {
-    return {
-      'country': country,
-      'city': city,
-      'town': town,
-      'geo': geo,
-    };
-  }
-
-  factory Address.fromJson(Map<String, dynamic> json) {
-    return Address(
-      country: json['country'],
-      city: json['city'],
-      town: json['town'],
-      geo: json['geo'] == null ? null : Geo.fromJson(json['geo']),
-    );
-  }
-}
-
-class Geo extends GeoEntity {
-  @override
-  String? lat;
-  @override
-  String? lng;
-
-  Geo({
-    this.lat,
-    this.lng,
-  }) : super(
-          lat: lat,
-          lng: lng,
-        );
-
-  Map<String, dynamic> toJson() {
-    return {
-      'lat': lat,
-      'lng': lng,
-    };
-  }
-
-  factory Geo.fromJson(Map<String, dynamic> json) {
-    return Geo(
-      lat: json['lat'],
-      lng: json['lng'],
-    );
   }
 }
 

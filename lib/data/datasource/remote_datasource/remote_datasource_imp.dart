@@ -4,6 +4,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_donate_app/core/enums/firebase_collections.dart';
 import 'package:flutter_donate_app/core/service/firebase_storage_service.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
+import 'package:flutter_donate_app/data/models/address_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -81,13 +82,15 @@ class RemoteDataSourceImp implements RemoteDataSource {
           "name": name.trim(),
           "surname": surname.trim(),
         },
-        "adress": {
-          "city": null,
-          "country": null,
-          "desc": null,
-          "location": {"lang": null, "lat": null},
-          "town": null,
-        },
+        "addresses": [
+          {
+            "city": null,
+            "country": null,
+            "desc": null,
+            "location": {"lang": null, "lat": null},
+            "town": null,
+          },
+        ],
         "email": currentUser?.email?.trim() ?? 'invalid_email',
         "phoneNumber": phoneNumber,
         "gender": gender,
@@ -149,5 +152,44 @@ class RemoteDataSourceImp implements RemoteDataSource {
     };
 
     await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).update(user);
+  }
+
+  /// -- GET USER ADDRESS INFO --
+  @override
+  Future<AddressesModel> getAdressesFromFirestore({
+    required String id,
+  }) async {
+    DocumentSnapshot<Map<String, dynamic>> addressModel =
+        await firebaseFirestore.collection(FirebaseCollections.addresses.name).doc(id).get();
+    return AddressesModel.fromJson(addressModel.data());
+  }
+
+  /// -- ADD ADDRESS INFO --
+  @override
+  Future<AddressesModel> addAddressInfoToFirestore({
+    required String country,
+    required String city,
+    required String town,
+    required String desc,
+    required String lat,
+    required String long,
+  }) async {
+    User? currentUser = firebaseAuth.currentUser;
+
+    Map<String, dynamic> address = {
+      "country": country,
+      "city": city,
+      "town": town,
+      "desc": desc,
+      "geo": {
+        "lat": lat,
+        "long": long,
+      },
+    };
+
+    await firebaseFirestore.collection(FirebaseCollections.addresses.name).doc(currentUser?.uid).update({
+      FirebaseCollections.addresses.name: FieldValue.arrayUnion([address]),
+    });
+    return AddressesModel.fromJson(address);
   }
 }

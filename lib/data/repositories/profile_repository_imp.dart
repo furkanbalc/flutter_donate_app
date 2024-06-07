@@ -1,5 +1,7 @@
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
+import 'package:flutter_donate_app/data/models/address_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
+import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 
@@ -43,5 +45,33 @@ class ProfileRepositoryImp implements ProfileRepository {
       age: age,
       profileImage: profileImage,
     );
+  }
+
+  /// -- GET USER ADDRESS INFO --
+  @override
+  Future<AddressesEntity> getAdressesFromFirestore({required String id}) async {
+    AddressesModel addressesModel = await remoteDataSource.getAdressesFromFirestore(id: id);
+    return addressesModel.convertToEntity();
+  }
+
+  /// -- ADD ADDRESS INFO --
+  @override
+  Future<AddressesEntity> addAddressInfoToFirestore({
+    required String country,
+    required String city,
+    required String town,
+    required String desc,
+    required String lat,
+    required String long,
+  }) async {
+    AddressesModel addressModel = await remoteDataSource.addAddressInfoToFirestore(
+      country: country,
+      city: city,
+      town: town,
+      desc: desc,
+      lat: lat,
+      long: long,
+    );
+    return addressModel.convertToEntity();
   }
 }

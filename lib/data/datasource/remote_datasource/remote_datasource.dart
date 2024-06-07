@@ -1,3 +1,4 @@
+import 'package:flutter_donate_app/data/models/address_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 
 abstract class RemoteDataSource {
@@ -38,5 +39,20 @@ abstract class RemoteDataSource {
     required String gender,
     required String age,
     required dynamic profileImage,
+  });
+
+  /// -- GET USER ADDRESS INFO --
+  Future<AddressesModel> getAdressesFromFirestore({
+    required String id,
+  });
+
+  /// -- ADD ADDRESS INFO --
+  Future<AddressesModel> addAddressInfoToFirestore({
+    required String country,
+    required String city,
+    required String town,
+    required String desc,
+    required String lat,
+    required String long,
   });
 }
