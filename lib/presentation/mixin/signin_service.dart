@@ -18,16 +18,23 @@ mixin SigninService on State<SigninView> {
     if (signinViewModel.formKey.currentState != null && signinViewModel.formKey.currentState!.validate()) {
       signinViewModel.signIn().then((value) async {
         if (signinViewModel.signInResponse.isCompleted()) {
-          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data);
-          await addressViewModel.getAdressesFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
-            context.goNamed(AppRouteName.app.name);
+          await profileViewModel.getUserInfoFromFirestore(id: signinViewModel.signInResponse.data).then((value) async {
+            if(profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
+              if(profileViewModel.getUserInfoFromFirestoreResponse.data.isActive!) {
+                await addressViewModel.getAdressesFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
+                  context.goNamed(AppRouteName.app.name);
+                  Utils.successSnackBar(
+                    context: context,
+                    title: 'Başarılı',
+                    message: 'Giriş Başarılı',
+                  );
+                });
+              } else {
+                context.goNamed(AppRouteName.userInfo.name);
+              }
+            }
           });
 
-          Utils.successSnackBar(
-            context: context,
-            title: 'Başarılı',
-            message: 'Giriş Başarılı',
-          );
         } else {
           Utils.errorSnackBar(
             context: context,
