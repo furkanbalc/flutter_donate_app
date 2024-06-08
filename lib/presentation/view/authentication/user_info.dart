@@ -5,8 +5,8 @@ import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/user_info_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/sliver_appbar.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/index.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -75,7 +75,9 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
                           Navigator.pop(context);
                           _personalInfoViewModel.getImageFromGallery();
                         },
-                        removeTap: _personalInfoViewModel.image != null ? () => _personalInfoViewModel.pickImageRemove(context: context) : null,
+                        removeTap: _personalInfoViewModel.image != null
+                            ? () => _personalInfoViewModel.pickImageRemove(context: context)
+                            : null,
                       );
                     },
                   ),

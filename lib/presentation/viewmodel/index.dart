@@ -18,3 +18,6 @@ export 'authentication/personal_info/personal_info_viewmodel_imp.dart';
 
 export 'profile/profile_viewmodel.dart';
 export 'profile/profile_viewmodel_imp.dart';
+
+export 'profile/address_viewmodel.dart';
+export 'profile/address_viewmodel_imp.dart';

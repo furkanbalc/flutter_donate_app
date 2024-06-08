@@ -15,8 +15,10 @@ customAlertDialog({
     context: context,
     builder: (context) {
       return AlertDialog(
+        backgroundColor: AppColors.whiteColor,
         shape: RoundedRectangleBorder(borderRadius: context.borders.circularBorderRadiusHigh),
-        title: Text(title ?? 'Emin misin?', style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+        title:
+            Text(title ?? 'Emin misin?', style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
         content: Text(message, style: context.textStyles.titleMedium),
         actions: [
           TextButton(

@@ -1,19 +1,17 @@
+
+
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/core/extensions/context_borders.dart';
-import 'package:flutter_donate_app/core/extensions/context_padding.dart';
-import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/address_card.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/delete_address_appbar.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
-import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
+import 'package:flutter_donate_app/presentation/widgets/progress/custom_loading_widget.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 

@@ -1,13 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/enums/app_svg.dart';
-import 'package:flutter_donate_app/core/enums/auth_method.dart';
-import 'package:flutter_donate_app/core/extensions/context_padding.dart';
-import 'package:flutter_donate_app/core/extensions/context_size.dart';
-import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
-import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_text_rich_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/core/extensions/context_padding.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/widgets/bottom_nav_bar.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/base_app/base_app_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerStatefulWidget {

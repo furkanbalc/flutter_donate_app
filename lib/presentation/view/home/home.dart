@@ -1,19 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/enums/app_sizes.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
+import 'package:flutter_donate_app/core/enums/index.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/extensions/context_padding.dart';
-import 'package:flutter_donate_app/core/extensions/context_size.dart';
-import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/auto_page_slider.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/home_sliver_appbar.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/horizontal_product_cart.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/vertical_product_cart.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:toastification/toastification.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -81,7 +77,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                         child: child,
                       );
                     },
-                    icon: const Icon(Iconsax.tick_square),
+                    icon: Icon(AppIcons.kTickIcon),
                     primaryColor: Colors.green,
                     foregroundColor: Colors.black,
                     closeButtonShowType: CloseButtonShowType.always,
@@ -92,7 +88,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                 },
                 backgroundColor: AppColors.electricViolet,
                 shape: BoxShape.circle,
-                icon: Icon(Iconsax.monitor, color: AppColors.whiteColor, size: AppSizes.custom.value),
+                icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.custom.value),
               ),
               context.sizedBoxHeightMin,
               Text(

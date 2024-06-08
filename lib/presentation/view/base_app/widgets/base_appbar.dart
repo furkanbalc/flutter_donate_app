@@ -1,8 +1,6 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/constants/app_constants.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
 
 class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   const BaseAppBar({super.key});

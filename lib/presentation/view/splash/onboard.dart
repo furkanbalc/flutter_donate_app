@@ -1,20 +1,18 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
+import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
-import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_clip_path_container.dart';
 import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_tab_page_selector.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
-import 'package:flutter_donate_app/presentation/widgets/button/custom_text_button.dart';
+import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
-import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:go_router/go_router.dart';
 
 part 'widgets/onboard_widget.dart';
@@ -109,11 +107,13 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             shape: BoxShape.circle,
             backgroundColor: splashViewModel.isFirstPage ? AppColors.whiteColor : AppColors.electricViolet,
           ),
+
           /// Page Dots
           CustomTabPageSelector(
             selectedIndex: splashViewModel.currentPage,
             tabLenght: splashViewModel.pages.length,
           ),
+
           /// Next Button
           CustomIconButton(
             onPressed: () => splashViewModel.isLastPage

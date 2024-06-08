@@ -6,6 +6,8 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_donate_app/core/router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -64,3 +66,4 @@ final personalInfoViewModelImp = ChangeNotifierProvider<PersonalInfoViewModel>((
 final baseAppViewModelImp = ChangeNotifierProvider<BaseAppViewModel>((ref) => BaseAppViewModelImp());
 final homeViewModelImp = ChangeNotifierProvider<HomeViewModel>((ref) => HomeViewModelImp());
 final profileViewModelImp = ChangeNotifierProvider<ProfileViewModel>((ref) => ProfileViewModelImp());
+final addressViewModelImp = ChangeNotifierProvider<AddressViewModel>((ref) => AddressViewModelImp());
