@@ -3,6 +3,44 @@ import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 
+
+/// -- SAVE USER INFO --
+class ParamsForSaveUserInfoToFirestore {
+  final String name;
+  final String surname;
+  final String phoneNumber;
+  final String age;
+  final String gender;
+  final dynamic profileImage;
+
+  ParamsForSaveUserInfoToFirestore({
+    required this.name,
+    required this.surname,
+    required this.phoneNumber,
+    required this.age,
+    required this.gender,
+    required this.profileImage,
+  });
+}
+
+class SaveUserInfoToFirestore extends BaseUseCase<Future<UserEntity>, ParamsForSaveUserInfoToFirestore> {
+  final ProfileRepository profileRepository;
+
+  SaveUserInfoToFirestore({required this.profileRepository});
+
+  @override
+  Future<UserEntity> execute(ParamsForSaveUserInfoToFirestore params) async {
+    return await profileRepository.saveUserInfoToFirestore(
+      name: params.name,
+      surname: params.surname,
+      phoneNumber: params.phoneNumber,
+      age: params.age,
+      gender: params.gender,
+      profileImage: params.profileImage,
+    );
+  }
+}
+
 /// -- GET USER INFO --
 class ParamsForGetUserInfo {
   final String id;
@@ -18,22 +56,6 @@ class GetUserInfoFromFirestore extends BaseUseCase<Future<UserEntity>, ParamsFor
   @override
   Future<UserEntity> execute(ParamsForGetUserInfo params) async {
     return await profileRepository.getUserInfoFromFirestore(id: params.id);
-  }
-}
-
-/// -- SIGN OUT USER --
-class ParamsBase {
-  const ParamsBase();
-}
-
-class SignOut extends BaseUseCase<Future<void>, ParamsBase> {
-  final ProfileRepository profileRepository;
-
-  SignOut({required this.profileRepository});
-
-  @override
-  Future<void> execute(ParamsBase params) async {
-    await profileRepository.signOut();
   }
 }
 

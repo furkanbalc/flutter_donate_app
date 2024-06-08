@@ -1,4 +1,3 @@
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 abstract class AuthRepository {
   /// -- SIGN UP --
@@ -13,13 +12,9 @@ abstract class AuthRepository {
     required String password,
   });
 
-  /// -- SAVE USER INFO --
-  Future<UserEntity> saveUserInfoToFirestore({
-    required String name,
-    required String surname,
-    required String phoneNumber,
-    required String age,
-    required String gender,
-    required dynamic profileImage,
-  });
+  ///  -- SIGN OUT --
+  Future<void> signOut();
+
+  /// -- DELETE ACCOUNT --
+  Future<void> deleteAccount();
 }

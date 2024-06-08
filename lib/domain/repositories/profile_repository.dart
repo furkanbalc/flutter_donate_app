@@ -2,11 +2,18 @@ import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 
 abstract class ProfileRepository {
+  /// -- SAVE USER INFO --
+  Future<UserEntity> saveUserInfoToFirestore({
+    required String name,
+    required String surname,
+    required String phoneNumber,
+    required String age,
+    required String gender,
+    required dynamic profileImage,
+  });
+
   ///  -- GET USER INFO --
   Future<UserEntity> getUserInfoFromFirestore({required String id});
-
-  ///  -- SIGN OUT --
-  Future<void> signOut();
 
   /// -- UPDATE USER INFO --
   Future<void> updateUserInfo({

@@ -55,6 +55,12 @@ class RemoteDataSourceImp implements RemoteDataSource {
     userCredential = null;
   }
 
+  /// -- DELETE ACCOUNT --
+  @override
+  Future<void> deleteUserAccount() async {
+    await firebaseAuth.currentUser!.delete();
+  }
+
   /// -- SAVE USER INFO --
   @override
   Future<UserModel> saveUserInfoToFirestore({
@@ -82,22 +88,13 @@ class RemoteDataSourceImp implements RemoteDataSource {
           "name": name.trim(),
           "surname": surname.trim(),
         },
-        "addresses": [
-          {
-            "city": null,
-            "country": null,
-            "desc": null,
-            "location": {"lang": null, "lat": null},
-            "town": null,
-          },
-        ],
         "email": currentUser?.email?.trim() ?? 'invalid_email',
         "phoneNumber": phoneNumber,
         "gender": gender,
         "age": age,
         "profileImgUrl": profileImageUrl,
       },
-      "isActive": false,
+      "isActive": true,
       "isAdmin": false,
     };
 

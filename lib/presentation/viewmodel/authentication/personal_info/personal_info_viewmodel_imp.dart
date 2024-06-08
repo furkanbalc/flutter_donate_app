@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/mixin/validator.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
-import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
+import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
 import 'package:image_picker/image_picker.dart';

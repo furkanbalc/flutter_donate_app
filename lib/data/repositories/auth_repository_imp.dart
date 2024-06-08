@@ -1,6 +1,4 @@
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
-import 'package:flutter_donate_app/data/models/user_model.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImp implements AuthRepository {
@@ -20,24 +18,15 @@ class AuthRepositoryImp implements AuthRepository {
     return await remoteDataSource.signIn(email: email, password: password);
   }
 
-  /// -- SAVE USER INFO --
+  ///  -- SIGN OUT --
   @override
-  Future<UserEntity> saveUserInfoToFirestore({
-    required String name,
-    required String surname,
-    required String phoneNumber,
-    required String age,
-    required String gender,
-    required dynamic profileImage,
-  }) async {
-    UserModel userModel = await remoteDataSource.saveUserInfoToFirestore(
-      name: name,
-      surname: surname,
-      phoneNumber: phoneNumber,
-      age: age,
-      gender: gender,
-      profileImage: profileImage,
-    );
-    return userModel.convertToEntity();
+  Future<void> signOut() async {
+    await remoteDataSource.signOut();
+  }
+
+/// -- DELETE ACCOUNT --
+  @override
+  Future<void> deleteAccount() async {
+    await remoteDataSource.deleteUserAccount();
   }
 }

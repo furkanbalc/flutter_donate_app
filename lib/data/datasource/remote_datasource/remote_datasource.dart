@@ -14,6 +14,9 @@ abstract class RemoteDataSource {
   /// -- SIGN OUT --
   Future<void> signOut();
 
+  /// -- DELETE ACCOUNT --
+  Future<void> deleteUserAccount();
+
   /// -- SAVE USER INFO --
   Future<UserModel> saveUserInfoToFirestore({
     required String name,

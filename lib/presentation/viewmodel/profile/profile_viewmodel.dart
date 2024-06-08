@@ -5,6 +5,8 @@ import 'package:image_picker/image_picker.dart';
 
 abstract class ProfileViewModel extends ChangeNotifier {
   /// VARIABLES
+  GlobalKey<FormState> get formKey;
+
   TextEditingController get nameController;
 
   TextEditingController get surnameController;
@@ -21,11 +23,15 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   String? get profilPhotoUrl;
 
+  IconData get genderIcon;
+
   bool get isEditing;
 
   set image(XFile? value);
 
   set profilPhotoUrl(String? value);
+
+  set genderIcon(IconData value);
 
   void setIsEditing();
 
@@ -42,6 +48,7 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   Future<void> getUserInfoFromFirestore({required String id});
 
+
   ///  -- SIGN OUT USER --
   ApiResponse<void> get signOutResponse;
 
@@ -55,6 +62,13 @@ abstract class ProfileViewModel extends ChangeNotifier {
   set updateUserInfoResponse(ApiResponse<void> value);
 
   Future<void> updateUserInfo();
+
+  /// -- DELETE ACCOUNT --
+  ApiResponse<void> get deleteAccountResponse;
+
+  set deleteAccountResponse(ApiResponse<void> value);
+
+  Future<void> deleteAccount();
 
   /// get current user id
   String get getUserId;

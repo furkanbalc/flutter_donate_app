@@ -10,17 +10,32 @@ class ProfileRepositoryImp implements ProfileRepository {
 
   final RemoteDataSource remoteDataSource;
 
+  /// -- SAVE USER INFO --
+  @override
+  Future<UserEntity> saveUserInfoToFirestore({
+    required String name,
+    required String surname,
+    required String phoneNumber,
+    required String age,
+    required String gender,
+    required dynamic profileImage,
+  }) async {
+    UserModel userModel = await remoteDataSource.saveUserInfoToFirestore(
+      name: name,
+      surname: surname,
+      phoneNumber: phoneNumber,
+      age: age,
+      gender: gender,
+      profileImage: profileImage,
+    );
+    return userModel.convertToEntity();
+  }
+
   ///  -- GET USER INFO --
   @override
   Future<UserEntity> getUserInfoFromFirestore({required String id}) async {
     UserModel userModel = await remoteDataSource.getUserInfoFromFirestore(id: id);
     return userModel.convertToEntity();
-  }
-
-  ///  -- SIGN OUT --
-  @override
-  Future<void> signOut() async {
-    await remoteDataSource.signOut();
   }
 
   /// -- UPDATE USER INFO --
