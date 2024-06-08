@@ -81,9 +81,7 @@ class ProfilePhotoWidget extends StatelessWidget {
 
   /// resim hangi formatta gösterilecek profil resmi seçerken önemli
   ImageProvider _getImageProvider() {
-    if (imagePath == null || imagePath!.isEmpty) {
-      return AssetImage(AppSvg.profile.toSvg);
-    } else if (isUrl) {
+    if (isUrl) {
       return NetworkImage(imagePath!);
     } else {
       return FileImage(File(imagePath!));

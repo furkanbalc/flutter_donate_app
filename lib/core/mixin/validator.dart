@@ -116,7 +116,9 @@ mixin Validator {
     if (!RegExp(r'^[0-9\s]+$').hasMatch(phoneNumber)) {
       return 'Geçersiz telefon numarası!';
     }
-
+    if (phoneNumber.length > 10) {
+      return 'Telefon numarası çok uzun!\nBaşında "0" olmadan giriniz';
+    }
     return null;
   }
 }

@@ -25,15 +25,11 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   IconData get genderIcon;
 
-  bool get isEditing;
-
   set image(XFile? value);
 
   set profilPhotoUrl(String? value);
 
   set genderIcon(IconData value);
-
-  void setIsEditing();
 
   /// -- INITSTATE METHOD --
   void init();

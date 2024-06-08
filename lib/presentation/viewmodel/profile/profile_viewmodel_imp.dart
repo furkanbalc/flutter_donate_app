@@ -22,7 +22,6 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   late String? _profilPhotoUrl;
   late IconData _genderIcon;
   late XFile? _image;
-  late bool _isEditing;
 
   @override
   GlobalKey<FormState> get formKey => _formKey;
@@ -55,9 +54,6 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   IconData get genderIcon => _genderIcon;
 
   @override
-  bool get isEditing => _isEditing;
-
-  @override
   set image(XFile? value) {
     _image = value;
     notifyListeners();
@@ -75,19 +71,12 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     notifyListeners();
   }
 
-  @override
-  void setIsEditing() {
-    _isEditing = !_isEditing;
-    notifyListeners();
-  }
-
   /// -- INITSTATE METHOD --
   @override
   void init() {
     _profilPhotoUrl = getUserProfilPhoto;
     _genderIcon = getUserGenderIcon;
-    _isEditing = false;
-    // _image = null;
+    _image = null;
   }
 
   /// -- GET USER INFO --
@@ -199,8 +188,8 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   @override
   Future getImageFromGallery() async {
     final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
-    _image = selectedImage;
-    profilPhotoUrl = _image?.path;
+    image = selectedImage;
+    profilPhotoUrl = image?.path;
   }
 
   /// -- OPEN CAMERA --
@@ -209,8 +198,8 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     PermissionStatus permissionStatus = await Permission.camera.status;
     if (permissionStatus.isGranted) {
       final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
-      _image = selectedImage;
-      profilPhotoUrl = _image?.path;
+      image = selectedImage;
+      profilPhotoUrl = image?.path;
     } else if (permissionStatus.isDenied) {
       await _requestPermission(Permission.camera);
       getImageFromCamera();

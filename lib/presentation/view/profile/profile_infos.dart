@@ -17,6 +17,7 @@ import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/update_user_info_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
+import 'package:flutter_donate_app/presentation/view/profile/widgets/image_picker_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile_info_text_field.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
@@ -70,7 +71,6 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
         resizeToAvoidBottomInset: false,
         backgroundColor: AppColors.cascadingWhite,
         appBar: CustomAppBar(title: LocaleKeys.profile_my_profile_info.tr()),
-        floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
         body: _buildBody(),
       ),
     );
@@ -145,27 +145,12 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
         child: ProfilePhotoWidget(
           imagePath: _profileViewModel.profilPhotoUrl,
           padding: context.paddings.allUltra,
-          onTap: _profileViewModel.isEditing
-              ? () {
-                  imagePickerBottomSheet(
-                    context: context,
-                    cameraTap: () async {
-                      context.pop();
-                      _profileViewModel.getImageFromCamera();
-                    },
-                    galleryTap: () async {
-                      context.pop();
-                      _profileViewModel.getImageFromGallery();
-                    },
-                    removeTap: _profileViewModel.profilPhotoUrl != null || _profileViewModel.profilPhotoUrl != ''
-                        ? () {
-                            _profileViewModel.profilPhotoUrl = null;
-                            context.pop();
-                          }
-                        : null,
-                  );
-                }
-              : null,
+          onTap: () {
+            imagePickerSheet(
+              context: context,
+              profileViewModel: _profileViewModel,
+            );
+          },
         ),
       ),
     );

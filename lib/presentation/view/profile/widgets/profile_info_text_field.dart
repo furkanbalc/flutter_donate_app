@@ -31,11 +31,13 @@ class ProfileInfoTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return CustomTextFormField(
       controller: controller,
+      validator: validator,
       labelText: labelText,
       prefixIcon: Icon(prefixIcon, size: AppSizes.high.value),
       isTitle: true,
       readOnly: readOnly ?? false,
       fillColor: AppColors.whiteColor,
+      keyboardType: keyboardType,
       border: OutlineInputBorder(
         borderRadius: context.borders.circularBorderRadiusMedium,
         borderSide: const BorderSide(color: AppColors.steel),

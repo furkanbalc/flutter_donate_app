@@ -12,12 +12,7 @@ mixin UpdateUserInfoService on State<ProfileInfosView> {
     if (profileViewModel.formKey.currentState != null && profileViewModel.formKey.currentState!.validate()) {
       profileViewModel.updateUserInfo().then((value) async {
         if (profileViewModel.updateUserInfoResponse.isCompleted()) {
-          profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId).then((value) {
-            // context.goNamed(AppRouteName.app.name);
-            if (profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
-              profileViewModel.setIsEditing();
-            }
-          });
+          profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId);
           Utils.successSnackBar(
             context: context,
             title: 'Başarılı',
