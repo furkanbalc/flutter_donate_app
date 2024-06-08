@@ -4,7 +4,7 @@ import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/auth_method.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/firebase_service/signin_service.dart';
+import 'package:flutter_donate_app/presentation/mixin/signin_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signin/signin_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';

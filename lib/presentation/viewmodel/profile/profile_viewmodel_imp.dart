@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
@@ -10,6 +11,7 @@ import 'package:permission_handler/permission_handler.dart';
 
 class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// VARIABLES
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   late final TextEditingController _nameController = TextEditingController(text: getUserName);
   late final TextEditingController _surnameController = TextEditingController(text: getUserSurname);
   late final TextEditingController _emailController = TextEditingController(text: getUserEmail);
@@ -18,8 +20,12 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   late final TextEditingController _ageController = TextEditingController(text: getUserAge);
 
   late String? _profilPhotoUrl;
+  late IconData _genderIcon;
   late XFile? _image;
   late bool _isEditing;
+
+  @override
+  GlobalKey<FormState> get formKey => _formKey;
 
   @override
   TextEditingController get nameController => _nameController;
@@ -46,6 +52,9 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   String? get profilPhotoUrl => _profilPhotoUrl;
 
   @override
+  IconData get genderIcon => _genderIcon;
+
+  @override
   bool get isEditing => _isEditing;
 
   @override
@@ -61,6 +70,12 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   }
 
   @override
+  set genderIcon(IconData value) {
+    _genderIcon = value;
+    notifyListeners();
+  }
+
+  @override
   void setIsEditing() {
     _isEditing = !_isEditing;
     notifyListeners();
@@ -69,30 +84,11 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// -- INITSTATE METHOD --
   @override
   void init() {
-    // _nameController = TextEditingController(text: getUserName);
-    // _surnameController = TextEditingController(text: getUserSurname);
-    // _emailController = TextEditingController(text: getUserEmail);
-    // _phoneController = TextEditingController(text: getUserPhoneNumber);
-    // _genderController = TextEditingController(text: getUserGender);
-    // _ageController = TextEditingController(text: getUserAge);
     _profilPhotoUrl = getUserProfilPhoto;
+    _genderIcon = getUserGenderIcon;
     _isEditing = false;
     // _image = null;
   }
-
-  /// -- DEACTIVE METHOD --
-  // @override
-  // void deactive() {
-  //   _nameController.clear();
-  //   _surnameController.clear();
-  //   _emailController.clear();
-  //   _phoneController.clear();
-  //   _genderController.clear();
-  //   _ageController.clear();
-  //   _profilPhotoUrl = null;
-  //   _isEditing = false;
-  //   // _image = null;
-  // }
 
   /// -- GET USER INFO --
   ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.initial('initial');
@@ -176,49 +172,28 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     }
   }
 
-  /// get current user id
-  @override
-  String get getUserId => getUserInfoFromFirestoreResponse.data.data!.id!;
+  /// -- DELETE ACCOUNT --
+  ApiResponse<void> _deleteAccountResponse = ApiResponse.initial('initial');
 
-  /// get current user email
   @override
-  String get getUserEmail => getUserInfoFromFirestoreResponse.data.data!.email!;
+  ApiResponse<void> get deleteAccountResponse => _deleteAccountResponse;
 
-  /// get current user full name
   @override
-  String get getUserFullname => getUserInfoFromFirestoreResponse.data.data!.userName!;
+  set deleteAccountResponse(ApiResponse<void> value) {
+    _deleteAccountResponse = value;
+    notifyListeners();
+  }
 
-  /// get current user name
   @override
-  String get getUserName => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').first;
-
-  /// get current user surname
-  @override
-  String get getUserSurname => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').last;
-
-  /// get current user gender
-  @override
-  String get getUserGender => getUserInfoFromFirestoreResponse.data.data!.gender!;
-
-  /// get current user gender icon
-  @override
-  IconData get getUserGenderIcon => isMan ? AppIcons.kManIcon : AppIcons.kWomanIcon;
-
-  /// get current user gender icon
-  @override
-  bool get isMan => getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek';
-
-  /// get current user age
-  @override
-  String get getUserAge => getUserInfoFromFirestoreResponse.data.data!.age!;
-
-  /// get current user phone number
-  @override
-  String get getUserPhoneNumber => getUserInfoFromFirestoreResponse.data.data!.phoneNumber!;
-
-  /// get current user photo url
-  @override
-  String get getUserProfilPhoto => getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
+  Future<void> deleteAccount() async {
+    deleteAccountResponse = ApiResponse.loading("loading");
+    try {
+      await injector<DeleteAccount>().execute(const ParamsBase());
+      deleteAccountResponse = ApiResponse.completed("completed");
+    } catch (e, stackTrace) {
+      deleteAccountResponse = ApiResponse.error(e, stackTrace);
+    }
+  }
 
   /// -- SELECT IMAGE FROM GALLERY --
   @override
@@ -276,5 +251,50 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     _genderController.text = getUserGender;
     _ageController.text = getUserAge;
     _profilPhotoUrl = getUserProfilPhoto;
+    _genderIcon = getUserGenderIcon;
   }
+
+  /// get current user id
+  @override
+  String get getUserId => getUserInfoFromFirestoreResponse.data.data!.id!;
+
+  /// get current user email
+  @override
+  String get getUserEmail => getUserInfoFromFirestoreResponse.data.data!.email!;
+
+  /// get current user full name
+  @override
+  String get getUserFullname => getUserInfoFromFirestoreResponse.data.data!.userName!;
+
+  /// get current user name
+  @override
+  String get getUserName => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').first;
+
+  /// get current user surname
+  @override
+  String get getUserSurname => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').last;
+
+  /// get current user gender
+  @override
+  String get getUserGender => getUserInfoFromFirestoreResponse.data.data!.gender!;
+
+  /// get current user gender icon
+  @override
+  IconData get getUserGenderIcon => isMan ? AppIcons.kManIcon : AppIcons.kWomanIcon;
+
+  /// get current user gender icon
+  @override
+  bool get isMan => getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek';
+
+  /// get current user age
+  @override
+  String get getUserAge => getUserInfoFromFirestoreResponse.data.data!.age!;
+
+  /// get current user phone number
+  @override
+  String get getUserPhoneNumber => getUserInfoFromFirestoreResponse.data.data!.phoneNumber!;
+
+  /// get current user photo url
+  @override
+  String get getUserProfilPhoto => getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
 }

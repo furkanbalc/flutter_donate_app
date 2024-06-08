@@ -16,6 +16,12 @@ class AppIcons {
   static const IconData kUserOutlinedIcon = Iconsax.user;
   static const IconData kUserFilledIcon = Icons.person;
   //
+  static const IconData kLocationOutlinedIcon = Iconsax.location;
+  static const IconData kLocationFilledIcon = Iconsax.location5;
+  static const IconData kAddLocationIcon = Iconsax.location_add5;
+  //
+  static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
+  static const IconData kStatisticFilledIcon = Iconsax.chart_215;
   static const IconData kInfoIcon = Iconsax.info_circle;
   static const IconData kLikeIcon = Iconsax.like_1;
   static const IconData kLockIcon = Iconsax.lock;
@@ -24,11 +30,6 @@ class AppIcons {
   static const IconData kEmailIcon = Iconsax.sms;
   static const IconData kPhoneIcon = Iconsax.mobile4;
   static const IconData kTickIcon = Iconsax.tick_square;
-
-  static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
-  static const IconData kStatisticFilledIcon = Iconsax.chart_215;
-  static const IconData kLocationOutlinedIcon = Iconsax.location;
-  static const IconData kLocationFilledIcon = Iconsax.location5;
   static const IconData kEditIcon = Iconsax.user_edit;
   static const IconData kPasswordIcon = Iconsax.password_check;
   static const IconData kVisibility = Iconsax.eye;
@@ -48,8 +49,8 @@ class AppIcons {
   static const IconData kAddCameraIcon = Icons.add_a_photo_outlined;
   static const IconData kEditPhotoIcon = Iconsax.edit_2;
   static const IconData kRemoveIcon = Iconsax.close_square;
+  static const IconData kDeleteIcon = Icons.delete;
   static const IconData kFilterIcon = Iconsax.setting_4;
   static const IconData kSettingsOutlinedIcon = Iconsax.setting_2;
   static const IconData kLogoutIcon = Iconsax.logout;
-
 }

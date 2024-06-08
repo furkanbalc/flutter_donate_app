@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/firebase_service/user_info_service.dart';
+import 'package:flutter_donate_app/presentation/mixin/user_info_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/sliver_appbar.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';

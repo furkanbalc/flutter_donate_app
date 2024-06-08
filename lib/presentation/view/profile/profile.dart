@@ -7,7 +7,7 @@ import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/firebase_service/sign_out_service.dart';
+import 'package:flutter_donate_app/presentation/mixin/sign_out_service.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile_list_tile_widget.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
@@ -50,65 +50,11 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
       case Status.loading:
         return const ShimmerWidget();
       case Status.completed:
-        return Container(
-          padding: context.paddings.allLow,
-          decoration: BoxDecoration(
-            color: AppColors.whiteColor,
-            image: DecorationImage(
-              fit: BoxFit.fitWidth,
-              colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
-              image: AssetImage(AppPng.linesBg.toPng),
-            ),
-          ),
-          child: Row(
-            children: [
-              ProfilePhotoWidget(
-                badge: false,
-                width: context.dynamicWidth(.25),
-                height: context.dynamicWidth(.25),
-                padding: context.paddings.allUltra,
-                imagePath: _profileViewModel.getUserProfilPhoto,
-                onTap: () {},
-              ),
-              context.sizedBoxWidthMedium,
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Text(
-                        _profileViewModel.getUserFullname,
-                        style: context.textStyles.titleMedium.copyWith(
-                          fontWeight: FontWeight.w800,
-                        ),
-                      ),
-                      context.sizedBoxWidthNormal,
-                      Icon(_profileViewModel.getUserGenderIcon,
-                          size: 20, color: _profileViewModel.isMan ? AppColors.blueTang : AppColors.tomatoFrog),
-                      context.sizedBoxWidthLow,
-                      Text(
-                        _profileViewModel.getUserAge,
-                        style: context.textStyles.titleSmall.copyWith(
-                          color: AppColors.steel,
-                        ),
-                      ),
-                    ],
-                  ),
-                  Text(
-                    _profileViewModel.getUserEmail,
-                    style: context.textStyles.titleSmall.copyWith(
-                      color: AppColors.steel,
-                    ),
-                  ),
-                ],
-              ),
-            ],
-          ),
-        );
+        return _buildCompleted(context);
       case Status.error:
-        return  CustomErrorWidget(
+        return CustomErrorWidget(
           onPressed: () {
-
+            _profileViewModel.getUserInfoFromFirestore(id: _profileViewModel.getUserId);
           },
         );
       default:
@@ -116,14 +62,79 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
     }
   }
 
+  Widget _buildCompleted(BuildContext context) {
+    return Container(
+      padding: context.paddings.allLow,
+      margin: context.paddings.onlyTopNormal,
+      decoration: BoxDecoration(
+        color: AppColors.whiteColor,
+        image: DecorationImage(
+          fit: BoxFit.fitWidth,
+          colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
+          image: AssetImage(AppPng.linesBg.toPng),
+        ),
+      ),
+      child: Row(
+        children: [
+          ProfilePhotoWidget(
+            badge: false,
+            width: context.dynamicWidth(.25),
+            height: context.dynamicWidth(.25),
+            padding: context.paddings.allUltra,
+            imagePath: _profileViewModel.getUserProfilPhoto,
+          ),
+          context.sizedBoxWidthMedium,
+          _buildProfileInfo(context),
+        ],
+      ),
+    );
+  }
+
+  /// User name & email & age & gender
+  Widget _buildProfileInfo(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Row(
+          children: [
+            Text(
+              _profileViewModel.getUserFullname,
+              style: context.textStyles.titleMedium.copyWith(
+                fontWeight: FontWeight.w800,
+              ),
+            ),
+            context.sizedBoxWidthNormal,
+            Icon(_profileViewModel.getUserGenderIcon,
+                size: 20, color: _profileViewModel.isMan ? AppColors.blueTang : AppColors.tomatoFrog),
+            context.sizedBoxWidthLow,
+            Text(
+              _profileViewModel.getUserAge,
+              style: context.textStyles.titleSmall.copyWith(
+                color: AppColors.steel,
+              ),
+            ),
+          ],
+        ),
+        Text(
+          _profileViewModel.getUserEmail,
+          style: context.textStyles.titleSmall.copyWith(
+            color: AppColors.steel,
+          ),
+        ),
+      ],
+    );
+  }
+
   /// Profile Body
   Widget _buildBody(BuildContext context) {
     return Column(
       children: [
         _buildProfileHeader(context),
+        context.sizedBoxHeightMedium,
         Expanded(
-          child: Padding(
+          child: Container(
             padding: context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
+            color: AppColors.whiteColor,
             child: Column(
               children: [
                 ProfileListTileWidget(
@@ -137,7 +148,9 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
                 ProfileListTileWidget(
                   title: LocaleKeys.profile_my_address_info.tr(),
                   icon: AppIcons.kLocationOutlinedIcon,
-                  onPressed: () {},
+                  onPressed: () {
+                    context.goNamed(AppRouteName.addressInfos.name);
+                  },
                 ),
                 _buildDivider(),
                 ProfileListTileWidget(
@@ -157,7 +170,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
                   icon: AppIcons.kInfoIcon,
                   onPressed: () {},
                 ),
-                _buildDivider(),
+                context.sizedBoxHeightMedium,
                 _buildSignOutButton(context),
               ],
             ),
@@ -170,7 +183,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   /// SignOut Button
   Widget _buildSignOutButton(BuildContext context) {
     return ElevatedButton(
-      style: ElevatedButton.styleFrom(backgroundColor: AppColors.tomatoFrog),
+      style: ElevatedButton.styleFrom(backgroundColor: AppColors.greyLight),
       onPressed: () => signOutProcess(context: context, profileViewModel: _profileViewModel),
       child: Padding(
         padding: context.paddings.verticalNormal,
@@ -179,8 +192,10 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
           children: [
             const Icon(AppIcons.kLogoutIcon),
             context.sizedBoxWidthNormal,
-            Text(LocaleKeys.profile_sign_out.tr(),
-                style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
+            Text(
+              LocaleKeys.profile_sign_out.tr(),
+              style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor),
+            ),
           ],
         ),
       ),

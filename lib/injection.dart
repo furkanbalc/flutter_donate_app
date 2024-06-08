@@ -61,9 +61,12 @@ void initializeDependencies() async {
   injector.registerLazySingleton<SetInitialScreen>(() => SetInitialScreen(splashRepository: injector()));
   injector.registerLazySingleton<SignUp>(() => SignUp(authRepository: injector()));
   injector.registerLazySingleton<SignIn>(() => SignIn(authRepository: injector()));
-  injector.registerLazySingleton<SignOut>(() => SignOut(profileRepository: injector()));
-  injector.registerLazySingleton<SaveUserInfoToFirestore>(() => SaveUserInfoToFirestore(authRepository: injector()));
+  injector.registerLazySingleton<SignOut>(() => SignOut(authRepository: injector()));
+  injector.registerLazySingleton<DeleteAccount>(() => DeleteAccount(authRepository: injector()));
+  injector.registerLazySingleton<SaveUserInfoToFirestore>(() => SaveUserInfoToFirestore(profileRepository: injector()));
   injector
       .registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
   injector.registerLazySingleton<UpdateProfileUser>(() => UpdateProfileUser(profileRepository: injector()));
+  injector.registerLazySingleton<GetAddressInfo>(() => GetAddressInfo(profileRepository: injector()));
+  injector.registerLazySingleton<AddAddressToFirestore>(() => AddAddressToFirestore(profileRepository: injector()));
 }

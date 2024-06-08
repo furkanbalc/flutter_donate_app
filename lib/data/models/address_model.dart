@@ -30,10 +30,15 @@ class AddressesModel extends AddressesEntity {
 }
 
 class Address extends AddressEntity {
+  @override
   String? country;
+  @override
   String? city;
+  @override
   String? town;
+  @override
   String? desc;
+  @override
   Geo? geo;
 
   Address({
@@ -72,6 +77,7 @@ class Address extends AddressEntity {
 }
 
 class Geo extends GeoEntity {
+  @override
   String? lat;
   String? long;
 

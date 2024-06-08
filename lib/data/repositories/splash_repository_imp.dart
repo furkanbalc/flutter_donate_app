@@ -18,11 +18,13 @@ class SplashRepositoryImp implements SplashRepository {
     return await remoteDataSource.isUserLoggedIn();
   }
 
+  /// -- GET INITIAL SCREEN --
   @override
   Future<bool?> getInitialScreen() async {
     return await localDataSource.getBool(HiveKeys.firstOpen.name);
   }
 
+  /// -- SET INITIAL SCREEN --
   @override
   Future<void> setInitialScreen() async {
     await localDataSource.saveBool(HiveKeys.firstOpen.name, true);

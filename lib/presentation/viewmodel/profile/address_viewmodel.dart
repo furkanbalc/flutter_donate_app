@@ -55,5 +55,4 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   /// address delete mode off
   void deleteModeOff();
-
 }

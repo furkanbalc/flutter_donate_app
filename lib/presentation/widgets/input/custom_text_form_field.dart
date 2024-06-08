@@ -33,6 +33,7 @@ class CustomTextFormField extends StatelessWidget {
     this.fillColor,
     this.contentPadding,
     this.unFocus,
+    this.border,
     this.isTitle,
   });
 
@@ -63,6 +64,7 @@ class CustomTextFormField extends StatelessWidget {
   final int? minLines;
   final int? maxLenght;
   final bool? isTitle;
+  final InputBorder? border;
 
   @override
   Widget build(BuildContext context) {
@@ -101,10 +103,12 @@ class CustomTextFormField extends StatelessWidget {
           readOnly: readOnly ?? false,
           style: context.textStyles.titleSmall.copyWith(color: AppColors.blackColor, fontWeight: FontWeight.w400),
           decoration: InputDecoration(
+            border: border,
+            enabledBorder: border,
             fillColor: fillColor,
             contentPadding: contentPadding ?? context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
             hintText: hintText,
-            labelText: isTitle ?? false ? labelText : null ,
+            labelText: isTitle ?? false ? labelText : null,
             prefixIcon: prefixIcon,
             suffixIcon: InkWell(
               highlightColor: AppColors.transparentColor,

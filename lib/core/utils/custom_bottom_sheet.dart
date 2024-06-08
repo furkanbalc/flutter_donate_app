@@ -4,7 +4,7 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 
-customBottomSheet({
+customBottomSheet<T>({
   required BuildContext context,
   String? title,
   required Widget body,

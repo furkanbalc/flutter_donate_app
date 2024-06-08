@@ -110,7 +110,7 @@ mixin Validator {
     if (phoneNumber == null || phoneNumber.isEmpty) {
       return 'Telefon numarası boş olamaz!';
     }
-    if (phoneNumber.length < 9) {
+    if (phoneNumber.length < 10) {
       return 'Telefon numarası çok kısa!';
     }
     if (!RegExp(r'^[0-9\s]+$').hasMatch(phoneNumber)) {

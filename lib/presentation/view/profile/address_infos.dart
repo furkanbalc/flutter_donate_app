@@ -1,4 +1,3 @@
-import 'package:csc_picker/csc_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
@@ -6,7 +5,6 @@ import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/extensions/context_borders.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
-import 'package:flutter_donate_app/core/router/go_router.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/address_card.dart';
@@ -50,7 +48,7 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
     return Stack(
       children: [
         Scaffold(
-          backgroundColor: AppColors.whiteColor,
+          backgroundColor: AppColors.cascadingWhite,
           appBar: const CustomAppBar(title: 'Adreslerim'),
           floatingActionButton: _addAddressButton(context),
           body: _buildBody(),
