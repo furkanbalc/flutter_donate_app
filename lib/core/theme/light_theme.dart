@@ -11,4 +11,8 @@ final ThemeData lightTheme = ThemeData(
   inputDecorationTheme: CustomInputDecorationTheme.lightInputDecorationTheme,
   elevatedButtonTheme: CustomElevatedButtonTheme.lightElevatedButtonTheme,
   appBarTheme: CustomAppBarTheme.lightAppBarTheme,
+  bottomSheetTheme: CustomBottomSheetTheme.lightBottomSheetTheme,
+  iconButtonTheme: CustomIconButtonTheme.lightIconButtonTheme,
+  textButtonTheme: CustomTextButtonThemeData.lightTextButtonTheme,
+  cardTheme: CustomCardTheme.lightCardTheme,
 );

@@ -16,7 +16,6 @@ class AddressCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      color: AppColors.cascadingWhite,
       child: Padding(
         padding: context.paddings.allLow,
         child: Column(

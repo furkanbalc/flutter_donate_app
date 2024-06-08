@@ -16,8 +16,6 @@ class _VerticalProductCardState extends State<VerticalProductCard> with ProductC
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
-      color: AppColors.whiteColor,
       child: Padding(
         padding: context.paddings.allMin,
         child: Column(

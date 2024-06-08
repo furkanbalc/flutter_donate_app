@@ -16,8 +16,6 @@ class _HorizontalProductCartState extends State<HorizontalProductCart> with Prod
   @override
   Widget build(BuildContext context) {
     return Card(
-      elevation: 0,
-      color: AppColors.whiteColor,
       child: Padding(
         padding: context.paddings.allMedium,
         child: Row(
