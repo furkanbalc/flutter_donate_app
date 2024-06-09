@@ -22,7 +22,6 @@ mixin SigninService on State<SigninView> {
             if(profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
               if(profileViewModel.getUserInfoFromFirestoreResponse.data.isActive!) {
                 await addressViewModel.getAdressesFromFirestore(id: signinViewModel.signInResponse.data).then((value) {
-                  addressViewModel.getProvinces();
                   context.goNamed(AppRouteName.app.name);
                   Utils.successSnackBar(
                     context: context,

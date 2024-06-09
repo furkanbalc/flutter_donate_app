@@ -1,11 +1,8 @@
 import 'package:flutter_donate_app/core/usecase/base_usecase.dart';
-import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
-import 'package:flutter_donate_app/domain/repositories/address_repository.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
-import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
+
 
 /// -- SAVE USER INFO --
 class ParamsForSaveUserInfoToFirestore {
@@ -107,13 +104,13 @@ class UpdateProfileUser extends BaseUseCase<Future<void>, ParamsForUpdateUser> {
 
 /// -- GET USER ADDRESS INFO --
 class GetAddressInfo extends BaseUseCase<Future<AddressesEntity>, ParamsForGetUserInfo> {
-  final AddressRepository addressRepository;
+  final ProfileRepository profileRepository;
 
-  GetAddressInfo({required this.addressRepository});
+  GetAddressInfo({required this.profileRepository});
 
   @override
   Future<AddressesEntity> execute(ParamsForGetUserInfo params) async {
-    return await addressRepository.getAdressesFromFirestore(id: params.id);
+    return await profileRepository.getAdressesFromFirestore(id: params.id);
   }
 }
 
@@ -137,13 +134,13 @@ class ParamsForAddAddressToFirestore {
 }
 
 class AddAddressToFirestore extends BaseUseCase<Future<AddressesEntity>, ParamsForAddAddressToFirestore> {
-  final AddressRepository addressRepository;
+  final ProfileRepository profileRepository;
 
-  AddAddressToFirestore({required this.addressRepository});
+  AddAddressToFirestore({required this.profileRepository});
 
   @override
   Future<AddressesEntity> execute(ParamsForAddAddressToFirestore params) async {
-    return await addressRepository.addAddressInfoToFirestore(
+    return await profileRepository.addAddressInfoToFirestore(
       country: params.country,
       city: params.city,
       town: params.town,
@@ -151,17 +148,5 @@ class AddAddressToFirestore extends BaseUseCase<Future<AddressesEntity>, ParamsF
       lat: params.lat,
       long: params.long,
     );
-  }
-}
-
-/// -- GET TURKEY PROVINCE --
-class GetTrProvinces extends BaseUseCase<Future<GetProvinceEntity>, ParamsBase> {
-  final AddressRepository addressRepository;
-
-  GetTrProvinces({required this.addressRepository});
-
-  @override
-  Future<GetProvinceEntity> execute(ParamsBase params) async {
-    return await addressRepository.getTrProvinces();
   }
 }

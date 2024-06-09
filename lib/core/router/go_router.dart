@@ -7,13 +7,10 @@ import 'package:flutter_donate_app/presentation/view/authentication/signup.dart'
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
 import 'package:flutter_donate_app/presentation/view/home/home.dart';
-import 'package:flutter_donate_app/presentation/view/profile/add_address.dart';
-import 'package:flutter_donate_app/presentation/view/profile/address_infos.dart';
 import 'package:flutter_donate_app/presentation/view/profile/profile.dart';
 import 'package:flutter_donate_app/presentation/view/profile/profile_infos.dart';
 import 'package:flutter_donate_app/presentation/view/splash/onboard.dart';
 import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
-import 'package:flutter_donate_app/presentation/view/splash/welcome.dart';
 import 'package:go_router/go_router.dart';
 
 class AppRoutes {
@@ -32,11 +29,6 @@ class AppRoutes {
         name: AppRouteName.splash.name,
         path: AppRouteName.splash.path,
         builder: (context, state) => const SplashView(),
-      ),
-      GoRoute(
-        name: AppRouteName.welcome.name,
-        path: AppRouteName.welcome.path,
-        builder: (context, state) => const Welcome(),
       ),
       GoRoute(
         name: AppRouteName.onboard.name,
@@ -78,18 +70,6 @@ class AppRoutes {
             path: AppRouteName.profileInfos.path,
             builder: (context, state) => const ProfileInfosView(),
           ),
-          GoRoute(
-            name: AppRouteName.addressInfos.name,
-            path: AppRouteName.addressInfos.path,
-            builder: (context, state) => const AddressInfos(),
-            routes: [
-              GoRoute(
-                name: AppRouteName.addAddress.name,
-                path: AppRouteName.addAddress.path,
-                builder: (context, state) => const AddAddress(),
-              ),
-            ],
-          ),
         ],
       ),
       GoRoute(
@@ -102,6 +82,7 @@ class AppRoutes {
         path: AppRouteName.profile.path,
         builder: (context, state) => const ProfileView(),
       ),
+
     ],
   );
 }

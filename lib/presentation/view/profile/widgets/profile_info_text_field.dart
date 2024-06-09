@@ -16,24 +16,16 @@ class ProfileInfoTextField extends StatelessWidget {
     this.readOnly,
     this.labelText,
     this.profileViewModel,
-    this.fillColor,
-    this.onChanged,
-    this.minLines,
-    this.maxLines,
   });
 
   final TextEditingController? controller;
   final String? Function(String?)? validator;
-  final Function(String)? onChanged;
   final VoidCallback? onTap;
   final TextInputType? keyboardType;
   final IconData? prefixIcon;
   final bool? readOnly;
   final String? labelText;
   final ProfileViewModel? profileViewModel;
-  final Color? fillColor;
-  final int? minLines;
-  final int? maxLines;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +33,17 @@ class ProfileInfoTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       labelText: labelText,
-      prefixIcon: prefixIcon != null ? Icon(prefixIcon, size: AppSizes.high.value): null,
+      prefixIcon: Icon(prefixIcon, size: AppSizes.high.value),
       isTitle: true,
       readOnly: readOnly ?? false,
-      fillColor: fillColor ?? AppColors.whiteColor,
+      fillColor: AppColors.whiteColor,
       keyboardType: keyboardType,
       border: OutlineInputBorder(
         borderRadius: context.borders.circularBorderRadiusMedium,
         borderSide: const BorderSide(color: AppColors.steel),
       ),
       onTap: onTap,
-      onChanged: onChanged,
       unFocus: true,
-      maxLines: maxLines,
-      minLines: minLines,
     );
   }
 }

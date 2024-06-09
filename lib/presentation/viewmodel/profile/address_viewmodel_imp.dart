@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
-import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
+import 'package:flutter_donate_app/domain/entity/address_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
@@ -14,15 +11,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   bool _isAllSelected = false;
   late List<bool> _isCheckedList;
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  final TextEditingController _country = TextEditingController(text: 'Türkiye');
-  final TextEditingController _city = TextEditingController();
-  final TextEditingController _county = TextEditingController();
-  final TextEditingController _desc = TextEditingController();
-  final TextEditingController _search = TextEditingController();
-  int _selectedCityIndex = -1;
-  int _selectedCountyIndex = -1;
-
   /// GETTERS
   @override
   bool get isDeleteMode => _isDeleteMode;
@@ -32,30 +20,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
 
   @override
   List<bool> get isCheckedList => _isCheckedList;
-
-  @override
-  GlobalKey<FormState> get formKey => _formKey;
-
-  @override
-  TextEditingController get country => _country;
-
-  @override
-  TextEditingController get city => _city;
-
-  @override
-  TextEditingController get county => _county;
-
-  @override
-  TextEditingController get desc => _desc;
-
-  @override
-  TextEditingController get search => _search;
-
-  @override
-  int get selectedCityIndex => _selectedCityIndex;
-
-  @override
-  int get selectedCountyIndex => _selectedCountyIndex;
 
   /// SETTERS
   @override
@@ -73,18 +37,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   @override
   set isCheckedList(List<bool> value) {
     _isCheckedList = value;
-    notifyListeners();
-  }
-
-  @override
-  set selectedCityIndex(int value) {
-    _selectedCityIndex = value;
-    notifyListeners();
-  }
-
-  @override
-  set selectedCountyIndex(int value) {
-    _selectedCountyIndex = value;
     notifyListeners();
   }
 
@@ -154,30 +106,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
     }
   }
 
-  /// -- GET TURKEY PROVINCE --
-  ApiResponse<GetProvinceEntity> _getTrProvincesResponse = ApiResponse.loading('loading');
-
-  @override
-  ApiResponse<GetProvinceEntity> get getTrProvincesResponse => _getTrProvincesResponse;
-
-  @override
-  set getTrProvincesResponse(ApiResponse<GetProvinceEntity> value) {
-    _getTrProvincesResponse = value;
-    notifyListeners();
-  }
-
-  @override
-  Future<void> getProvinces() async {
-    try {
-      final GetProvinceEntity getProvinceEntity = await injector<GetTrProvinces>().execute(
-        const ParamsBase(),
-      );
-      getTrProvincesResponse = ApiResponse.completed(getProvinceEntity);
-    } catch (e, stackTrace) {
-      getTrProvincesResponse = ApiResponse.error(e, stackTrace);
-    }
-  }
-
   /// init method
   @override
   void init() {
@@ -191,7 +119,7 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   /// get address desc
   @override
   String getAddressTitle(int index) =>
-      '${getAddressFromFirestoreResponse.data.address?[index].county}/${getAddressFromFirestoreResponse.data.address?[index].city}';
+      '${getAddressFromFirestoreResponse.data.address?[index].town}/${getAddressFromFirestoreResponse.data.address?[index].city}';
 
   /// select all addresses
   @override
@@ -213,35 +141,4 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
     isAllSelected = false;
     isCheckedList = List<bool>.filled(isCheckedList.length, false);
   }
-
-  /// get cities lenght
-  @override
-  int get getCitiesLenght => getTrProvincesResponse.data.data.length;
-
-  /// get counties lenght
-  @override
-  int get getCountyLenght => getTrProvincesResponse.data.data[selectedCityIndex].counties.length;
-
-  /// get city object by index
-  @override
-  String getCityByIndex(int index) => getTrProvincesResponse.data.data[index].city;
-
-  /// get county name by index
-  @override
-  String getCountyNameByIndex(int index) {
-    return getTrProvincesResponse.data.data[selectedCityIndex].counties[index].county;
-  }
-
-  /// get selected city name
-  @override
-  String get getSelectedCityName => getTrProvincesResponse.data.data[selectedCityIndex].city;
-
-  /// get selected county name
-  @override
-  String get getSelectedCountyName =>
-      county.text = getTrProvincesResponse.data.data[selectedCityIndex].counties[selectedCountyIndex].county;
-
-  /// is selected city
-  @override
-  bool get isSelectedCity => selectedCityIndex != -1;
 }
