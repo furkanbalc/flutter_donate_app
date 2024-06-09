@@ -1,4 +1,5 @@
-import 'package:flutter_donate_app/data/models/address_model.dart';
+import 'package:flutter_donate_app/data/models/address/address_model.dart';
+import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 
 abstract class RemoteDataSource {
@@ -58,4 +59,7 @@ abstract class RemoteDataSource {
     required String lat,
     required String long,
   });
+
+  /// -- GET TURKEY PROVINCE --
+  Future<GetProvinceModel> getTrProvinces();
 }

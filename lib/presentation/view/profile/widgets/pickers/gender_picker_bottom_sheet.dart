@@ -5,7 +5,7 @@ import 'package:flutter_donate_app/core/utils/custom_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:go_router/go_router.dart';
 
-genderPickerSheet({
+genderPickerBottomSheet({
   required BuildContext context,
   required ProfileViewModel profileViewModel,
 }) {

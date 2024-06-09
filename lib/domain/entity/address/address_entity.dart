@@ -12,14 +12,14 @@ class AddressesEntity extends Equatable {
 class AddressEntity extends Equatable {
   final String? country;
   final String? city;
-  final String? town;
+  final String? county;
   final String? desc;
   final GeoEntity? geo;
 
   const AddressEntity({
     required this.country,
     required this.city,
-    required this.town,
+    required this.county,
     required this.desc,
     required this.geo,
   });
@@ -28,7 +28,7 @@ class AddressEntity extends Equatable {
   List<Object?> get props => [
         country,
         city,
-        town,
+        county,
         desc,
         geo,
       ];
@@ -36,16 +36,16 @@ class AddressEntity extends Equatable {
 
 class GeoEntity extends Equatable {
   final String? lat;
-  final String? lng;
+  final String? long;
 
   const GeoEntity({
     required this.lat,
-    required this.lng,
+    required this.long,
   });
 
   @override
   List<Object?> get props => [
         lat,
-        lng,
+    long,
       ];
 }
