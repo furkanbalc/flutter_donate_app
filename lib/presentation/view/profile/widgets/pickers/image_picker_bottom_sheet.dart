@@ -7,7 +7,7 @@ import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/container/image_picker_icon_button.dart';
 import 'package:go_router/go_router.dart';
 
-imagePickerSheet({
+imagePickerBottomSheet({
   required BuildContext context,
   required ProfileViewModel profileViewModel,
 }) {

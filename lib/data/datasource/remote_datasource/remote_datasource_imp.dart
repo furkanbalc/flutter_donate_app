@@ -1,11 +1,15 @@
+import 'dart:convert';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_donate_app/core/enums/firebase_collections.dart';
 import 'package:flutter_donate_app/core/service/firebase_storage_service.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
-import 'package:flutter_donate_app/data/models/address_model.dart';
+import 'package:flutter_donate_app/data/models/address/address_model.dart';
+import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
+import 'package:http/http.dart' as http;
 
 class RemoteDataSourceImp implements RemoteDataSource {
   RemoteDataSourceImp({
@@ -188,5 +192,22 @@ class RemoteDataSourceImp implements RemoteDataSource {
       FirebaseCollections.addresses.name: FieldValue.arrayUnion([address]),
     });
     return AddressesModel.fromJson(address);
+  }
+
+  /// -- GET TURKEY PROVINCE --
+  @override
+  Future<GetProvinceModel> getTrProvinces() async {
+    final url = Uri.parse('https://turkiyeapi.dev/api/v1/provinces');
+    dynamic data;
+    try {
+      final response = await http.get(url);
+
+      if (response.statusCode == 200) {
+        data = json.decode(response.body);
+      }
+    } catch (e) {
+      print('Hata oluştu: $e');
+    }
+    return GetProvinceModel.fromJson(data);
   }
 }

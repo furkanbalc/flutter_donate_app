@@ -1,4 +1,4 @@
-import 'package:flutter_donate_app/domain/entity/address_entity.dart';
+import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
 
 class AddressesModel extends AddressesEntity {
   List<Address>? addresses;
@@ -35,7 +35,7 @@ class Address extends AddressEntity {
   @override
   String? city;
   @override
-  String? town;
+  String? county;
   @override
   String? desc;
   @override
@@ -44,13 +44,13 @@ class Address extends AddressEntity {
   Address({
     this.country,
     this.city,
-    this.town,
+    this.county,
     this.desc,
     this.geo,
   }) : super(
           country: country,
           city: city,
-          town: town,
+          county: county,
           desc: desc,
           geo: geo,
         );
@@ -59,7 +59,7 @@ class Address extends AddressEntity {
     return {
       'country': country,
       'city': city,
-      'town': town,
+      'county': county,
       'desc': desc,
       'geo': geo?.toJson(),
     };
@@ -69,9 +69,36 @@ class Address extends AddressEntity {
     return Address(
       country: json?['country'],
       city: json?['city'],
-      town: json?['town'],
+      county: json?['county'],
       desc: json?['desc'],
       geo: json?['geo'] != null ? Geo.fromJson(json!['geo']) : null,
+    );
+  }
+}
+
+class Maps {
+  String? googleMaps;
+  String? openStreetMap;
+
+  Maps({
+    this.googleMaps,
+    this.openStreetMap,
+  });
+
+  Maps copyWith({
+    String? googleMaps,
+    String? openStreetMap,
+  }) {
+    return Maps(
+      googleMaps: googleMaps ?? this.googleMaps,
+      openStreetMap: openStreetMap ?? this.openStreetMap,
+    );
+  }
+
+  factory Maps.fromJson(Map<String, dynamic> json) {
+    return Maps(
+      googleMaps: json['googleMaps'] as String?,
+      openStreetMap: json['openStreetMap'] as String?,
     );
   }
 }
@@ -79,6 +106,7 @@ class Address extends AddressEntity {
 class Geo extends GeoEntity {
   @override
   String? lat;
+  @override
   String? long;
 
   Geo({
@@ -86,7 +114,7 @@ class Geo extends GeoEntity {
     this.long,
   }) : super(
           lat: lat,
-          lng: long,
+          long: long,
         );
 
   Map<String, dynamic> toJson() {

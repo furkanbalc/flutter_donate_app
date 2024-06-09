@@ -5,16 +5,14 @@ import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/mixin/validator.dart';
-import 'package:flutter_donate_app/core/router/route_names.dart';
+import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/core/utils/custom_alert_dialog.dart';
 import 'package:flutter_donate_app/core/utils/custom_back_dialog.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/profile/widgets/age_picker_bottom_sheet.dart';
-import 'package:flutter_donate_app/presentation/view/profile/widgets/gender_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/update_user_info_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_bottom_button.dart';
-import 'package:flutter_donate_app/presentation/view/profile/widgets/image_picker_sheet.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
+import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/index.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile_info_text_field.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
@@ -103,7 +101,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
             ),
           ),
         ),
-        _builDeleteAccountAndSaveButton()
+        _builDeleteAccountAndSaveButton(),
       ],
     );
   }
@@ -143,7 +141,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
           imagePath: _profileViewModel.profilPhotoUrl,
           padding: context.paddings.allUltra,
           onTap: () {
-            imagePickerSheet(
+            imagePickerBottomSheet(
               context: context,
               profileViewModel: _profileViewModel,
             );
@@ -203,7 +201,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
             labelText: LocaleKeys.form_fields_gender.tr(),
             prefixIcon: _profileViewModel.genderIcon,
             onTap: () async {
-              genderPickerSheet(
+              genderPickerBottomSheet(
                 context: context,
                 profileViewModel: _profileViewModel,
               );

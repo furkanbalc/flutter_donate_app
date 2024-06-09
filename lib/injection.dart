@@ -2,13 +2,16 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter_donate_app/core/service/firebase_storage_service.dart';
+import 'package:flutter_donate_app/core/service/location_service.dart';
 import 'package:flutter_donate_app/data/datasource/local_datasource/local_datasource.dart';
 import 'package:flutter_donate_app/data/datasource/local_datasource/local_datasource_imp.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource_imp.dart';
+import 'package:flutter_donate_app/data/repositories/address_repository.dart';
 import 'package:flutter_donate_app/data/repositories/auth_repository_imp.dart';
 import 'package:flutter_donate_app/data/repositories/profile_repository_imp.dart';
 import 'package:flutter_donate_app/data/repositories/splash_repository_imp.dart';
+import 'package:flutter_donate_app/domain/repositories/address_repository.dart';
 import 'package:flutter_donate_app/domain/repositories/auth_repository.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 import 'package:flutter_donate_app/domain/repositories/splash_repository.dart';
@@ -35,6 +38,8 @@ void initializeDependencies() async {
   injector.registerLazySingleton<FirebaseStorage>(() => FirebaseStorage.instance);
   // Storage Service
   injector.registerLazySingleton<StorageService>(() => StorageService(firebaseStorage: injector()));
+  // Location Service
+  injector.registerLazySingleton<LocationService>(() => LocationService());
 
   // Remote
   injector.registerLazySingleton<RemoteDataSource>(() => RemoteDataSourceImp(
@@ -54,6 +59,10 @@ void initializeDependencies() async {
       ));
   injector.registerLazySingleton<AuthRepository>(() => AuthRepositoryImp(remoteDataSource: injector()));
   injector.registerLazySingleton<ProfileRepository>(() => ProfileRepositoryImp(remoteDataSource: injector()));
+  injector.registerLazySingleton<AddressRepository>(() => AddressRepositoryImp(
+        remoteDataSource: injector(),
+        locationService: injector(),
+      ));
 
   // UseCases
   injector.registerLazySingleton<IsLoggedIn>(() => IsLoggedIn(splashRepository: injector()));
@@ -67,6 +76,7 @@ void initializeDependencies() async {
   injector
       .registerLazySingleton<GetUserInfoFromFirestore>(() => GetUserInfoFromFirestore(profileRepository: injector()));
   injector.registerLazySingleton<UpdateProfileUser>(() => UpdateProfileUser(profileRepository: injector()));
-  injector.registerLazySingleton<GetAddressInfo>(() => GetAddressInfo(profileRepository: injector()));
-  injector.registerLazySingleton<AddAddressToFirestore>(() => AddAddressToFirestore(profileRepository: injector()));
+  injector.registerLazySingleton<GetAddressInfo>(() => GetAddressInfo(addressRepository: injector()));
+  injector.registerLazySingleton<AddAddressToFirestore>(() => AddAddressToFirestore(addressRepository: injector()));
+  injector.registerLazySingleton<GetTrProvinces>(() => GetTrProvinces(addressRepository: injector()));
 }

@@ -121,4 +121,12 @@ mixin Validator {
     }
     return null;
   }
+
+  /// PROVINCE VALIDATOR
+  String? provinceValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Bu alan boş geçilemez!';
+    }
+    return null;
+  }
 }
