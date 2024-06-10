@@ -102,6 +102,27 @@ class CodegenLoader extends AssetLoader{
     "delete_account": "Delete Account",
     "save": "Save",
     "edit": "Edit"
+  },
+  "profile_info": {
+    "are_you_sure": "Are you sure?",
+    "your_account_will_be_deleted": "Your account will be deleted and all your data will be lost!",
+    "profil_photo": "Profile Photo",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "remove": "Remove"
+  },
+  "address": {
+    "my_addresses": "My Addresses",
+    "apply": "Apply",
+    "select": "Select",
+    "select_all": "Select All",
+    "cancel": "Cancel",
+    "add_address": "Add Address",
+    "select_country": "Select Country",
+    "select_city": "Select City",
+    "select_district": "Select District",
+    "description": "Description",
+    "use_current_location": "Use Current Location"
   }
 };
 static const Map<String,dynamic> tr = {
@@ -192,6 +213,27 @@ static const Map<String,dynamic> tr = {
     "delete_account": "Hesabı Sil",
     "save": "Kaydet",
     "edit": "Düzenle"
+  },
+  "profile_info": {
+    "are_you_sure": "Emin misin?",
+    "your_account_will_be_deleted": "Hesabın silinecek ve tüm verilerin tarih olacak!",
+    "profil_photo": "Profil Fotoğrafı",
+    "camera": "Kamera",
+    "gallery": "Galeri",
+    "remove": "Kaldır"
+  },
+  "address": {
+    "my_addresses": "Adreslerim",
+    "apply": "Onayla",
+    "select": "Seç",
+    "select_all": "Tümünü Seç",
+    "cancel": "İptal Et",
+    "add_address": "Adres Ekle",
+    "select_country": "Ülke Seçiniz",
+    "select_city": "Şehir Seçiniz",
+    "select_district": "İlçe Seçiniz",
+    "description": "Açıklama",
+    "use_current_location": "Mevcut Konumu Kullan"
   }
 };
 static const Map<String, Map<String,dynamic>> mapLocales = {"en": en, "tr": tr};

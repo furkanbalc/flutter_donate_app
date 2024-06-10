@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
@@ -5,6 +6,7 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/custom_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/container/image_picker_icon_button.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 imagePickerBottomSheet({
@@ -13,7 +15,7 @@ imagePickerBottomSheet({
 }) {
   customBottomSheet(
     context: context,
-    title: 'Profil Fotoğrafı',
+    title: LocaleKeys.profile_info_profil_photo.tr(),
     body: Padding(
       padding: context.paddings.horizontalMedium,
       child: Row(
@@ -24,7 +26,7 @@ imagePickerBottomSheet({
               profileViewModel.getImageFromCamera();
             },
             icon: AppIcons.kCameraIcon,
-            text: 'Kamera',
+            text: LocaleKeys.profile_info_camera.tr(),
           ),
           context.sizedBoxWidthHigh,
           ImagePickerIcon(
@@ -33,7 +35,7 @@ imagePickerBottomSheet({
               profileViewModel.getImageFromGallery();
             },
             icon: AppIcons.kGalleryIcon,
-            text: 'Galeri',
+            text: LocaleKeys.profile_info_gallery.tr(),
           ),
           context.sizedBoxWidthHigh,
           Visibility(
@@ -44,7 +46,7 @@ imagePickerBottomSheet({
                 context.pop();
               },
               icon: AppIcons.kRemoveIcon,
-              text: 'Kaldır',
+              text: LocaleKeys.profile_info_remove.tr(),
             ),
           ),
         ],

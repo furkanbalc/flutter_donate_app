@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/utils/custom_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
 
 selectCountyPicker({
@@ -46,7 +48,7 @@ selectCountyPicker({
               addressViewModel.getSelectedCountyName;
               context.pop();
             },
-            text: 'Seç',
+            text: LocaleKeys.address_select.tr(),
           ),
         ],
       ),

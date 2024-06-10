@@ -149,8 +149,8 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView> with UpdateU
       onPressed: () {
         customAlertDialog(
           context: context,
-          title: 'Emin misin',
-          message: 'Hesabın silinecek ve tüm verilerin tarih olacak!',
+          title: LocaleKeys.profile_info_are_you_sure.tr(),
+          message: LocaleKeys.profile_info_your_account_will_be_deleted.tr(),
           onPressed: () => deleteAccountProcess(context: context, profileViewModel: _profileViewModel),
         );
       },

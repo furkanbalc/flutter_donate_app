@@ -39,7 +39,6 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   Widget build(BuildContext context) {
     _profileViewModel = ref.watch(profileViewModelImp);
     return Scaffold(
-      backgroundColor: AppColors.cascadingWhite,
       appBar: CustomAppBar(title: LocaleKeys.profile_my_profile.tr()),
       body: _buildBody(context),
     );
@@ -51,52 +50,55 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
       children: [
         ProfileHeaderInfo(profileViewModel: _profileViewModel),
         context.sizedBoxHeightMedium,
-        Expanded(
-          child: Container(
-            padding: context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
-            color: AppColors.whiteColor,
-            child: Column(
-              children: [
-                ProfileListTileWidget(
-                  title: LocaleKeys.profile_my_profile_info.tr(),
-                  icon: AppIcons.kUserOutlinedIcon,
-                  onPressed: () {
-                    context.goNamed(AppRouteName.profileInfos.name);
-                  },
-                ),
-                _buildDivider(),
-                ProfileListTileWidget(
-                  title: LocaleKeys.profile_my_address_info.tr(),
-                  icon: AppIcons.kLocationOutlinedIcon,
-                  onPressed: () {
-                    context.goNamed(AppRouteName.addressInfos.name);
-                  },
-                ),
-                _buildDivider(),
-                ProfileListTileWidget(
-                  title: LocaleKeys.profile_my_statistics.tr(),
-                  icon: AppIcons.kStatisticOutlinedIcon,
-                  onPressed: () {},
-                ),
-                _buildDivider(),
-                ProfileListTileWidget(
-                  title: LocaleKeys.profile_settings.tr(),
-                  icon: AppIcons.kSettingsOutlinedIcon,
-                  onPressed: () {},
-                ),
-                _buildDivider(),
-                ProfileListTileWidget(
-                  title: LocaleKeys.profile_contact_us.tr(),
-                  icon: AppIcons.kInfoIcon,
-                  onPressed: () {},
-                ),
-                context.sizedBoxHeightMedium,
-                _buildSignOutButton(context),
-              ],
-            ),
-          ),
-        ),
+        Expanded(child: _profileItemList(context)),
       ],
+    );
+  }
+
+  /// Profile Item List
+  Widget _profileItemList(BuildContext context) {
+    return Container(
+      padding: context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
+      color: AppColors.whiteColor,
+      child: Column(
+        children: [
+          ProfileListTileWidget(
+            title: LocaleKeys.profile_my_profile_info.tr(),
+            icon: AppIcons.kUserOutlinedIcon,
+            onPressed: () {
+              context.goNamed(AppRouteName.profileInfos.name);
+            },
+          ),
+          _buildDivider(),
+          ProfileListTileWidget(
+            title: LocaleKeys.profile_my_address_info.tr(),
+            icon: AppIcons.kLocationOutlinedIcon,
+            onPressed: () {
+              context.goNamed(AppRouteName.addressInfos.name);
+            },
+          ),
+          _buildDivider(),
+          ProfileListTileWidget(
+            title: LocaleKeys.profile_my_statistics.tr(),
+            icon: AppIcons.kStatisticOutlinedIcon,
+            onPressed: () {},
+          ),
+          _buildDivider(),
+          ProfileListTileWidget(
+            title: LocaleKeys.profile_settings.tr(),
+            icon: AppIcons.kSettingsOutlinedIcon,
+            onPressed: () {},
+          ),
+          _buildDivider(),
+          ProfileListTileWidget(
+            title: LocaleKeys.profile_contact_us.tr(),
+            icon: AppIcons.kInfoIcon,
+            onPressed: () {},
+          ),
+          context.sizedBoxHeightMedium,
+          _buildSignOutButton(context),
+        ],
+      ),
     );
   }
 

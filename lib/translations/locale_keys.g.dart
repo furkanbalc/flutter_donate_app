@@ -81,5 +81,24 @@ abstract class  LocaleKeys {
   static const profile_save = 'profile.save';
   static const profile_edit = 'profile.edit';
   static const profile = 'profile';
+  static const profile_info_are_you_sure = 'profile_info.are_you_sure';
+  static const profile_info_your_account_will_be_deleted = 'profile_info.your_account_will_be_deleted';
+  static const profile_info_profil_photo = 'profile_info.profil_photo';
+  static const profile_info_camera = 'profile_info.camera';
+  static const profile_info_gallery = 'profile_info.gallery';
+  static const profile_info_remove = 'profile_info.remove';
+  static const profile_info = 'profile_info';
+  static const address_my_addresses = 'address.my_addresses';
+  static const address_apply = 'address.apply';
+  static const address_select = 'address.select';
+  static const address_select_all = 'address.select_all';
+  static const address_cancel = 'address.cancel';
+  static const address_add_address = 'address.add_address';
+  static const address_select_country = 'address.select_country';
+  static const address_select_city = 'address.select_city';
+  static const address_select_district = 'address.select_district';
+  static const address_description = 'address.description';
+  static const address_use_current_location = 'address.use_current_location';
+  static const address = 'address';
 
 }

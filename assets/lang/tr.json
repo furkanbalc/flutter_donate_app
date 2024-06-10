@@ -86,5 +86,26 @@
     "delete_account": "Hesabı Sil",
     "save": "Kaydet",
     "edit": "Düzenle"
+  },
+  "profile_info": {
+    "are_you_sure": "Emin misin?",
+    "your_account_will_be_deleted": "Hesabın silinecek ve tüm verilerin tarih olacak!",
+    "profil_photo": "Profil Fotoğrafı",
+    "camera": "Kamera",
+    "gallery": "Galeri",
+    "remove": "Kaldır"
+  },
+  "address": {
+    "my_addresses": "Adreslerim",
+    "apply": "Onayla",
+    "select": "Seç",
+    "select_all": "Tümünü Seç",
+    "cancel": "İptal Et",
+    "add_address": "Adres Ekle",
+    "select_country": "Ülke Seçiniz",
+    "select_city": "Şehir Seçiniz",
+    "select_district": "İlçe Seçiniz",
+    "description": "Açıklama",
+    "use_current_location": "Mevcut Konumu Kullan"
   }
 }

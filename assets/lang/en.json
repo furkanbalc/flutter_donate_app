@@ -86,5 +86,26 @@
     "delete_account": "Delete Account",
     "save": "Save",
     "edit": "Edit"
+  },
+  "profile_info": {
+    "are_you_sure": "Are you sure?",
+    "your_account_will_be_deleted": "Your account will be deleted and all your data will be lost!",
+    "profil_photo": "Profile Photo",
+    "camera": "Camera",
+    "gallery": "Gallery",
+    "remove": "Remove"
+  },
+  "address": {
+    "my_addresses": "My Addresses",
+    "apply": "Apply",
+    "select": "Select",
+    "select_all": "Select All",
+    "cancel": "Cancel",
+    "add_address": "Add Address",
+    "select_country": "Select Country",
+    "select_city": "Select City",
+    "select_district": "Select District",
+    "description": "Description",
+    "use_current_location": "Use Current Location"
   }
 }

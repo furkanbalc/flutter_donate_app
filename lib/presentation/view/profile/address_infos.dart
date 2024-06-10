@@ -1,20 +1,18 @@
-
-
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/view/profile/widgets/address_card.dart';
-import 'package:flutter_donate_app/presentation/view/profile/widgets/delete_address_appbar.dart';
+import 'package:flutter_donate_app/presentation/view/profile/widgets/address/address_card.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
-import 'package:flutter_donate_app/presentation/widgets/progress/custom_loading_widget.dart';
+import 'package:flutter_donate_app/presentation/widgets/shimmer/custom_address_list_shimmer.dart';
+import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
-
 
 class AddressInfos extends ConsumerStatefulWidget {
   const AddressInfos({super.key});
@@ -36,24 +34,13 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
   }
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-  }
-
-  @override
   Widget build(BuildContext context) {
     _addressViewModel = ref.watch(addressViewModelImp);
     _profileViewModel = ref.watch(profileViewModelImp);
-    return Stack(
-      children: [
-        Scaffold(
-          backgroundColor: AppColors.cascadingWhite,
-          appBar: const CustomAppBar(title: 'Adreslerim'),
-          floatingActionButton: _addAddressButton(context),
-          body: _buildBody(),
-        ),
-        _deleteAddressAppbar()
-      ],
+    return Scaffold(
+      appBar:  CustomAppBar(title: LocaleKeys.address_my_addresses.tr()),
+      floatingActionButton: _addAddressButton(context),
+      body: _buildBody(),
     );
   }
 
@@ -61,7 +48,7 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
   Widget _buildBody() {
     switch (_addressViewModel.getAddressFromFirestoreResponse.status) {
       case Status.loading:
-        return const CustomLoadingWidget();
+        return const CustomAddressListShimmer();
       case Status.completed:
         return _buildAddressList();
       case Status.error:
@@ -85,43 +72,13 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
 
   /// Address List Item Address Card & CheckBox
   Widget _buildAddressListItem(BuildContext context, int index) {
-    return Row(
-      children: [
-        Expanded(
-          child: InkWell(
-            splashFactory: NoSplash.splashFactory,
-            highlightColor: AppColors.electricViolet.withOpacity(.5),
-            borderRadius: context.borders.circularBorderRadiusMedium,
-            onLongPress: _addressViewModel.deleteModeOn,
-            child: AddressCard(addressViewModel: _addressViewModel, index: index),
-          ),
-        ),
-        _buildCheckBox(index),
-      ],
-    );
-  }
-
-  /// Select Address Checkbox
-  Widget _buildCheckBox(int index) {
-    return Visibility(
-      visible: _addressViewModel.isDeleteMode,
-      child: Checkbox(
-        value: _addressViewModel.isCheckedList[index],
-        onChanged: (value) {
-          setState(() {
-            _addressViewModel.isCheckedList[index] = value!;
-          });
-        },
-      ),
-    );
-  }
-
-  /// Delete Address Appbar
-  Widget _deleteAddressAppbar() {
-    return Visibility(
-      visible: _addressViewModel.isDeleteMode,
-      child: SafeArea(
-        child: DeleteAddressAppBar(addressViewModel: _addressViewModel),
+    return Expanded(
+      child: InkWell(
+        splashFactory: NoSplash.splashFactory,
+        highlightColor: AppColors.electricViolet.withOpacity(.5),
+        borderRadius: context.borders.circularBorderRadiusMedium,
+        onLongPress: _addressViewModel.deleteModeOn,
+        child: AddressCard(addressViewModel: _addressViewModel, index: index),
       ),
     );
   }
@@ -148,5 +105,4 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
       },
     );
   }
-
 }
