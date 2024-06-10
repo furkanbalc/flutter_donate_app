@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
-import 'package:flutter_donate_app/presentation/view/profile/profile_infos.dart';
+import 'package:flutter_donate_app/presentation/view/profile/profile_info.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 
-mixin UpdateUserInfoService on State<ProfileInfosView> {
+mixin UpdateUserInfoService on State<ProfileInfoView> {
   void updateProcess({
     required BuildContext context,
     required ProfileViewModel profileViewModel,

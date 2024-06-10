@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 
-class CustomTabPageSelector extends StatefulWidget {
-  const CustomTabPageSelector({
+class CustomDotPageSelector extends StatefulWidget {
+  const CustomDotPageSelector({
     super.key,
     required this.selectedIndex,
     required this.tabLenght,
@@ -13,10 +13,10 @@ class CustomTabPageSelector extends StatefulWidget {
   final double? indicatorSize;
 
   @override
-  State<CustomTabPageSelector> createState() => _CustomTabPageSelectorState();
+  State<CustomDotPageSelector> createState() => _CustomDotPageSelectorState();
 }
 
-class _CustomTabPageSelectorState extends State<CustomTabPageSelector> with TickerProviderStateMixin {
+class _CustomDotPageSelectorState extends State<CustomDotPageSelector> with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();
@@ -30,7 +30,7 @@ class _CustomTabPageSelectorState extends State<CustomTabPageSelector> with Tick
   }
 
   @override
-  void didUpdateWidget(covariant CustomTabPageSelector oldWidget) {
+  void didUpdateWidget(covariant CustomDotPageSelector oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.selectedIndex != widget.selectedIndex) {
       _tabController.animateTo(widget.selectedIndex);

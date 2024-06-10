@@ -82,16 +82,11 @@ class HalfMoonClipper extends CustomClipper<Path> {
   Path getClip(Size size) {
     final path = Path();
 
-    // Draw the rectangle
     path.lineTo(0, size.height);
     path.lineTo(size.width, size.height);
     path.lineTo(size.width, 0);
 
-    // Draw the half-moon shape (parantez) from the top center
-    path.quadraticBezierTo(
-      size.width / 2, size.height / 4, // Adjust the y value to lower the curve
-      0, 0,
-    );
+    path.quadraticBezierTo(size.width / 2, size.height / 4, 0, 0);
 
     path.close();
     return path;

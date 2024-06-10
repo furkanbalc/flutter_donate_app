@@ -63,6 +63,8 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   }
 
   /// -- SPLASH --
+  ///
+  /// -- IS USER LOGGED IN --
   @override
   Future<void> isLoggedIn() async {
     try {

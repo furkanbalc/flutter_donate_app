@@ -80,7 +80,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   }
 
   /// -- GET USER INFO --
-  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.initial('initial');
+  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.loading('loading');
 
   @override
   ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse => _getUserInfoFromFirestoreResponse;
@@ -93,7 +93,6 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
 
   @override
   Future<void> getUserInfoFromFirestore({required String id}) async {
-    getUserInfoFromFirestoreResponse = ApiResponse.loading("loading");
     try {
       final UserEntity userEntity = await injector<GetUserInfoFromFirestore>().execute(
         ParamsForGetUserInfo(id: id),
