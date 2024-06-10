@@ -12,7 +12,7 @@ import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/appbar/custom_appbar.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
-import 'package:flutter_donate_app/presentation/widgets/shimmer_widget.dart';
+import 'package:flutter_donate_app/presentation/widgets/shimmer/custom_profile_section_shimmer.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -47,7 +47,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   Widget _buildProfileHeader(BuildContext context) {
     switch (_profileViewModel.getUserInfoFromFirestoreResponse.status) {
       case Status.loading:
-        return const ShimmerWidget();
+        return const CustomProfileSectionShimmer();
       case Status.completed:
         return _buildCompleted(context);
       case Status.error:

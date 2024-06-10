@@ -18,9 +18,9 @@ class CustomLottieWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: LottieBuilder.asset(
+        lottie,
         width: width,
         height: height,
-        lottie,
         fit: boxFit ?? BoxFit.cover,
       ),
     );

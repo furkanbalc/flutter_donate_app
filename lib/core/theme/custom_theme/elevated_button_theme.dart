@@ -15,6 +15,7 @@ class CustomElevatedButtonTheme {
       foregroundColor: AppColors.whiteColor,
       backgroundColor: AppColors.electricViolet,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.custom.value)),
+      textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: AppColors.whiteColor),
     ),
   );
 

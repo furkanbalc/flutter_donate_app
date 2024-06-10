@@ -3,8 +3,8 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:shimmer/shimmer.dart';
 
-class ShimmerWidget extends StatelessWidget {
-  const ShimmerWidget({super.key});
+class CustomProfileSectionShimmer extends StatelessWidget {
+  const CustomProfileSectionShimmer({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -21,9 +21,9 @@ class ShimmerWidget extends StatelessWidget {
             Container(
               width: context.dynamicWidth(.25),
               height: context.dynamicWidth(.25),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                color: Colors.grey[300],
+                color: AppColors.greyLighter,
               ),
             ),
             context.sizedBoxWidthMedium,
@@ -36,19 +36,19 @@ class ShimmerWidget extends StatelessWidget {
                     Container(
                       width: 150.0,
                       height: 20.0,
-                      color: Colors.grey[300],
+                      color: AppColors.greyLighter,
                     ),
                     context.sizedBoxWidthLow,
                     Container(
                       width: 20.0,
                       height: 20.0,
-                      color: Colors.grey[300],
+                      color: AppColors.greyLighter,
                     ),
                     context.sizedBoxWidthLow,
                     Container(
                       width: 20.0,
                       height: 20.0,
-                      color: Colors.grey[300],
+                      color: AppColors.greyLighter,
                     ),
                   ],
                 ),
@@ -56,7 +56,7 @@ class ShimmerWidget extends StatelessWidget {
                 Container(
                   width: 200.0,
                   height: 20.0,
-                  color: Colors.grey[300],
+                  color: AppColors.greyLighter,
                 ),
               ],
             ),

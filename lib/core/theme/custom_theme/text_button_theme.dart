@@ -11,6 +11,7 @@ class CustomTextButtonThemeData {
       shadowColor: Colors.transparent,
       splashFactory: NoSplash.splashFactory,
       foregroundColor: AppColors.electricViolet,
+      textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: AppColors.electricViolet),
     ),
   );
 

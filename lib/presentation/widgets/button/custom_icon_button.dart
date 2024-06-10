@@ -24,7 +24,6 @@ class CustomIconButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return IconButton(
-      padding: context.paddings.zero,
       onPressed: onPressed,
       icon: Container(
         margin: context.paddings.zero,

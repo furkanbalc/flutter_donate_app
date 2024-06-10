@@ -15,6 +15,7 @@ import 'package:flutter_donate_app/presentation/widgets/progress/custom_loading_
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
+
 class AddressInfos extends ConsumerStatefulWidget {
   const AddressInfos({super.key});
 
@@ -147,4 +148,5 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
       },
     );
   }
+
 }

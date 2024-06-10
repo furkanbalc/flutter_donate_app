@@ -22,7 +22,7 @@ class CustomImageWidget extends StatelessWidget {
       image,
       width: width,
       height: height,
-      fit: fit,
+      fit: fit ?? BoxFit.cover,
       color: color,
     );
   }

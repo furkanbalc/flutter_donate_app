@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key, required this.title});
+  const CustomAppBar({
+    super.key,
+    required this.title,
+    this.leading,
+    this.actions,
+  });
 
   final String title;
+  final Widget? leading;
+  final List<Widget>? actions;
 
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      backgroundColor: AppColors.whiteColor,
-      title: Text(
-        title,
-        style: context.textStyles.titleMedium.copyWith(
-          fontSize: 18,
-          color: AppColors.verifiedBlack,
-        ),
-      ),
+      leading: leading,
+      title: Text(title),
+      actions: actions,
     );
   }
 

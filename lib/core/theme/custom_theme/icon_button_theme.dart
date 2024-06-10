@@ -10,6 +10,7 @@ class CustomIconButtonTheme {
       elevation: 0,
       shadowColor: AppColors.transparentColor,
       splashFactory: NoSplash.splashFactory,
+      padding: EdgeInsets.zero,
     ),
   );
 

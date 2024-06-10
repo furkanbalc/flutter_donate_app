@@ -7,7 +7,7 @@ final ThemeData lightTheme = ThemeData(
   fontFamily: 'InterFontFamily',
   primaryColor: AppColors.electricViolet,
   brightness: Brightness.light,
-  scaffoldBackgroundColor: AppColors.whiteColor,
+  scaffoldBackgroundColor: AppColors.cascadingWhite,
   inputDecorationTheme: CustomInputDecorationTheme.lightInputDecorationTheme,
   elevatedButtonTheme: CustomElevatedButtonTheme.lightElevatedButtonTheme,
   appBarTheme: CustomAppBarTheme.lightAppBarTheme,

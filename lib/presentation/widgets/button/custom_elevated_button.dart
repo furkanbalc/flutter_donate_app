@@ -28,11 +28,13 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: onPressed,
         style: ElevatedButton.styleFrom(
           backgroundColor: backgroundColor,
-          textStyle: textStyle ?? context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600),
         ),
         child: Padding(
           padding: padding ?? context.paddings.verticalMedium,
-          child: Text(text),
+          child: Text(
+            text,
+            style: textStyle,
+          ),
         ),
       ),
     );

@@ -11,12 +11,12 @@ class CustomAppBarTheme {
   static AppBarTheme lightAppBarTheme = AppBarTheme(
     elevation: 0,
     centerTitle: true,
-    backgroundColor: Colors.transparent,
+    backgroundColor: AppColors.whiteColor,
     titleTextStyle: const TextStyle(
       fontFamily: AppConstants.fontFamily,
-      fontSize: kToolbarHeight,
+      fontSize: 18,
       fontWeight: FontWeight.w600,
-      color: AppColors.blackPrimary,
+      color: AppColors.verifiedBlack,
     ),
     iconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.ultra.value),
     actionsIconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.ultra.value),

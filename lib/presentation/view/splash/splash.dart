@@ -38,7 +38,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
           if (splashViewModel.isLoggedInResponse.data != null) {
             /// uygulama başlar
             profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!).then((value) {
-              context.goNamed(AppRouteName.app.name);
+              context.goNamed(AppRouteName.home.name);
             });
           } else {
             /// kullanici login ekrani ile devam eder

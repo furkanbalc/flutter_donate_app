@@ -232,7 +232,6 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
   Widget _buildSaveButton() {
     return CustomElevatedButton(
       padding: context.paddings.verticalNormal,
-      textStyle: context.textStyles.titleMedium,
       onPressed: () => updateProcess(
         context: context,
         profileViewModel: _profileViewModel,
@@ -245,7 +244,6 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfosView> with Update
   Widget _buildDeleteButton() {
     return CustomElevatedButton(
       padding: context.paddings.verticalNormal,
-      textStyle: context.textStyles.titleMedium,
       backgroundColor: AppColors.greyLight,
       onPressed: () {
         customAlertDialog(

@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
@@ -129,7 +128,10 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
             // onPressed: () => const ForgotPassword().slideTransitionPush(context: context),
             onPressed: () {},
             text: LocaleKeys.auth_forgot_password.tr(),
-            fontSize: 14,
+            textStyle: context.textStyles.titleSmall.copyWith(
+              color: AppColors.electricViolet,
+              fontWeight: FontWeight.w800,
+            ),
           ),
         ),
         context.sizedBoxHeightCustom,
