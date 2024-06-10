@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:go_router/go_router.dart';
 
 class BottomNavBar extends ConsumerStatefulWidget {
   const BottomNavBar({super.key});
@@ -16,11 +18,41 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
     var viewModel = ref.watch(baseAppViewModelImp);
     return NavigationBar(
       surfaceTintColor: AppColors.cascadingWhite,
-      selectedIndex: viewModel.selectedIndex,
+      selectedIndex: _calculateSelectedIndex(context),
       backgroundColor: AppColors.whiteColor,
       indicatorColor: AppColors.electricViolet.withOpacity(.2),
-      onDestinationSelected: viewModel.onDestinationSelected,
+      onDestinationSelected: (value) => _onItemTapped(value, context),
       destinations: viewModel.views,
     );
+  }
+
+  static int _calculateSelectedIndex(BuildContext context) {
+    final String location = GoRouterState.of(context).uri.path;
+    if (location.startsWith(AppRouteName.home.path)) {
+      return 0;
+    }
+    if (location.startsWith(AppRouteName.product.path)) {
+      return 1;
+    }
+    if (location.startsWith(AppRouteName.message.path)) {
+      return 2;
+    }
+    if (location.startsWith(AppRouteName.profile.path)) {
+      return 3;
+    }
+    return 0;
+  }
+
+  void _onItemTapped(int index, BuildContext context) {
+    switch (index) {
+      case 0:
+        context.goNamed(AppRouteName.home.name);
+      case 1:
+        context.goNamed(AppRouteName.product.name);
+      case 2:
+        context.goNamed(AppRouteName.message.name);
+      case 3:
+        context.goNamed(AppRouteName.profile.name);
+    }
   }
 }

@@ -7,7 +7,9 @@ import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerStatefulWidget {
-  const App({super.key});
+  App({super.key, required this.child});
+
+  final Widget child;
 
   @override
   ConsumerState createState() => _AppState();
@@ -32,8 +34,7 @@ class _AppState extends ConsumerState<App> {
   Widget build(BuildContext context) {
     baseAppViewModel = ref.watch(baseAppViewModelImp);
     return Scaffold(
-      backgroundColor: AppColors.cascadingWhite,
-      body: baseAppViewModel.body(),
+      body: widget.child,
       floatingActionButton: Visibility(
         visible: baseAppViewModel.isSeenFabButton,
         child: _builAddProductButton(context),

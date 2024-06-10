@@ -16,6 +16,9 @@ import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
 import 'package:flutter_donate_app/presentation/view/splash/welcome.dart';
 import 'package:go_router/go_router.dart';
 
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey(debugLabel: 'shell');
+
 class AppRoutes {
   AppRoutes._();
 
@@ -23,10 +26,9 @@ class AppRoutes {
 
   static AppRoutes get instance => _instance ??= AppRoutes._();
 
-  final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey(debugLabel: 'root');
-  final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey(debugLabel: 'shell');
-
-  final router = GoRouter(
+  final GoRouter router = GoRouter(
+    navigatorKey: _rootNavigatorKey,
+    debugLogDiagnostics: true,
     routes: [
       GoRoute(
         name: AppRouteName.splash.name,
@@ -68,39 +70,68 @@ class AppRoutes {
         path: AppRouteName.ageInfo.path,
         builder: (context, state) => const AgeInfoView(),
       ),
-      GoRoute(
-        name: AppRouteName.app.name,
-        path: AppRouteName.app.path,
-        builder: (context, state) => const App(),
+      ShellRoute(
+        navigatorKey: _shellNavigatorKey,
+        builder: (BuildContext context, GoRouterState state, Widget child) {
+          return App(child: child);
+        },
         routes: [
           GoRoute(
-            name: AppRouteName.profileInfos.name,
-            path: AppRouteName.profileInfos.path,
-            builder: (context, state) => const ProfileInfosView(),
+            path: AppRouteName.home.path,
+            name: AppRouteName.home.name,
+            builder: (BuildContext context, GoRouterState state) {
+              return const HomeView();
+            },
           ),
           GoRoute(
-            name: AppRouteName.addressInfos.name,
-            path: AppRouteName.addressInfos.path,
-            builder: (context, state) => const AddressInfos(),
+            path: AppRouteName.product.path,
+            name: AppRouteName.product.name,
+            builder: (BuildContext context, GoRouterState state) {
+              return const Center(child: Text('PRODUCT'));
+            },
+          ),
+          GoRoute(
+            path: AppRouteName.message.path,
+            name: AppRouteName.message.name,
+            builder: (BuildContext context, GoRouterState state) {
+              return const Center(child: Text('MESSAGES'));
+            },
+          ),
+          GoRoute(
+            path: AppRouteName.profile.path,
+            name: AppRouteName.profile.name,
+            builder: (BuildContext context, GoRouterState state) {
+              return const ProfileView();
+            },
             routes: [
               GoRoute(
-                name: AppRouteName.addAddress.name,
-                path: AppRouteName.addAddress.path,
-                builder: (context, state) => const AddAddress(),
+                path: AppRouteName.profileInfos.path,
+                name: AppRouteName.profileInfos.name,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ProfileInfosView();
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.addressInfos.path,
+                name: AppRouteName.addressInfos.name,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const AddressInfos();
+                },
+                routes: [
+                  GoRoute(
+                    path: AppRouteName.addAddress.path,
+                    name: AppRouteName.addAddress.name,
+                    builder: (BuildContext context, GoRouterState state) {
+                      return const AddAddress();
+                    },
+                  ),
+                ],
               ),
             ],
           ),
         ],
-      ),
-      GoRoute(
-        name: AppRouteName.home.name,
-        path: AppRouteName.home.path,
-        builder: (context, state) => const HomeView(),
-      ),
-      GoRoute(
-        name: AppRouteName.profile.name,
-        path: AppRouteName.profile.path,
-        builder: (context, state) => const ProfileView(),
       ),
     ],
   );
