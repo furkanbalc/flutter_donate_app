@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
 import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:geolocator/geolocator.dart';
 
 abstract class AddressViewModel extends ChangeNotifier {
   /// VARIABLES
@@ -31,6 +31,10 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   TextEditingController get search;
 
+  Position? get currentPosition;
+
+  String? get currentAddress;
+
   int get selectedCityIndex;
 
   int get selectedCountyIndex;
@@ -53,24 +57,29 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   set addAddressToFirestoreResponse(ApiResponse<AddressesEntity> value);
 
-  Future<void> addAdressesToFirestore({
-    required String country,
-    required String city,
-    required String town,
-    required String desc,
-    required String lat,
-    required String long,
-  });
+  Future<void> addAdressesToFirestore();
 
-  /// -- GET TURKEY PROVINCE --
+  ///  -- ADD ADDRESS INFO --
+  ApiResponse<void> get deleteAddressResponse;
+
+  set deleteAddressResponse(ApiResponse<void> value);
+
+  Future<void> deleteAddress({required List<int> deleteAddressIndices});
+
+  /// -- DELETE ADDRESS --
   ApiResponse<GetProvinceEntity> get getTrProvincesResponse;
 
   set getTrProvincesResponse(ApiResponse<GetProvinceEntity> value);
 
   Future<void> getProvinces();
 
+  Future<String?> getCurrentPosition();
+
   /// init method
   void init();
+
+  /// deactive method
+  void deactivate();
 
   /// get address city & town
   String getAddressTitle(int index);

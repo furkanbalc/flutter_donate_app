@@ -5,9 +5,9 @@ import 'package:flutter_donate_app/core/constants/app_icons.dart';
 import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/mixin/validator.dart';
-import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/main.dart';
+import 'package:flutter_donate_app/presentation/mixin/add_address_service.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/city_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/county_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile/profile_info_text_field.dart';
@@ -17,7 +17,6 @@ import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:go_router/go_router.dart';
 
 class AddAddress extends ConsumerStatefulWidget {
   const AddAddress({super.key});
@@ -26,7 +25,7 @@ class AddAddress extends ConsumerStatefulWidget {
   ConsumerState createState() => _AddAddressState();
 }
 
-class _AddAddressState extends ConsumerState<AddAddress> with Validator {
+class _AddAddressState extends ConsumerState<AddAddress> with Validator, AddAddressService {
   late AddressViewModel _addressViewModel;
   late ProfileViewModel _profileViewModel;
 
@@ -130,23 +129,22 @@ class _AddAddressState extends ConsumerState<AddAddress> with Validator {
       children: [
         CustomElevatedButton(
           onPressed: () {
-            if (_addressViewModel.formKey.currentState != null && _addressViewModel.formKey.currentState!.validate()) {
-              _addressViewModel.addAdressesToFirestore().then((value) {
-                if (_addressViewModel.addAddressToFirestoreResponse.isCompleted()) {
-                  _addressViewModel.getAdressesFromFirestore(id: _profileViewModel.getUserId);
-                  Utils.successSnackBar(context: context, message: 'Adresiniz Eklendi');
-                  context.goNamed(AppRouteName.profile.name);
-                } else {
-                  Utils.errorSnackBar(context: context, message: 'Adres ekleme başarısız');
-                }
-              });
-            }
+            addAddressProcess(
+              context: context,
+              addressViewModel: _addressViewModel,
+              userId: _profileViewModel.getUserId,
+            );
           },
           text: LocaleKeys.address_add_address.tr(),
         ),
         TextButton.icon(
-          onPressed: () {
-            _addressViewModel.getCurrentPosition();
+          onPressed: () async {
+          _addressViewModel.getCurrentPosition().then((value) {
+             if(value != null) {
+                Utils.errorSnackBar(context: context, message: value);
+             }
+           });
+
           },
           icon: Icon(AppIcons.kLocationFilledIcon, size: AppSizes.high.value),
           label: Text(

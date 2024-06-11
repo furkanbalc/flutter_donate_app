@@ -1,11 +1,12 @@
 import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
-import 'dart:convert';
 
 class GetProvinceModel extends GetProvinceEntity {
+  @override
   final String status;
+  @override
   final List<Datum> data;
 
-  GetProvinceModel({
+  const GetProvinceModel({
     required this.status,
     required this.data,
   }) : super(
@@ -122,7 +123,7 @@ class District extends DistrictEntity {
   final int population;
   final int area;
 
-  District({
+  const District({
     required this.id,
     required this.name,
     required this.population,

@@ -14,14 +14,14 @@ import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
-class AddressInfos extends ConsumerStatefulWidget {
-  const AddressInfos({super.key});
+class AddressInfo extends ConsumerStatefulWidget {
+  const AddressInfo({super.key});
 
   @override
   ConsumerState createState() => _AddressInfosState();
 }
 
-class _AddressInfosState extends ConsumerState<AddressInfos> {
+class _AddressInfosState extends ConsumerState<AddressInfo> {
   late AddressViewModel _addressViewModel;
   late ProfileViewModel _profileViewModel;
 
@@ -72,14 +72,12 @@ class _AddressInfosState extends ConsumerState<AddressInfos> {
 
   /// Address List Item Address Card & CheckBox
   Widget _buildAddressListItem(BuildContext context, int index) {
-    return Expanded(
-      child: InkWell(
-        splashFactory: NoSplash.splashFactory,
-        highlightColor: AppColors.electricViolet.withOpacity(.5),
-        borderRadius: context.borders.circularBorderRadiusMedium,
-        onLongPress: _addressViewModel.deleteModeOn,
-        child: AddressCard(addressViewModel: _addressViewModel, index: index),
-      ),
+    return InkWell(
+      splashFactory: NoSplash.splashFactory,
+      highlightColor: AppColors.electricViolet.withOpacity(.5),
+      borderRadius: context.borders.circularBorderRadiusMedium,
+      onLongPress: _addressViewModel.deleteModeOn,
+      child: AddressCard(addressViewModel: _addressViewModel, index: index),
     );
   }
 
