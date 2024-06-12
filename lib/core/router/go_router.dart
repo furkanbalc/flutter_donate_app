@@ -7,10 +7,12 @@ import 'package:flutter_donate_app/presentation/view/authentication/signup.dart'
 import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
 import 'package:flutter_donate_app/presentation/view/home/home.dart';
+import 'package:flutter_donate_app/presentation/view/profile/about_app.dart';
 import 'package:flutter_donate_app/presentation/view/profile/add_address.dart';
-import 'package:flutter_donate_app/presentation/view/profile/address_infos.dart';
+import 'package:flutter_donate_app/presentation/view/profile/address_info.dart';
+import 'package:flutter_donate_app/presentation/view/profile/contact_us.dart';
 import 'package:flutter_donate_app/presentation/view/profile/profile.dart';
-import 'package:flutter_donate_app/presentation/view/profile/profile_infos.dart';
+import 'package:flutter_donate_app/presentation/view/profile/profile_info.dart';
 import 'package:flutter_donate_app/presentation/view/splash/onboard.dart';
 import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
 import 'package:flutter_donate_app/presentation/view/splash/welcome.dart';
@@ -28,6 +30,7 @@ class AppRoutes {
 
   final GoRouter router = GoRouter(
     navigatorKey: _rootNavigatorKey,
+    initialLocation: AppRouteName.splash.path,
     debugLogDiagnostics: true,
     routes: [
       GoRoute(
@@ -48,7 +51,9 @@ class AppRoutes {
       GoRoute(
         name: AppRouteName.signin.name,
         path: AppRouteName.signin.path,
-        builder: (context, state) => const SigninView(),
+        builder: (context, state) {
+          return const SigninView();
+        },
       ),
       GoRoute(
         name: AppRouteName.signup.name,
@@ -109,7 +114,7 @@ class AppRoutes {
                 name: AppRouteName.profileInfos.name,
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (BuildContext context, GoRouterState state) {
-                  return const ProfileInfosView();
+                  return const ProfileInfoView();
                 },
               ),
               GoRoute(
@@ -117,17 +122,34 @@ class AppRoutes {
                 name: AppRouteName.addressInfos.name,
                 parentNavigatorKey: _rootNavigatorKey,
                 builder: (BuildContext context, GoRouterState state) {
-                  return const AddressInfos();
+                  return const AddressInfo();
                 },
                 routes: [
                   GoRoute(
                     path: AppRouteName.addAddress.path,
                     name: AppRouteName.addAddress.name,
+                    parentNavigatorKey: _rootNavigatorKey,
                     builder: (BuildContext context, GoRouterState state) {
                       return const AddAddress();
                     },
                   ),
                 ],
+              ),
+              GoRoute(
+                path: AppRouteName.contactUs.path,
+                name: AppRouteName.contactUs.name,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ContactUs();
+                },
+              ),
+              GoRoute(
+                path: AppRouteName.aboutApp.path,
+                name: AppRouteName.aboutApp.name,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const AboutApp();
+                },
               ),
             ],
           ),

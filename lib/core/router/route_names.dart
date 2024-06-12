@@ -14,6 +14,8 @@ enum AppRouteName {
   profileInfos('profileInfos', 'ProfileInfos'),
   addressInfos('addressInfos', 'AddressInfos'),
   addAddress('addAddress', 'AddAddress'),
+  contactUs('contactUs', 'ContacUs'),
+  aboutApp('aboutApp', 'AboutApp'),
   ;
 
   const AppRouteName(this.path, this.name);

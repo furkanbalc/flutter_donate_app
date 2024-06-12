@@ -16,6 +16,7 @@ import 'package:flutter_donate_app/presentation/widgets/shimmer/custom_profile_s
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
+import 'package:iconsax/iconsax.dart';
 
 part 'widgets/profile/profile_header_info.dart';
 
@@ -95,6 +96,14 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
             icon: AppIcons.kInfoIcon,
             onPressed: () {
               context.goNamed(AppRouteName.contactUs.name);
+            },
+          ),
+          _buildDivider(),
+          ProfileListTileWidget(
+            title: 'Uygulama Hakkında',
+            icon: Iconsax.mobile,
+            onPressed: () {
+              context.goNamed(AppRouteName.aboutApp.name);
             },
           ),
           context.sizedBoxHeightMedium,

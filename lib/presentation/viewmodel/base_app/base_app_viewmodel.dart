@@ -5,9 +5,7 @@ abstract class BaseAppViewModel extends ChangeNotifier {
 
   int get selectedIndex;
 
-  void onDestinationSelected(int index);
-
-  Widget body();
+  set selectedIndex(int index);
 
   void reset();
 

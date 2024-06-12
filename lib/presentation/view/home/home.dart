@@ -10,7 +10,6 @@ import 'package:flutter_donate_app/presentation/view/home/widgets/vertical_produ
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:toastification/toastification.dart';
 
 class HomeView extends ConsumerStatefulWidget {
   const HomeView({super.key});
