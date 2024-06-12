@@ -13,6 +13,11 @@ enum AppSvg {
   statistic('statistic'),
   man('man'),
   woman('woman'),
+  instagram('instagram'),
+  whatsapp('whatsapp'),
+  linkedin('linkedin'),
+  github('github'),
+  phone('phone'),
   ;
 
   final String value;

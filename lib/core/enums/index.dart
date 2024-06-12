@@ -6,3 +6,4 @@ export 'firebase_collections.dart';
 export 'hive_keys.dart';
 export 'app_png.dart';
 export 'app_lottie.dart';
+export 'contact_us_platform.dart';
