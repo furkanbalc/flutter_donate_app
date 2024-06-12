@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/enums/app_lottie.dart';
-import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_text_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_lottie_widget.dart';
 

@@ -14,8 +14,8 @@ class CustomProfileSectionShimmer extends StatelessWidget {
       padding: context.paddings.allLow,
       color: Colors.white,
       child: Shimmer.fromColors(
-        baseColor: AppColors.greyLighter,
-        highlightColor: AppColors.whiteColor,
+        baseColor: AppColors.greyLight.withOpacity(.1),
+        highlightColor: AppColors.greyLighter,
         child: Row(
           children: [
             Container(

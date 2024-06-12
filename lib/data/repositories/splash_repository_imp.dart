@@ -12,7 +12,7 @@ class SplashRepositoryImp implements SplashRepository {
   final LocalDataSource localDataSource;
   final RemoteDataSource remoteDataSource;
 
-  /// -- IS LOGGED IN --
+  /// -- IS USER LOGGED IN --
   @override
   Future<String?> isUserLoggedIn() async {
     return await remoteDataSource.isUserLoggedIn();

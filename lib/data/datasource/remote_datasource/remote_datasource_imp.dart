@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/enums/firebase_collections.dart';
 import 'package:flutter_donate_app/core/service/firebase_storage_service.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
@@ -26,7 +27,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
   UserCredential? userCredential;
 
-  /// -- IS LOGGED IN --
+  /// -- IS USER LOGGED IN --
   @override
   Future<String?> isUserLoggedIn() async {
     final user = firebaseAuth.currentUser;
@@ -106,7 +107,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
     return UserModel.fromJson(user);
   }
 
-  /// -- GET CURRENT USER INFO --
+  /// -- GET USER INFO --
   @override
   Future<UserModel> getUserInfoFromFirestore({
     required String id,
@@ -180,7 +181,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
     Map<String, dynamic> address = {
       "country": country,
       "city": city,
-      "town": town,
+      "county": town,
       "desc": desc,
       "geo": {
         "lat": lat,
@@ -194,10 +195,21 @@ class RemoteDataSourceImp implements RemoteDataSource {
     return AddressesModel.fromJson(address);
   }
 
-  /// -- GET TURKEY PROVINCE --
+  /// -- REMOVE ADDRES --
+  @override
+  Future<void> removeAddressesByIndex(List<dynamic> addresses) async {
+    User? currentUser = firebaseAuth.currentUser;
+    await firebaseFirestore
+        .collection(FirebaseCollections.addresses.name)
+        .doc(currentUser?.uid)
+        .update({FirebaseCollections.addresses.name: addresses}).then(
+            (value) => getAdressesFromFirestore(id: currentUser!.uid));
+  }
+
+  /// -- GET TURKEY PROVINCES -- ///FIXME
   @override
   Future<GetProvinceModel> getTrProvinces() async {
-    final url = Uri.parse('https://turkiyeapi.dev/api/v1/provinces');
+    final url = Uri.parse(AppConstants.getProvinceEndPoint);
     dynamic data;
     try {
       final response = await http.get(url);
@@ -205,9 +217,7 @@ class RemoteDataSourceImp implements RemoteDataSource {
       if (response.statusCode == 200) {
         data = json.decode(response.body);
       }
-    } catch (e) {
-      print('Hata oluştu: $e');
-    }
+    } catch (e) {}
     return GetProvinceModel.fromJson(data);
   }
 }

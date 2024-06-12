@@ -8,6 +8,7 @@ import 'package:flutter_donate_app/core/extensions/context_padding.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
@@ -16,9 +17,11 @@ class HomeSliverAppBar extends StatefulWidget {
   const HomeSliverAppBar({
     super.key,
     required this.profileViewModel,
+    required this.addressViewModel,
   });
 
   final ProfileViewModel profileViewModel;
+  final AddressViewModel addressViewModel;
 
   @override
   State<HomeSliverAppBar> createState() => _HomeSliverAppbarState();
@@ -55,9 +58,9 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                           Row(
                             children: [
                               const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.whiteColor, size: 20),
+                              context.sizedBoxWidthLow,
                               Text('Kahramanmaraş, Türkiye',
                                   style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
-                              const Icon(AppIcons.kArrowDown, color: AppColors.whiteColor),
                             ],
                           ),
                         ],

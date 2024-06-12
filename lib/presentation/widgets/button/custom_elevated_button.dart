@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/context_padding.dart';
-import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 
 class CustomElevatedButton extends StatelessWidget {
   const CustomElevatedButton({

@@ -5,7 +5,7 @@ class ParamsForAny {
   ParamsForAny();
 }
 
-/// -- IS LOGGED IN --
+/// -- IS USER LOGGED IN --
 class IsLoggedIn extends BaseUseCase<Future<String?>, ParamsForAny> {
   final SplashRepository splashRepository;
 

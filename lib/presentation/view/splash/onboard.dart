@@ -6,10 +6,10 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_clip_path_container.dart';
-import 'package:flutter_donate_app/presentation/view/splash/widgets/custom_tab_page_selector.dart';
+import 'package:flutter_donate_app/presentation/widgets/container/custom_clip_path_container.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
-import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
+import 'package:flutter_donate_app/presentation/widgets/button/index.dart';
+import 'package:flutter_donate_app/presentation/widgets/custom_dot_page_selector.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,20 +25,19 @@ class OnboardView extends ConsumerStatefulWidget {
 }
 
 class _OnboardViewState extends ConsumerState<OnboardView> {
-  late SplashViewModel splashViewModel;
+  late SplashViewModel _splashViewModel;
 
   @override
   void initState() {
     super.initState();
-    splashViewModel = ref.read(splashViewModelImp);
-    splashViewModel.setInitialScreen();
+    _splashViewModel = ref.read(splashViewModelImp);
+    _splashViewModel.setInitialScreen();
   }
 
   @override
   Widget build(BuildContext context) {
-    splashViewModel = ref.watch(splashViewModelImp);
+    _splashViewModel = ref.watch(splashViewModelImp);
     return Scaffold(
-      backgroundColor: AppColors.cascadingWhite,
       body: SafeArea(child: _buildBody(context)),
     );
   }
@@ -47,30 +46,40 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
   Widget _buildBody(BuildContext context) {
     return Stack(
       children: [
-        Center(
-          child: Container(
-            width: context.dynamicWidth(),
-            height: context.dynamicWidth(),
-            decoration: BoxDecoration(
-              color: AppColors.electricViolet.withOpacity(.1),
-              shape: BoxShape.circle,
-            ),
-          ),
-        ),
-        PageView(
-          controller: splashViewModel.pageController,
-          onPageChanged: splashViewModel.onPageChanged,
-          children: List.generate(
-            splashViewModel.pages.length,
-            (index) => _OnboardWidget(
-              onBoardingModel: splashViewModel.pages[index],
-              splashViewModel: splashViewModel,
-            ),
-          ),
-        ),
+        _backgroundCircle(context),
+        _buildPageView(),
         _skipButton(),
         _getNavigationWidget(),
       ],
+    );
+  }
+
+  /// Page View
+  Widget _buildPageView() {
+    return PageView(
+      controller: _splashViewModel.pageController,
+      onPageChanged: _splashViewModel.onPageChanged,
+      children: List.generate(
+        _splashViewModel.pages.length,
+        (index) => _OnboardWidget(
+          onBoardingModel: _splashViewModel.pages[index],
+          splashViewModel: _splashViewModel,
+        ),
+      ),
+    );
+  }
+
+  /// Background Circle Container
+  Widget _backgroundCircle(BuildContext context) {
+    return Center(
+      child: Container(
+        width: context.dynamicWidth(),
+        height: context.dynamicWidth(),
+        decoration: BoxDecoration(
+          color: AppColors.electricViolet.withOpacity(.1),
+          shape: BoxShape.circle,
+        ),
+      ),
     );
   }
 
@@ -80,7 +89,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
       right: AppSizes.low.value,
       top: AppSizes.low.value,
       child: CustomTextButton(
-        onPressed: () => splashViewModel.animateToLastPage(),
+        onPressed: () => _splashViewModel.animateToLastPage(),
         text: LocaleKeys.on_board_skip.tr(),
       ),
     );
@@ -97,30 +106,30 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
         children: [
           /// Back Button
           CustomIconButton(
-            onPressed: () => splashViewModel.animateToPrevPage(),
+            onPressed: () => _splashViewModel.animateToPrevPage(),
             icon: Icon(
               AppIcons.kArrowLeft,
-              color: splashViewModel.isFirstPage ? AppColors.electricViolet : AppColors.whiteColor,
+              color: _splashViewModel.isFirstPage ? AppColors.electricViolet : AppColors.whiteColor,
               size: AppSizes.ultra.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,
-            backgroundColor: splashViewModel.isFirstPage ? AppColors.whiteColor : AppColors.electricViolet,
+            backgroundColor: _splashViewModel.isFirstPage ? AppColors.whiteColor : AppColors.electricViolet,
           ),
 
           /// Page Dots
-          CustomTabPageSelector(
-            selectedIndex: splashViewModel.currentPage,
-            tabLenght: splashViewModel.pages.length,
+          CustomDotPageSelector(
+            selectedIndex: _splashViewModel.currentPage,
+            tabLenght: _splashViewModel.pages.length,
           ),
 
           /// Next Button
           CustomIconButton(
-            onPressed: () => splashViewModel.isLastPage
+            onPressed: () => _splashViewModel.isLastPage
                 ? context.goNamed(AppRouteName.signin.name)
-                : splashViewModel.animateToNextPage(),
+                : _splashViewModel.animateToNextPage(),
             icon: Icon(
-              splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,
+              _splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,
               color: AppColors.whiteColor,
               size: AppSizes.ultra.value,
             ),

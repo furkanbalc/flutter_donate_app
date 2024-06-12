@@ -1,7 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/core/utils/image_picker_bottom_sheet.dart';
+import 'package:flutter_donate_app/core/utils/custom_image_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/user_info_service.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
@@ -65,7 +65,7 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
                   ProfilePhotoWidget(
                     imagePath: _personalInfoViewModel.image?.path,
                     onTap: () {
-                      imagePickerBottomSheet(
+                      customImagePickerBottomSheet(
                         context: context,
                         cameraTap: () {
                           Navigator.pop(context);

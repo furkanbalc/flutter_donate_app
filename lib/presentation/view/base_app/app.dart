@@ -7,7 +7,7 @@ import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class App extends ConsumerStatefulWidget {
-  App({super.key, required this.child});
+  const App({super.key, required this.child});
 
   final Widget child;
 

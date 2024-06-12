@@ -1,5 +1,5 @@
 abstract class SplashRepository {
-  /// -- IS LOGGED IN --
+  /// -- IS USER LOGGED IN --
   Future<String?> isUserLoggedIn();
 
   /// -- GET INITIAL SCREEN AFTER SPLASH --

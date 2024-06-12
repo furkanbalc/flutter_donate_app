@@ -3,7 +3,7 @@ import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
 
 abstract class RemoteDataSource {
-  /// -- IS LOGGED IN --
+  /// -- IS USER LOGGED IN --
   Future<String?> isUserLoggedIn();
 
   /// -- SIGN UP --
@@ -28,7 +28,7 @@ abstract class RemoteDataSource {
     required dynamic profileImage,
   });
 
-  /// -- GET CURRENT USER INFO --
+  /// -- GET USER INFO --
   Future<UserModel> getUserInfoFromFirestore({
     required String id,
   });
@@ -45,7 +45,7 @@ abstract class RemoteDataSource {
     required dynamic profileImage,
   });
 
-  /// -- GET USER ADDRESS INFO --
+  /// -- GET ADDRESSES INFO --
   Future<AddressesModel> getAdressesFromFirestore({
     required String id,
   });
@@ -60,6 +60,9 @@ abstract class RemoteDataSource {
     required String long,
   });
 
-  /// -- GET TURKEY PROVINCE --
+  /// -- REMOVE ADDRES --
+  Future<void> removeAddressesByIndex(List<dynamic> addresses);
+
+  /// -- GET TURKEY PROVINCES --
   Future<GetProvinceModel> getTrProvinces();
 }

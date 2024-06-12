@@ -19,36 +19,37 @@ class SplashView extends ConsumerStatefulWidget {
 class _SplashViewState extends ConsumerState<SplashView> {
   late SplashViewModel splashViewModel;
   late ProfileViewModel profileViewModel;
+  late AddressViewModel addressViewModel;
 
   @override
   void initState() {
     super.initState();
     splashViewModel = ref.read(splashViewModelImp);
     profileViewModel = ref.read(profileViewModelImp);
+    addressViewModel = ref.read(addressViewModelImp);
     init();
   }
 
-  init() async {
+  Future<void> init() async {
     splashViewModel.isLoggedIn();
-    splashViewModel.getInitialScreen().then((value) {
-      Future.delayed(const Duration(seconds: 2)).then((value) {
-        /// onboard ekrani bir kere gorulduyse true doner ve
-        if (splashViewModel.getInitialScreenResponse.data) {
-          /// kullanıcı logiysa yani içerde kullanıcı varsa true döner
-          if (splashViewModel.isLoggedInResponse.data != null) {
-            /// uygulama başlar
-            profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!).then((value) {
-              context.goNamed(AppRouteName.home.name);
-            });
-          } else {
-            /// kullanici login ekrani ile devam eder
-            context.goNamed(AppRouteName.signin.name);
-          }
+    splashViewModel.getInitialScreen().then((value) async {
+      /// onboard ekrani bir kere gorulduyse true doner ve
+      if (splashViewModel.getInitialScreenResponse.data) {
+        /// kullanıcı login olduysa yani içerde kullanıcı varsa true döner
+        if (splashViewModel.isLoggedInResponse.data != null) {
+          /// uygulama başlar
+          await profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
+          await addressViewModel.getAdressesFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
+          await addressViewModel.getProvinces();
+          context.goNamed(AppRouteName.home.name);
         } else {
-          /// onboard gorunmemis demektir onboarda atar
-          context.goNamed(AppRouteName.onboard.name);
+          /// kullanici login ekrani ile devam eder
+          context.goNamed(AppRouteName.welcome.name);
         }
-      });
+      } else {
+        /// onboard gorunmemis demektir onboarda atar
+        context.goNamed(AppRouteName.onboard.name);
+      }
     });
   }
 

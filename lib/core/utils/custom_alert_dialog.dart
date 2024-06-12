@@ -8,7 +8,7 @@ customAlertDialog({
   String? title,
   String? btnText,
   Widget? route,
-  VoidCallback? onPressed,
+  required VoidCallback onPressed,
 }) {
   return showDialog(
     barrierDismissible: false,

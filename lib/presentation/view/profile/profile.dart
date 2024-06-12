@@ -93,7 +93,9 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
           ProfileListTileWidget(
             title: LocaleKeys.profile_contact_us.tr(),
             icon: AppIcons.kInfoIcon,
-            onPressed: () {},
+            onPressed: () {
+              context.goNamed(AppRouteName.contactUs.name);
+            },
           ),
           context.sizedBoxHeightMedium,
           _buildSignOutButton(context),

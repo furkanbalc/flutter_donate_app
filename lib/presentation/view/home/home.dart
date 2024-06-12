@@ -20,21 +20,29 @@ class HomeView extends ConsumerStatefulWidget {
 }
 
 class _HomeViewState extends ConsumerState<HomeView> {
-  late ProfileViewModel profileViewModel;
+  late ProfileViewModel _profileViewModel;
+  late AddressViewModel _addressViewModel;
 
   @override
   void initState() {
     super.initState();
-    profileViewModel = ref.read(profileViewModelImp);
+    _profileViewModel = ref.read(profileViewModelImp);
+    _addressViewModel = ref.read(addressViewModelImp);
   }
 
   @override
   Widget build(BuildContext context) {
-    profileViewModel = ref.watch(profileViewModelImp);
+    _profileViewModel = ref.watch(profileViewModelImp);
+    _addressViewModel = ref.watch(addressViewModelImp);
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [HomeSliverAppBar(profileViewModel: profileViewModel)];
+          return [
+            HomeSliverAppBar(
+              profileViewModel: _profileViewModel,
+              addressViewModel: _addressViewModel,
+            )
+          ];
         },
         body: CustomScrollView(
           slivers: [
@@ -60,32 +68,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
           return Column(
             children: [
               CustomIconButton(
-                onPressed: () {
-                  toastification.show(
-                    context: context,
-                    type: ToastificationType.success,
-                    style: ToastificationStyle.fillColored,
-                    autoCloseDuration: (Durations.extralong4) * 4,
-                    title: const Text('Hello, World!'),
-                    description: RichText(text: const TextSpan(text: 'This is a sample toast message. ')),
-                    alignment: Alignment.topRight,
-                    direction: TextDirection.ltr,
-                    animationDuration: Durations.medium2,
-                    animationBuilder: (context, animation, alignment, child) {
-                      return FadeTransition(
-                        opacity: kAlwaysCompleteAnimation,
-                        child: child,
-                      );
-                    },
-                    icon: Icon(AppIcons.kTickIcon),
-                    primaryColor: Colors.green,
-                    foregroundColor: Colors.black,
-                    closeButtonShowType: CloseButtonShowType.always,
-                    closeOnClick: true,
-                    dragToClose: true,
-                    showProgressBar: false,
-                  );
-                },
+                onPressed: () {},
                 backgroundColor: AppColors.electricViolet,
                 shape: BoxShape.circle,
                 icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.custom.value),

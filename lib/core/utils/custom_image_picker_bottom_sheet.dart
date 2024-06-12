@@ -5,7 +5,7 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/custom_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/widgets/container/image_picker_icon_button.dart';
 
-imagePickerBottomSheet({
+customImagePickerBottomSheet({
   required BuildContext context,
   VoidCallback? cameraTap,
   VoidCallback? galleryTap,

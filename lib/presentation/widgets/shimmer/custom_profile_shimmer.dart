@@ -84,8 +84,8 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
 
   Widget _buildShimmerProfileInfoField(BuildContext context) {
     return Shimmer.fromColors(
-      baseColor: Colors.grey[300]!,
-      highlightColor: Colors.grey[100]!,
+      baseColor: AppColors.greyLight.withOpacity(.1),
+      highlightColor: AppColors.greyLighter,
       child: Container(
         width: double.infinity,
         height: 48.0,
