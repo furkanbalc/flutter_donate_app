@@ -151,7 +151,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
           phoneNumber: _phoneController.text.trim(),
           gender: _genderController.text,
           age: _ageController.text,
-          profileImage: _profilPhotoUrl,
+          profileImage: image,
         ),
       );
       updateUserInfoResponse = ApiResponse.completed("completed");
@@ -188,7 +188,9 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   Future getImageFromGallery() async {
     final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
     image = selectedImage;
-    profilPhotoUrl = image?.path;
+    if(image != null) {
+      profilPhotoUrl = image!.path;
+    }
   }
 
   /// -- OPEN CAMERA --
@@ -198,7 +200,9 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     if (permissionStatus.isGranted) {
       final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
       image = selectedImage;
-      profilPhotoUrl = image?.path;
+      if(image != null) {
+        profilPhotoUrl = image!.path;
+      }
     } else if (permissionStatus.isDenied) {
       await _requestPermission(Permission.camera);
       getImageFromCamera();
@@ -222,8 +226,9 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
         _emailController.text.trim() != getUserEmail ||
         _phoneController.text.trim() != getUserPhoneNumber ||
         _genderController.text.trim() != getUserGender ||
-        _ageController.text.trim() != getUserAge ||
-        _profilPhotoUrl != getUserProfilPhoto) {
+        _ageController.text.trim() != getUserAge
+        // _profilPhotoUrl != getUserProfilPhoto///FIXME
+    ) {
       return true;
     }
     return false;
@@ -238,7 +243,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     _phoneController.text = getUserPhoneNumber;
     _genderController.text = getUserGender;
     _ageController.text = getUserAge;
-    _profilPhotoUrl = getUserProfilPhoto;
+    // _profilPhotoUrl = getUserProfilPhoto;///FIXME
     _genderIcon = getUserGenderIcon;
   }
 
