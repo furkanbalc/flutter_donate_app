@@ -13,22 +13,22 @@ class CustomBorders {
   CustomBorders(this.context);
 
   /// -- radius
-  Radius get radiusLow => Radius.circular(AppSizes.low.value);
+  Radius get radiusLow => Radius.circular(AppSizes.low2.value);
 
-  Radius get radiusNormal => Radius.circular(AppSizes.normal.value);
+  Radius get radiusNormal => Radius.circular(AppSizes.low3.value);
 
-  Radius get radiusMedium => Radius.circular(AppSizes.medium.value);
+  Radius get radiusMedium => Radius.circular(AppSizes.medium1.value);
 
-  Radius get radiusHigh => Radius.circular(AppSizes.high.value);
+  Radius get radiusHigh => Radius.circular(AppSizes.medium2.value);
 
   /// -- border radius
-  BorderRadius get circularBorderRadiusMin => BorderRadius.circular(AppSizes.min.value);
+  BorderRadius get circularBorderRadiusMin => BorderRadius.circular(AppSizes.low1.value);
 
-  BorderRadius get circularBorderRadiusLow => BorderRadius.circular(AppSizes.low.value);
+  BorderRadius get circularBorderRadiusLow => BorderRadius.circular(AppSizes.low2.value);
 
-  BorderRadius get circularBorderRadiusNormal => BorderRadius.circular(AppSizes.normal.value);
+  BorderRadius get circularBorderRadiusNormal => BorderRadius.circular(AppSizes.low3.value);
 
-  BorderRadius get circularBorderRadiusMedium => BorderRadius.circular(AppSizes.medium.value);
+  BorderRadius get circularBorderRadiusMedium => BorderRadius.circular(AppSizes.medium1.value);
 
-  BorderRadius get circularBorderRadiusHigh => BorderRadius.circular(AppSizes.high.value);
+  BorderRadius get circularBorderRadiusHigh => BorderRadius.circular(AppSizes.medium2.value);
 }

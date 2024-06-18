@@ -12,14 +12,15 @@ class CustomAppBarTheme {
     elevation: 0,
     centerTitle: true,
     backgroundColor: AppColors.whiteColor,
+    surfaceTintColor: AppColors.transparentColor,
     titleTextStyle: const TextStyle(
       fontFamily: AppConstants.fontFamily,
       fontSize: 18,
       fontWeight: FontWeight.w600,
       color: AppColors.verifiedBlack,
     ),
-    iconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.ultra.value),
-    actionsIconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.ultra.value),
+    iconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.medium3.value),
+    actionsIconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.medium3.value),
     systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: AppColors.electricViolet,
       statusBarIconBrightness: Brightness.light,

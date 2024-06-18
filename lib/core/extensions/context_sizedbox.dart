@@ -5,20 +5,20 @@ import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 /// sabit degelerler ile tanimlanarak extension ile context uzerinden erisilebilir hale getirildi
 extension CustomSizedBoxExtension on BuildContext {
   /// -- WIDTH --
-  SizedBox get sizedBoxWidthMin => SizedBox(width: AppSizes.min.value);
-  SizedBox get sizedBoxWidthLow => SizedBox(width: AppSizes.low.value);
-  SizedBox get sizedBoxWidthNormal => SizedBox(width: AppSizes.normal.value);
-  SizedBox get sizedBoxWidthMedium => SizedBox(width: AppSizes.medium.value);
-  SizedBox get sizedBoxWidthHigh => SizedBox(width: AppSizes.high.value);
-  SizedBox get sizedBoxWidthUltra => SizedBox(width: AppSizes.ultra.value);
+  SizedBox get sizedBoxWidthMin => SizedBox(width: AppSizes.low1.value);
+  SizedBox get sizedBoxWidthLow => SizedBox(width: AppSizes.low2.value);
+  SizedBox get sizedBoxWidthNormal => SizedBox(width: AppSizes.low3.value);
+  SizedBox get sizedBoxWidthMedium => SizedBox(width: AppSizes.medium1.value);
+  SizedBox get sizedBoxWidthHigh => SizedBox(width: AppSizes.medium2.value);
+  SizedBox get sizedBoxWidthUltra => SizedBox(width: AppSizes.medium3.value);
 
   /// -- HEIGHT --
-  SizedBox get sizedBoxHeightMin => SizedBox(height: AppSizes.min.value);
-  SizedBox get sizedBoxHeightLow => SizedBox(height: AppSizes.low.value);
-  SizedBox get sizedBoxHeightNormal => SizedBox(height: AppSizes.normal.value);
-  SizedBox get sizedBoxHeightMedium => SizedBox(height: AppSizes.medium.value);
-  SizedBox get sizedBoxHeightHigh => SizedBox(height: AppSizes.high.value);
-  SizedBox get sizedBoxHeightUltra => SizedBox(height: AppSizes.ultra.value);
-  SizedBox get sizedBoxHeightCustom => SizedBox(height: AppSizes.custom.value);
+  SizedBox get sizedBoxHeightMin => SizedBox(height: AppSizes.low1.value);
+  SizedBox get sizedBoxHeightLow => SizedBox(height: AppSizes.low2.value);
+  SizedBox get sizedBoxHeightNormal => SizedBox(height: AppSizes.low3.value);
+  SizedBox get sizedBoxHeightMedium => SizedBox(height: AppSizes.medium1.value);
+  SizedBox get sizedBoxHeightHigh => SizedBox(height: AppSizes.medium2.value);
+  SizedBox get sizedBoxHeightUltra => SizedBox(height: AppSizes.medium3.value);
+  SizedBox get sizedBoxHeightCustom => SizedBox(height: AppSizes.high3.value);
   SizedBox get sizedBoxShrink => const SizedBox.shrink();
 }

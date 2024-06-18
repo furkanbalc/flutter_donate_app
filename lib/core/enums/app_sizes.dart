@@ -1,15 +1,26 @@
 /// Uygulamada kullanilan size degerlerini tutar tekrar tekrar elle yazmak yerine enum tercih edildi
 enum AppSizes {
-  min(4.0),
-  low(8.0),
-  normal(12.0),
-  medium(16.0),
-  high(20.0),
-  ultra(24.0),
-  custom(36),
-  profilePageIconSize(28),
+  /// Size: 4.0
+  low1(4.0),
+  /// Size: 8.0
+  low2(8.0),
+  /// Size: 12.0
+  low3(12.0),
+  /// Size: 16.0
+  medium1(16.0),
+  /// Size: 20.0
+  medium2(20.0),
+  /// Size: 24.0
+  medium3(24.0),
+  /// Size: 28.0
+  high1(28.0),
+  /// Size: 32.0
+  high2(32.0),
+  /// Size: 36.0
+  high3(36.0),
   ;
 
   final double value;
+
   const AppSizes(this.value);
 }

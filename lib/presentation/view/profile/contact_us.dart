@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_donate_app/core/constants/app_colors.dart';
-import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
@@ -117,7 +115,7 @@ class _ContactUsState extends State<ContactUs> {
         ),
         child: Row(
           children: [
-            CustomSvgWidget(svg: icon, height: AppSizes.custom.value),
+            CustomSvgWidget(svg: icon, height: AppSizes.high3.value),
             context.sizedBoxWidthMedium,
             Text(label, style: context.textStyles.titleLarge),
           ],

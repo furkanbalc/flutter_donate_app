@@ -70,7 +70,7 @@ class _HomeViewState extends ConsumerState<HomeView> {
                 onPressed: () {},
                 backgroundColor: AppColors.electricViolet,
                 shape: BoxShape.circle,
-                icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.custom.value),
+                icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.high3.value),
               ),
               context.sizedBoxHeightMin,
               Text(

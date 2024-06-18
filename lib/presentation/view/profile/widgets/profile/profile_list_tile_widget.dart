@@ -25,7 +25,7 @@ class ProfileListTileWidget extends StatelessWidget {
       onTap: onPressed,
       contentPadding: context.paddings.horizontalLow,
       title: Text(title, style: context.textStyles.bodyLarge),
-      leading: Icon(icon, color: AppColors.electricViolet, size: AppSizes.profilePageIconSize.value),
+      leading: Icon(icon, color: AppColors.electricViolet, size: AppSizes.high1.value),
       trailing: const Icon(AppIcons.kArrowRight, color: AppColors.electricViolet),
     );
   }

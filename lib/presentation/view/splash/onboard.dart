@@ -86,8 +86,8 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
   /// SKIP BUTTON
   Widget _skipButton() {
     return Positioned(
-      right: AppSizes.low.value,
-      top: AppSizes.low.value,
+      right: AppSizes.low2.value,
+      top: AppSizes.low2.value,
       child: CustomTextButton(
         onPressed: () => _splashViewModel.animateToLastPage(),
         text: LocaleKeys.on_board_skip.tr(),
@@ -98,9 +98,9 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
   /// Navigation Page Widget
   Widget _getNavigationWidget() {
     return Positioned(
-      bottom: AppSizes.custom.value,
-      right: AppSizes.medium.value,
-      left: AppSizes.medium.value,
+      bottom: AppSizes.high3.value,
+      right: AppSizes.medium1.value,
+      left: AppSizes.medium1.value,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -110,7 +110,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             icon: Icon(
               AppIcons.kArrowLeft,
               color: _splashViewModel.isFirstPage ? AppColors.electricViolet : AppColors.whiteColor,
-              size: AppSizes.ultra.value,
+              size: AppSizes.medium3.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,
@@ -131,7 +131,7 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             icon: Icon(
               _splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,
               color: AppColors.whiteColor,
-              size: AppSizes.ultra.value,
+              size: AppSizes.medium3.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,

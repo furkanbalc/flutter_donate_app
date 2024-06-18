@@ -14,7 +14,9 @@ class CustomElevatedButtonTheme {
       splashFactory: NoSplash.splashFactory,
       foregroundColor: AppColors.whiteColor,
       backgroundColor: AppColors.electricViolet,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.custom.value)),
+      disabledBackgroundColor: AppColors.greyLight,
+      disabledForegroundColor: AppColors.cascadingWhite,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(AppSizes.high3.value)),
       textStyle: const TextStyle(fontSize: 16,fontWeight: FontWeight.w600,color: AppColors.whiteColor),
     ),
   );

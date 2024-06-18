@@ -16,23 +16,23 @@ class CustomInputDecorationTheme {
       fontWeight: FontWeight.bold,
     ),
     border: OutlineInputBorder(
-      borderRadius: BorderRadius.circular(AppSizes.medium.value),
+      borderRadius: BorderRadius.circular(AppSizes.medium1.value),
     ),
     enabledBorder: OutlineInputBorder(
       borderSide: BorderSide.none,
-      borderRadius: BorderRadius.circular(AppSizes.medium.value),
+      borderRadius: BorderRadius.circular(AppSizes.medium1.value),
     ),
     focusedBorder: OutlineInputBorder(
       borderSide: const BorderSide(width: 0.5, color: AppColors.electricViolet),
-      borderRadius: BorderRadius.circular(AppSizes.medium.value),
+      borderRadius: BorderRadius.circular(AppSizes.medium1.value),
     ),
     errorBorder: OutlineInputBorder(
       borderSide: const BorderSide(width: 0.5, color: AppColors.error),
-      borderRadius: BorderRadius.circular(AppSizes.medium.value),
+      borderRadius: BorderRadius.circular(AppSizes.medium1.value),
     ),
     focusedErrorBorder: OutlineInputBorder(
       borderSide: const BorderSide(width: 0.5, color: AppColors.error),
-      borderRadius: BorderRadius.circular(AppSizes.medium.value),
+      borderRadius: BorderRadius.circular(AppSizes.medium1.value),
     ),
   );
 
