@@ -1,4 +1,3 @@
 import 'package:flutter/cupertino.dart';
 
-abstract class HomeViewModel extends ChangeNotifier {
-}
+abstract class HomeViewModel extends ChangeNotifier {}

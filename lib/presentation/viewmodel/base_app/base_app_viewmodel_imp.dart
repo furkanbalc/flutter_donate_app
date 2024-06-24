@@ -18,6 +18,7 @@ class BaseAppViewModelImp extends ChangeNotifier implements BaseAppViewModel {
     _selectedIndex = value;
     notifyListeners();
   }
+
   @override
   void reset() {
     _selectedIndex = 0;

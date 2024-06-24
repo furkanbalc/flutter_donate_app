@@ -2,13 +2,13 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
+import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
-import 'package:flutter_donate_app/injection.dart';
+import 'package:flutter_donate_app/di/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/authentication/signup/signup_viewmodel.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
-import 'package:flutter_donate_app/core/mixin/validator.dart';
 
-class SignupViewModelImp extends ChangeNotifier with Validator implements SignupViewModel {
+class SignupViewModelImp extends ChangeNotifier implements SignupViewModel {
   /// -- VARIABLES --
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _emailController = TextEditingController();
@@ -60,17 +60,19 @@ class SignupViewModelImp extends ChangeNotifier with Validator implements Signup
 
   @override
   String? emailValidation() {
-    return emailValidator(_emailController.text);
+    return CustomValidators.emailValidator(_emailController.text);
   }
 
   @override
   String? passwordValidation() {
-    return passwordValidator(pass: passController.text, confirmPass: confirmPassController.text);
+    return CustomValidators.passwordValidator(
+        pass: passController.text, confirmPass: confirmPassController.text);
   }
 
   @override
   String? confirmPasswordValidation() {
-    return confirmPasswordValidator(pass: passController.text, confirmPass: confirmPassController.text);
+    return CustomValidators.confirmPasswordValidator(
+        pass: passController.text, confirmPass: confirmPassController.text);
   }
 
   /// -- SIGN UP --
@@ -98,7 +100,8 @@ class SignupViewModelImp extends ChangeNotifier with Validator implements Signup
       signUpResponse = ApiResponse.completed(true);
     } on FirebaseAuthException catch (e, stacTrace) {
       if (e.code == 'email-already-in-use') {
-        signUpResponse = ApiResponse.error(LocaleKeys.messages_email_already_in_use.tr(), stacTrace);
+        signUpResponse = ApiResponse.error(
+            LocaleKeys.messages_email_already_in_use.tr(), stacTrace);
       }
     } catch (e, stackTrace) {
       signUpResponse = ApiResponse.error(e, stackTrace);

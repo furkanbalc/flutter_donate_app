@@ -6,7 +6,7 @@ import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_butto
 class ImagePickerIcon extends StatelessWidget {
   const ImagePickerIcon({
     super.key,
-     this.onTap,
+    this.onTap,
     required this.icon,
     required this.text,
   });
@@ -20,9 +20,10 @@ class ImagePickerIcon extends StatelessWidget {
       children: [
         CustomIconButton(
           onPressed: onTap,
-          icon: Icon(icon,color: AppColors.electricViolet),
+          icon: Icon(icon, color: AppColors.electricViolet),
           shape: BoxShape.circle,
-          border: Border.all(color: AppColors.electricViolet.withOpacity(.5), width: 2),
+          border: Border.all(
+              color: AppColors.electricViolet.withOpacity(.5), width: 2),
         ),
         context.sizedBoxHeightLow,
         Text(text, style: const TextStyle(color: AppColors.greyPrimary)),

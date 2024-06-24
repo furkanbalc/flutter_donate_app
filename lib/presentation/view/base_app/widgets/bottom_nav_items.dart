@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 
-
 class BottomNavItems {
   static List<NavigationDestination> get views => [
         NavigationDestination(
@@ -16,9 +15,9 @@ class BottomNavItems {
           label: BottomBarItems.product.value,
         ),
         NavigationDestination(
-          selectedIcon: const Icon(AppIcons.kMessageFilledIcon),
-          icon: const Icon(AppIcons.kMessageOutlinedIcon),
-          label: BottomBarItems.message.value,
+          selectedIcon: const Icon(AppIcons.kFavoriteFilledIcon),
+          icon: const Icon(AppIcons.kFavoriteOutlinedIcon),
+          label: BottomBarItems.wishlist.value,
         ),
         NavigationDestination(
           selectedIcon: const Icon(AppIcons.kUserFilledIcon),

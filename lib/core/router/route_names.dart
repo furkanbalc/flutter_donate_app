@@ -14,6 +14,7 @@ enum AppRouteName {
   profileInfos('profileInfos', 'ProfileInfos'),
   addressInfos('addressInfos', 'AddressInfos'),
   addAddress('addAddress', 'AddAddress'),
+  addressDetail('addressDetail', 'AddressDetail'),
   contactUs('contactUs', 'ContacUs'),
   aboutApp('aboutApp', 'AboutApp'),
   ;

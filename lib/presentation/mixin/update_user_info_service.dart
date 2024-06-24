@@ -9,11 +9,13 @@ mixin UpdateUserInfoService on State<ProfileInfoView> {
     required BuildContext context,
     required ProfileViewModel profileViewModel,
   }) {
-    if (profileViewModel.formKey.currentState != null && profileViewModel.formKey.currentState!.validate()) {
-      profileViewModel.updateUserInfo().then((value)  {
+    if (profileViewModel.formKey.currentState != null &&
+        profileViewModel.formKey.currentState!.validate()) {
+      profileViewModel.updateUserInfo().then((value) {
         if (profileViewModel.updateUserInfoResponse.isCompleted()) {
-          profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId);
-          if(profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
+          profileViewModel.getUserInfoFromFirestore(
+              id: profileViewModel.getUserId);
+          if (profileViewModel.getUserInfoFromFirestoreResponse.isCompleted()) {
             Utils.successSnackBar(
               context: context,
               title: 'Başarılı',

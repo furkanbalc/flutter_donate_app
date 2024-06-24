@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/core/mixin/validator.dart';
+import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
 import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
-import 'package:flutter_donate_app/injection.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:flutter_donate_app/di/injection.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/user_info/user_info_viewmodel.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 import 'package:permission_handler/permission_handler.dart';
 
-class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements PersonalInfoViewModel {
+class UserInfoViewModelImp extends ChangeNotifier implements UserInfoViewModel {
   /// -- VARIABLES --
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   XFile? _image;
@@ -118,7 +118,9 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   bool emptyCheck() {
     if (name.isNotEmpty &&
         surname.isNotEmpty &&
-        ((phoneNumber.phoneNumber?.length ?? 0) - (phoneNumber.dialCode?.length ?? 0)) != 0) {
+        ((phoneNumber.phoneNumber?.length ?? 0) -
+                (phoneNumber.dialCode?.length ?? 0)) !=
+            0) {
       return true;
     } else {
       return false;
@@ -128,20 +130,21 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   /// -- NAME VALIDATION --
   @override
   String? nameValidation() {
-    return nameValidator(name);
+    return CustomValidators.nameValidator(name);
   }
 
   /// -- SURNAME VALIDATION --
   @override
   String? surnameValidation() {
-    return surnameValidator(surname);
+    return CustomValidators.surnameValidator(surname);
   }
 
   /// -- SELECT IMAGE FROM GALLERY --
   @override
   Future getImageFromGallery() async {
     // if (await Permission.photos.isGranted) {
-    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
+    final XFile? selectedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
     image = selectedImage;
     notifyListeners();
     // } else {
@@ -154,7 +157,8 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   Future getImageFromCamera() async {
     PermissionStatus permissionStatus = await Permission.camera.status;
     if (permissionStatus.isGranted) {
-      final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
+      final XFile? selectedImage =
+          await ImagePicker().pickImage(source: ImageSource.camera);
       image = selectedImage;
       notifyListeners();
     } else if (permissionStatus.isDenied) {
@@ -181,10 +185,12 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   }
 
   /// -- SAVE USER INFO --
-  ApiResponse<UserEntity> _saveUserInfoToFirestoreResponse = ApiResponse.initial('initial');
+  ApiResponse<UserEntity> _saveUserInfoToFirestoreResponse =
+      ApiResponse.initial('initial');
 
   @override
-  ApiResponse<UserEntity> get saveUserInfoToFirestoreResponse => _saveUserInfoToFirestoreResponse;
+  ApiResponse<UserEntity> get saveUserInfoToFirestoreResponse =>
+      _saveUserInfoToFirestoreResponse;
 
   @override
   set saveUserInfoToFirestoreResponse(ApiResponse<UserEntity> value) {
@@ -196,7 +202,8 @@ class PersonalInfoViewModelImp extends ChangeNotifier with Validator implements 
   Future<void> saveUserInfoToFirestore() async {
     saveUserInfoToFirestoreResponse = ApiResponse.loading("loading");
     try {
-      final UserEntity userEntity = await injector<SaveUserInfoToFirestore>().execute(
+      final UserEntity userEntity =
+          await injector<SaveUserInfoToFirestore>().execute(
         ParamsForSaveUserInfoToFirestore(
           name: name,
           surname: surname,

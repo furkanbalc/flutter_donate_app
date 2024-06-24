@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/data/models/on_board_model.dart';
 import 'package:flutter_donate_app/domain/usecases/splash_usecase.dart';
-import 'package:flutter_donate_app/injection.dart';
+import 'package:flutter_donate_app/di/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/splash/splash_viewmodel.dart';
 
 class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
@@ -20,7 +20,8 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   @override
   bool get isFirstPage => currentPage == 0;
 
-  int get _nextIndex => currentPage == _pages.length ? _pages.length - 1 : currentPage + 1;
+  int get _nextIndex =>
+      currentPage == _pages.length ? _pages.length - 1 : currentPage + 1;
 
   int get _prevIndex => currentPage == 0 ? 0 : currentPage - 1;
 
@@ -68,7 +69,8 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   @override
   Future<void> isLoggedIn() async {
     try {
-      String? currentUserId = await injector<IsLoggedIn>().execute(ParamsForAny());
+      String? currentUserId =
+          await injector<IsLoggedIn>().execute(ParamsForAny());
       isLoggedInResponse = ApiResponse.completed(currentUserId);
     } catch (e, stackTrace) {
       isLoggedInResponse = ApiResponse.error(e, stackTrace);
@@ -78,7 +80,8 @@ class SplashViewModelImp extends ChangeNotifier implements SplashViewModel {
   @override
   Future<void> getInitialScreen() async {
     try {
-      bool? initialScreen = await injector<GetInitialScreen>().execute(ParamsForAny());
+      bool? initialScreen =
+          await injector<GetInitialScreen>().execute(ParamsForAny());
       getInitialScreenResponse = ApiResponse.completed(initialScreen ?? false);
     } catch (e, stackTrace) {
       getInitialScreenResponse = ApiResponse.error(e, stackTrace);

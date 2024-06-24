@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/age_info.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/gender_info.dart';
+import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/age_info.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
 import 'package:flutter_donate_app/presentation/view/home/home.dart';
 import 'package:flutter_donate_app/presentation/view/profile/about_app.dart';
 import 'package:flutter_donate_app/presentation/view/profile/add_address.dart';
+import 'package:flutter_donate_app/presentation/view/profile/address_detail.dart';
 import 'package:flutter_donate_app/presentation/view/profile/address_info.dart';
 import 'package:flutter_donate_app/presentation/view/profile/contact_us.dart';
 import 'package:flutter_donate_app/presentation/view/profile/profile.dart';
@@ -16,10 +17,13 @@ import 'package:flutter_donate_app/presentation/view/profile/profile_info.dart';
 import 'package:flutter_donate_app/presentation/view/splash/onboard.dart';
 import 'package:flutter_donate_app/presentation/view/splash/splash.dart';
 import 'package:flutter_donate_app/presentation/view/splash/welcome.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/user_info.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey(debugLabel: 'shell');
+final GlobalKey<NavigatorState> _rootNavigatorKey =
+    GlobalKey(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey =
+    GlobalKey(debugLabel: 'shell');
 
 class AppRoutes {
   AppRoutes._();
@@ -131,6 +135,16 @@ class AppRoutes {
                     parentNavigatorKey: _rootNavigatorKey,
                     builder: (BuildContext context, GoRouterState state) {
                       return const AddAddress();
+                    },
+                  ),
+                  GoRoute(
+                    path: '${AppRouteName.addressDetail.path}/:index',
+                    name: AppRouteName.addressDetail.name,
+                    parentNavigatorKey: _rootNavigatorKey,
+                    builder: (BuildContext context, GoRouterState state) {
+                      final address = state.extra as AddressEntity;
+                      final index = int.parse(state.pathParameters['index']!);
+                      return AddressDetail(address: address, index: index);
                     },
                   ),
                 ],

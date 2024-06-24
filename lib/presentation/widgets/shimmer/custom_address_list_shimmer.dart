@@ -21,6 +21,7 @@ class CustomAddressListShimmer extends StatelessWidget {
       ),
     );
   }
+
   /// Shimmer User Info Fields
   Widget _buildShimmerUserInfoFields(BuildContext context) {
     return Padding(

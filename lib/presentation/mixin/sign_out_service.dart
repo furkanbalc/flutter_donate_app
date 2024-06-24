@@ -12,7 +12,7 @@ mixin SignOutService on State<ProfileView> {
     required ProfileViewModel profileViewModel,
   }) {
     profileViewModel.signOut().then((value) {
-      if(profileViewModel.signOutResponse.isCompleted()) {
+      if (profileViewModel.signOutResponse.isCompleted()) {
         context.goNamed(AppRouteName.signin.name);
         Utils.successSnackBar(
           context: context,

@@ -12,7 +12,8 @@ class VerticalProductCard extends StatefulWidget {
   State<VerticalProductCard> createState() => _VerticalProductCardState();
 }
 
-class _VerticalProductCardState extends State<VerticalProductCard> with ProductCardComponents{
+class _VerticalProductCardState extends State<VerticalProductCard>
+    with ProductCardComponents {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -26,7 +27,8 @@ class _VerticalProductCardState extends State<VerticalProductCard> with ProductC
                 borderRadius: context.borders.circularBorderRadiusLow,
                 child: Stack(
                   children: [
-                    CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
+                    CustomImageWidget(
+                        image: AppPng.sofa.toPng, fit: BoxFit.cover),
                     Positioned(
                       left: 5,
                       top: 5,

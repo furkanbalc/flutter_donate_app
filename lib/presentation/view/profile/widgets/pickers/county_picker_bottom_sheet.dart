@@ -32,11 +32,17 @@ selectCountyPicker({
               itemBuilder: (context, index) {
                 return Center(
                   child: Text(
-                    addressViewModel.getCountyNameByIndex(index),
+                    addressViewModel.getCountyByIndex(index),
                     style: TextStyle(
-                      fontSize: addressViewModel.selectedCountyIndex == index ? 35 : 30,
-                      fontWeight: addressViewModel.selectedCountyIndex == index ? FontWeight.bold : FontWeight.w800,
-                      color: addressViewModel.selectedCountyIndex == index ? AppColors.electricViolet : null,
+                      fontSize: addressViewModel.selectedCountyIndex == index
+                          ? 35
+                          : 30,
+                      fontWeight: addressViewModel.selectedCountyIndex == index
+                          ? FontWeight.bold
+                          : FontWeight.w800,
+                      color: addressViewModel.selectedCountyIndex == index
+                          ? AppColors.electricViolet
+                          : null,
                     ),
                   ),
                 );

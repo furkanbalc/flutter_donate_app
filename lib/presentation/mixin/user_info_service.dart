@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/user_info.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/user_info.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/user_info/user_info_viewmodel.dart';
 import 'package:go_router/go_router.dart';
 
 mixin UserInfoService on State<UserInfoView> {
-  void userInfoProcess({required PersonalInfoViewModel personalInfoViewModel}) {
+  void userInfoProcess({required UserInfoViewModel userInfoViewModel}) {
     FocusScope.of(context).unfocus();
-    personalInfoViewModel.saveUserInfoToFirestore().then((value) {
-      if (personalInfoViewModel.formKey.currentState != null &&
-          personalInfoViewModel.formKey.currentState!.validate()) {
-        personalInfoViewModel.endProgress = 1 / 3;
+    userInfoViewModel.saveUserInfoToFirestore().then((value) {
+      if (userInfoViewModel.formKey.currentState != null &&
+          userInfoViewModel.formKey.currentState!.validate()) {
+        userInfoViewModel.endProgress = 1 / 3;
         Future.delayed(Durations.extralong4).then((value) {
           context.goNamed(AppRouteName.genderInfo.name);
         });
       } else {
-        personalInfoViewModel.toggleValidateMode();
+        userInfoViewModel.toggleValidateMode();
       }
     });
   }

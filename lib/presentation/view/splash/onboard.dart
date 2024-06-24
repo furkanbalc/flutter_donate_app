@@ -109,12 +109,16 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
             onPressed: () => _splashViewModel.animateToPrevPage(),
             icon: Icon(
               AppIcons.kArrowLeft,
-              color: _splashViewModel.isFirstPage ? AppColors.electricViolet : AppColors.whiteColor,
+              color: _splashViewModel.isFirstPage
+                  ? AppColors.electricViolet
+                  : AppColors.whiteColor,
               size: AppSizes.medium3.value,
             ),
             border: Border.all(color: AppColors.electricViolet),
             shape: BoxShape.circle,
-            backgroundColor: _splashViewModel.isFirstPage ? AppColors.whiteColor : AppColors.electricViolet,
+            backgroundColor: _splashViewModel.isFirstPage
+                ? AppColors.whiteColor
+                : AppColors.electricViolet,
           ),
 
           /// Page Dots
@@ -129,7 +133,9 @@ class _OnboardViewState extends ConsumerState<OnboardView> {
                 ? context.goNamed(AppRouteName.signin.name)
                 : _splashViewModel.animateToNextPage(),
             icon: Icon(
-              _splashViewModel.isLastPage ? AppIcons.kLikeIcon : AppIcons.kArrowRight,
+              _splashViewModel.isLastPage
+                  ? AppIcons.kLikeIcon
+                  : AppIcons.kArrowRight,
               color: AppColors.whiteColor,
               size: AppSizes.medium3.value,
             ),

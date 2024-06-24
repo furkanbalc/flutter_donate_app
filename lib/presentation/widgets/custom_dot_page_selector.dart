@@ -16,7 +16,8 @@ class CustomDotPageSelector extends StatefulWidget {
   State<CustomDotPageSelector> createState() => _CustomDotPageSelectorState();
 }
 
-class _CustomDotPageSelectorState extends State<CustomDotPageSelector> with TickerProviderStateMixin {
+class _CustomDotPageSelectorState extends State<CustomDotPageSelector>
+    with TickerProviderStateMixin {
   @override
   void initState() {
     super.initState();

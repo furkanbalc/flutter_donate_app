@@ -15,7 +15,8 @@ class AddressRepositoryImp implements AddressRepository {
   /// -- GET USER ADDRESS INFO --
   @override
   Future<AddressesEntity> getAdressesFromFirestore({required String id}) async {
-    AddressesModel addressesModel = await remoteDataSource.getAdressesFromFirestore(id: id);
+    AddressesModel addressesModel =
+        await remoteDataSource.getAdressesFromFirestore(id: id);
     return addressesModel.convertToEntity();
   }
 
@@ -29,7 +30,8 @@ class AddressRepositoryImp implements AddressRepository {
     required String lat,
     required String long,
   }) async {
-    AddressesModel addressModel = await remoteDataSource.addAddressInfoToFirestore(
+    AddressesModel addressModel =
+        await remoteDataSource.addAddressInfoToFirestore(
       country: country,
       city: city,
       town: town,
@@ -51,5 +53,11 @@ class AddressRepositoryImp implements AddressRepository {
   Future<GetProvinceEntity> getTrProvinces() async {
     GetProvinceModel provinceModel = await remoteDataSource.getTrProvinces();
     return provinceModel.convertToEntity();
+  }
+
+  /// -- UPDATE ADDRESS --
+  @override
+  Future<void> updateAddress(AddressEntity addressEntity, int index) async {
+    await remoteDataSource.updateAddressAtIndex(addressEntity, index);
   }
 }

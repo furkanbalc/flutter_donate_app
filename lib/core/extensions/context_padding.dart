@@ -32,36 +32,54 @@ class CustomPaddings {
 
   /// -- ONLY BOTTOM PADDING --
   EdgeInsets get onlyBottomLow => EdgeInsets.only(bottom: AppSizes.low2.value);
-  EdgeInsets get onlyBottomNormal => EdgeInsets.only(bottom: AppSizes.low3.value);
-  EdgeInsets get onlyBottomMedium => EdgeInsets.only(bottom: AppSizes.medium1.value);
-  EdgeInsets get onlyBottomHigh => EdgeInsets.only(bottom: AppSizes.medium2.value);
-  EdgeInsets get onlyBottomUltra => EdgeInsets.only(bottom: AppSizes.medium3.value);
+  EdgeInsets get onlyBottomNormal =>
+      EdgeInsets.only(bottom: AppSizes.low3.value);
+  EdgeInsets get onlyBottomMedium =>
+      EdgeInsets.only(bottom: AppSizes.medium1.value);
+  EdgeInsets get onlyBottomHigh =>
+      EdgeInsets.only(bottom: AppSizes.medium2.value);
+  EdgeInsets get onlyBottomUltra =>
+      EdgeInsets.only(bottom: AppSizes.medium3.value);
 
   /// -- ONLY RIGHT PADDING --
   EdgeInsets get onlyRightLow => EdgeInsets.only(right: AppSizes.low2.value);
   EdgeInsets get onlyRightNormal => EdgeInsets.only(right: AppSizes.low3.value);
-  EdgeInsets get onlyRightMedium => EdgeInsets.only(right: AppSizes.medium1.value);
-  EdgeInsets get onlyRightHigh => EdgeInsets.only(right: AppSizes.medium2.value);
-  EdgeInsets get onlyRightUltra => EdgeInsets.only(right: AppSizes.medium3.value);
+  EdgeInsets get onlyRightMedium =>
+      EdgeInsets.only(right: AppSizes.medium1.value);
+  EdgeInsets get onlyRightHigh =>
+      EdgeInsets.only(right: AppSizes.medium2.value);
+  EdgeInsets get onlyRightUltra =>
+      EdgeInsets.only(right: AppSizes.medium3.value);
 
   /// -- ONLY LEFT PADDING --
   EdgeInsets get onlyLeftLow => EdgeInsets.only(left: AppSizes.low2.value);
   EdgeInsets get onlyLeftNormal => EdgeInsets.only(left: AppSizes.low3.value);
-  EdgeInsets get onlyLeftMedium => EdgeInsets.only(left: AppSizes.medium1.value);
+  EdgeInsets get onlyLeftMedium =>
+      EdgeInsets.only(left: AppSizes.medium1.value);
   EdgeInsets get onlyLeftHigh => EdgeInsets.only(left: AppSizes.medium2.value);
   EdgeInsets get onlyLeftUltra => EdgeInsets.only(left: AppSizes.medium3.value);
 
   /// -- VERTICAL PADDING --
-  EdgeInsets get verticalLow => EdgeInsets.symmetric(vertical: AppSizes.low2.value);
-  EdgeInsets get verticalNormal => EdgeInsets.symmetric(vertical: AppSizes.low3.value);
-  EdgeInsets get verticalMedium => EdgeInsets.symmetric(vertical: AppSizes.medium1.value);
-  EdgeInsets get verticalHigh => EdgeInsets.symmetric(vertical: AppSizes.medium2.value);
-  EdgeInsets get verticalUltra => EdgeInsets.symmetric(vertical: AppSizes.medium3.value);
+  EdgeInsets get verticalLow =>
+      EdgeInsets.symmetric(vertical: AppSizes.low2.value);
+  EdgeInsets get verticalNormal =>
+      EdgeInsets.symmetric(vertical: AppSizes.low3.value);
+  EdgeInsets get verticalMedium =>
+      EdgeInsets.symmetric(vertical: AppSizes.medium1.value);
+  EdgeInsets get verticalHigh =>
+      EdgeInsets.symmetric(vertical: AppSizes.medium2.value);
+  EdgeInsets get verticalUltra =>
+      EdgeInsets.symmetric(vertical: AppSizes.medium3.value);
 
   /// -- HORIZONTAL PADDING --
-  EdgeInsets get horizontalLow => EdgeInsets.symmetric(horizontal: AppSizes.low2.value);
-  EdgeInsets get horizontalNormal => EdgeInsets.symmetric(horizontal: AppSizes.low3.value);
-  EdgeInsets get horizontalMedium => EdgeInsets.symmetric(horizontal: AppSizes.medium1.value);
-  EdgeInsets get horizontalHigh => EdgeInsets.symmetric(horizontal: AppSizes.medium2.value);
-  EdgeInsets get horizontalUltra => EdgeInsets.symmetric(horizontal: AppSizes.medium3.value);
+  EdgeInsets get horizontalLow =>
+      EdgeInsets.symmetric(horizontal: AppSizes.low2.value);
+  EdgeInsets get horizontalNormal =>
+      EdgeInsets.symmetric(horizontal: AppSizes.low3.value);
+  EdgeInsets get horizontalMedium =>
+      EdgeInsets.symmetric(horizontal: AppSizes.medium1.value);
+  EdgeInsets get horizontalHigh =>
+      EdgeInsets.symmetric(horizontal: AppSizes.medium2.value);
+  EdgeInsets get horizontalUltra =>
+      EdgeInsets.symmetric(horizontal: AppSizes.medium3.value);
 }

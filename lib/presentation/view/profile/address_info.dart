@@ -30,7 +30,6 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
     super.initState();
     _addressViewModel = ref.read(addressViewModelImp);
     _profileViewModel = ref.read(profileViewModelImp);
-    _addressViewModel.init();
   }
 
   @override
@@ -38,7 +37,7 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
     _addressViewModel = ref.watch(addressViewModelImp);
     _profileViewModel = ref.watch(profileViewModelImp);
     return Scaffold(
-      appBar:  CustomAppBar(title: LocaleKeys.address_my_addresses.tr()),
+      appBar: CustomAppBar(title: LocaleKeys.address_my_addresses.tr()),
       floatingActionButton: _addAddressButton(context),
       body: _buildBody(),
     );
@@ -62,7 +61,9 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
   Widget _buildAddressList() {
     return ListView.separated(
       padding: context.paddings.allLow,
-      itemCount: _addressViewModel.getAddressFromFirestoreResponse.data.address?.length ?? 0,
+      itemCount: _addressViewModel
+              .getAddressFromFirestoreResponse.data.address?.length ??
+          0,
       separatorBuilder: (context, index) => context.sizedBoxHeightLow,
       itemBuilder: (BuildContext context, int index) {
         return _buildAddressListItem(context, index);
@@ -76,7 +77,13 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
       splashFactory: NoSplash.splashFactory,
       highlightColor: AppColors.electricViolet.withOpacity(.5),
       borderRadius: context.borders.circularBorderRadiusMedium,
-      onLongPress: _addressViewModel.deleteModeOn,
+      onTap: () {
+        context.goNamed(
+          AppRouteName.addressDetail.name,
+          pathParameters: {'index': '$index'},
+          extra: _addressViewModel.getAddressByIndex(index),
+        );
+      },
       child: AddressCard(addressViewModel: _addressViewModel, index: index),
     );
   }
@@ -99,7 +106,8 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
   Widget _getErrorWidget() {
     return CustomErrorWidget(
       onPressed: () {
-        _addressViewModel.getAdressesFromFirestore(id: _profileViewModel.getUserId);
+        _addressViewModel.getAdressesFromFirestore(
+            id: _profileViewModel.getUserId);
       },
     );
   }

@@ -4,7 +4,7 @@ import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/auth_text_rich_button.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_svg_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:go_router/go_router.dart';
@@ -24,7 +24,8 @@ class AuthFooter extends StatelessWidget {
       children: [
         /// Or Widget
         Padding(
-          padding: context.paddings.horizontalUltra + context.paddings.onlyTopUltra,
+          padding:
+              context.paddings.horizontalUltra + context.paddings.onlyTopUltra,
           child: _buildOrWidget(context),
         ),
 
@@ -49,7 +50,8 @@ class AuthFooter extends StatelessWidget {
           padding: context.paddings.horizontalNormal,
           child: Text(
             LocaleKeys.auth_or_with.tr(),
-            style: context.textStyles.titleSmall.copyWith(color: AppColors.steel),
+            style:
+                context.textStyles.titleSmall.copyWith(color: AppColors.steel),
           ),
         ),
         const Expanded(child: Divider(color: AppColors.greyLight)),
@@ -80,12 +82,15 @@ class AuthFooter extends StatelessWidget {
   Widget _buildAuthTextRichButton(BuildContext context) {
     return AuthTextRichButton(
       onPressed: () {
-        isSignup ? context.goNamed(AppRouteName.signin.name) : context.goNamed(AppRouteName.signup.name);
+        isSignup
+            ? context.goNamed(AppRouteName.signin.name)
+            : context.goNamed(AppRouteName.signup.name);
       },
       text: isSignup
           ? '${LocaleKeys.auth_dont_have_an_account.tr()} '
           : '${LocaleKeys.auth_already_have_an_account.tr()} ',
-      buttonText: isSignup ? LocaleKeys.auth_signin.tr() : LocaleKeys.auth_signup.tr(),
+      buttonText:
+          isSignup ? LocaleKeys.auth_signin.tr() : LocaleKeys.auth_signup.tr(),
     );
   }
 }

@@ -15,7 +15,8 @@ class ProfileInfoProfilePhoto extends StatelessWidget {
         color: AppColors.whiteColor,
         image: DecorationImage(
           fit: BoxFit.fitWidth,
-          colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.5), BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+              AppColors.electricViolet.withOpacity(.5), BlendMode.srcIn),
           image: AssetImage(AppPng.linesBg.toPng),
         ),
       ),

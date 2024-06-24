@@ -1,4 +1,3 @@
-
 abstract class AuthRepository {
   /// -- SIGN UP --
   Future<void> signUp({

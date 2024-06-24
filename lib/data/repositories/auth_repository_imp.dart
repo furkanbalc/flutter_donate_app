@@ -14,7 +14,8 @@ class AuthRepositoryImp implements AuthRepository {
 
   /// -- SIGN IN --
   @override
-  Future<String> signIn({required String email, required String password}) async {
+  Future<String> signIn(
+      {required String email, required String password}) async {
     return await remoteDataSource.signIn(email: email, password: password);
   }
 
@@ -24,7 +25,7 @@ class AuthRepositoryImp implements AuthRepository {
     await remoteDataSource.signOut();
   }
 
-/// -- DELETE ACCOUNT --
+  /// -- DELETE ACCOUNT --
   @override
   Future<void> deleteAccount() async {
     await remoteDataSource.deleteUserAccount();

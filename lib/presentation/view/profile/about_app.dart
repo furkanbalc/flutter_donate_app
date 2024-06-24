@@ -14,7 +14,6 @@ class AboutApp extends ConsumerStatefulWidget {
 }
 
 class _AboutAppState extends ConsumerState<AboutApp> {
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,22 +45,30 @@ class _AboutAppState extends ConsumerState<AboutApp> {
               ),
             ),
             context.sizedBoxHeightMedium,
-            Text('Bende Fazla Nedir?', style: context.textStyles.titleLarge.copyWith(fontWeight: FontWeight.w800)),
+            Text('Bende Fazla Nedir?',
+                style: context.textStyles.titleLarge
+                    .copyWith(fontWeight: FontWeight.w800)),
             context.sizedBoxHeightLow,
             const Text(
                 "'Bende Fazla', kullanıcıların elinde fazla bulunan, kullanmadıkları ama kullanılabilir durumda olan gıda, mobilya, giysi, kitap, oyuncak gibi nesneleri ihtiyaç sahiplerine bağışlamalarını sağlayan bir mobil uygulamadır. Bu sayede israfı önleyerek, ihtiyaç sahiplerine yardımcı olmayı amaçlıyoruz."),
             context.sizedBoxHeightMedium,
-            Text('Ne İçin Var?', style: context.textStyles.titleLarge.copyWith(fontWeight: FontWeight.w800)),
+            Text('Ne İçin Var?',
+                style: context.textStyles.titleLarge
+                    .copyWith(fontWeight: FontWeight.w800)),
             context.sizedBoxHeightLow,
             const Text(
                 '"Bende Fazla" uygulaması, israfı önlemek ve ihtiyaç sahiplerine destek olmak için oluşturulmuştur. Fazladan alınan ya da kullanılmayan eşyalarınızı başkalarıyla paylaşarak, hem çevreye katkıda bulunabilir hem de toplumsal dayanışmayı artırabilirsiniz.'),
             context.sizedBoxHeightMedium,
-            Text('Uygulamanın Amacı', style: context.textStyles.titleLarge.copyWith(fontWeight: FontWeight.w800)),
+            Text('Uygulamanın Amacı',
+                style: context.textStyles.titleLarge
+                    .copyWith(fontWeight: FontWeight.w800)),
             context.sizedBoxHeightLow,
             Text(
                 'Uygulamamızın birinci ve asıl amacı, kullanıcıların fazladan aldığı veya elinde fazladan bulunan, kendisinin kullanmadığı ama başkasının eline geçtiğinde kullanılabilecek durumda olan her türlü nesneyi ihtiyaç sahiplerine bağışlamasını sağlamaktır. Ayrıca restoranlarda, marketlerde ve evlerde tüketilemeyen ama iyi durumda olan gıdaları da ihtiyaç sahiplerine ulaştırmak amaçlanmaktadır.'),
             context.sizedBoxHeightMedium,
-            Text('İkinci Aşama', style: context.textStyles.titleLarge.copyWith(fontWeight: FontWeight.w800)),
+            Text('İkinci Aşama',
+                style: context.textStyles.titleLarge
+                    .copyWith(fontWeight: FontWeight.w800)),
             Text(
                 'Uygulama yaygınlaştığında, işletmelerle anlaşarak fazla gıdaları gönüllü öğrenciler aracılığıyla toplayıp ihtiyaç sahiplerine ulaştırmayı hedefliyoruz. Ayrıca ürünlerin piyasa fiyatının altında bir değerle satılmasını sağlayarak, daha fazla insanın uygun fiyatlarla ihtiyaçlarını karşılamasını amaçlıyoruz.'),
             context.sizedBoxHeightMedium,

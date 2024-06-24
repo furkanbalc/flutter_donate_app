@@ -16,7 +16,8 @@ void agePickerBottomSheet({
   return await showModalBottomSheet(
     context: context,
     builder: (BuildContext context) {
-      int tempSelectedAge = int.tryParse(profileViewModel.ageController.text)! - 18;
+      int tempSelectedAge =
+          int.tryParse(profileViewModel.ageController.text)! - 18;
       return Container(
         height: context.dynamicHeight(.3),
         padding: context.paddings.allLow,
@@ -40,8 +41,12 @@ void agePickerBottomSheet({
                       age.toString(),
                       style: TextStyle(
                         fontSize: tempSelectedAge == index ? 35 : 35,
-                        fontWeight: tempSelectedAge == index ? FontWeight.bold : FontWeight.w800,
-                        color: tempSelectedAge == index ? AppColors.electricViolet : null,
+                        fontWeight: tempSelectedAge == index
+                            ? FontWeight.bold
+                            : FontWeight.w800,
+                        color: tempSelectedAge == index
+                            ? AppColors.electricViolet
+                            : null,
                       ),
                     ),
                   );
@@ -50,7 +55,8 @@ void agePickerBottomSheet({
             ),
             CustomElevatedButton(
               onPressed: () {
-                profileViewModel.ageController.text = (tempSelectedAge + 18).toString();
+                profileViewModel.ageController.text =
+                    (tempSelectedAge + 18).toString();
                 context.pop();
               },
               text: LocaleKeys.address_apply.tr(),

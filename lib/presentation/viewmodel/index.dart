@@ -13,8 +13,8 @@ export 'authentication/signin/signin_viewmodel_imp.dart';
 export 'authentication/signup/signup_viewmodel.dart';
 export 'authentication/signup/signup_viewmodel_imp.dart';
 
-export 'authentication/personal_info/personal_info_viewmodel.dart';
-export 'authentication/personal_info/personal_info_viewmodel_imp.dart';
+export 'user_info/user_info_viewmodel.dart';
+export 'user_info/user_info_viewmodel_imp.dart';
 
 export 'profile/profile_viewmodel.dart';
 export 'profile/profile_viewmodel_imp.dart';

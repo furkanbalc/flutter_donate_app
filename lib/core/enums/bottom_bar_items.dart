@@ -1,7 +1,7 @@
 enum BottomBarItems {
   home('Ana Sayfa'),
   product('İlanlar'),
-  message('Mesaj'),
+  wishlist('Favoriler'),
   profile('Profil'),
   ;
 

@@ -10,7 +10,9 @@ class CustomBottomSheetTheme {
     backgroundColor: AppColors.electricViolet,
     modalBackgroundColor: AppColors.whiteColor,
     constraints: const BoxConstraints(minWidth: double.infinity),
-    shape: RoundedRectangleBorder(borderRadius: BorderRadius.vertical(top: Radius.circular(AppSizes.medium2.value))),
+    shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(
+            top: Radius.circular(AppSizes.medium2.value))),
   );
 
   /// Dark

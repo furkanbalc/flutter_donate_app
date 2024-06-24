@@ -5,7 +5,7 @@ import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/signup_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';

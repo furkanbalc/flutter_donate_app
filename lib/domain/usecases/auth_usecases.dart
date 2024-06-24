@@ -19,7 +19,8 @@ class SignUp extends BaseUseCase<Future<void>, ParamsForAuth> {
 
   @override
   Future<void> execute(ParamsForAuth params) async {
-    return await authRepository.signUp(email: params.email, password: params.password);
+    return await authRepository.signUp(
+        email: params.email, password: params.password);
   }
 }
 
@@ -31,7 +32,8 @@ class SignIn extends BaseUseCase<Future<String>, ParamsForAuth> {
 
   @override
   Future<String> execute(ParamsForAuth params) async {
-    return await authRepository.signIn(email: params.email, password: params.password);
+    return await authRepository.signIn(
+        email: params.email, password: params.password);
   }
 }
 

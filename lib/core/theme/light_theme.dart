@@ -5,8 +5,8 @@ import 'package:flutter_donate_app/core/theme/custom_theme/index.dart';
 final ThemeData lightTheme = ThemeData(
   useMaterial3: true,
   fontFamily: 'InterFontFamily',
-  primaryColor: AppColors.electricViolet,
   brightness: Brightness.light,
+  primaryColor: AppColors.electricViolet,
   scaffoldBackgroundColor: AppColors.cascadingWhite,
   inputDecorationTheme: CustomInputDecorationTheme.lightInputDecorationTheme,
   elevatedButtonTheme: CustomElevatedButtonTheme.lightElevatedButtonTheme,

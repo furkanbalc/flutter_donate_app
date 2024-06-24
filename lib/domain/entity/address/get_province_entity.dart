@@ -1,4 +1,5 @@
 import 'package:equatable/equatable.dart';
+
 class GetProvinceEntity extends Equatable {
   final String status;
   final List<ProvinceEntity> data;
@@ -10,9 +11,9 @@ class GetProvinceEntity extends Equatable {
 
   @override
   List<Object?> get props => [
-    status,
-    data,
-  ];
+        status,
+        data,
+      ];
 }
 
 class ProvinceEntity extends Equatable {

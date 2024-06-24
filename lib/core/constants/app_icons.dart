@@ -16,6 +16,9 @@ class AppIcons {
   static const IconData kUserOutlinedIcon = Iconsax.user;
   static const IconData kUserFilledIcon = Icons.person;
   //
+  static const IconData kFavoriteOutlinedIcon = Iconsax.heart;
+  static const IconData kFavoriteFilledIcon = Iconsax.heart5;
+  //
   static const IconData kLocationOutlinedIcon = Iconsax.location;
   static const IconData kLocationFilledIcon = Iconsax.location5;
   static const IconData kAddLocationIcon = Iconsax.location_add5;

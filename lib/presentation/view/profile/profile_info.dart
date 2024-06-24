@@ -4,13 +4,13 @@ import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/core/mixin/validator.dart';
 import 'package:flutter_donate_app/core/utils/custom_alert_dialog.dart';
 import 'package:flutter_donate_app/core/utils/custom_back_dialog.dart';
+import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/delete_account_service.dart';
 import 'package:flutter_donate_app/presentation/mixin/update_user_info_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/index.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile/profile_info_text_field.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
@@ -33,7 +33,8 @@ class ProfileInfoView extends ConsumerStatefulWidget {
   ConsumerState createState() => _ProfileInfosViewState();
 }
 
-class _ProfileInfosViewState extends ConsumerState<ProfileInfoView> with UpdateUserInfoService, DeleteAccountService {
+class _ProfileInfosViewState extends ConsumerState<ProfileInfoView>
+    with UpdateUserInfoService, DeleteAccountService {
   late ProfileViewModel _profileViewModel;
 
   @override
@@ -151,7 +152,8 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView> with UpdateU
           context: context,
           title: LocaleKeys.profile_info_are_you_sure.tr(),
           message: LocaleKeys.profile_info_your_account_will_be_deleted.tr(),
-          onPressed: () => deleteAccountProcess(context: context, profileViewModel: _profileViewModel),
+          onPressed: () => deleteAccountProcess(
+              context: context, profileViewModel: _profileViewModel),
         );
       },
       text: LocaleKeys.profile_delete_account.tr(),
@@ -162,7 +164,8 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView> with UpdateU
   Widget _buildError() {
     return CustomErrorWidget(
       onPressed: () {
-        _profileViewModel.getUserInfoFromFirestore(id: _profileViewModel.getUserId);
+        _profileViewModel.getUserInfoFromFirestore(
+            id: _profileViewModel.getUserId);
       },
     );
   }

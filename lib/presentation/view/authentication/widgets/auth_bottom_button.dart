@@ -8,9 +8,9 @@ import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 class AuthBottomButton extends StatelessWidget {
   const AuthBottomButton({
     super.key,
-     this.onPressed,
-     this.text,
-     this.child,
+    this.onPressed,
+    this.text,
+    this.child,
   });
 
   final Function()? onPressed;
@@ -33,10 +33,11 @@ class AuthBottomButton extends StatelessWidget {
           ),
         ],
       ),
-      child: child ?? CustomElevatedButton(
-        onPressed: onPressed,
-        text: text ??  LocaleKeys.user_info_apply_and_continue.tr(),
-      ),
+      child: child ??
+          CustomElevatedButton(
+            onPressed: onPressed,
+            text: text ?? LocaleKeys.user_info_apply_and_continue.tr(),
+          ),
     );
   }
 }

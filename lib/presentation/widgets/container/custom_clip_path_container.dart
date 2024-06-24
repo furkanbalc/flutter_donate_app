@@ -21,7 +21,8 @@ class CustomClipPathContainer extends ConsumerStatefulWidget {
   ConsumerState createState() => _CustomClipPathContainerState();
 }
 
-class _CustomClipPathContainerState extends ConsumerState<CustomClipPathContainer> {
+class _CustomClipPathContainerState
+    extends ConsumerState<CustomClipPathContainer> {
   @override
   Widget build(BuildContext context) {
     return ClipPath(

@@ -29,7 +29,8 @@ class ProfileHeaderInfo extends StatelessWidget {
         color: AppColors.whiteColor,
         image: DecorationImage(
           fit: BoxFit.fitWidth,
-          colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+              AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
           image: AssetImage(AppPng.linesBg.toPng),
         ),
       ),
@@ -72,7 +73,10 @@ class ProfileHeaderInfo extends StatelessWidget {
 
             /// User Gender
             Icon(profileViewModel.getUserGenderIcon,
-                size: 20, color: profileViewModel.isMan ? AppColors.blueTang : AppColors.tomatoFrog),
+                size: 20,
+                color: profileViewModel.isMan
+                    ? AppColors.blueTang
+                    : AppColors.tomatoFrog),
             context.sizedBoxWidthLow,
 
             /// User Age
@@ -98,7 +102,8 @@ class ProfileHeaderInfo extends StatelessWidget {
   Widget _buildErrorWidget() {
     return CustomErrorWidget(
       onPressed: () {
-        profileViewModel.getUserInfoFromFirestore(id: profileViewModel.getUserId);
+        profileViewModel.getUserInfoFromFirestore(
+            id: profileViewModel.getUserId);
       },
     );
   }

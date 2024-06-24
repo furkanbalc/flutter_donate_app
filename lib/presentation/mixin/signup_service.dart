@@ -8,7 +8,8 @@ import 'package:go_router/go_router.dart';
 
 mixin SignupService on State<SignupView> {
   void signUpProcess({required SignupViewModel signupViewModel}) {
-    if (signupViewModel.formKey.currentState != null && signupViewModel.formKey.currentState!.validate()) {
+    if (signupViewModel.formKey.currentState != null &&
+        signupViewModel.formKey.currentState!.validate()) {
       signupViewModel.signUp().then((value) {
         if (signupViewModel.signUpResponse.isCompleted()) {
           Utils.successSnackBar(

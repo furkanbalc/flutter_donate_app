@@ -16,10 +16,12 @@ mixin ProductCardComponents {
       ),
       child: Row(
         children: [
-          const Icon(Icons.star_rounded, color: AppColors.orangeColor, size: 16),
+          const Icon(Icons.star_rounded,
+              color: AppColors.orangeColor, size: 16),
           Text(
             rating,
-            style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+            style:
+                context.textStyles.bodySmall.copyWith(color: AppColors.steel),
           ),
         ],
       ),
@@ -34,7 +36,8 @@ mixin ProductCardComponents {
         color: AppColors.whiteColor,
         shape: BoxShape.circle,
       ),
-      child: const Icon(AppIcons.kFavouriteIcon, color: AppColors.redColor, size: 16),
+      child: const Icon(AppIcons.kFavouriteIcon,
+          color: AppColors.redColor, size: 16),
     );
   }
 
@@ -64,18 +67,23 @@ mixin ProductCardComponents {
             color: backgroundColor,
             borderRadius: context.borders.circularBorderRadiusMin,
           ),
-          child: Text(tag, style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+          child: Text(tag,
+              style: context.textStyles.labelSmall
+                  .copyWith(color: AppColors.steel)),
         );
       }).toList(),
     );
   }
 
   /// Item Title & Description
-  Widget buildItemDetails(BuildContext context, String title, String description) {
+  Widget buildItemDetails(
+      BuildContext context, String title, String description) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(title, style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+        Text(title,
+            style: context.textStyles.titleMedium
+                .copyWith(fontWeight: FontWeight.w600)),
         Text(
           description,
           maxLines: 2,
@@ -105,7 +113,9 @@ mixin ProductCardComponents {
               child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 16),
             ),
             context.sizedBoxWidthLow,
-            Text(username, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),
+            Text(username,
+                style: context.textStyles.bodySmall
+                    .copyWith(color: AppColors.steel)),
           ],
         ),
         Row(
@@ -116,10 +126,13 @@ mixin ProductCardComponents {
                 color: AppColors.cascadingWhite,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.electricViolet, size: 16),
+              child: const Icon(AppIcons.kLocationOutlinedIcon,
+                  color: AppColors.electricViolet, size: 16),
             ),
             context.sizedBoxWidthLow,
-            Text(distance, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),
+            Text(distance,
+                style: context.textStyles.bodySmall
+                    .copyWith(color: AppColors.steel)),
           ],
         ),
       ],

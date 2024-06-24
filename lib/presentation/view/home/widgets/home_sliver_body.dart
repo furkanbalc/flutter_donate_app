@@ -34,10 +34,12 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Son Eklenenler',
-                          style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+                          style: context.textStyles.titleMedium
+                              .copyWith(fontWeight: FontWeight.w600)),
                       Text('Tümünü Gör',
-                          style: context.textStyles.titleSmall
-                              .copyWith(fontWeight: FontWeight.w600, color: AppColors.electricViolet)),
+                          style: context.textStyles.titleSmall.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.electricViolet)),
                     ],
                   ),
                   Expanded(
@@ -55,10 +57,13 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                 Padding(
                                   padding: context.paddings.allLow,
                                   child: ClipRRect(
-                                    borderRadius: context.borders.circularBorderRadiusLow,
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusLow,
                                     child: Stack(
                                       children: [
-                                        CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
+                                        CustomImageWidget(
+                                            image: AppPng.sofa.toPng,
+                                            fit: BoxFit.cover),
                                         Positioned(
                                           left: 5,
                                           top: 5,
@@ -66,14 +71,22 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                             padding: const EdgeInsets.all(2),
                                             decoration: BoxDecoration(
                                               color: AppColors.whiteColor,
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Row(
                                               children: [
-                                                const Icon(Icons.star_rounded, color: AppColors.orangeColor, size: 16),
+                                                const Icon(Icons.star_rounded,
+                                                    color:
+                                                        AppColors.orangeColor,
+                                                    size: 16),
                                                 Text(
                                                   '4.9',
-                                                  style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                  style: context
+                                                      .textStyles.bodySmall
+                                                      .copyWith(
+                                                          color:
+                                                              AppColors.steel),
                                                 ),
                                               ],
                                             ),
@@ -88,8 +101,10 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                               color: AppColors.whiteColor,
                                               shape: BoxShape.circle,
                                             ),
-                                            child: const Icon(AppIcons.kFavouriteIcon,
-                                                color: AppColors.redColor, size: 16),
+                                            child: const Icon(
+                                                AppIcons.kFavouriteIcon,
+                                                color: AppColors.redColor,
+                                                size: 16),
                                           ),
                                         ),
                                       ],
@@ -103,91 +118,135 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                       Row(
                                         children: [
                                           Container(
-                                            padding: context.paddings.horizontalNormal,
+                                            padding: context
+                                                .paddings.horizontalNormal,
                                             decoration: BoxDecoration(
-                                              color: AppColors.electricViolet.withOpacity(.1),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.electricViolet
+                                                  .withOpacity(.1),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Bağış',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                           const SizedBox(width: 10),
                                           Container(
-                                            padding: context.paddings.horizontalLow,
+                                            padding:
+                                                context.paddings.horizontalLow,
                                             decoration: BoxDecoration(
-                                              color: AppColors.greenColor.withOpacity(.2),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.greenColor
+                                                  .withOpacity(.2),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Yeni Gibi',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                           const SizedBox(width: 10),
                                           Container(
-                                            padding: context.paddings.horizontalLow,
+                                            padding:
+                                                context.paddings.horizontalLow,
                                             decoration: BoxDecoration(
-                                              color: AppColors.blueColor.withOpacity(.2),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.blueColor
+                                                  .withOpacity(.2),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Mobilya',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                         ],
                                       ),
                                       context.sizedBoxHeightLow,
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
                                         children: [
                                           Text('Koltuk',
-                                              style:
-                                                  context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+                                              style: context
+                                                  .textStyles.titleMedium
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
                                           Text(
                                             'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do dolor sit amet',
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
-                                            style: context.textStyles.titleSmall.copyWith(
+                                            style: context.textStyles.titleSmall
+                                                .copyWith(
                                               overflow: TextOverflow.ellipsis,
                                               color: AppColors.steel,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const Divider(color: AppColors.cascadingWhite),
+                                      const Divider(
+                                          color: AppColors.cascadingWhite),
                                       context.sizedBoxHeightMin,
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
                                               Container(
-                                                padding: context.paddings.allMin,
+                                                padding:
+                                                    context.paddings.allMin,
                                                 decoration: const BoxDecoration(
-                                                  color: AppColors.cascadingWhite,
+                                                  color:
+                                                      AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 20),
+                                                child: CustomSvgWidget(
+                                                    svg: AppSvg.profile.toSvg,
+                                                    width: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(
                                                 'Kullanıcı Adı',
-                                                style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                style: context
+                                                    .textStyles.bodySmall
+                                                    .copyWith(
+                                                        color: AppColors.steel),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Container(
-                                                padding: context.paddings.allMin,
+                                                padding:
+                                                    context.paddings.allMin,
                                                 decoration: const BoxDecoration(
-                                                  color: AppColors.cascadingWhite,
+                                                  color:
+                                                      AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: const Icon(AppIcons.kLocationOutlinedIcon,
-                                                    color: AppColors.electricViolet, size: 20),
+                                                child: const Icon(
+                                                    AppIcons
+                                                        .kLocationOutlinedIcon,
+                                                    color: AppColors
+                                                        .electricViolet,
+                                                    size: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(
                                                 '9.4 km',
-                                                style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                style: context
+                                                    .textStyles.bodySmall
+                                                    .copyWith(
+                                                        color: AppColors.steel),
                                               ),
                                             ],
                                           )
@@ -215,10 +274,12 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text('Son Eklenenler',
-                          style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+                          style: context.textStyles.titleMedium
+                              .copyWith(fontWeight: FontWeight.w600)),
                       Text('Tümünü Gör',
-                          style: context.textStyles.titleSmall
-                              .copyWith(fontWeight: FontWeight.w600, color: AppColors.electricViolet)),
+                          style: context.textStyles.titleSmall.copyWith(
+                              fontWeight: FontWeight.w600,
+                              color: AppColors.electricViolet)),
                     ],
                   ),
                   Expanded(
@@ -236,10 +297,13 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                 Padding(
                                   padding: context.paddings.allLow,
                                   child: ClipRRect(
-                                    borderRadius: context.borders.circularBorderRadiusLow,
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusLow,
                                     child: Stack(
                                       children: [
-                                        CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
+                                        CustomImageWidget(
+                                            image: AppPng.sofa.toPng,
+                                            fit: BoxFit.cover),
                                         Positioned(
                                           left: 5,
                                           top: 5,
@@ -247,14 +311,22 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                             padding: const EdgeInsets.all(2),
                                             decoration: BoxDecoration(
                                               color: AppColors.whiteColor,
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Row(
                                               children: [
-                                                const Icon(Icons.star_rounded, color: AppColors.orangeColor, size: 16),
+                                                const Icon(Icons.star_rounded,
+                                                    color:
+                                                        AppColors.orangeColor,
+                                                    size: 16),
                                                 Text(
                                                   '4.9',
-                                                  style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                  style: context
+                                                      .textStyles.bodySmall
+                                                      .copyWith(
+                                                          color:
+                                                              AppColors.steel),
                                                 ),
                                               ],
                                             ),
@@ -269,8 +341,10 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                               color: AppColors.whiteColor,
                                               shape: BoxShape.circle,
                                             ),
-                                            child: const Icon(AppIcons.kFavouriteIcon,
-                                                color: AppColors.redColor, size: 16),
+                                            child: const Icon(
+                                                AppIcons.kFavouriteIcon,
+                                                color: AppColors.redColor,
+                                                size: 16),
                                           ),
                                         ),
                                       ],
@@ -284,91 +358,135 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                       Row(
                                         children: [
                                           Container(
-                                            padding: context.paddings.horizontalNormal,
+                                            padding: context
+                                                .paddings.horizontalNormal,
                                             decoration: BoxDecoration(
-                                              color: AppColors.electricViolet.withOpacity(.1),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.electricViolet
+                                                  .withOpacity(.1),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Bağış',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                           const SizedBox(width: 10),
                                           Container(
-                                            padding: context.paddings.horizontalLow,
+                                            padding:
+                                                context.paddings.horizontalLow,
                                             decoration: BoxDecoration(
-                                              color: AppColors.greenColor.withOpacity(.2),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.greenColor
+                                                  .withOpacity(.2),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Yeni Gibi',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                           const SizedBox(width: 10),
                                           Container(
-                                            padding: context.paddings.horizontalLow,
+                                            padding:
+                                                context.paddings.horizontalLow,
                                             decoration: BoxDecoration(
-                                              color: AppColors.blueColor.withOpacity(.2),
-                                              borderRadius: context.borders.circularBorderRadiusMin,
+                                              color: AppColors.blueColor
+                                                  .withOpacity(.2),
+                                              borderRadius: context.borders
+                                                  .circularBorderRadiusMin,
                                             ),
                                             child: Text('Mobilya',
-                                                style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
+                                                style: context
+                                                    .textStyles.labelSmall
+                                                    .copyWith(
+                                                        color:
+                                                            AppColors.steel)),
                                           ),
                                         ],
                                       ),
                                       context.sizedBoxHeightLow,
                                       Column(
-                                        crossAxisAlignment: CrossAxisAlignment.stretch,
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.stretch,
                                         children: [
                                           Text('Koltuk',
-                                              style:
-                                                  context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+                                              style: context
+                                                  .textStyles.titleMedium
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.w600)),
                                           Text(
                                             'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do dolor sit amet',
                                             maxLines: 2,
                                             overflow: TextOverflow.ellipsis,
-                                            style: context.textStyles.titleSmall.copyWith(
+                                            style: context.textStyles.titleSmall
+                                                .copyWith(
                                               overflow: TextOverflow.ellipsis,
                                               color: AppColors.steel,
                                             ),
                                           ),
                                         ],
                                       ),
-                                      const Divider(color: AppColors.cascadingWhite),
+                                      const Divider(
+                                          color: AppColors.cascadingWhite),
                                       context.sizedBoxHeightMin,
                                       Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
                                         children: [
                                           Row(
                                             children: [
                                               Container(
-                                                padding: context.paddings.allMin,
+                                                padding:
+                                                    context.paddings.allMin,
                                                 decoration: const BoxDecoration(
-                                                  color: AppColors.cascadingWhite,
+                                                  color:
+                                                      AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 20),
+                                                child: CustomSvgWidget(
+                                                    svg: AppSvg.profile.toSvg,
+                                                    width: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(
                                                 'Kullanıcı Adı',
-                                                style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                style: context
+                                                    .textStyles.bodySmall
+                                                    .copyWith(
+                                                        color: AppColors.steel),
                                               ),
                                             ],
                                           ),
                                           Row(
                                             children: [
                                               Container(
-                                                padding: context.paddings.allMin,
+                                                padding:
+                                                    context.paddings.allMin,
                                                 decoration: const BoxDecoration(
-                                                  color: AppColors.cascadingWhite,
+                                                  color:
+                                                      AppColors.cascadingWhite,
                                                   shape: BoxShape.circle,
                                                 ),
-                                                child: const Icon(AppIcons.kLocationOutlinedIcon,
-                                                    color: AppColors.electricViolet, size: 20),
+                                                child: const Icon(
+                                                    AppIcons
+                                                        .kLocationOutlinedIcon,
+                                                    color: AppColors
+                                                        .electricViolet,
+                                                    size: 20),
                                               ),
                                               context.sizedBoxWidthLow,
                                               Text(
                                                 '9.4 km',
-                                                style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                                style: context
+                                                    .textStyles.bodySmall
+                                                    .copyWith(
+                                                        color: AppColors.steel),
                                               ),
                                             ],
                                           )

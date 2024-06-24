@@ -20,7 +20,9 @@ selectCityPicker({
           Expanded(
             child: CupertinoPicker.builder(
               scrollController: FixedExtentScrollController(
-                initialItem: addressViewModel.selectedCityIndex == -1 ? 0 : addressViewModel.selectedCityIndex,
+                initialItem: addressViewModel.selectedCityIndex == -1
+                    ? 0
+                    : addressViewModel.selectedCityIndex,
               ),
               childCount: addressViewModel.getCitiesLenght,
               diameterRatio: 1.5,
@@ -34,9 +36,14 @@ selectCityPicker({
                   child: Text(
                     addressViewModel.getCityByIndex(index),
                     style: TextStyle(
-                      fontSize: addressViewModel.selectedCityIndex == index ? 35 : 30,
-                      fontWeight: addressViewModel.selectedCityIndex == index ? FontWeight.bold : FontWeight.w800,
-                      color: addressViewModel.selectedCityIndex == index ? AppColors.electricViolet : null,
+                      fontSize:
+                          addressViewModel.selectedCityIndex == index ? 35 : 30,
+                      fontWeight: addressViewModel.selectedCityIndex == index
+                          ? FontWeight.bold
+                          : FontWeight.w800,
+                      color: addressViewModel.selectedCityIndex == index
+                          ? AppColors.electricViolet
+                          : null,
                     ),
                   ),
                 );
@@ -46,6 +53,8 @@ selectCityPicker({
           CustomElevatedButton(
             onPressed: () {
               addressViewModel.city.text = addressViewModel.getSelectedCityName;
+              addressViewModel.county.text = '';
+              addressViewModel.desc.text = '';
               context.pop();
             },
             text: LocaleKeys.address_select.tr(),

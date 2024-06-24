@@ -12,7 +12,8 @@ class HorizontalProductCart extends StatefulWidget {
   State<HorizontalProductCart> createState() => _HorizontalProductCartState();
 }
 
-class _HorizontalProductCartState extends State<HorizontalProductCart> with ProductCardComponents {
+class _HorizontalProductCartState extends State<HorizontalProductCart>
+    with ProductCardComponents {
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -27,7 +28,9 @@ class _HorizontalProductCartState extends State<HorizontalProductCart> with Prod
                 child: Stack(
                   children: [
                     CustomImageWidget(
-                        image: AppPng.sofa.toPng, fit: BoxFit.cover, height: context.dynamicHeight(.20)),
+                        image: AppPng.sofa.toPng,
+                        fit: BoxFit.cover,
+                        height: context.dynamicHeight(.20)),
                     Positioned(
                       left: 5,
                       top: 5,

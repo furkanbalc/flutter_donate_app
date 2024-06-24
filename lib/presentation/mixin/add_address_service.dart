@@ -13,14 +13,16 @@ mixin AddAddressService on State<AddAddress> {
     required AddressViewModel addressViewModel,
     required String userId,
   }) {
-    if (addressViewModel.formKey.currentState != null && addressViewModel.formKey.currentState!.validate()) {
+    if (addressViewModel.formKey.currentState != null &&
+        addressViewModel.formKey.currentState!.validate()) {
       addressViewModel.addAdressesToFirestore().then((value) {
         if (addressViewModel.addAddressToFirestoreResponse.isCompleted()) {
           addressViewModel.getAdressesFromFirestore(id: userId);
           Utils.successSnackBar(context: context, message: 'Adres Eklendi');
           context.goNamed(AppRouteName.addressInfos.name);
         } else {
-          Utils.errorSnackBar(context: context, message: 'Adres ekleme başarısız');
+          Utils.errorSnackBar(
+              context: context, message: 'Adres ekleme başarısız');
         }
       });
     }

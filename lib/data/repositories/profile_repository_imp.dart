@@ -32,7 +32,8 @@ class ProfileRepositoryImp implements ProfileRepository {
   ///  -- GET USER INFO --
   @override
   Future<UserEntity> getUserInfoFromFirestore({required String id}) async {
-    UserModel userModel = await remoteDataSource.getUserInfoFromFirestore(id: id);
+    UserModel userModel =
+        await remoteDataSource.getUserInfoFromFirestore(id: id);
     return userModel.convertToEntity();
   }
 

@@ -8,7 +8,8 @@ class CustomProfileInfoShimmer extends StatefulWidget {
   const CustomProfileInfoShimmer({super.key});
 
   @override
-  State<CustomProfileInfoShimmer> createState() => _CustomProfileInfoShimmerState();
+  State<CustomProfileInfoShimmer> createState() =>
+      _CustomProfileInfoShimmerState();
 }
 
 class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
@@ -38,7 +39,8 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
         color: AppColors.whiteColor,
         image: DecorationImage(
           fit: BoxFit.fitWidth,
-          colorFilter: ColorFilter.mode(AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
+          colorFilter: ColorFilter.mode(
+              AppColors.electricViolet.withOpacity(.3), BlendMode.srcIn),
           image: AssetImage(AppPng.linesBg.toPng),
         ),
       ),
@@ -63,7 +65,8 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
   Widget _buildShimmerUserInfoFields(BuildContext context) {
     return Container(
       color: AppColors.whiteColor,
-      padding: context.paddings.horizontalMedium + context.paddings.verticalNormal,
+      padding:
+          context.paddings.horizontalMedium + context.paddings.verticalNormal,
       child: Column(
         children: [
           _buildShimmerProfileInfoField(context),

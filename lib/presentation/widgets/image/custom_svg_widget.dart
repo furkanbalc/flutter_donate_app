@@ -24,7 +24,8 @@ class CustomSvgWidget extends StatelessWidget {
       width: width,
       height: height,
       fit: fit ?? BoxFit.cover,
-      colorFilter:  color !=null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
+      colorFilter:
+          color != null ? ColorFilter.mode(color!, BlendMode.srcIn) : null,
     );
   }
 }

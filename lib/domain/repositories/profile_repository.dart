@@ -25,6 +25,4 @@ abstract class ProfileRepository {
     required String age,
     required dynamic profileImage,
   });
-
-
 }

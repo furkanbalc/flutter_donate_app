@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/base_app/base_app_viewmodel.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
@@ -21,7 +22,8 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
       selectedIndex: _calculateSelectedIndex(context),
       backgroundColor: AppColors.whiteColor,
       indicatorColor: AppColors.electricViolet.withOpacity(.2),
-      onDestinationSelected: (value) => _onItemTapped(value, context),
+      onDestinationSelected: (value) =>
+          _onItemTapped(context, viewModel, value),
       destinations: viewModel.views,
     );
   }
@@ -43,7 +45,12 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
     return 0;
   }
 
-  void _onItemTapped(int index, BuildContext context) {
+  void _onItemTapped(
+    BuildContext context,
+    BaseAppViewModel viewModel,
+    int index,
+  ) {
+    viewModel.selectedIndex = index;
     switch (index) {
       case 0:
         context.goNamed(AppRouteName.home.name);

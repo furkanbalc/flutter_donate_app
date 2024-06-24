@@ -6,7 +6,8 @@ class StorageService {
   StorageService({required this.firebaseStorage});
   final FirebaseStorage firebaseStorage;
 
-  Future<String> storeFileToFirebase({required String ref, required var file}) async {
+  Future<String> storeFileToFirebase(
+      {required String ref, required var file}) async {
     UploadTask? uploadTask;
     if (file is XFile) {
       uploadTask = firebaseStorage.ref().child(ref).putFile(File(file.path));

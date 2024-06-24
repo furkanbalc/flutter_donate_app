@@ -19,8 +19,10 @@ class CustomAppBarTheme {
       fontWeight: FontWeight.w600,
       color: AppColors.verifiedBlack,
     ),
-    iconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.medium3.value),
-    actionsIconTheme: IconThemeData(color: AppColors.blackPrimary, size: AppSizes.medium3.value),
+    iconTheme: IconThemeData(
+        color: AppColors.blackPrimary, size: AppSizes.medium3.value),
+    actionsIconTheme: IconThemeData(
+        color: AppColors.blackPrimary, size: AppSizes.medium3.value),
     systemOverlayStyle: const SystemUiOverlayStyle(
       statusBarColor: AppColors.electricViolet,
       statusBarIconBrightness: Brightness.light,

@@ -21,7 +21,8 @@ class GetProvinceModel extends GetProvinceEntity {
     );
   }
 
-  factory GetProvinceModel.fromJson(Map<String, dynamic> json) => GetProvinceModel(
+  factory GetProvinceModel.fromJson(Map<String, dynamic> json) =>
+      GetProvinceModel(
         status: json["status"],
         data: List<Datum>.from(json["data"].map((x) => Datum.fromJson(x))),
       );
@@ -78,7 +79,8 @@ class Datum extends ProvinceEntity {
         coordinates: Coordinates.fromJson(json["coordinates"]),
         maps: Maps.fromJson(json["maps"]),
         region: Region.fromJson(json["region"]),
-        districts: List<District>.from(json["districts"].map((x) => District.fromJson(x))),
+        districts: List<District>.from(
+            json["districts"].map((x) => District.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {

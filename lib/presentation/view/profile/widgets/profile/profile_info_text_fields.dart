@@ -9,7 +9,7 @@ class ProfileInfoTextFields extends StatefulWidget {
   State<ProfileInfoTextFields> createState() => _ProfileInfoTextFieldsState();
 }
 
-class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> with Validator {
+class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -20,13 +20,14 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> with Vali
           children: [
             Container(
               color: AppColors.whiteColor,
-              padding: context.paddings.horizontalMedium + context.paddings.verticalNormal,
+              padding: context.paddings.horizontalMedium +
+                  context.paddings.verticalNormal,
               child: Column(
                 children: [
                   /// Name Field
                   ProfileInfoTextField(
                     controller: widget.profileViewModel.nameController,
-                    validator: nameValidator,
+                    validator: CustomValidators.nameValidator,
                     labelText: LocaleKeys.form_fields_name.tr(),
                     prefixIcon: AppIcons.kUserOutlinedIcon,
                   ),
@@ -35,7 +36,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> with Vali
                   /// SurName Field
                   ProfileInfoTextField(
                     controller: widget.profileViewModel.surnameController,
-                    validator: surnameValidator,
+                    validator: CustomValidators.surnameValidator,
                     labelText: LocaleKeys.form_fields_surname.tr(),
                     prefixIcon: AppIcons.kUserOutlinedIcon,
                   ),
@@ -44,7 +45,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> with Vali
                   /// Email Field
                   ProfileInfoTextField(
                     controller: widget.profileViewModel.emailController,
-                    validator: emailValidator,
+                    validator: CustomValidators.emailValidator,
                     labelText: LocaleKeys.form_fields_email.tr(),
                     prefixIcon: AppIcons.kEmailIcon,
                   ),
@@ -53,7 +54,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> with Vali
                   /// Phone Number Field
                   ProfileInfoTextField(
                     controller: widget.profileViewModel.phoneController,
-                    validator: phoneNumberValidator,
+                    validator: CustomValidators.phoneNumberValidator,
                     labelText: LocaleKeys.form_fields_phone_number.tr(),
                     prefixIcon: AppIcons.kPhoneIcon,
                     keyboardType: TextInputType.phone,

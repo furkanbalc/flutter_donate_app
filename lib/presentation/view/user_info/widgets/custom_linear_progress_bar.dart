@@ -1,14 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/authentication/personal_info/personal_info_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 
 class CustomLinearProgressBar extends StatelessWidget {
+  const CustomLinearProgressBar({super.key, required this.userInfoViewModel});
 
-  const CustomLinearProgressBar({super.key, required this.personalInfoViewModel});
-
-  final PersonalInfoViewModel personalInfoViewModel;
-
+  final UserInfoViewModel userInfoViewModel;
 
   @override
   Widget build(BuildContext context) {
@@ -20,8 +18,8 @@ class CustomLinearProgressBar extends StatelessWidget {
         duration: Durations.long4,
         curve: Curves.easeInOut,
         tween: Tween<double>(
-          begin: personalInfoViewModel.beginProgress,
-          end: personalInfoViewModel.endProgress,
+          begin: userInfoViewModel.beginProgress,
+          end: userInfoViewModel.endProgress,
         ),
         builder: (context, value, _) => LinearProgressIndicator(
           color: AppColors.electricViolet,

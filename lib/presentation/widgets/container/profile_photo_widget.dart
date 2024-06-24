@@ -29,7 +29,9 @@ class ProfilePhotoWidget extends StatelessWidget {
   bool get isUrl {
     if (imagePath == null) return false;
     final uri = Uri.tryParse(imagePath!);
-    return uri != null && uri.hasAbsolutePath && (uri.scheme == 'http' || uri.scheme == 'https');
+    return uri != null &&
+        uri.hasAbsolutePath &&
+        (uri.scheme == 'http' || uri.scheme == 'https');
   }
 
   @override
@@ -44,7 +46,8 @@ class ProfilePhotoWidget extends StatelessWidget {
       child: showBadge
           ? Badge(
               offset: const Offset(-15, 120),
-              label: const Icon(AppIcons.kEditPhotoIcon, color: Colors.white, size: 20),
+              label: const Icon(AppIcons.kEditPhotoIcon,
+                  color: Colors.white, size: 20),
               largeSize: 30,
               padding: const EdgeInsets.all(5),
               backgroundColor: AppColors.electricViolet,

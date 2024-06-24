@@ -24,10 +24,12 @@ class HorizontalProductList extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text('Son Eklenenler',
-                style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+                style: context.textStyles.titleMedium
+                    .copyWith(fontWeight: FontWeight.w600)),
             Text('Tümünü Gör',
-                style: context.textStyles.titleSmall
-                    .copyWith(fontWeight: FontWeight.w600, color: AppColors.electricViolet)),
+                style: context.textStyles.titleSmall.copyWith(
+                    fontWeight: FontWeight.w600,
+                    color: AppColors.electricViolet)),
           ],
         ),
         Expanded(
@@ -48,7 +50,8 @@ class HorizontalProductList extends StatelessWidget {
                           borderRadius: context.borders.circularBorderRadiusLow,
                           child: Stack(
                             children: [
-                              CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
+                              CustomImageWidget(
+                                  image: AppPng.sofa.toPng, fit: BoxFit.cover),
                               Positioned(
                                 left: 5,
                                 top: 5,
@@ -56,12 +59,14 @@ class HorizontalProductList extends StatelessWidget {
                                   padding: const EdgeInsets.all(2),
                                   decoration: BoxDecoration(
                                     color: AppColors.whiteColor,
-                                    borderRadius: context.borders.circularBorderRadiusMin,
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusMin,
                                   ),
                                   child: Row(
                                     children: [
                                       const Icon(Icons.star_rounded,
-                                          color: AppColors.orangeColor, size: 16),
+                                          color: AppColors.orangeColor,
+                                          size: 16),
                                       Text(
                                         '4.9',
                                         style: context.textStyles.bodySmall
@@ -97,8 +102,10 @@ class HorizontalProductList extends StatelessWidget {
                                 Container(
                                   padding: context.paddings.horizontalNormal,
                                   decoration: BoxDecoration(
-                                    color: AppColors.electricViolet.withOpacity(.1),
-                                    borderRadius: context.borders.circularBorderRadiusMin,
+                                    color: AppColors.electricViolet
+                                        .withOpacity(.1),
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusMin,
                                   ),
                                   child: Text('Bağış',
                                       style: context.textStyles.labelSmall
@@ -109,7 +116,8 @@ class HorizontalProductList extends StatelessWidget {
                                   padding: context.paddings.horizontalLow,
                                   decoration: BoxDecoration(
                                     color: AppColors.greenColor.withOpacity(.2),
-                                    borderRadius: context.borders.circularBorderRadiusMin,
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusMin,
                                   ),
                                   child: Text('Yeni Gibi',
                                       style: context.textStyles.labelSmall
@@ -120,7 +128,8 @@ class HorizontalProductList extends StatelessWidget {
                                   padding: context.paddings.horizontalLow,
                                   decoration: BoxDecoration(
                                     color: AppColors.blueColor.withOpacity(.2),
-                                    borderRadius: context.borders.circularBorderRadiusMin,
+                                    borderRadius:
+                                        context.borders.circularBorderRadiusMin,
                                   ),
                                   child: Text('Mobilya',
                                       style: context.textStyles.labelSmall
@@ -159,13 +168,14 @@ class HorizontalProductList extends StatelessWidget {
                                         color: AppColors.cascadingWhite,
                                         shape: BoxShape.circle,
                                       ),
-                                      child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 20),
+                                      child: CustomSvgWidget(
+                                          svg: AppSvg.profile.toSvg, width: 20),
                                     ),
                                     context.sizedBoxWidthLow,
                                     Text(
                                       'Kullanıcı Adı',
-                                      style:
-                                      context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                      style: context.textStyles.bodySmall
+                                          .copyWith(color: AppColors.steel),
                                     ),
                                   ],
                                 ),
@@ -177,14 +187,16 @@ class HorizontalProductList extends StatelessWidget {
                                         color: AppColors.cascadingWhite,
                                         shape: BoxShape.circle,
                                       ),
-                                      child: const Icon(AppIcons.kLocationOutlinedIcon,
-                                          color: AppColors.electricViolet, size: 20),
+                                      child: const Icon(
+                                          AppIcons.kLocationOutlinedIcon,
+                                          color: AppColors.electricViolet,
+                                          size: 20),
                                     ),
                                     context.sizedBoxWidthLow,
                                     Text(
                                       '9.4 km',
-                                      style:
-                                      context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+                                      style: context.textStyles.bodySmall
+                                          .copyWith(color: AppColors.steel),
                                     ),
                                   ],
                                 )

@@ -1,9 +1,19 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
-mixin Validator {
+class CustomValidators {
+  CustomValidators._();
+
+  /// EMPTY VALIDATOR
+  static String? emptyValidator(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Bu alan boş geçilemez!';
+    }
+    return null;
+  }
+
   /// EMAIL VALIDATOR
-  String? emailValidator(String? email) {
+  static String? emailValidator(String? email) {
     if (email == null || email.isEmpty) {
       return LocaleKeys.validator_email_not_null.tr();
     }
@@ -15,7 +25,7 @@ mixin Validator {
   }
 
   /// PASSWORD VALIDATOR
-  String? passwordValidator({required String? pass, required String? confirmPass}) {
+  static String? passwordValidator({required String? pass, required String? confirmPass}) {
     if (pass == null || pass.isEmpty) {
       return LocaleKeys.validator_password_not_null.tr();
     }
@@ -46,7 +56,7 @@ mixin Validator {
   }
 
   /// VERIFY PASSWORD VALIDATOR
-  String? confirmPasswordValidator({required String? pass, required String? confirmPass}) {
+  static String? confirmPasswordValidator({required String? pass, required String? confirmPass}) {
     if (pass == null || pass.isEmpty) {
       return LocaleKeys.validator_password_not_null.tr();
     }
@@ -57,7 +67,7 @@ mixin Validator {
   }
 
   /// LOGIN PASSWORD VALIDATOR
-  String? loginPasswordValidator(String? pass) {
+  static String? loginPasswordValidator(String? pass) {
     if (pass == null || pass.isEmpty) {
       return LocaleKeys.validator_password_not_null.tr();
     }
@@ -68,11 +78,11 @@ mixin Validator {
   }
 
   /// USER INFO NAME VALIDATOR
-  String? nameValidator(String? name) {
+  static String? nameValidator(String? name) {
     if (name == null || name.isEmpty) {
       return LocaleKeys.validator_name_is_not_empty.tr();
     }
-    if(name.length <= 3) {
+    if (name.length <= 3) {
       return 'En az 3 karakter içermelidir';
     }
     final RegExp regex = RegExp(r'^[a-zA-ZğĞüÜşŞıİöÖçÇ]+$');
@@ -83,11 +93,11 @@ mixin Validator {
   }
 
   /// USER INFO SURNAME VALIDATOR
-  String? surnameValidator(String? surname) {
+  static String? surnameValidator(String? surname) {
     if (surname == null || surname.isEmpty) {
       return LocaleKeys.validator_surname_is_not_empty.tr();
     }
-    if(surname.length <= 3) {
+    if (surname.length <= 3) {
       return 'En az 3 karakter içermelidir';
     }
     final RegExp regex = RegExp(r'^[a-zA-ZğĞüÜşŞıİöÖçÇ]+$');
@@ -97,16 +107,8 @@ mixin Validator {
     return null;
   }
 
-  /// GENDER VALIDATOR
-  // String? genderValidator(String? value) {
-  //   if (value == null || value.isEmpty) {
-  //     return genderIsRequired;
-  //   }
-  //   return null;
-  // }
-
   /// PHONE NUMBER VALIDATOR
-  String? phoneNumberValidator(String? phoneNumber) {
+  static String? phoneNumberValidator(String? phoneNumber) {
     if (phoneNumber == null || phoneNumber.isEmpty) {
       return 'Telefon numarası boş olamaz!';
     }
@@ -118,14 +120,6 @@ mixin Validator {
     }
     if (phoneNumber.length > 10) {
       return 'Telefon numarası çok uzun!\nBaşında "0" olmadan giriniz';
-    }
-    return null;
-  }
-
-  /// PROVINCE VALIDATOR
-  String? provinceValidator(String? value) {
-    if (value == null || value.isEmpty) {
-      return 'Bu alan boş geçilemez!';
     }
     return null;
   }

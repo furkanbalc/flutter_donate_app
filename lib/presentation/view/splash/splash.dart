@@ -31,24 +31,28 @@ class _SplashViewState extends ConsumerState<SplashView> {
   }
 
   Future<void> init() async {
-    splashViewModel.isLoggedIn();
-    splashViewModel.getInitialScreen().then((value) async {
-      /// onboard ekrani bir kere gorulduyse true doner ve
-      if (splashViewModel.getInitialScreenResponse.data) {
-        /// kullanıcı login olduysa yani içerde kullanıcı varsa true döner
-        if (splashViewModel.isLoggedInResponse.data != null) {
-          /// uygulama başlar
-          await profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
-          await addressViewModel.getAdressesFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
-          await addressViewModel.getProvinces();
-          context.goNamed(AppRouteName.home.name);
-        } else {
-          /// kullanici login ekrani ile devam eder
-          context.goNamed(AppRouteName.welcome.name);
-        }
+    /// icerde kullanici var mi
+    splashViewModel.isLoggedIn().then((value) async {
+      /// kullanici varsa
+      if (splashViewModel.isLoggedInResponse.data != null) {
+        /// uygulama başlar
+        await profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
+        await addressViewModel.getAdressesFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
+        await addressViewModel.getProvinces();
+        context.goNamed(AppRouteName.home.name);
+        /// kullanici yoksa
       } else {
-        /// onboard gorunmemis demektir onboarda atar
-        context.goNamed(AppRouteName.onboard.name);
+        /// on board ekranı gorundu mu
+        splashViewModel.getInitialScreen().then((value) async {
+          /// onboard ekrani bir kere gorulduyse true doner ve
+          if (splashViewModel.getInitialScreenResponse.data) {
+            /// kullanici welcome ekrani ile devam eder
+            context.goNamed(AppRouteName.welcome.name);
+          } else {
+            /// onboard gorunmemis demektir onboarda atar
+            context.goNamed(AppRouteName.onboard.name);
+          }
+        });
       }
     });
   }

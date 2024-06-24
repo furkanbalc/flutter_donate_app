@@ -78,13 +78,14 @@ class CustomTextFormField extends StatelessWidget {
             : Text(
                 labelText ?? '',
                 textAlign: TextAlign.left,
-                style:
-                    context.textStyles.titleSmall.copyWith(color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
+                style: context.textStyles.titleSmall.copyWith(
+                    color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
               ),
         context.sizedBoxHeightMin,
         TextFormField(
           controller: controller,
-          onTapOutside: (event) => (unFocus ?? false) ? currentFocus.unfocus() : null,
+          onTapOutside: (event) =>
+              (unFocus ?? false) ? currentFocus.unfocus() : null,
           onChanged: onChanged,
           focusNode: focusNode,
           onFieldSubmitted: onFieldSubmitted,
@@ -101,12 +102,15 @@ class CustomTextFormField extends StatelessWidget {
           obscureText: obscureText ?? false,
           autofocus: autoFocus ?? false,
           readOnly: readOnly ?? false,
-          style: context.textStyles.titleSmall.copyWith(color: AppColors.blackColor, fontWeight: FontWeight.w400),
+          style: context.textStyles.titleSmall.copyWith(
+              color: AppColors.blackColor, fontWeight: FontWeight.w400),
           decoration: InputDecoration(
             border: border,
             enabledBorder: border,
             fillColor: fillColor,
-            contentPadding: contentPadding ?? context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
+            contentPadding: contentPadding ??
+                context.paddings.onlyLeftMedium +
+                    context.paddings.verticalMedium,
             hintText: hintText,
             labelText: isTitle ?? false ? labelText : null,
             prefixIcon: prefixIcon,

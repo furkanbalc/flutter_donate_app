@@ -41,7 +41,9 @@ class ProfileInfoTextField extends StatelessWidget {
       controller: controller,
       validator: validator,
       labelText: labelText,
-      prefixIcon: prefixIcon != null ? Icon(prefixIcon, size: AppSizes.medium2.value): null,
+      prefixIcon: prefixIcon != null
+          ? Icon(prefixIcon, size: AppSizes.medium2.value)
+          : null,
       isTitle: true,
       readOnly: readOnly ?? false,
       fillColor: fillColor ?? AppColors.whiteColor,

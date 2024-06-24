@@ -84,6 +84,7 @@ class _ContactUsState extends State<ContactUs> {
       ),
     );
   }
+
   /// Developer Info
   Widget _developerInfo() {
     return Container(

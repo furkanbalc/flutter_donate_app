@@ -4,7 +4,7 @@ import 'package:flutter_donate_app/domain/entity/user_entity.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
-abstract class PersonalInfoViewModel with ChangeNotifier {
+abstract class UserInfoViewModel with ChangeNotifier {
   /// -- VARIABLES --
   GlobalKey<FormState> get formKey;
 

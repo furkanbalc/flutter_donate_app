@@ -36,7 +36,7 @@ class _AppState extends ConsumerState<App> {
     return Scaffold(
       body: widget.child,
       floatingActionButton: Visibility(
-        visible: baseAppViewModel.isSeenFabButton,
+        visible: baseAppViewModel.selectedIndex == 0,
         child: _builAddProductButton(context),
       ),
       bottomNavigationBar: const BottomNavBar(),
@@ -52,10 +52,12 @@ class _AppState extends ConsumerState<App> {
         child: Badge(
           largeSize: 20,
           isLabelVisible: true,
-          label: const Icon(AppIcons.kAddCircleIcon, size: 12, color: Colors.white),
+          label: const Icon(AppIcons.kAddCircleIcon,
+              size: 12, color: Colors.white),
           offset: const Offset(8, -8),
           backgroundColor: AppColors.redColor.withAlpha(200),
-          child: const Icon(AppIcons.kGiftFilledIcon, size: 32, color: AppColors.electricViolet),
+          child: const Icon(AppIcons.kGiftFilledIcon,
+              size: 32, color: AppColors.electricViolet),
         ),
       ),
     );

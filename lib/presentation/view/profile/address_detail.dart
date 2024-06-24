@@ -1,13 +1,11 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
+import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/mixin/add_address_service.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/city_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/county_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/profile/profile_info_text_field.dart';
@@ -18,23 +16,31 @@ import 'package:flutter_donate_app/presentation/widgets/progress/custom_error_wi
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class AddAddress extends ConsumerStatefulWidget {
-  const AddAddress({super.key});
+class AddressDetail extends ConsumerStatefulWidget {
+  const AddressDetail({
+    super.key,
+    required this.address,
+    required this.index,
+  });
+
+  final AddressEntity address;
+  final int index;
 
   @override
   ConsumerState createState() => _AddAddressState();
 }
 
-class _AddAddressState extends ConsumerState<AddAddress>
-    with AddAddressService {
+class _AddAddressState extends ConsumerState<AddressDetail> {
   late AddressViewModel _addressViewModel;
-  late ProfileViewModel _profileViewModel;
 
   @override
   void initState() {
     super.initState();
     _addressViewModel = ref.read(addressViewModelImp);
-    _profileViewModel = ref.read(profileViewModelImp);
+    _addressViewModel.country.text = widget.address.country!;
+    _addressViewModel.city.text = widget.address.city!;
+    _addressViewModel.county.text = widget.address.county!;
+    _addressViewModel.desc.text = widget.address.desc!;
   }
 
   @override
@@ -46,7 +52,6 @@ class _AddAddressState extends ConsumerState<AddAddress>
   @override
   Widget build(BuildContext context) {
     _addressViewModel = ref.watch(addressViewModelImp);
-    _profileViewModel = ref.watch(profileViewModelImp);
     return Scaffold(
       appBar: CustomAppBar(title: LocaleKeys.address_add_address.tr()),
       body: _buildBody(),
@@ -130,33 +135,19 @@ class _AddAddressState extends ConsumerState<AddAddress>
 
   /// Add Address & Use Current Position Button
   Widget _buildAddrees() {
-    return Column(
-      children: [
-        CustomElevatedButton(
-          onPressed: () {
-            addAddressProcess(
-              context: context,
-              addressViewModel: _addressViewModel,
-              userId: _profileViewModel.getUserId,
-            );
-          },
-          text: LocaleKeys.address_add_address.tr(),
-        ),
-        TextButton.icon(
-          onPressed: () async {
-            _addressViewModel.getCurrentPosition().then((value) {
-              if (value != null) {
-                Utils.errorSnackBar(context: context, message: value);
-              }
-            });
-          },
-          icon:
-              Icon(AppIcons.kLocationFilledIcon, size: AppSizes.medium2.value),
-          label: Text(
-            LocaleKeys.address_use_current_location.tr(),
+    return CustomElevatedButton(
+      onPressed: () {
+        _addressViewModel.updateAddress(
+          addressEntity: AddressEntity(
+            country: _addressViewModel.country.text,
+            city: _addressViewModel.city.text,
+            county: _addressViewModel.county.text,
+            desc: _addressViewModel.desc.text,
           ),
-        ),
-      ],
+          index: widget.index,
+        );
+      },
+      text: 'Güncelle',
     );
   }
 

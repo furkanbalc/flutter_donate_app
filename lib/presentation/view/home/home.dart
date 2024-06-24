@@ -9,6 +9,7 @@ import 'package:flutter_donate_app/presentation/view/home/widgets/horizontal_pro
 import 'package:flutter_donate_app/presentation/view/home/widgets/vertical_product_cart.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
+import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -48,8 +49,12 @@ class _HomeViewState extends ConsumerState<HomeView> {
             SliverToBoxAdapter(child: AutoPageSlider()),
             SliverToBoxAdapter(child: buildCatergoriesList(context)),
             SliverToBoxAdapter(child: buildHorizontalList(context)),
-            SliverToBoxAdapter(child: buildSectionHeader(context, 'Yakınlardakiler', 'Tümünü Gör')),
-            SliverPadding(padding: context.paddings.zero, sliver: buildVerticalList(context)),
+            SliverToBoxAdapter(
+                child: buildSectionHeader(
+                    context, 'Yakınlardakiler', 'Tümünü Gör')),
+            SliverPadding(
+                padding: context.paddings.zero,
+                sliver: buildVerticalList(context)),
           ],
         ),
       ),
@@ -60,7 +65,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
     return SizedBox(
       height: context.dynamicHeight(.1),
       child: ListView.separated(
-        padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
+        padding:
+            context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
         itemCount: 15,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
@@ -70,12 +76,14 @@ class _HomeViewState extends ConsumerState<HomeView> {
                 onPressed: () {},
                 backgroundColor: AppColors.electricViolet,
                 shape: BoxShape.circle,
-                icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.high3.value),
+                icon: Icon(AppIcons.kLikeIcon,
+                    color: AppColors.whiteColor, size: AppSizes.high3.value),
               ),
               context.sizedBoxHeightMin,
               Text(
                 'Mobilya',
-                style: context.textStyles.bodySmall.copyWith(color: AppColors.verifiedBlack),
+                style: context.textStyles.bodySmall
+                    .copyWith(color: AppColors.verifiedBlack),
               ),
             ],
           );
@@ -123,15 +131,18 @@ class _HomeViewState extends ConsumerState<HomeView> {
     );
   }
 
-  Widget buildSectionHeader(BuildContext context, String title, String actionText) {
+  Widget buildSectionHeader(
+      BuildContext context, String title, String actionText) {
     return Padding(
-      padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
+      padding:
+          context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Text(
             title,
-            style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600),
+            style: context.textStyles.titleMedium
+                .copyWith(fontWeight: FontWeight.w600),
           ),
           Text(
             actionText,

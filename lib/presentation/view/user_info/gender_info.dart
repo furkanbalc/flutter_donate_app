@@ -4,8 +4,8 @@ import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/index.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -19,17 +19,17 @@ class GenderInfoView extends ConsumerStatefulWidget {
 }
 
 class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
-  late PersonalInfoViewModel _personalInfoViewModel;
+  late UserInfoViewModel _userInfoViewModel;
 
   @override
   void initState() {
-    _personalInfoViewModel = ref.read(personalInfoViewModelImp);
+    _userInfoViewModel = ref.read(personalInfoViewModelImp);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _personalInfoViewModel = ref.watch(personalInfoViewModelImp);
+    _userInfoViewModel = ref.watch(personalInfoViewModelImp);
     return Scaffold(
       floatingActionButton: _getApplyButton(context),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -42,7 +42,7 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
     return Column(
       children: [
         /// Linear Progress Bar
-        CustomLinearProgressBar(personalInfoViewModel: _personalInfoViewModel),
+        CustomLinearProgressBar(userInfoViewModel: _userInfoViewModel),
 
         /// Gender Info Title
         AuthHeader(
@@ -70,9 +70,9 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
       gender: LocaleKeys.user_info_woman.tr(),
       svg: AppSvg.woman.toSvg,
       onTap: () {
-        _personalInfoViewModel.gender = LocaleKeys.user_info_woman.tr();
+        _userInfoViewModel.gender = LocaleKeys.user_info_woman.tr();
       },
-      isSelect: _personalInfoViewModel.gender == LocaleKeys.user_info_woman.tr(),
+      isSelect: _userInfoViewModel.gender == LocaleKeys.user_info_woman.tr(),
     );
   }
 
@@ -82,18 +82,18 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
       gender: LocaleKeys.user_info_man.tr(),
       svg: AppSvg.man.toSvg,
       onTap: () {
-        _personalInfoViewModel.gender = LocaleKeys.user_info_man.tr();
+        _userInfoViewModel.gender = LocaleKeys.user_info_man.tr();
       },
-      isSelect: _personalInfoViewModel.gender == LocaleKeys.user_info_man.tr(),
+      isSelect: _userInfoViewModel.gender == LocaleKeys.user_info_man.tr(),
     );
   }
 
   /// Apply Button
   Widget _getApplyButton(BuildContext context) {
     return AuthBottomButton(
-      onPressed: _personalInfoViewModel.gender.isNotEmpty
+      onPressed: _userInfoViewModel.gender.isNotEmpty
           ? () {
-              _personalInfoViewModel.endProgress = 2 / 3;
+              _userInfoViewModel.endProgress = 2 / 3;
               Future.delayed(Durations.extralong4).then((value) {
                 context.goNamed(AppRouteName.ageInfo.name);
               });

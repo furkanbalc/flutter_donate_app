@@ -18,7 +18,8 @@ class AuthHeader extends StatelessWidget {
         /// Title
         Text(
           title,
-          style: context.textStyles.headlineMedium.copyWith(fontWeight: FontWeight.w600),
+          style: context.textStyles.headlineMedium
+              .copyWith(fontWeight: FontWeight.w600),
         ),
         context.sizedBoxHeightMedium,
 

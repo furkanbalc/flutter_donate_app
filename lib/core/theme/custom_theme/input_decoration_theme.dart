@@ -5,13 +5,16 @@ import 'package:flutter_donate_app/core/enums/app_sizes.dart';
 class CustomInputDecorationTheme {
   CustomInputDecorationTheme._();
   static const double _kTextFieldFontSizes = 14;
+
   /// Light
   static InputDecorationTheme lightInputDecorationTheme = InputDecorationTheme(
     filled: true,
     fillColor: AppColors.greyLight.withOpacity(.1),
-    labelStyle: const TextStyle().copyWith(fontSize: _kTextFieldFontSizes, color: AppColors.greyPrimary),
+    labelStyle: const TextStyle()
+        .copyWith(fontSize: _kTextFieldFontSizes, color: AppColors.greyPrimary),
     errorStyle: const TextStyle().copyWith(fontStyle: FontStyle.normal),
-    floatingLabelStyle: const TextStyle(fontSize: _kTextFieldFontSizes).copyWith(
+    floatingLabelStyle:
+        const TextStyle(fontSize: _kTextFieldFontSizes).copyWith(
       color: AppColors.electricViolet,
       fontWeight: FontWeight.bold,
     ),
@@ -36,5 +39,5 @@ class CustomInputDecorationTheme {
     ),
   );
 
-/// Dark
+  /// Dark
 }

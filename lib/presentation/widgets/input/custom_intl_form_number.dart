@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
@@ -15,15 +14,17 @@ class CustomIntlPhoneNumberInput extends StatefulWidget {
 
   const CustomIntlPhoneNumberInput({
     super.key,
-     this.validator,
-     this.onChanged,
+    this.validator,
+    this.onChanged,
   });
 
   @override
-  State<CustomIntlPhoneNumberInput> createState() => _CustomIntlPhoneNumberInputState();
+  State<CustomIntlPhoneNumberInput> createState() =>
+      _CustomIntlPhoneNumberInputState();
 }
 
-class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput> {
+class _CustomIntlPhoneNumberInputState
+    extends State<CustomIntlPhoneNumberInput> {
   String initialCountry = 'TR';
 
   PhoneNumber number = PhoneNumber(isoCode: 'TR');
@@ -36,7 +37,8 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
         Text(
           LocaleKeys.form_fields_phone_number.tr(),
           textAlign: TextAlign.left,
-          style: context.textStyles.titleSmall.copyWith(color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
+          style: context.textStyles.titleSmall.copyWith(
+              color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
         ),
         context.sizedBoxHeightMin,
         InternationalPhoneNumberInput(
@@ -57,14 +59,15 @@ class _CustomIntlPhoneNumberInputState extends State<CustomIntlPhoneNumberInput>
             border: InputBorder.none,
           ),
           keyboardAction: TextInputAction.done,
-          spaceBetweenSelectorAndTextField: MediaQuery.sizeOf(context).width / 51.75,
+          spaceBetweenSelectorAndTextField:
+              MediaQuery.sizeOf(context).width / 51.75,
           keyboardType: TextInputType.phone,
           searchBoxDecoration: InputDecoration(
             fillColor: AppColors.greyLight.withOpacity(.1),
             hintText: 'Ara...',
-            contentPadding: context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
+            contentPadding: context.paddings.onlyLeftMedium +
+                context.paddings.verticalMedium,
             suffixIcon: const Icon(AppIcons.kSearchIcon),
-
           ),
           onInputChanged: widget.onChanged,
         ),

@@ -21,12 +21,15 @@ genderPickerBottomSheet({
           ListTile(
             title: Text(LocaleKeys.user_info_man.tr()),
             onTap: () {
-              profileViewModel.genderController.text = LocaleKeys.user_info_man.tr();
+              profileViewModel.genderController.text =
+                  LocaleKeys.user_info_man.tr();
               profileViewModel.genderIcon = AppIcons.kManIcon;
               context.pop();
             },
             leading: const Icon(AppIcons.kManIcon, color: AppColors.blueTang),
-            tileColor: gender == LocaleKeys.user_info_man.tr() ? AppColors.electricViolet.withOpacity(.2) : null,
+            tileColor: gender == LocaleKeys.user_info_man.tr()
+                ? AppColors.electricViolet.withOpacity(.2)
+                : null,
             shape: RoundedRectangleBorder(
               side: gender == LocaleKeys.user_info_man.tr()
                   ? const BorderSide(color: AppColors.electricViolet)
@@ -37,12 +40,16 @@ genderPickerBottomSheet({
           ListTile(
             title: Text(LocaleKeys.user_info_woman.tr()),
             onTap: () {
-              profileViewModel.genderController.text = LocaleKeys.user_info_woman.tr();
+              profileViewModel.genderController.text =
+                  LocaleKeys.user_info_woman.tr();
               profileViewModel.genderIcon = AppIcons.kWomanIcon;
               context.pop();
             },
-            leading: const Icon(AppIcons.kWomanIcon, color: AppColors.tomatoFrog),
-            tileColor: gender == LocaleKeys.user_info_woman.tr() ? AppColors.electricViolet.withOpacity(.2) : null,
+            leading:
+                const Icon(AppIcons.kWomanIcon, color: AppColors.tomatoFrog),
+            tileColor: gender == LocaleKeys.user_info_woman.tr()
+                ? AppColors.electricViolet.withOpacity(.2)
+                : null,
             shape: RoundedRectangleBorder(
               borderRadius: context.borders.circularBorderRadiusMedium,
               side: gender == LocaleKeys.user_info_woman.tr()

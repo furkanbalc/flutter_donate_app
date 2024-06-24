@@ -17,8 +17,10 @@ class AddressesModel extends AddressesEntity {
 
   factory AddressesModel.fromJson(Map<String, dynamic>? json) {
     return AddressesModel(
-      addresses:
-          json?['addresses'] != null ? List<Address>.from(json!['addresses'].map((e) => Address.fromJson(e))) : null,
+      addresses: json?['addresses'] != null
+          ? List<Address>.from(
+              json!['addresses'].map((e) => Address.fromJson(e)))
+          : null,
     );
   }
 

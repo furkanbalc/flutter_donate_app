@@ -59,7 +59,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   /// Profile Item List
   Widget _profileItemList(BuildContext context) {
     return Container(
-      padding: context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
+      padding:
+          context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
       color: AppColors.whiteColor,
       child: Column(
         children: [
@@ -117,7 +118,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   Widget _buildSignOutButton(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(backgroundColor: AppColors.greyLight),
-      onPressed: () => signOutProcess(context: context, profileViewModel: _profileViewModel),
+      onPressed: () =>
+          signOutProcess(context: context, profileViewModel: _profileViewModel),
       child: Padding(
         padding: context.paddings.verticalNormal,
         child: Row(
@@ -127,7 +129,8 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
             context.sizedBoxWidthNormal,
             Text(
               LocaleKeys.profile_sign_out.tr(),
-              style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor),
+              style: context.textStyles.titleMedium
+                  .copyWith(color: AppColors.whiteColor),
             ),
           ],
         ),

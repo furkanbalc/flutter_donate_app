@@ -8,5 +8,3 @@ export 'input/custom_intl_form_number.dart';
 export 'input/custom_text_form_field.dart';
 export 'progress/custom_centered_progress_indicator.dart';
 export 'progress/custom_loading_widget.dart';
-
-

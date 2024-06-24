@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/context_size.dart';
@@ -27,7 +26,8 @@ class SelectGenderWidget extends StatelessWidget {
       splashFactory: NoSplash.splashFactory,
       child: CircleAvatar(
         maxRadius: context.dynamicWidth(.25),
-        backgroundColor: isSelect ? AppColors.electricViolet : AppColors.greyLighter,
+        backgroundColor:
+            isSelect ? AppColors.electricViolet : AppColors.greyLighter,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [

@@ -106,13 +106,15 @@ class Data extends DataEntity {
   factory Data.fromJson(Map<String, dynamic> json) {
     return Data(
       id: json['id'],
-      fullName: json['fullName'] == null ? null : FullName.fromJson(json['fullName']),
+      fullName:
+          json['fullName'] == null ? null : FullName.fromJson(json['fullName']),
       email: json['email'],
       phoneNumber: json['phoneNumber'],
       gender: json['gender'],
       age: json['age'],
       profileImgUrl: json['profileImgUrl'],
-      statistics: (json['statistics'])?.map((e) => Statistics.fromJson(e)).toList(),
+      statistics:
+          (json['statistics'])?.map((e) => Statistics.fromJson(e)).toList(),
     );
   }
 }

@@ -1,4 +1,3 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,8 +5,8 @@ import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/mixin/save_user_info_service.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/auth/index.dart';
-import 'package:flutter_donate_app/presentation/view/authentication/widgets/personal_info/index.dart';
+import 'package:flutter_donate_app/presentation/view/authentication/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/view/user_info/widgets/index.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -20,17 +19,17 @@ class AgeInfoView extends ConsumerStatefulWidget {
 }
 
 class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoService {
-  late PersonalInfoViewModel _personalInfoViewModel;
+  late UserInfoViewModel _userInfoViewModel;
 
   @override
   void initState() {
-    _personalInfoViewModel = ref.read(personalInfoViewModelImp);
+    _userInfoViewModel = ref.read(personalInfoViewModelImp);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    _personalInfoViewModel = ref.watch(personalInfoViewModelImp);
+    _userInfoViewModel = ref.watch(personalInfoViewModelImp);
     return Scaffold(
       floatingActionButton: _buildApplyButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
@@ -44,7 +43,7 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         /// Linear Progress Bar
-        CustomLinearProgressBar(personalInfoViewModel: _personalInfoViewModel),
+        CustomLinearProgressBar(userInfoViewModel: _userInfoViewModel),
 
         /// Age Info Title
         AuthHeader(
@@ -68,7 +67,7 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
       squeeze: 1.5,
       itemExtent: 80,
       onSelectedItemChanged: (value) {
-        _personalInfoViewModel.age = value + 18;
+        _userInfoViewModel.age = value + 18;
       },
       childCount: 73,
       itemBuilder: (context, index) {
@@ -77,9 +76,9 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
           child: Text(
             age.toString(),
             style: TextStyle(
-              fontSize: _personalInfoViewModel.age == index + 18 ? 65 : 60,
-              fontWeight: _personalInfoViewModel.age == index + 18 ? FontWeight.bold : FontWeight.w800,
-              color: _personalInfoViewModel.age == index + 18 ? AppColors.electricViolet : null,
+              fontSize: _userInfoViewModel.age == index + 18 ? 65 : 60,
+              fontWeight: _userInfoViewModel.age == index + 18 ? FontWeight.bold : FontWeight.w800,
+              color: _userInfoViewModel.age == index + 18 ? AppColors.electricViolet : null,
             ),
           ),
         );
@@ -90,9 +89,7 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
   /// Apply Button
   Widget _buildApplyButton() {
     return AuthBottomButton(
-      onPressed: _personalInfoViewModel.age != 18
-          ? () => saveInfoProcess(personalInfoViewModel: _personalInfoViewModel)
-          : null,
+      onPressed: _userInfoViewModel.age != 18 ? () => saveInfoProcess(userInfoViewModel: _userInfoViewModel) : null,
     );
   }
 }

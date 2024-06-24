@@ -44,7 +44,6 @@ abstract class ProfileViewModel extends ChangeNotifier {
 
   Future<void> getUserInfoFromFirestore({required String id});
 
-
   ///  -- SIGN OUT USER --
   ApiResponse<void> get signOutResponse;
 

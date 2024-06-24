@@ -21,7 +21,7 @@ class AddressEntity extends Equatable {
     required this.city,
     required this.county,
     required this.desc,
-    required this.geo,
+    this.geo,
   });
 
   @override
@@ -46,6 +46,6 @@ class GeoEntity extends Equatable {
   @override
   List<Object?> get props => [
         lat,
-    long,
+        long,
       ];
 }

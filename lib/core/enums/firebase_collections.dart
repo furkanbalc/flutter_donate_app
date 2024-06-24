@@ -9,5 +9,6 @@ enum FirebaseCollections {
   status,
   addTypes;
 
-  CollectionReference get reference => FirebaseFirestore.instance.collection(name);
+  CollectionReference get reference =>
+      FirebaseFirestore.instance.collection(name);
 }

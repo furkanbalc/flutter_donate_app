@@ -21,7 +21,8 @@ class ParamsForSaveUserInfoToFirestore {
   });
 }
 
-class SaveUserInfoToFirestore extends BaseUseCase<Future<UserEntity>, ParamsForSaveUserInfoToFirestore> {
+class SaveUserInfoToFirestore
+    extends BaseUseCase<Future<UserEntity>, ParamsForSaveUserInfoToFirestore> {
   final ProfileRepository profileRepository;
 
   SaveUserInfoToFirestore({required this.profileRepository});
@@ -46,7 +47,8 @@ class ParamsForGetUserInfo {
   ParamsForGetUserInfo({required this.id});
 }
 
-class GetUserInfoFromFirestore extends BaseUseCase<Future<UserEntity>, ParamsForGetUserInfo> {
+class GetUserInfoFromFirestore
+    extends BaseUseCase<Future<UserEntity>, ParamsForGetUserInfo> {
   final ProfileRepository profileRepository;
 
   GetUserInfoFromFirestore({required this.profileRepository});
@@ -99,4 +101,3 @@ class UpdateProfileUser extends BaseUseCase<Future<void>, ParamsForUpdateUser> {
     );
   }
 }
-

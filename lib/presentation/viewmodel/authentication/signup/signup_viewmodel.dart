@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 
-abstract class SignupViewModel with ChangeNotifier{
+abstract class SignupViewModel with ChangeNotifier {
   /// -- VARIABLES --
   GlobalKey<FormState> get formKey;
 

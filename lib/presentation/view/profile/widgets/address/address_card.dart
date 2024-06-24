@@ -22,7 +22,8 @@ class AddressCard extends StatelessWidget {
           children: [
             Text(
               addressViewModel.getAddressTitle(index),
-              style: context.textStyles.titleSmall.copyWith(fontWeight: FontWeight.bold),
+              style: context.textStyles.titleSmall
+                  .copyWith(fontWeight: FontWeight.bold),
             ),
             context.sizedBoxHeightMin,
             Text(
