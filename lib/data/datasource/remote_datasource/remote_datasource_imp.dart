@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_storage/firebase_storage.dart';
@@ -10,6 +9,7 @@ import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_data
 import 'package:flutter_donate_app/data/models/address/address_model.dart';
 import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
+import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -45,7 +45,8 @@ class RemoteDataSourceImp implements RemoteDataSource {
 
   /// -- SIGN IN --
   @override
-  Future<String> signIn({required String email, required String password}) async {
+  Future<String> signIn(
+      {required String email, required String password}) async {
     userCredential = await firebaseAuth.signInWithEmailAndPassword(
       email: email,
       password: password,
@@ -103,7 +104,10 @@ class RemoteDataSourceImp implements RemoteDataSource {
       "isAdmin": false,
     };
 
-    await firebaseFirestore.collection(FirebaseCollections.users.name).doc(currentUser?.uid).set(user);
+    await firebaseFirestore
+        .collection(FirebaseCollections.users.name)
+        .doc(currentUser?.uid)
+        .set(user);
     return UserModel.fromJson(user);
   }
 
@@ -113,7 +117,10 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required String id,
   }) async {
     DocumentSnapshot<Map<String, dynamic>> userModelSnapshot =
-        await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).get();
+        await firebaseFirestore
+            .collection(FirebaseCollections.users.name)
+            .doc(id)
+            .get();
     return UserModel.fromJson(userModelSnapshot.data());
   }
 
@@ -153,7 +160,10 @@ class RemoteDataSourceImp implements RemoteDataSource {
       },
     };
 
-    await firebaseFirestore.collection(FirebaseCollections.users.name).doc(id).update(user);
+    await firebaseFirestore
+        .collection(FirebaseCollections.users.name)
+        .doc(id)
+        .update(user);
   }
 
   /// -- GET USER ADDRESS INFO --
@@ -162,7 +172,10 @@ class RemoteDataSourceImp implements RemoteDataSource {
     required String id,
   }) async {
     DocumentSnapshot<Map<String, dynamic>> addressModel =
-        await firebaseFirestore.collection(FirebaseCollections.addresses.name).doc(id).get();
+        await firebaseFirestore
+            .collection(FirebaseCollections.addresses.name)
+            .doc(id)
+            .get();
     return AddressesModel.fromJson(addressModel.data());
   }
 
@@ -189,10 +202,33 @@ class RemoteDataSourceImp implements RemoteDataSource {
       },
     };
 
-    await firebaseFirestore.collection(FirebaseCollections.addresses.name).doc(currentUser?.uid).update({
+    await firebaseFirestore
+        .collection(FirebaseCollections.addresses.name)
+        .doc(currentUser?.uid)
+        .update({
       FirebaseCollections.addresses.name: FieldValue.arrayUnion([address]),
     });
     return AddressesModel.fromJson(address);
+  }
+
+  /// -- UPDATE ADDRESS --
+  @override
+  Future<void> updateAddressAtIndex(
+      AddressEntity addressEntity, int index) async {
+    User? currentUser = firebaseAuth.currentUser;
+
+    DocumentSnapshot<Map<String, dynamic>> docSnapshot = await firebaseFirestore
+        .collection(FirebaseCollections.addresses.name)
+        .doc(currentUser?.uid)
+        .get();
+    if (docSnapshot.exists) {
+      var addresses = docSnapshot.data()!['addresses'];
+      addresses[index] = addressEntity;
+      await firebaseFirestore
+          .collection(FirebaseCollections.addresses.name)
+          .doc(currentUser?.uid)
+          .update({'addresses': addresses});
+    }
   }
 
   /// -- REMOVE ADDRES --

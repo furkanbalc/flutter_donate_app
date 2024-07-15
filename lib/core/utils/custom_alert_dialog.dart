@@ -16,27 +16,32 @@ customAlertDialog({
     builder: (context) {
       return AlertDialog(
         backgroundColor: AppColors.whiteColor,
-        shape: RoundedRectangleBorder(borderRadius: context.borders.circularBorderRadiusHigh),
-        title:
-            Text(title ?? 'Emin misin?', style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.bold)),
+        shape: RoundedRectangleBorder(
+            borderRadius: context.borders.circularBorderRadiusHigh),
+        title: Text(title ?? 'Emin misin?',
+            style: context.textStyles.titleMedium
+                .copyWith(fontWeight: FontWeight.bold)),
         content: Text(message, style: context.textStyles.titleMedium),
         actions: [
           TextButton(
             onPressed: () {
               route == null
                   ? Navigator.of(context).pop()
-                  : Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => route));
+                  : Navigator.pushReplacement(
+                      context, MaterialPageRoute(builder: (context) => route));
             },
             child: Text(
               btnText ?? 'Vazgeç',
-              style: context.textStyles.titleMedium.copyWith(color: AppColors.electricViolet),
+              style: context.textStyles.titleMedium
+                  .copyWith(color: AppColors.electricViolet),
             ),
           ),
           TextButton(
             onPressed: onPressed,
             child: Text(
               btnText ?? 'Devam Et',
-              style: context.textStyles.titleMedium.copyWith(color: AppColors.electricViolet),
+              style: context.textStyles.titleMedium
+                  .copyWith(color: AppColors.electricViolet),
             ),
           ),
         ],

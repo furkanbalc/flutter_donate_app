@@ -8,9 +8,12 @@ class BaseAppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(AppConstants.appName.toLowerCase(),
-          style: context.textStyles.bodyLarge
-              .copyWith(color: AppColors.whiteColor)),
+      title: Text(
+        AppConstants.appName.toLowerCase(),
+        style: context.textStyles.bodyLarge.copyWith(
+          color: AppColors.whiteColor,
+        ),
+      ),
       centerTitle: true,
       backgroundColor: AppColors.electricViolet,
       elevation: 2,

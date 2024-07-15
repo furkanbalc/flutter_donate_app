@@ -7,8 +7,8 @@ class AppIcons {
   static const IconData kHomeOutlinedIcon = Iconsax.home;
   static const IconData kHomeFilledIcon = Iconsax.home_15;
   //
-  static const IconData kGiftOutlinedIcon = Iconsax.gift;
-  static const IconData kGiftFilledIcon = Iconsax.gift5;
+  static const IconData kCategoryOutlinedIcon = Iconsax.category;
+  static const IconData kCategoryFilledIcon = Iconsax.category5;
   //
   static const IconData kMessageOutlinedIcon = Iconsax.message;
   static const IconData kMessageFilledIcon = Iconsax.message5;
@@ -24,6 +24,7 @@ class AppIcons {
   static const IconData kAddLocationIcon = Iconsax.location_add5;
   //
   static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
+  static const IconData kAddIcon = Iconsax.add;
   static const IconData kStatisticFilledIcon = Iconsax.chart_215;
   static const IconData kInfoIcon = Iconsax.info_circle;
   static const IconData kLikeIcon = Iconsax.like_1;

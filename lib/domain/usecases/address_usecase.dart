@@ -72,6 +72,25 @@ class RemoveAddress extends BaseUseCase<Future<void>, ParamsForRemoveAddress> {
   }
 }
 
+/// -- UPDATE ADDRESS --
+class ParamsForUpdateAddress {
+  final AddressEntity addressEntity;
+  final int index;
+
+  ParamsForUpdateAddress({required this.addressEntity, required this.index});
+}
+
+class UpdateAddress extends BaseUseCase<Future<void>, ParamsForUpdateAddress> {
+  final AddressRepository addressRepository;
+
+  UpdateAddress({required this.addressRepository});
+
+  @override
+  Future<void> execute(ParamsForUpdateAddress params) async {
+    await addressRepository.updateAddress(params.addressEntity, params.index);
+  }
+}
+
 /// -- GET TURKEY PROVINCE --
 class GetTrProvinces extends BaseUseCase<Future<GetProvinceEntity>, ParamsBase> {
   final AddressRepository addressRepository;

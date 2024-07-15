@@ -17,6 +17,7 @@ enum AppRouteName {
   addressDetail('addressDetail', 'AddressDetail'),
   contactUs('contactUs', 'ContacUs'),
   aboutApp('aboutApp', 'AboutApp'),
+  productDetail('/productDetail', 'ProductDetail'),
   ;
 
   const AppRouteName(this.path, this.name);

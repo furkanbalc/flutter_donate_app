@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
@@ -15,7 +14,9 @@ customBottomSheet<T>({
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          title != null ? _bottomSheetHeader(context, title): context.sizedBoxShrink,
+          title != null
+              ? _bottomSheetHeader(context, title)
+              : context.sizedBoxShrink,
           context.sizedBoxHeightLow,
           Padding(
             padding: context.paddings.allLow,
@@ -39,7 +40,8 @@ Widget _bottomSheetHeader(BuildContext context, String? title) {
             context.sizedBoxWidthNormal,
             Text(
               title ?? '',
-              style: context.textStyles.titleMedium.copyWith(color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
+              style: context.textStyles.titleMedium.copyWith(
+                  color: AppColors.blackPrimary, fontWeight: FontWeight.w600),
             ),
             const Spacer(),
             CustomIconButton(

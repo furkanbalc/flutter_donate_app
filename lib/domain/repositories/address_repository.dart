@@ -20,4 +20,7 @@ abstract class AddressRepository {
 
   /// -- GET TURKEY PROVINCES --
   Future<GetProvinceEntity> getTrProvinces();
+
+  /// -- UPDATE ADDRESS --
+  Future<void> updateAddress(AddressEntity addressEntity, int index);
 }

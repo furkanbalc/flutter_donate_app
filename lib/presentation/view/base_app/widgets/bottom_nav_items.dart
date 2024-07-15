@@ -10,8 +10,8 @@ class BottomNavItems {
           label: BottomBarItems.home.value,
         ),
         NavigationDestination(
-          selectedIcon: const Icon(AppIcons.kGiftFilledIcon),
-          icon: const Icon(AppIcons.kGiftOutlinedIcon),
+          selectedIcon: const Icon(AppIcons.kCategoryFilledIcon),
+          icon: const Icon(AppIcons.kCategoryOutlinedIcon),
           label: BottomBarItems.product.value,
         ),
         NavigationDestination(

@@ -1,6 +1,7 @@
 import 'package:flutter_donate_app/data/models/address/address_model.dart';
 import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
+import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
 
 abstract class RemoteDataSource {
   /// -- IS USER LOGGED IN --
@@ -65,4 +66,7 @@ abstract class RemoteDataSource {
 
   /// -- GET TURKEY PROVINCES --
   Future<GetProvinceModel> getTrProvinces();
+
+  /// -- UPDATE ADDRESS --
+  Future<void> updateAddressAtIndex(AddressEntity addressEntity, int index);
 }

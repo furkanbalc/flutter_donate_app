@@ -18,9 +18,12 @@ Future<void> showBackDialog({
       return AlertDialog(
         backgroundColor: AppColors.whiteColor,
         title: Text(title ?? 'Kaydedilmeyen değişiklikler var!'),
-        titleTextStyle: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.bold),
-        shape: RoundedRectangleBorder(borderRadius: context.borders.circularBorderRadiusMedium),
-        content: Text(message ?? 'Geri gidersen değişiklikleri kaybedebilirsin.'),
+        titleTextStyle: context.textStyles.titleMedium
+            .copyWith(fontWeight: FontWeight.bold),
+        shape: RoundedRectangleBorder(
+            borderRadius: context.borders.circularBorderRadiusMedium),
+        content:
+            Text(message ?? 'Geri gidersen değişiklikleri kaybedebilirsin.'),
         actions: [
           TextButton(
             onPressed: cancelPress ??

@@ -7,18 +7,6 @@ import 'package:geolocator/geolocator.dart';
 
 abstract class AddressViewModel extends ChangeNotifier {
   /// VARIABLES
-  bool get isDeleteMode;
-
-  bool get isAllSelected;
-
-  List<bool> get isCheckedList;
-
-  set isDeleteMode(bool value);
-
-  set isCheckedList(List<bool> value);
-
-  set isAllSelected(bool value);
-
   GlobalKey<FormState> get formKey;
 
   TextEditingController get country;
@@ -59,14 +47,22 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   Future<void> addAdressesToFirestore();
 
-  ///  -- ADD ADDRESS INFO --
+  ///  -- DELETE ADDRESS INFO --
   ApiResponse<void> get deleteAddressResponse;
 
   set deleteAddressResponse(ApiResponse<void> value);
 
   Future<void> deleteAddress({required List<int> deleteAddressIndices});
 
-  /// -- DELETE ADDRESS --
+  ///  -- UPDATE ADDRESS INFO --
+  ApiResponse<void> get updateAddressResponse;
+
+  set updateAddressResponse(ApiResponse<void> value);
+
+  Future<void> updateAddress(
+      {required AddressEntity addressEntity, required int index});
+
+  /// -- GET TR PROVINCES --
   ApiResponse<GetProvinceEntity> get getTrProvincesResponse;
 
   set getTrProvincesResponse(ApiResponse<GetProvinceEntity> value);
@@ -76,7 +72,7 @@ abstract class AddressViewModel extends ChangeNotifier {
   Future<String?> getCurrentPosition();
 
   /// init method
-  void init();
+  void init(int? index);
 
   /// deactive method
   void deactivate();
@@ -86,15 +82,6 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   /// get address desc
   String getAddressDesc(int index);
-
-  /// select all addresses
-  void selectAllAddress();
-
-  /// address delete mode on
-  void deleteModeOn();
-
-  /// address delete mode off
-  void deleteModeOff();
 
   /// get cities lenght
   int get getCitiesLenght;
@@ -106,7 +93,7 @@ abstract class AddressViewModel extends ChangeNotifier {
   String getCityByIndex(int index);
 
   /// get county name by index
-  String getCountyNameByIndex(int index);
+  String getCountyByIndex(int index);
 
   /// get selected city name
   String get getSelectedCityName;
@@ -116,4 +103,6 @@ abstract class AddressViewModel extends ChangeNotifier {
 
   /// is selected city
   bool get isSelectedCity;
+
+  AddressEntity getAddressByIndex(int index);
 }

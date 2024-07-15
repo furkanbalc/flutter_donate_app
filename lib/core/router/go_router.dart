@@ -1,11 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
+import 'package:flutter_donate_app/presentation/view/products/product_detail.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signup.dart';
-import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
 import 'package:flutter_donate_app/presentation/view/home/home.dart';
 import 'package:flutter_donate_app/presentation/view/profile/about_app.dart';
 import 'package:flutter_donate_app/presentation/view/profile/add_address.dart';
@@ -93,10 +94,10 @@ class AppRoutes {
             },
           ),
           GoRoute(
-            path: AppRouteName.product.path,
-            name: AppRouteName.product.name,
+            path: AppRouteName.productDetail.path,
+            name: AppRouteName.productDetail.name,
             builder: (BuildContext context, GoRouterState state) {
-              return const Center(child: Text('PRODUCT'));
+              return const ProductDetail();
             },
           ),
           GoRoute(

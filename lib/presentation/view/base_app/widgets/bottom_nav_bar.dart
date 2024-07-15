@@ -22,8 +22,7 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
       selectedIndex: _calculateSelectedIndex(context),
       backgroundColor: AppColors.whiteColor,
       indicatorColor: AppColors.electricViolet.withOpacity(.2),
-      onDestinationSelected: (value) =>
-          _onItemTapped(context, viewModel, value),
+      onDestinationSelected: (value) => _onItemTapped(context, viewModel, value),
       destinations: viewModel.views,
     );
   }
@@ -33,7 +32,7 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
     if (location.startsWith(AppRouteName.home.path)) {
       return 0;
     }
-    if (location.startsWith(AppRouteName.product.path)) {
+    if (location.startsWith(AppRouteName.productDetail.path)) {
       return 1;
     }
     if (location.startsWith(AppRouteName.message.path)) {
@@ -55,7 +54,7 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
       case 0:
         context.goNamed(AppRouteName.home.name);
       case 1:
-        context.goNamed(AppRouteName.product.name);
+        context.goNamed(AppRouteName.productDetail.name);
       case 2:
         context.goNamed(AppRouteName.message.name);
       case 3:

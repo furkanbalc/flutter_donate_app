@@ -7,16 +7,13 @@ import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dar
 import 'package:flutter_donate_app/domain/usecases/address_usecase.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
-import 'package:flutter_donate_app/injection.dart';
+import 'package:flutter_donate_app/di/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/profile/address_viewmodel.dart';
 import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   /// VARIABLES
-  bool _isDeleteMode = false;
-  bool _isAllSelected = false;
-  late List<bool> _isCheckedList;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final TextEditingController _country = TextEditingController(text: 'Türkiye');
   final TextEditingController _city = TextEditingController();
@@ -29,15 +26,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   int _selectedCountyIndex = -1;
 
   /// GETTERS
-  @override
-  bool get isDeleteMode => _isDeleteMode;
-
-  @override
-  bool get isAllSelected => _isAllSelected;
-
-  @override
-  List<bool> get isCheckedList => _isCheckedList;
-
   @override
   GlobalKey<FormState> get formKey => _formKey;
 
@@ -69,24 +57,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   int get selectedCountyIndex => _selectedCountyIndex;
 
   /// SETTERS
-  @override
-  set isDeleteMode(bool value) {
-    _isDeleteMode = value;
-    notifyListeners();
-  }
-
-  @override
-  set isAllSelected(bool value) {
-    _isAllSelected = value;
-    notifyListeners();
-  }
-
-  @override
-  set isCheckedList(List<bool> value) {
-    _isCheckedList = value;
-    notifyListeners();
-  }
-
   set currentPosition(Position? value) {
     _currentPosition = value;
     notifyListeners();
@@ -112,10 +82,12 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   /// METHODS
   ///
   ///  -- GET ADDRESS INFO --
-  ApiResponse<AddressesEntity> _getAddressFromFirestoreResponse = ApiResponse.initial('initial');
+  ApiResponse<AddressesEntity> _getAddressFromFirestoreResponse =
+      ApiResponse.initial('initial');
 
   @override
-  ApiResponse<AddressesEntity> get getAddressFromFirestoreResponse => _getAddressFromFirestoreResponse;
+  ApiResponse<AddressesEntity> get getAddressFromFirestoreResponse =>
+      _getAddressFromFirestoreResponse;
 
   @override
   set getAddressFromFirestoreResponse(ApiResponse<AddressesEntity> value) {
@@ -129,7 +101,8 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   Future<void> getAdressesFromFirestore({required String id}) async {
     getAddressFromFirestoreResponse = ApiResponse.loading("loading");
     try {
-      final AddressesEntity addressesEntity = await injector<GetAddressInfo>().execute(
+      final AddressesEntity addressesEntity =
+          await injector<GetAddressInfo>().execute(
         ParamsForGetUserInfo(id: id),
       );
       getAddressFromFirestoreResponse = ApiResponse.completed(addressesEntity);
@@ -139,10 +112,12 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   }
 
   ///  -- ADD ADDRESS INFO --
-  ApiResponse<AddressesEntity> _addAddressToFirestoreResponse = ApiResponse.initial('initial');
+  ApiResponse<AddressesEntity> _addAddressToFirestoreResponse =
+      ApiResponse.initial('initial');
 
   @override
-  ApiResponse<AddressesEntity> get addAddressToFirestoreResponse => _addAddressToFirestoreResponse;
+  ApiResponse<AddressesEntity> get addAddressToFirestoreResponse =>
+      _addAddressToFirestoreResponse;
 
   @override
   set addAddressToFirestoreResponse(ApiResponse<AddressesEntity> value) {
@@ -156,7 +131,8 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   Future<void> addAdressesToFirestore() async {
     addAddressToFirestoreResponse = ApiResponse.loading("loading");
     try {
-      final AddressesEntity addressesEntity = await injector<AddAddressToFirestore>().execute(
+      final AddressesEntity addressesEntity =
+          await injector<AddAddressToFirestore>().execute(
         ParamsForAddAddressToFirestore(
           country: _country.text,
           city: _city.text,
@@ -184,8 +160,6 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
     notifyListeners();
   }
 
-  ///
-
   @override
   Future<void> deleteAddress({required List<int> deleteAddressIndices}) async {
     deleteAddressResponse = ApiResponse.loading('loading');
@@ -199,11 +173,39 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
     }
   }
 
-  /// -- GET TURKEY CITY AND DISTRICT API --
-  ApiResponse<GetProvinceEntity> _getTrProvincesResponse = ApiResponse.loading('loading');
+  /// -- UPDATE ADDRESS --
+  ApiResponse<void> _updateAddressResponse = ApiResponse.initial('initial');
 
   @override
-  ApiResponse<GetProvinceEntity> get getTrProvincesResponse => _getTrProvincesResponse;
+  ApiResponse<void> get updateAddressResponse => _updateAddressResponse;
+
+  @override
+  set updateAddressResponse(ApiResponse<void> value) {
+    _updateAddressResponse = value;
+    notifyListeners();
+  }
+
+  @override
+  Future<void> updateAddress(
+      {required AddressEntity addressEntity, required int index}) async {
+    updateAddressResponse = ApiResponse.loading('loading');
+    try {
+      await injector<UpdateAddress>().execute(
+        ParamsForUpdateAddress(addressEntity: addressEntity, index: index),
+      );
+      updateAddressResponse = ApiResponse.completed('completed');
+    } catch (e, stackTrace) {
+      updateAddressResponse = ApiResponse.error(e, stackTrace);
+    }
+  }
+
+  /// -- GET TURKEY CITY AND DISTRICT API --
+  ApiResponse<GetProvinceEntity> _getTrProvincesResponse =
+      ApiResponse.loading('loading');
+
+  @override
+  ApiResponse<GetProvinceEntity> get getTrProvincesResponse =>
+      _getTrProvincesResponse;
 
   @override
   set getTrProvincesResponse(ApiResponse<GetProvinceEntity> value) {
@@ -214,7 +216,8 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   @override
   Future<void> getProvinces() async {
     try {
-      final GetProvinceEntity getProvinceEntity = await injector<GetTrProvinces>().execute(
+      final GetProvinceEntity getProvinceEntity =
+          await injector<GetTrProvinces>().execute(
         const ParamsBase(),
       );
       getTrProvincesResponse = ApiResponse.completed(getProvinceEntity);
@@ -226,9 +229,12 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   ///
   @override
   Future<String?> getCurrentPosition() async {
-    PermissionModel permissionModel = await PermissionService().handleLocationPermission();
+    PermissionModel permissionModel =
+        await PermissionService().handleLocationPermission();
     if (permissionModel.status) {
-      await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.high).then((Position position) {
+      await Geolocator.getCurrentPosition(
+              desiredAccuracy: LocationAccuracy.high)
+          .then((Position position) {
         currentPosition = position;
         _getAddressFromLatLng(currentPosition!);
       }).catchError((e) {
@@ -241,7 +247,8 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
   }
 
   Future<void> _getAddressFromLatLng(Position position) async {
-    await placemarkFromCoordinates(currentPosition!.latitude, currentPosition!.longitude)
+    await placemarkFromCoordinates(
+            currentPosition!.latitude, currentPosition!.longitude)
         .then((List<Placemark> placemarks) {
       Placemark placemark = placemarks[0];
       desc.text =
@@ -255,8 +262,13 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
 
   /// init method
   @override
-  void init() {
-    _isCheckedList = List<bool>.filled(getAddressFromFirestoreResponse.data.address?.length ?? 0, false);
+  void init(int? index) {
+    if (index != null) {
+      final address = getAddressByIndex(index);
+      _country.text = address.country!;
+      _county.text = address.county!;
+      _desc.text = address.desc!;
+    }
   }
 
   /// deactive method
@@ -269,33 +281,13 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
 
   /// get address city & town
   @override
-  String getAddressDesc(int index) => getAddressFromFirestoreResponse.data.address?[index].desc ?? '';
+  String getAddressDesc(int index) =>
+      getAddressFromFirestoreResponse.data.address?[index].desc ?? '';
 
   /// get address desc
   @override
   String getAddressTitle(int index) =>
       '${getAddressFromFirestoreResponse.data.address?[index].county}/${getAddressFromFirestoreResponse.data.address?[index].city}';
-
-  /// select all addresses
-  @override
-  void selectAllAddress() {
-    isAllSelected = !isAllSelected;
-    isCheckedList = List<bool>.filled(isCheckedList.length, isAllSelected);
-  }
-
-  /// address delete mode on
-  @override
-  void deleteModeOn() {
-    isDeleteMode = true;
-  }
-
-  /// address delete mode off
-  @override
-  void deleteModeOff() {
-    isDeleteMode = false;
-    isAllSelected = false;
-    isCheckedList = List<bool>.filled(isCheckedList.length, false);
-  }
 
   /// get cities lenght
   @override
@@ -303,28 +295,36 @@ class AddressViewModelImp extends ChangeNotifier implements AddressViewModel {
 
   /// get counties lenght
   @override
-  int get getCountyLenght => getTrProvincesResponse.data.data[selectedCityIndex].counties.length;
+  int get getCountyLenght =>
+      getTrProvincesResponse.data.data[selectedCityIndex].counties.length;
 
   /// get city object by index
   @override
-  String getCityByIndex(int index) => getTrProvincesResponse.data.data[index].city;
+  String getCityByIndex(int index) =>
+      getTrProvincesResponse.data.data[index].city;
 
   /// get county name by index
   @override
-  String getCountyNameByIndex(int index) {
-    return getTrProvincesResponse.data.data[selectedCityIndex].counties[index].county;
+  String getCountyByIndex(int index) {
+    return getTrProvincesResponse
+        .data.data[selectedCityIndex].counties[index].county;
   }
 
   /// get selected city name
   @override
-  String get getSelectedCityName => getTrProvincesResponse.data.data[selectedCityIndex].city;
+  String get getSelectedCityName =>
+      getTrProvincesResponse.data.data[selectedCityIndex].city;
 
   /// get selected county name
   @override
-  String get getSelectedCountyName =>
-      county.text = getTrProvincesResponse.data.data[selectedCityIndex].counties[selectedCountyIndex].county;
+  String get getSelectedCountyName => county.text = getTrProvincesResponse
+      .data.data[selectedCityIndex].counties[selectedCountyIndex].county;
 
   /// is selected city
   @override
   bool get isSelectedCity => selectedCityIndex != -1;
+
+  @override
+  AddressEntity getAddressByIndex(int index) =>
+      getAddressFromFirestoreResponse.data.address![index];
 }
