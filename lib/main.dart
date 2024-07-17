@@ -6,6 +6,8 @@ import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/constants/app_constants.dart';
 import 'package:flutter_donate_app/core/theme/light_theme.dart';
 import 'package:flutter_donate_app/core/config/firebase_options.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/product/product_viewmodel.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/product/product_viewmodel_imp.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_donate_app/core/router/go_router.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -20,8 +22,7 @@ Future<void> main() async {
   await Hive.openBox('settingsBox');
   di.initializeDependencies();
 
-  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
-      .then((_) {
+  SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).then((_) {
     SystemChrome.setSystemUIOverlayStyle(
       const SystemUiOverlayStyle(
         statusBarColor: AppColors.electricViolet,
@@ -58,19 +59,12 @@ class MyApp extends StatelessWidget {
   }
 }
 
-final splashViewModelImp =
-    ChangeNotifierProvider<SplashViewModel>((ref) => SplashViewModelImp());
-final signupViewModelImp =
-    ChangeNotifierProvider<SignupViewModel>((ref) => SignupViewModelImp());
-final signinViewModelImp =
-    ChangeNotifierProvider<SigninViewModel>((ref) => SigninViewModelImp());
-final personalInfoViewModelImp =
-    ChangeNotifierProvider<UserInfoViewModel>((ref) => UserInfoViewModelImp());
-final baseAppViewModelImp =
-    ChangeNotifierProvider<BaseAppViewModel>((ref) => BaseAppViewModelImp());
-final homeViewModelImp =
-    ChangeNotifierProvider<HomeViewModel>((ref) => HomeViewModelImp());
-final profileViewModelImp =
-    ChangeNotifierProvider<ProfileViewModel>((ref) => ProfileViewModelImp());
-final addressViewModelImp =
-    ChangeNotifierProvider<AddressViewModel>((ref) => AddressViewModelImp());
+final splashViewModelImp = ChangeNotifierProvider<SplashViewModel>((ref) => SplashViewModelImp());
+final signupViewModelImp = ChangeNotifierProvider<SignupViewModel>((ref) => SignupViewModelImp());
+final signinViewModelImp = ChangeNotifierProvider<SigninViewModel>((ref) => SigninViewModelImp());
+final personalInfoViewModelImp = ChangeNotifierProvider<UserInfoViewModel>((ref) => UserInfoViewModelImp());
+final baseAppViewModelImp = ChangeNotifierProvider<BaseAppViewModel>((ref) => BaseAppViewModelImp());
+final homeViewModelImp = ChangeNotifierProvider<HomeViewModel>((ref) => HomeViewModelImp());
+final profileViewModelImp = ChangeNotifierProvider<ProfileViewModel>((ref) => ProfileViewModelImp());
+final addressViewModelImp = ChangeNotifierProvider<AddressViewModel>((ref) => AddressViewModelImp());
+final productViewModelImp = ChangeNotifierProvider<ProductViewModel>((ref) => ProductViewModelImp());

@@ -117,6 +117,12 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
           autofillHints: const [AutofillHints.password],
           textInputAction: TextInputAction.done,
           obscureText: _signinViewModel.passObscure,
+          onFieldSubmitted: (p0) => signInProcess(
+            context: context,
+            signinViewModel: _signinViewModel,
+            profileViewModel: _profileViewModel,
+            addressViewModel: _addressViewModel,
+          ),
           unFocus: true,
         ),
         context.sizedBoxHeightLow,

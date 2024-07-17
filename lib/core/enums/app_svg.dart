@@ -18,6 +18,16 @@ enum AppSvg {
   linkedin('linkedin'),
   github('github'),
   phone('phone'),
+  education('education'),
+  health('health'),
+  pet('pet'),
+  sofa('sofa'),
+  sport('sport'),
+  tools('tools'),
+  clothes('clothes'),
+  technology('technology'),
+  verificationEmail('verification-email'),
+  verificatedEmail('verificated-email'),
   ;
 
   final String value;

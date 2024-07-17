@@ -23,7 +23,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 
 part 'widgets/profile/profile_info_profil_photo.dart';
-
 part 'widgets/profile/profile_info_text_fields.dart';
 
 class ProfileInfoView extends ConsumerStatefulWidget {
