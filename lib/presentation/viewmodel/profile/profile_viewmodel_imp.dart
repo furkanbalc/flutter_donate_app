@@ -12,18 +12,12 @@ import 'package:permission_handler/permission_handler.dart';
 class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// VARIABLES
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-  late final TextEditingController _nameController =
-      TextEditingController(text: getUserName);
-  late final TextEditingController _surnameController =
-      TextEditingController(text: getUserSurname);
-  late final TextEditingController _emailController =
-      TextEditingController(text: getUserEmail);
-  late final TextEditingController _phoneController =
-      TextEditingController(text: getUserPhoneNumber);
-  late final TextEditingController _genderController =
-      TextEditingController(text: getUserGender);
-  late final TextEditingController _ageController =
-      TextEditingController(text: getUserAge);
+  late final TextEditingController _nameController = TextEditingController(text: getUserName);
+  late final TextEditingController _surnameController = TextEditingController(text: getUserSurname);
+  late final TextEditingController _emailController = TextEditingController(text: getUserEmail);
+  late final TextEditingController _phoneController = TextEditingController(text: getUserPhoneNumber);
+  late final TextEditingController _genderController = TextEditingController(text: getUserGender);
+  late final TextEditingController _ageController = TextEditingController(text: getUserAge);
 
   late String? _profilPhotoUrl;
   late IconData _genderIcon;
@@ -86,12 +80,10 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   }
 
   /// -- GET USER INFO --
-  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse =
-      ApiResponse.loading('loading');
+  ApiResponse<UserEntity> _getUserInfoFromFirestoreResponse = ApiResponse.loading('loading');
 
   @override
-  ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse =>
-      _getUserInfoFromFirestoreResponse;
+  ApiResponse<UserEntity> get getUserInfoFromFirestoreResponse => _getUserInfoFromFirestoreResponse;
 
   @override
   set getUserInfoFromFirestoreResponse(ApiResponse<UserEntity> value) {
@@ -102,8 +94,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   @override
   Future<void> getUserInfoFromFirestore({required String id}) async {
     try {
-      final UserEntity userEntity =
-          await injector<GetUserInfoFromFirestore>().execute(
+      final UserEntity userEntity = await injector<GetUserInfoFromFirestore>().execute(
         ParamsForGetUserInfo(id: id),
       );
       getUserInfoFromFirestoreResponse = ApiResponse.completed(userEntity);
@@ -160,7 +151,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
           phoneNumber: _phoneController.text.trim(),
           gender: _genderController.text,
           age: _ageController.text,
-          profileImage: image,
+          profileImage: _profilPhotoUrl,
         ),
       );
       updateUserInfoResponse = ApiResponse.completed("completed");
@@ -195,8 +186,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   /// -- SELECT IMAGE FROM GALLERY --
   @override
   Future getImageFromGallery() async {
-    final XFile? selectedImage =
-        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.gallery);
     image = selectedImage;
     if (image != null) {
       profilPhotoUrl = image!.path;
@@ -208,8 +198,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   Future getImageFromCamera() async {
     PermissionStatus permissionStatus = await Permission.camera.status;
     if (permissionStatus.isGranted) {
-      final XFile? selectedImage =
-          await ImagePicker().pickImage(source: ImageSource.camera);
+      final XFile? selectedImage = await ImagePicker().pickImage(source: ImageSource.camera);
       image = selectedImage;
       if (image != null) {
         profilPhotoUrl = image!.path;
@@ -233,13 +222,12 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
   @override
   bool isChangesSaved() {
     if (_nameController.text.trim() != getUserName ||
-            _surnameController.text.trim() != getUserSurname ||
-            _emailController.text.trim() != getUserEmail ||
-            _phoneController.text.trim() != getUserPhoneNumber ||
-            _genderController.text.trim() != getUserGender ||
-            _ageController.text.trim() != getUserAge
-        // _profilPhotoUrl != getUserProfilPhoto///FIXME
-        ) {
+        _surnameController.text.trim() != getUserSurname ||
+        _emailController.text.trim() != getUserEmail ||
+        _phoneController.text.trim() != getUserPhoneNumber ||
+        _genderController.text.trim() != getUserGender ||
+        _ageController.text.trim() != getUserAge ||
+        _profilPhotoUrl != getUserProfilPhoto) {
       return true;
     }
     return false;
@@ -254,7 +242,7 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
     _phoneController.text = getUserPhoneNumber;
     _genderController.text = getUserGender;
     _ageController.text = getUserAge;
-    // _profilPhotoUrl = getUserProfilPhoto;///FIXME
+    _profilPhotoUrl = getUserProfilPhoto;
     _genderIcon = getUserGenderIcon;
   }
 
@@ -268,33 +256,27 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
 
   /// get current user full name
   @override
-  String get getUserFullname =>
-      getUserInfoFromFirestoreResponse.data.data!.userName!;
+  String get getUserFullname => getUserInfoFromFirestoreResponse.data.data!.userName!;
 
   /// get current user name
   @override
-  String get getUserName =>
-      getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').first;
+  String get getUserName => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').first;
 
   /// get current user surname
   @override
-  String get getUserSurname =>
-      getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').last;
+  String get getUserSurname => getUserInfoFromFirestoreResponse.data.data!.userName!.split(' ').last;
 
   /// get current user gender
   @override
-  String get getUserGender =>
-      getUserInfoFromFirestoreResponse.data.data!.gender!;
+  String get getUserGender => getUserInfoFromFirestoreResponse.data.data!.gender!;
 
   /// get current user gender icon
   @override
-  IconData get getUserGenderIcon =>
-      isMan ? AppIcons.kManIcon : AppIcons.kWomanIcon;
+  IconData get getUserGenderIcon => isMan ? AppIcons.kManIcon : AppIcons.kWomanIcon;
 
   /// get current user gender icon
   @override
-  bool get isMan =>
-      getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek';
+  bool get isMan => getUserInfoFromFirestoreResponse.data.data!.gender == 'Erkek';
 
   /// get current user age
   @override
@@ -302,11 +284,9 @@ class ProfileViewModelImp extends ChangeNotifier implements ProfileViewModel {
 
   /// get current user phone number
   @override
-  String get getUserPhoneNumber =>
-      getUserInfoFromFirestoreResponse.data.data!.phoneNumber!;
+  String get getUserPhoneNumber => getUserInfoFromFirestoreResponse.data.data!.phoneNumber!;
 
   /// get current user photo url
   @override
-  String get getUserProfilPhoto =>
-      getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
+  String get getUserProfilPhoto => getUserInfoFromFirestoreResponse.data.data!.profileImgUrl!;
 }

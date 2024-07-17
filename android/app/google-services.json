@@ -12,7 +12,20 @@
           "package_name": "com.fb1dev.flutter_donate_app"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "981088501982-saob58b5ths74ufbfi61njjh4b2t05ka.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.fb1dev.flutter_donate_app",
+            "certificate_hash": "a0ab0386023be1764984c0f17e6244e623efbb46"
+          }
+        },
+        {
+          "client_id": "981088501982-j1f3sq5hlq9kf2u6qag7nl7516bk3820.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyAMV09VbTeQ0NBm53CuQVlh-vJQN5VeeX8"
@@ -20,7 +33,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "981088501982-j1f3sq5hlq9kf2u6qag7nl7516bk3820.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "981088501982-vt4p9dc3rgmudvn5greoofmr8hf8lut7.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.fb1dev.flutterDonateApp"
+              }
+            }
+          ]
         }
       }
     }

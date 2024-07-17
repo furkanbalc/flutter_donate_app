@@ -5,6 +5,7 @@ import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/router/index.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/product/product_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
@@ -20,6 +21,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
   late SplashViewModel splashViewModel;
   late ProfileViewModel profileViewModel;
   late AddressViewModel addressViewModel;
+  late ProductViewModel productViewModel;
 
   @override
   void initState() {
@@ -27,6 +29,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
     splashViewModel = ref.read(splashViewModelImp);
     profileViewModel = ref.read(profileViewModelImp);
     addressViewModel = ref.read(addressViewModelImp);
+    productViewModel = ref.read(productViewModelImp);
     init();
   }
 
@@ -36,6 +39,7 @@ class _SplashViewState extends ConsumerState<SplashView> {
       /// kullanici varsa
       if (splashViewModel.isLoggedInResponse.data != null) {
         /// uygulama başlar
+        await productViewModel.getCategories();
         await profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
         await addressViewModel.getAdressesFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
         await addressViewModel.getProvinces();

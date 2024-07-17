@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/index.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
@@ -8,8 +9,10 @@ import 'package:flutter_donate_app/presentation/view/home/widgets/home_sliver_ap
 import 'package:flutter_donate_app/presentation/view/home/widgets/horizontal_product_cart.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/vertical_product_cart.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
+import 'package:flutter_donate_app/presentation/viewmodel/product/product_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 import 'package:flutter_donate_app/presentation/widgets/index.dart';
+import 'package:flutter_donate_app/presentation/widgets/shimmer/custom_categories_list_shimmer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 class HomeView extends ConsumerStatefulWidget {
@@ -22,18 +25,21 @@ class HomeView extends ConsumerStatefulWidget {
 class _HomeViewState extends ConsumerState<HomeView> {
   late ProfileViewModel _profileViewModel;
   late AddressViewModel _addressViewModel;
+  late ProductViewModel _productViewModel;
 
   @override
   void initState() {
     super.initState();
     _profileViewModel = ref.read(profileViewModelImp);
     _addressViewModel = ref.read(addressViewModelImp);
+    _productViewModel = ref.read(productViewModelImp);
   }
 
   @override
   Widget build(BuildContext context) {
     _profileViewModel = ref.watch(profileViewModelImp);
     _addressViewModel = ref.watch(addressViewModelImp);
+    _productViewModel = ref.watch(productViewModelImp);
     return SafeArea(
       child: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) {
@@ -58,32 +64,44 @@ class _HomeViewState extends ConsumerState<HomeView> {
   }
 
   Widget buildCatergoriesList(BuildContext context) {
-    return SizedBox(
-      height: context.dynamicHeight(.1),
-      child: ListView.separated(
-        padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
-        itemCount: 15,
-        scrollDirection: Axis.horizontal,
-        itemBuilder: (context, index) {
-          return Column(
-            children: [
-              CustomIconButton(
-                onPressed: () {},
-                backgroundColor: AppColors.electricViolet,
-                shape: BoxShape.circle,
-                icon: Icon(AppIcons.kLikeIcon, color: AppColors.whiteColor, size: AppSizes.high3.value),
-              ),
-              context.sizedBoxHeightMin,
-              Text(
-                'Mobilya',
-                style: context.textStyles.bodySmall.copyWith(color: AppColors.verifiedBlack),
-              ),
-            ],
-          );
-        },
-        separatorBuilder: (context, index) => context.sizedBoxWidthMedium,
-      ),
-    );
+    switch (_productViewModel.getCategoriesResponse.status) {
+      case Status.completed:
+        return SizedBox(
+          height: context.dynamicHeight(.1),
+          child: ListView.separated(
+            padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
+            itemCount: _productViewModel.getCategoriesResponse.data.categories?.length ?? 0,
+            scrollDirection: Axis.horizontal,
+            itemBuilder: (context, index) {
+              return InkWell(
+                splashFactory: NoSplash.splashFactory,
+                highlightColor: AppColors.transparentColor,
+                onTap: () {
+
+                },
+                child: Column(
+                  children: [
+                    CustomSvgWidget(
+                      svg: getCategoryIcon(_productViewModel.getCategoriesResponse.data.categories![index].image!),
+                      width: context.dynamicWidth(.14),
+                      height: context.dynamicWidth(.14),
+                    ),
+                    context.sizedBoxHeightMin,
+                    Text(
+                      _productViewModel.getCategoriesResponse.data.categories![index].name!,
+                      style: context.textStyles.bodySmall.copyWith(color: AppColors.verifiedBlack),
+                    ),
+                  ],
+                ),
+              );
+            },
+            separatorBuilder: (context, index) => context.sizedBoxWidthHigh,
+          ),
+        );
+
+      default:
+        return const CustomCategoriesListShimmer();
+    }
   }
 
   Widget buildHorizontalList(BuildContext context) {
@@ -144,5 +162,28 @@ class _HomeViewState extends ConsumerState<HomeView> {
         ],
       ),
     );
+  }
+
+  String getCategoryIcon(String category) {
+    switch (category) {
+      case 'tools':
+        return AppSvg.tools.toSvg;
+      case 'education':
+        return AppSvg.education.toSvg;
+      case 'sport':
+        return AppSvg.sport.toSvg;
+      case 'clothes':
+        return AppSvg.clothes.toSvg;
+      case 'furniture':
+        return AppSvg.sofa.toSvg;
+      case 'health':
+        return AppSvg.health.toSvg;
+      case 'pet':
+        return AppSvg.pet.toSvg;
+      case 'technology':
+        return AppSvg.technology.toSvg;
+      default:
+        return AppSvg.info.toSvg;
+    }
   }
 }
