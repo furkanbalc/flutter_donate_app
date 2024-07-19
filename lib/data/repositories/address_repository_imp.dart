@@ -1,8 +1,8 @@
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/models/address/address_model.dart';
 import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/get_province_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/address_repository.dart';
 
 class AddressRepositoryImp implements AddressRepository {

@@ -53,25 +53,15 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                              widget
-                                      .profileViewModel
-                                      .getUserInfoFromFirestoreResponse
-                                      .data
-                                      .data
-                                      ?.userName ??
-                                  '',
-                              style: context.textStyles.titleSmall
-                                  .copyWith(color: AppColors.whiteColor)),
+                          Text(widget.profileViewModel.getUserInfoFromFirestoreResponse.data.data?.userName ?? '',
+                              style: context.textStyles.titleSmall.copyWith(color: AppColors.whiteColor)),
                           context.sizedBoxHeightMin,
                           Row(
                             children: [
-                              const Icon(AppIcons.kLocationOutlinedIcon,
-                                  color: AppColors.whiteColor, size: 20),
+                              const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.whiteColor, size: 20),
                               context.sizedBoxWidthLow,
                               Text('Kahramanmaraş, Türkiye',
-                                  style: context.textStyles.titleMedium
-                                      .copyWith(color: AppColors.whiteColor)),
+                                  style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
                             ],
                           ),
                         ],
@@ -83,12 +73,9 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                           padding: context.paddings.allLow,
                           decoration: BoxDecoration(
                             color: AppColors.blueTang,
-                            borderRadius:
-                                context.borders.circularBorderRadiusNormal,
+                            borderRadius: context.borders.circularBorderRadiusNormal,
                           ),
-                          child: const Badge(
-                              child: Icon(AppIcons.kNotificationIcon,
-                                  color: AppColors.whiteColor)),
+                          child: const Badge(child: Icon(AppIcons.kNotificationIcon, color: AppColors.whiteColor)),
                         ),
                       ),
                     ],
@@ -100,10 +87,9 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
         ),
       ),
       bottom: PreferredSize(
-        preferredSize: Size.fromHeight(AppSizes.medium3.value),
+        preferredSize: Size.fromHeight(AppSizes.medium1.value),
         child: Padding(
-          padding: context.paddings.horizontalMedium +
-              context.paddings.onlyBottomMedium,
+          padding: context.paddings.horizontalMedium + context.paddings.onlyBottomMedium,
           child: Column(
             children: [
               Row(
@@ -116,8 +102,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                         filled: true,
                         fillColor: AppColors.whiteColor,
                         contentPadding: context.paddings.zero,
-                        prefixIcon: const Icon(AppIcons.kSearchIcon,
-                            color: AppColors.steel),
+                        prefixIcon: const Icon(AppIcons.kSearchIcon, color: AppColors.steel),
                       ),
                     ),
                   ),
@@ -129,11 +114,9 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                       padding: const EdgeInsets.all(12),
                       decoration: BoxDecoration(
                         color: AppColors.whiteColor,
-                        borderRadius:
-                            context.borders.circularBorderRadiusNormal,
+                        borderRadius: context.borders.circularBorderRadiusNormal,
                       ),
-                      child: const Icon(AppIcons.kFilterIcon,
-                          color: AppColors.electricViolet),
+                      child: const Icon(AppIcons.kFilterIcon, color: AppColors.electricViolet),
                     ),
                   ),
                 ],

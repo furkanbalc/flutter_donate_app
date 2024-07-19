@@ -1,6 +1,6 @@
 import 'package:flutter_donate_app/core/usecase/base_usecase.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/get_province_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/address_repository.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';

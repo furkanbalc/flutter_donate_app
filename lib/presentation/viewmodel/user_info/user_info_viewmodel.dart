@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:intl_phone_number_input/intl_phone_number_input.dart';
 

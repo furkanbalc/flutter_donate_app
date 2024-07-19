@@ -1,6 +1,6 @@
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 
 class ProfileRepositoryImp implements ProfileRepository {

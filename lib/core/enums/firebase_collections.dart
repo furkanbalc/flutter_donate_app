@@ -5,7 +5,7 @@ enum FirebaseCollections {
   addresses,
   categories,
   products,
-  types,
+  type,
   status,
   addTypes;
 

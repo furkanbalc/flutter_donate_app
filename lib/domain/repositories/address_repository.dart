@@ -1,5 +1,5 @@
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/get_province_entity.dart';
 
 abstract class AddressRepository {
   /// -- GET USER ADDRESS INFO --

@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/constants/app_icons.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/di/injection.dart';

@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/get_province_entity.dart';
 import 'package:geolocator/geolocator.dart';
 
 abstract class AddressViewModel extends ChangeNotifier {

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
 import 'package:flutter_donate_app/presentation/view/products/product_detail.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/age_info.dart';

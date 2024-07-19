@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 
 class UserModel extends UserEntity {
   @override

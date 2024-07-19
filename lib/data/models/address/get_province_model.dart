@@ -1,4 +1,4 @@
-import 'package:flutter_donate_app/domain/entity/address/get_province_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/get_province_entity.dart';
 
 class GetProvinceModel extends GetProvinceEntity {
   @override

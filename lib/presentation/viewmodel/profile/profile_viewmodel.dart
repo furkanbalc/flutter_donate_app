@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:image_picker/image_picker.dart';
 
 abstract class ProfileViewModel extends ChangeNotifier {

@@ -7,7 +7,7 @@ class AppColors {
   static const Color electricViolet = Color(0xFF773FFF);
   static const Color verifiedBlack = Color(0xFF242424);
   static const Color steel = Color(0xFF797979);
-  static const Color cascadingWhite = Color(0xFFF8F8F8);
+  static const Color cascadingWhite = Color(0xFFF6F6F6);
   static const Color tomatoFrog = Color(0xFFFF4747);
 
   // black

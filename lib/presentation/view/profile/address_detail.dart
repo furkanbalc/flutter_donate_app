@@ -4,7 +4,7 @@ import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/core/utils/utils.dart';
 import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 import 'package:flutter_donate_app/main.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/city_picker_bottom_sheet.dart';
 import 'package:flutter_donate_app/presentation/view/profile/widgets/pickers/county_picker_bottom_sheet.dart';

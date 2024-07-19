@@ -1,5 +1,5 @@
 import 'package:flutter_donate_app/core/usecase/base_usecase.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:flutter_donate_app/domain/repositories/profile_repository.dart';
 
 /// -- SAVE USER INFO --

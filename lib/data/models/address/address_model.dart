@@ -1,4 +1,4 @@
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 
 class AddressesModel extends AddressesEntity {
   List<Address>? addresses;

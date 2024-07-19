@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/api_helper/api_response.dart';
 import 'package:flutter_donate_app/core/utils/validators.dart/custom_validators.dart';
-import 'package:flutter_donate_app/domain/entity/user_entity.dart';
+import 'package:flutter_donate_app/domain/entities/user_entity.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
 import 'package:flutter_donate_app/di/injection.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/user_info/user_info_viewmodel.dart';
