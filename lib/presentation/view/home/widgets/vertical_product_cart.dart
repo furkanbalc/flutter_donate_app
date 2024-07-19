@@ -2,63 +2,73 @@ import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
 import 'package:flutter_donate_app/core/enums/index.dart';
 import 'package:flutter_donate_app/core/extensions/index.dart';
+import 'package:flutter_donate_app/domain/entities/product/product_entity.dart';
 import 'package:flutter_donate_app/presentation/view/home/widgets/product_card_components.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 
 class VerticalProductCard extends StatefulWidget {
-  const VerticalProductCard({super.key});
+  const VerticalProductCard({
+    super.key,
+    required this.product,
+    required this.productType,
+    required this.productStatus,
+    required this.productCategory,
+  });
+
+  final ProductEntity product;
+  final String productType;
+  final String productStatus;
+  final String productCategory;
 
   @override
   State<VerticalProductCard> createState() => _VerticalProductCardState();
 }
 
-class _VerticalProductCardState extends State<VerticalProductCard>
-    with ProductCardComponents {
+class _VerticalProductCardState extends State<VerticalProductCard> with ProductCardComponents {
   @override
   Widget build(BuildContext context) {
+    var data = widget.product;
     return Card(
-      child: Padding(
-        padding: context.paddings.allMin,
-        child: Column(
-          children: [
-            Padding(
-              padding: context.paddings.allLow,
-              child: ClipRRect(
-                borderRadius: context.borders.circularBorderRadiusLow,
-                child: Stack(
-                  children: [
-                    CustomImageWidget(
-                        image: AppPng.sofa.toPng, fit: BoxFit.cover),
-                    Positioned(
-                      left: 5,
-                      top: 5,
-                      child: buildRatingBadge(context, '4.9'),
-                    ),
-                    Positioned(
-                      right: 5,
-                      top: 5,
-                      child: buildFavoriteIcon(context),
-                    ),
-                  ],
+      margin: context.paddings.zero,
+      child: Column(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.vertical(top: context.borders.radiusNormal),
+            child: Stack(
+              children: [
+                CustomImageWidget(image: AppPng.sofa.toPng, fit: BoxFit.cover),
+                Positioned(
+                  right: 10,
+                  top: 10,
+                  child: buildFavoriteIcon(context),
                 ),
-              ),
+              ],
             ),
-            Padding(
-              padding: context.paddings.allLow,
-              child: Column(
-                children: [
-                  buildTags(context, ['Bağış', 'Yeni Gibi', 'Mobilya']),
-                  context.sizedBoxHeightLow,
-                  buildItemDetails(context, 'Koltuk',
-                      'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do dolor sit amet'),
-                  const Divider(color: AppColors.cascadingWhite),
-                  context.sizedBoxHeightMin,
-                  buildUserInfo(context, 'Kullanıcı Adı', '9.4 km'),
-                ],
-              ),
+          ),
+          Padding(
+            padding: context.paddings.allNormal,
+            child: Column(
+              children: [
+                buildTags(context, [
+                  widget.productType,
+                  widget.productStatus,
+                  widget.productCategory,
+                ]),
+                context.sizedBoxHeightLow,
+                buildItemDetails(
+                  context: context,
+                  title: data.title!,
+                  description: data.description!,
+                  rating: data.rating!,
+                ),
+                context.sizedBoxHeightMin,
+                Divider(color: AppColors.electricViolet.withOpacity(.1)),
+                context.sizedBoxHeightMin,
+                buildUserInfo(context, 'Kullanıcı Adı', '9.4 km'),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

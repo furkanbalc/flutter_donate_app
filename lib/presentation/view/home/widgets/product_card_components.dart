@@ -8,23 +8,14 @@ import 'package:flutter_donate_app/presentation/widgets/index.dart';
 mixin ProductCardComponents {
   /// Item Cart Rating Icon & Count
   Widget buildRatingBadge(BuildContext context, String rating) {
-    return Container(
-      padding: const EdgeInsets.all(2),
-      decoration: BoxDecoration(
-        color: AppColors.whiteColor,
-        borderRadius: context.borders.circularBorderRadiusMin,
-      ),
-      child: Row(
-        children: [
-          const Icon(Icons.star_rounded,
-              color: AppColors.orangeColor, size: 16),
-          Text(
-            rating,
-            style:
-                context.textStyles.bodySmall.copyWith(color: AppColors.steel),
-          ),
-        ],
-      ),
+    return Row(
+      children: [
+        Icon(Icons.star_rounded, color: AppColors.orangeColor, size: context.dynamicWidth(.04)),
+        Text(
+          '($rating)',
+          style: context.textStyles.bodySmall.copyWith(color: AppColors.steel),
+        ),
+      ],
     );
   }
 
@@ -36,8 +27,7 @@ mixin ProductCardComponents {
         color: AppColors.whiteColor,
         shape: BoxShape.circle,
       ),
-      child: const Icon(AppIcons.kFavouriteIcon,
-          color: AppColors.redColor, size: 16),
+      child:  Icon(AppIcons.kFavouriteIcon, color: AppColors.redColor, size: context.dynamicWidth(.06)),
     );
   }
 
@@ -45,16 +35,16 @@ mixin ProductCardComponents {
   Widget buildTags(BuildContext context, List<String> tags) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.start,
-      children: tags.map((tag) {
+      children: List.generate(3, (index) {
         Color backgroundColor;
-        switch (tag) {
-          case 'Bağış':
+        switch (index) {
+          case 0:
             backgroundColor = AppColors.electricViolet.withOpacity(.1);
             break;
-          case 'Yeni Gibi':
+          case 1:
             backgroundColor = AppColors.greenColor.withOpacity(.2);
             break;
-          case 'Mobilya':
+          case 2:
             backgroundColor = AppColors.blueColor.withOpacity(.2);
             break;
           default:
@@ -67,23 +57,28 @@ mixin ProductCardComponents {
             color: backgroundColor,
             borderRadius: context.borders.circularBorderRadiusMin,
           ),
-          child: Text(tag,
-              style: context.textStyles.labelSmall
-                  .copyWith(color: AppColors.steel)),
+          child: Text(tags[index], style: context.textStyles.labelSmall.copyWith(color: AppColors.steel)),
         );
-      }).toList(),
-    );
+      },));
   }
 
   /// Item Title & Description
-  Widget buildItemDetails(
-      BuildContext context, String title, String description) {
+  Widget buildItemDetails({
+    required BuildContext context,
+    required String title,
+    required String description,
+    required String rating,
+  }) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        Text(title,
-            style: context.textStyles.titleMedium
-                .copyWith(fontWeight: FontWeight.w600)),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(title, style: context.textStyles.titleMedium.copyWith(fontWeight: FontWeight.w600)),
+            buildRatingBadge(context, rating)
+          ],
+        ),
         Text(
           description,
           maxLines: 2,
@@ -105,7 +100,6 @@ mixin ProductCardComponents {
         Row(
           children: [
             Container(
-              padding: context.paddings.allMin,
               decoration: const BoxDecoration(
                 color: AppColors.cascadingWhite,
                 shape: BoxShape.circle,
@@ -113,26 +107,20 @@ mixin ProductCardComponents {
               child: CustomSvgWidget(svg: AppSvg.profile.toSvg, width: 16),
             ),
             context.sizedBoxWidthLow,
-            Text(username,
-                style: context.textStyles.bodySmall
-                    .copyWith(color: AppColors.steel)),
+            Text(username, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),
           ],
         ),
         Row(
           children: [
             Container(
-              padding: context.paddings.allMin,
               decoration: const BoxDecoration(
                 color: AppColors.cascadingWhite,
                 shape: BoxShape.circle,
               ),
-              child: const Icon(AppIcons.kLocationOutlinedIcon,
-                  color: AppColors.electricViolet, size: 16),
+              child: const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.electricViolet, size: 16),
             ),
             context.sizedBoxWidthLow,
-            Text(distance,
-                style: context.textStyles.bodySmall
-                    .copyWith(color: AppColors.steel)),
+            Text(distance, style: context.textStyles.bodySmall.copyWith(color: AppColors.steel)),
           ],
         ),
       ],

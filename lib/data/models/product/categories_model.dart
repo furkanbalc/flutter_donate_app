@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter_donate_app/domain/entity/category_entity.dart';
+import 'package:flutter_donate_app/domain/entities/product/category_entity.dart';
 
 class CategoriesModel extends CategoriesEntity {
   final List<CategoryModel>? categories;
 
-  CategoriesModel({required this.categories})
+  const CategoriesModel({required this.categories})
       : super(
     categories: categories,
   );
@@ -40,7 +40,7 @@ class CategoryModel extends CategoryEntity {
   final String? name;
   final String? image;
 
-  CategoryModel({
+  const CategoryModel({
     this.id,
     this.name,
     this.image,

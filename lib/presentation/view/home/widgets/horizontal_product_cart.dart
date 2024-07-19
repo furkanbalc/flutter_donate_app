@@ -12,56 +12,55 @@ class HorizontalProductCart extends StatefulWidget {
   State<HorizontalProductCart> createState() => _HorizontalProductCartState();
 }
 
-class _HorizontalProductCartState extends State<HorizontalProductCart>
-    with ProductCardComponents {
+class _HorizontalProductCartState extends State<HorizontalProductCart> with ProductCardComponents {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: Padding(
-        padding: context.paddings.allMedium,
-        child: Row(
-          children: [
-            Expanded(
-              flex: 2,
-              child: ClipRRect(
-                borderRadius: context.borders.circularBorderRadiusLow,
-                child: Stack(
-                  children: [
-                    CustomImageWidget(
-                        image: AppPng.sofa.toPng,
-                        fit: BoxFit.cover,
-                        height: context.dynamicHeight(.20)),
-                    Positioned(
-                      left: 5,
-                      top: 5,
-                      child: buildRatingBadge(context, '4.9'),
-                    ),
-                    Positioned(
-                      right: 5,
-                      top: 5,
-                      child: buildFavoriteIcon(context),
-                    ),
-                  ],
-                ),
-              ),
+      color: AppColors.whiteColor,
+      margin: context.paddings.zero,
+      child: Row(
+        children: [
+          ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: context.borders.radiusNormal,
+              bottomLeft: context.borders.radiusNormal,
             ),
-            context.sizedBoxWidthMedium,
-            Expanded(
-              flex: 3,
+            child: Stack(
+              children: [
+                CustomImageWidget(
+                  image: AppPng.sofa.toPng,
+                  fit: BoxFit.cover,
+                  width: context.dynamicWidth(.35),
+                  height: context.dynamicHeight(.17),
+                ),
+                Positioned(
+                  right: 5,
+                  top: 5,
+                  child: buildFavoriteIcon(context),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: context.paddings.allNormal,
               child: Column(
                 children: [
                   buildTags(context, ['Bağış', 'Yeni Gibi', 'Mobilya']),
                   context.sizedBoxHeightLow,
-                  buildItemDetails(context, 'Koltuk',
-                      'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do dolor sit amet'),
-                  const Divider(color: AppColors.cascadingWhite),
-                  context.sizedBoxHeightMin,
+                  buildItemDetails(
+                    context: context,
+                    title: 'Koltuk',
+                    description: 'Lorem ipsum dolor sit amet, \nconsectetur adipiscing elit, sed do dolor sit amet',
+                    rating: '4.9',
+                  ),
+                   Divider(color: AppColors.electricViolet.withOpacity(.1)),
                   buildUserInfo(context, 'Kullanıcı Adı', '9.4 km'),
                 ],
               ),
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

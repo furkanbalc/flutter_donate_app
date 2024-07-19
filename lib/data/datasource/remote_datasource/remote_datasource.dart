@@ -1,8 +1,11 @@
 import 'package:flutter_donate_app/data/models/address/address_model.dart';
 import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
-import 'package:flutter_donate_app/data/models/categories_model.dart';
+import 'package:flutter_donate_app/data/models/product/categories_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_status_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_type_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 
 abstract class RemoteDataSource {
   /// -- IS USER LOGGED IN --
@@ -73,4 +76,13 @@ abstract class RemoteDataSource {
 
   /// -- GET CATEGORIES --
   Future<CategoriesModel> getCategories();
+
+  /// -- GET PRODUCTS --
+  Future<ProductsModel> getProducts();
+
+  /// -- GET STATUSS --
+  Future<ProductStatussModel> getStatuss();
+
+  /// -- GET TYPES --
+  Future<ProductTypesModel> getTypes();
 }

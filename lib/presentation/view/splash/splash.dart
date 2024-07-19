@@ -40,6 +40,9 @@ class _SplashViewState extends ConsumerState<SplashView> {
       if (splashViewModel.isLoggedInResponse.data != null) {
         /// uygulama başlar
         await productViewModel.getCategories();
+        await productViewModel.getProducts();
+        await productViewModel.getStatuss();
+        await productViewModel.getTypes();
         await profileViewModel.getUserInfoFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
         await addressViewModel.getAdressesFromFirestore(id: splashViewModel.isLoggedInResponse.data!);
         await addressViewModel.getProvinces();

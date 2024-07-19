@@ -79,4 +79,7 @@ void initializeDependencies() async {
   injector.registerLazySingleton<AddAddressToFirestore>(() => AddAddressToFirestore(addressRepository: injector()));
   injector.registerLazySingleton<GetTrProvinces>(() => GetTrProvinces(addressRepository: injector()));
   injector.registerLazySingleton<GetCategories>(() => GetCategories(productRepository: injector()));
+  injector.registerLazySingleton<GetProducts>(() => GetProducts(productRepository: injector()));
+  injector.registerLazySingleton<GetProductTypes>(() => GetProductTypes(productRepository: injector()));
+  injector.registerLazySingleton<GetProductStatuss>(() => GetProductStatuss(productRepository: injector()));
 }

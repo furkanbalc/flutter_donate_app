@@ -8,9 +8,12 @@ import 'package:flutter_donate_app/core/service/firebase_storage_service.dart';
 import 'package:flutter_donate_app/data/datasource/remote_datasource/remote_datasource.dart';
 import 'package:flutter_donate_app/data/models/address/address_model.dart';
 import 'package:flutter_donate_app/data/models/address/get_province_model.dart';
-import 'package:flutter_donate_app/data/models/categories_model.dart';
+import 'package:flutter_donate_app/data/models/product/categories_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_status_model.dart';
+import 'package:flutter_donate_app/data/models/product/product_type_model.dart';
 import 'package:flutter_donate_app/data/models/user_model.dart';
-import 'package:flutter_donate_app/domain/entity/address/address_entity.dart';
+import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 import 'package:http/http.dart' as http;
 
 class RemoteDataSourceImp implements RemoteDataSource {
@@ -241,10 +244,36 @@ class RemoteDataSourceImp implements RemoteDataSource {
   /// -- GET CATEGORIES --
   @override
   Future<CategoriesModel> getCategories() async {
-    QuerySnapshot<Map<String, dynamic>> categoriesSnapshot = await firebaseFirestore
-        .collection('categories')
-        .get();
+    QuerySnapshot<Map<String, dynamic>> categoriesSnapshot =
+        await firebaseFirestore.collection(FirebaseCollections.categories.name).get();
 
     return CategoriesModel.fromSnapshot(categoriesSnapshot);
+  }
+
+  /// -- GET PRODUCTS --
+  @override
+  Future<ProductsModel> getProducts() async {
+    QuerySnapshot<Map<String, dynamic>> productsSnapshot =
+        await firebaseFirestore.collection(FirebaseCollections.products.name).get();
+
+    return ProductsModel.fromSnapshot(productsSnapshot);
+  }
+
+  /// -- GET STATUSS --
+  @override
+  Future<ProductStatussModel> getStatuss() async {
+    QuerySnapshot<Map<String, dynamic>> statusSnapshot =
+        await firebaseFirestore.collection(FirebaseCollections.status.name).get();
+
+    return ProductStatussModel.fromSnapshot(statusSnapshot);
+  }
+
+  /// -- GET TYPES --
+  @override
+  Future<ProductTypesModel> getTypes() async {
+    QuerySnapshot<Map<String, dynamic>> typesSnapshot =
+        await firebaseFirestore.collection(FirebaseCollections.type.name).get();
+
+    return ProductTypesModel.fromSnapshot(typesSnapshot);
   }
 }
