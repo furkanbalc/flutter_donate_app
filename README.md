@@ -1,8 +1,8 @@
-# Flutter Donate App
+# Flutter Donate App (Devam Ediyor)
 
 Modern toplumda tüketim, toplumsal statü ve kimliğin bir göstergesi haline gelmiştir. Ancak, aşırı tüketim ve israf, günümüzün en büyük sorunları arasında yer almaktadır. Türkiye'de ve dünyada her yıl milyonlarca ton gıda israf edilmekte, aynı zamanda giyim ve diğer nesneler de gereksizce tüketilmektedir. Bu proje, bu israfı önlemeye ve ihtiyaç sahiplerine yardımcı olmaya yönelik bir çözüm sunmaktadır.
 
-Bende Fazla, kullanıcıların kullanmadıkları ancak kullanılabilir durumda olan gıda, mobilya, giysi, kitap, oyuncak gibi nesneleri ihtiyaç sahiplerine bağışlamalarını amaçlayan bir mobil uygulamadır. Bu proje, israfı önlemek ve toplumda ihtiyaç sahiplerine yardım etmek amacıyla geliştiriliyor.
+Bende Fazla, kullanıcıların kullanmadıkları ancak kullanılabilir durumda olan gıda, mobilya, giysi, kitap, oyuncak gibi nesneleri ihtiyaç sahiplerine bağışlamalarını amaçlayan bir mobil uygulamadır. Bu proje, israfı önlemek ve toplumda ihtiyaç sahiplerine yardım etmek amacıyla geliştiriliyor. Uygulamaya hesabınız üzerinden ilan ekleyerek ihtiyaç sahiplerini bulabilir ve israfı önlemeye kaykı sağlayabilirsiniz.
 
 ## Özellikler
 
