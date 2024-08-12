@@ -30,11 +30,11 @@ class _ContactUsState extends State<ContactUs> {
     return Scaffold(
       appBar: const CustomAppBar(title: 'Bize Ulaşın'),
       body: Padding(
-        padding: context.paddings.allMedium,
+        padding: context.paddings.allMedium1,
         child: Column(
           children: [
             _developerInfo(),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildContactPlatform(
               context: context,
               icon: AppSvg.instagram.toSvg,
@@ -43,7 +43,7 @@ class _ContactUsState extends State<ContactUs> {
                 openUrl(ContactUsPlatform.instagram);
               },
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildContactPlatform(
               context: context,
               icon: AppSvg.whatsapp.toSvg,
@@ -52,7 +52,7 @@ class _ContactUsState extends State<ContactUs> {
                 openUrl(ContactUsPlatform.whatsapp);
               },
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildContactPlatform(
               context: context,
               icon: AppSvg.linkedin.toSvg,
@@ -61,7 +61,7 @@ class _ContactUsState extends State<ContactUs> {
                 openUrl(ContactUsPlatform.linkedin);
               },
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildContactPlatform(
               context: context,
               icon: AppSvg.github.toSvg,
@@ -70,7 +70,7 @@ class _ContactUsState extends State<ContactUs> {
                 openUrl(ContactUsPlatform.github);
               },
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildContactPlatform(
               context: context,
               icon: AppSvg.phone.toSvg,
@@ -89,7 +89,7 @@ class _ContactUsState extends State<ContactUs> {
   Widget _developerInfo() {
     return Container(
       width: context.dynamicWidth(),
-      padding: context.paddings.allLow,
+      padding: context.paddings.allLow2,
       decoration: BoxDecoration(
         border: Border.all(),
         borderRadius: context.borders.circularBorderRadiusMedium,
@@ -109,7 +109,7 @@ class _ContactUsState extends State<ContactUs> {
     return InkWell(
       onTap: onTap,
       child: Container(
-        padding: context.paddings.allLow,
+        padding: context.paddings.allLow2,
         decoration: BoxDecoration(
           border: Border.all(),
           borderRadius: context.borders.circularBorderRadiusMedium,
@@ -117,7 +117,7 @@ class _ContactUsState extends State<ContactUs> {
         child: Row(
           children: [
             CustomSvgWidget(svg: icon, height: AppSizes.high3.value),
-            context.sizedBoxWidthMedium,
+            context.sizedBoxWidthMedium1,
             Text(label, style: context.textStyles.titleLarge),
           ],
         ),

@@ -17,7 +17,7 @@ imagePickerBottomSheet({
     context: context,
     title: LocaleKeys.profile_info_profil_photo.tr(),
     body: Padding(
-      padding: context.paddings.horizontalMedium,
+      padding: context.paddings.horizontalMedium1,
       child: Row(
         children: [
           ImagePickerIcon(
@@ -28,7 +28,7 @@ imagePickerBottomSheet({
             icon: AppIcons.kCameraIcon,
             text: LocaleKeys.profile_info_camera.tr(),
           ),
-          context.sizedBoxWidthHigh,
+          context.sizedBoxWidthMedium2,
           ImagePickerIcon(
             onTap: () async {
               context.pop();
@@ -37,7 +37,7 @@ imagePickerBottomSheet({
             icon: AppIcons.kGalleryIcon,
             text: LocaleKeys.profile_info_gallery.tr(),
           ),
-          context.sizedBoxWidthHigh,
+          context.sizedBoxWidthMedium2,
           Visibility(
             visible: profileViewModel.profilPhotoUrl != '',
             child: ImagePickerIcon(

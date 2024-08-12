@@ -5,8 +5,7 @@ import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_butto
 
 customBottomSheet<T>({
   required BuildContext context,
-  String? title,
-  required Widget body,
+  required Widget body, String? title,
 }) {
   return showModalBottomSheet(
     context: context,
@@ -14,15 +13,13 @@ customBottomSheet<T>({
       return Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          title != null
-              ? _bottomSheetHeader(context, title)
-              : context.sizedBoxShrink,
-          context.sizedBoxHeightLow,
+          if (title != null) _bottomSheetHeader(context, title) else context.sizedBoxShrink,
+          context.sizedBoxHeightLow2,
           Padding(
-            padding: context.paddings.allLow,
+            padding: context.paddings.allLow2,
             child: body,
           ),
-          context.sizedBoxHeightNormal,
+          context.sizedBoxHeightLow3,
         ],
       );
     },
@@ -31,13 +28,13 @@ customBottomSheet<T>({
 
 Widget _bottomSheetHeader(BuildContext context, String? title) {
   return Padding(
-    padding: context.paddings.horizontalNormal,
+    padding: context.paddings.horizontalLow3,
     child: Column(
       children: [
         _shortHBar(),
         Row(
           children: [
-            context.sizedBoxWidthNormal,
+            context.sizedBoxWidthLow3,
             Text(
               title ?? '',
               style: context.textStyles.titleMedium.copyWith(
@@ -48,7 +45,7 @@ Widget _bottomSheetHeader(BuildContext context, String? title) {
               onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.close, color: AppColors.blackPrimary),
             ),
-            context.sizedBoxHeightLow,
+            context.sizedBoxHeightLow2,
           ],
         ),
         Divider(color: AppColors.blackPrimary.withOpacity(0.3)),

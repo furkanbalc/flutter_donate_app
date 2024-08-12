@@ -55,7 +55,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: context.paddings.allLow,
+                                  padding: context.paddings.allLow2,
                                   child: ClipRRect(
                                     borderRadius:
                                         context.borders.circularBorderRadiusLow,
@@ -112,14 +112,14 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: context.paddings.allLow,
+                                  padding: context.paddings.allLow2,
                                   child: Column(
                                     children: [
                                       Row(
                                         children: [
                                           Container(
                                             padding: context
-                                                .paddings.horizontalNormal,
+                                                .paddings.horizontalLow3,
                                             decoration: BoxDecoration(
                                               color: AppColors.electricViolet
                                                   .withOpacity(.1),
@@ -136,7 +136,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           const SizedBox(width: 10),
                                           Container(
                                             padding:
-                                                context.paddings.horizontalLow,
+                                                context.paddings.horizontalLow2,
                                             decoration: BoxDecoration(
                                               color: AppColors.greenColor
                                                   .withOpacity(.2),
@@ -153,7 +153,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           const SizedBox(width: 10),
                                           Container(
                                             padding:
-                                                context.paddings.horizontalLow,
+                                                context.paddings.horizontalLow2,
                                             decoration: BoxDecoration(
                                               color: AppColors.blueColor
                                                   .withOpacity(.2),
@@ -169,7 +169,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           ),
                                         ],
                                       ),
-                                      context.sizedBoxHeightLow,
+                                      context.sizedBoxHeightLow2,
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.stretch,
@@ -213,7 +213,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                     svg: AppSvg.profile.toSvg,
                                                     width: 20),
                                               ),
-                                              context.sizedBoxWidthLow,
+                                              context.sizedBoxWidthLow2,
                                               Text(
                                                 'Kullanıcı Adı',
                                                 style: context
@@ -240,7 +240,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                         .electricViolet,
                                                     size: 20),
                                               ),
-                                              context.sizedBoxWidthLow,
+                                              context.sizedBoxWidthLow2,
                                               Text(
                                                 '9.4 km',
                                                 style: context
@@ -265,7 +265,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                 ],
               ),
             ),
-            context.sizedBoxHeightNormal,
+            context.sizedBoxHeightLow3,
             SizedBox(
               height: context.dynamicHeight(),
               child: Column(
@@ -295,7 +295,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                             child: Column(
                               children: [
                                 Padding(
-                                  padding: context.paddings.allLow,
+                                  padding: context.paddings.allLow2,
                                   child: ClipRRect(
                                     borderRadius:
                                         context.borders.circularBorderRadiusLow,
@@ -352,14 +352,14 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: context.paddings.allLow,
+                                  padding: context.paddings.allLow2,
                                   child: Column(
                                     children: [
                                       Row(
                                         children: [
                                           Container(
                                             padding: context
-                                                .paddings.horizontalNormal,
+                                                .paddings.horizontalLow3,
                                             decoration: BoxDecoration(
                                               color: AppColors.electricViolet
                                                   .withOpacity(.1),
@@ -376,7 +376,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           const SizedBox(width: 10),
                                           Container(
                                             padding:
-                                                context.paddings.horizontalLow,
+                                                context.paddings.horizontalLow2,
                                             decoration: BoxDecoration(
                                               color: AppColors.greenColor
                                                   .withOpacity(.2),
@@ -393,7 +393,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           const SizedBox(width: 10),
                                           Container(
                                             padding:
-                                                context.paddings.horizontalLow,
+                                                context.paddings.horizontalLow2,
                                             decoration: BoxDecoration(
                                               color: AppColors.blueColor
                                                   .withOpacity(.2),
@@ -409,7 +409,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                           ),
                                         ],
                                       ),
-                                      context.sizedBoxHeightLow,
+                                      context.sizedBoxHeightLow2,
                                       Column(
                                         crossAxisAlignment:
                                             CrossAxisAlignment.stretch,
@@ -453,7 +453,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                     svg: AppSvg.profile.toSvg,
                                                     width: 20),
                                               ),
-                                              context.sizedBoxWidthLow,
+                                              context.sizedBoxWidthLow2,
                                               Text(
                                                 'Kullanıcı Adı',
                                                 style: context
@@ -480,7 +480,7 @@ class _HomeSliverBodyState extends ConsumerState<HomeSliverBody> {
                                                         .electricViolet,
                                                     size: 20),
                                               ),
-                                              context.sizedBoxWidthLow,
+                                              context.sizedBoxWidthLow2,
                                               Text(
                                                 '9.4 km',
                                                 style: context

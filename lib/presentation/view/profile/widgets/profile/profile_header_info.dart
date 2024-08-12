@@ -23,8 +23,8 @@ class ProfileHeaderInfo extends StatelessWidget {
   /// Build Header
   Widget _buildCompleted(BuildContext context) {
     return Container(
-      padding: context.paddings.allLow,
-      margin: context.paddings.onlyTopNormal,
+      padding: context.paddings.allLow2,
+      margin: context.paddings.onlyTopLow3,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         image: DecorationImage(
@@ -37,7 +37,7 @@ class ProfileHeaderInfo extends StatelessWidget {
       child: Row(
         children: [
           _buildProfilePhotoWidget(context),
-          context.sizedBoxWidthMedium,
+          context.sizedBoxWidthMedium1,
           buildUserInfo(context),
         ],
       ),
@@ -50,7 +50,7 @@ class ProfileHeaderInfo extends StatelessWidget {
       badge: false,
       width: context.dynamicWidth(.25),
       height: context.dynamicWidth(.25),
-      padding: context.paddings.allUltra,
+      padding: context.paddings.allMedium3,
       imagePath: profileViewModel.getUserProfilPhoto,
     );
   }
@@ -69,7 +69,7 @@ class ProfileHeaderInfo extends StatelessWidget {
                 fontWeight: FontWeight.w800,
               ),
             ),
-            context.sizedBoxWidthNormal,
+            context.sizedBoxWidthLow3,
 
             /// User Gender
             Icon(profileViewModel.getUserGenderIcon,
@@ -77,7 +77,7 @@ class ProfileHeaderInfo extends StatelessWidget {
                 color: profileViewModel.isMan
                     ? AppColors.blueTang
                     : AppColors.tomatoFrog),
-            context.sizedBoxWidthLow,
+            context.sizedBoxWidthLow2,
 
             /// User Age
             Text(

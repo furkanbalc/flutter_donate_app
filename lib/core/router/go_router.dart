@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_donate_app/core/router/route_names.dart';
 import 'package:flutter_donate_app/domain/entities/address/address_entity.dart';
 import 'package:flutter_donate_app/presentation/view/base_app/app.dart';
-import 'package:flutter_donate_app/presentation/view/products/product_detail.dart';
+import 'package:flutter_donate_app/presentation/view/product/product_detail.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/age_info.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/gender_info.dart';
 import 'package:flutter_donate_app/presentation/view/authentication/signin.dart';
@@ -21,10 +21,8 @@ import 'package:flutter_donate_app/presentation/view/splash/welcome.dart';
 import 'package:flutter_donate_app/presentation/view/user_info/user_info.dart';
 import 'package:go_router/go_router.dart';
 
-final GlobalKey<NavigatorState> _rootNavigatorKey =
-    GlobalKey(debugLabel: 'root');
-final GlobalKey<NavigatorState> _shellNavigatorKey =
-    GlobalKey(debugLabel: 'shell');
+final GlobalKey<NavigatorState> _rootNavigatorKey = GlobalKey(debugLabel: 'root');
+final GlobalKey<NavigatorState> _shellNavigatorKey = GlobalKey(debugLabel: 'shell');
 
 class AppRoutes {
   AppRoutes._();
@@ -92,19 +90,29 @@ class AppRoutes {
             builder: (BuildContext context, GoRouterState state) {
               return const HomeView();
             },
+            routes: [
+              GoRoute(
+                path: AppRouteName.productDetail.path,
+                name: AppRouteName.productDetail.name,
+                parentNavigatorKey: _rootNavigatorKey,
+                builder: (BuildContext context, GoRouterState state) {
+                  return const ProductDetail();
+                },
+              ),
+            ],
           ),
           GoRoute(
-            path: AppRouteName.productDetail.path,
-            name: AppRouteName.productDetail.name,
+            path: AppRouteName.categories.path,
+            name: AppRouteName.categories.name,
             builder: (BuildContext context, GoRouterState state) {
-              return const ProductDetail();
+              return const Center(child: Text('CATEGORIES'));
             },
           ),
           GoRoute(
-            path: AppRouteName.message.path,
-            name: AppRouteName.message.name,
+            path: AppRouteName.favorites.path,
+            name: AppRouteName.favorites.name,
             builder: (BuildContext context, GoRouterState state) {
-              return const Center(child: Text('MESSAGES'));
+              return const Center(child: Text('FAVORITES'));
             },
           ),
           GoRoute(

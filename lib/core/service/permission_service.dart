@@ -8,21 +8,17 @@ class PermissionService {
 
     serviceEnabled = await Geolocator.isLocationServiceEnabled();
     if (!serviceEnabled) {
-      return PermissionModel(
-          status: false, message: 'Konum servisi kapalı. Lütfen aktif edin.');
+      return PermissionModel(status: false, message: 'Konum servisi kapalı. Lütfen aktif edin.');
     }
     permission = await Geolocator.checkPermission();
     if (permission == LocationPermission.denied) {
       permission = await Geolocator.requestPermission();
       if (permission == LocationPermission.denied) {
-        return PermissionModel(
-            status: false, message: 'Konum erişim izni reddedildi.');
+        return PermissionModel(status: false, message: 'Konum erişim izni reddedildi.');
       }
     }
     if (permission == LocationPermission.deniedForever) {
-      return PermissionModel(
-          status: false,
-          message: 'Konum izinleri kalıcı olarak reddedildi, erişim yok.');
+      return PermissionModel(status: false, message: 'Konum izinleri kalıcı olarak reddedildi, erişim yok.');
     }
     return PermissionModel(status: true);
   }

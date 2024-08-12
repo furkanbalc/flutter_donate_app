@@ -15,7 +15,7 @@ customImagePickerBottomSheet({
     context: context,
     title: 'Profil Fotoğrafı',
     body: Padding(
-      padding: context.paddings.horizontalMedium,
+      padding: context.paddings.horizontalMedium1,
       child: Row(
         children: [
           ImagePickerIcon(
@@ -23,13 +23,13 @@ customImagePickerBottomSheet({
             icon: AppIcons.kCameraIcon,
             text: 'Kamera',
           ),
-          context.sizedBoxWidthHigh,
+          context.sizedBoxWidthMedium2,
           ImagePickerIcon(
             onTap: galleryTap,
             icon: AppIcons.kGalleryIcon,
             text: 'Galeri',
           ),
-          context.sizedBoxWidthHigh,
+          context.sizedBoxWidthMedium2,
           Visibility(
             visible: removeTap != null,
             child: ImagePickerIcon(

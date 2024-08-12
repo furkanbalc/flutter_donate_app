@@ -75,7 +75,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
               title: LocaleKeys.auth_signin.tr(),
               subTitle: LocaleKeys.auth_welcome_back.tr(),
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
 
             /// Signin Forms
             _buildForms(context),
@@ -103,7 +103,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
           textInputAction: TextInputAction.next,
           unFocus: true,
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Password Field
         CustomTextFormField(
@@ -125,7 +125,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
           ),
           unFocus: true,
         ),
-        context.sizedBoxHeightLow,
+        context.sizedBoxHeightLow2,
 
         /// Forgot Password Button
         Align(
@@ -140,7 +140,7 @@ class _SigninViewState extends ConsumerState<SigninView> with SigninService {
             ),
           ),
         ),
-        context.sizedBoxHeightCustom,
+        context.sizedBoxHeightHigh3,
 
         /// Signin Button
         CustomElevatedButton(

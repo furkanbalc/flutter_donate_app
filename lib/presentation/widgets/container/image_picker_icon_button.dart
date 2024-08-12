@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_donate_app/core/constants/app_colors.dart';
+// ignore: unused_import
 import 'package:flutter_donate_app/core/extensions/index.dart';
 import 'package:flutter_donate_app/presentation/widgets/button/custom_icon_button.dart';
 
@@ -25,7 +26,7 @@ class ImagePickerIcon extends StatelessWidget {
           border: Border.all(
               color: AppColors.electricViolet.withOpacity(.5), width: 2),
         ),
-        context.sizedBoxHeightLow,
+        context.sizedBoxHeightLow2,
         Text(text, style: const TextStyle(color: AppColors.greyPrimary)),
       ],
     );

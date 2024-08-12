@@ -23,7 +23,7 @@ class ProfileListTileWidget extends StatelessWidget {
       shape: RoundedRectangleBorder(
           borderRadius: context.borders.circularBorderRadiusMedium),
       onTap: onPressed,
-      contentPadding: context.paddings.horizontalLow,
+      contentPadding: context.paddings.horizontalLow2,
       title: Text(title, style: context.textStyles.bodyLarge),
       leading: Icon(icon,
           color: AppColors.electricViolet, size: AppSizes.high1.value),

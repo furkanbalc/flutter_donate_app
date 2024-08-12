@@ -50,7 +50,7 @@ class _AgeInfoViewState extends ConsumerState<AgeInfoView> with SaveUserInfoServ
           title: LocaleKeys.user_info_how_old_are_you.tr(),
           subTitle: LocaleKeys.user_info_share_your_age.tr(),
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Age Select Picker
         SizedBox(

@@ -29,7 +29,7 @@ class CustomElevatedButton extends StatelessWidget {
           backgroundColor: backgroundColor,
         ),
         child: Padding(
-          padding: padding ?? context.paddings.verticalMedium,
+          padding: padding ?? context.paddings.verticalMedium1,
           child: Text(
             text,
             style: textStyle,

@@ -17,7 +17,7 @@ class SectionHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: context.paddings.horizontalMedium + context.paddings.onlyTopNormal,
+      padding: context.paddings.horizontalMedium1 + context.paddings.onlyTopLow3,
       child: Column(
         children: [
           Row(

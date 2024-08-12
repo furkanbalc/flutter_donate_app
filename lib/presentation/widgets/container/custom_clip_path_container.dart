@@ -32,7 +32,7 @@ class _CustomClipPathContainerState
         width: MediaQuery.of(context).size.width,
         height: context.dynamicHeight(.45),
         child: Padding(
-          padding: context.paddings.horizontalHigh,
+          padding: context.paddings.horizontalMedium2,
           child: _getTitleAndDescription(),
         ),
       ),
@@ -65,7 +65,7 @@ class _CustomClipPathContainerState
             ],
           ),
         ),
-        context.sizedBoxHeightNormal,
+        context.sizedBoxHeightLow3,
         Text(
           widget.desc,
           textAlign: TextAlign.center,

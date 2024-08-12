@@ -20,8 +20,8 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
           children: [
             Container(
               color: AppColors.whiteColor,
-              padding: context.paddings.horizontalMedium +
-                  context.paddings.verticalNormal,
+              padding: context.paddings.horizontalMedium1 +
+                  context.paddings.verticalLow3,
               child: Column(
                 children: [
                   /// Name Field
@@ -31,7 +31,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
                     labelText: LocaleKeys.form_fields_name.tr(),
                     prefixIcon: AppIcons.kUserOutlinedIcon,
                   ),
-                  context.sizedBoxHeightMedium,
+                  context.sizedBoxHeightMedium1,
 
                   /// SurName Field
                   ProfileInfoTextField(
@@ -40,7 +40,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
                     labelText: LocaleKeys.form_fields_surname.tr(),
                     prefixIcon: AppIcons.kUserOutlinedIcon,
                   ),
-                  context.sizedBoxHeightMedium,
+                  context.sizedBoxHeightMedium1,
 
                   /// Email Field
                   ProfileInfoTextField(
@@ -49,17 +49,17 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
                     labelText: LocaleKeys.form_fields_email.tr(),
                     prefixIcon: AppIcons.kEmailIcon,
                   ),
-                  context.sizedBoxHeightMedium,
+                  context.sizedBoxHeightMedium1,
 
                   /// Phone Number Field
                   ProfileInfoTextField(
                     controller: widget.profileViewModel.phoneController,
                     validator: CustomValidators.phoneNumberValidator,
                     labelText: LocaleKeys.form_fields_phone_number.tr(),
-                    prefixIcon: AppIcons.kPhoneIcon,
+                    prefixIcon: AppIcons.kMobilePhoneIcon,
                     keyboardType: TextInputType.phone,
                   ),
-                  context.sizedBoxHeightMedium,
+                  context.sizedBoxHeightMedium1,
 
                   /// Gender Field
                   ProfileInfoTextField(
@@ -74,7 +74,7 @@ class _ProfileInfoTextFieldsState extends State<ProfileInfoTextFields> {
                     },
                     readOnly: true,
                   ),
-                  context.sizedBoxHeightMedium,
+                  context.sizedBoxHeightMedium1,
 
                   /// Age Field
                   ProfileInfoTextField(

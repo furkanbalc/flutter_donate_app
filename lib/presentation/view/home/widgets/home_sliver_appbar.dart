@@ -9,7 +9,6 @@ import 'package:flutter_donate_app/core/extensions/context_size.dart';
 import 'package:flutter_donate_app/core/extensions/context_sizedbox.dart';
 import 'package:flutter_donate_app/core/extensions/context_text_style.dart';
 import 'package:flutter_donate_app/presentation/viewmodel/index.dart';
-import 'package:flutter_donate_app/presentation/viewmodel/profile/profile_viewmodel.dart';
 import 'package:flutter_donate_app/presentation/widgets/image/custom_image_widget.dart';
 import 'package:flutter_donate_app/translations/locale_keys.g.dart';
 
@@ -43,7 +42,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
               child: CustomImageWidget(image: AppPng.linesBg.toPng),
             ),
             Padding(
-              padding: context.paddings.allMedium,
+              padding: context.paddings.allMedium1,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 children: [
@@ -59,7 +58,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                           Row(
                             children: [
                               const Icon(AppIcons.kLocationOutlinedIcon, color: AppColors.whiteColor, size: 20),
-                              context.sizedBoxWidthLow,
+                              context.sizedBoxWidthLow2,
                               Text('Kahramanmaraş, Türkiye',
                                   style: context.textStyles.titleMedium.copyWith(color: AppColors.whiteColor)),
                             ],
@@ -70,7 +69,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                         padding: context.paddings.zero,
                         onPressed: () {},
                         icon: Container(
-                          padding: context.paddings.allLow,
+                          padding: context.paddings.allLow2,
                           decoration: BoxDecoration(
                             color: AppColors.blueTang,
                             borderRadius: context.borders.circularBorderRadiusNormal,
@@ -89,7 +88,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
       bottom: PreferredSize(
         preferredSize: Size.fromHeight(AppSizes.medium1.value),
         child: Padding(
-          padding: context.paddings.horizontalMedium + context.paddings.onlyBottomMedium,
+          padding: context.paddings.horizontalMedium1 + context.paddings.onlyBottomMedium1,
           child: Column(
             children: [
               Row(
@@ -106,7 +105,7 @@ class _HomeSliverAppbarState extends State<HomeSliverAppBar> {
                       ),
                     ),
                   ),
-                  context.sizedBoxWidthLow,
+                  context.sizedBoxWidthLow2,
                   IconButton(
                     style: IconButton.styleFrom(padding: context.paddings.zero),
                     onPressed: () {},

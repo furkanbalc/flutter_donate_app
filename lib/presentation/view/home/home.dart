@@ -97,8 +97,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
               child: ListView.separated(
                 itemCount: _productViewModel.getProductsResponse.data.products?.length ?? 0,
                 scrollDirection: Axis.horizontal,
-                separatorBuilder: (context, index) => context.sizedBoxWidthMedium,
-                padding: context.paddings.horizontalMedium + context.paddings.verticalMedium,
+                separatorBuilder: (context, index) => context.sizedBoxWidthMedium1,
+                padding: context.paddings.horizontalMedium1 + context.paddings.verticalMedium1,
                 itemBuilder: (context, index) {
                   var product = _productViewModel.getProductsResponse.data.products![index];
                   return SizedBox(
@@ -130,8 +130,8 @@ class _HomeViewState extends ConsumerState<HomeView> {
           shrinkWrap: true,
           scrollDirection: Axis.vertical,
           physics: const NeverScrollableScrollPhysics(),
-          padding: context.paddings.allMedium,
-          separatorBuilder: (context, index) => context.sizedBoxHeightMedium,
+          padding: context.paddings.allMedium1,
+          separatorBuilder: (context, index) => context.sizedBoxHeightMedium1,
           itemBuilder: (context, index) {
             return SizedBox(
               height: context.dynamicHeight(.17),

@@ -102,7 +102,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView>
           children: [
             /// User Profile Photo
             ProfileInfoProfilePhoto(profileViewModel: _profileViewModel),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
 
             /// User Info Text Fields
             ProfileInfoTextFields(profileViewModel: _profileViewModel),
@@ -121,7 +121,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView>
         child: Row(
           children: [
             Expanded(child: _buildDeleteButton()),
-            context.sizedBoxWidthNormal,
+            context.sizedBoxWidthLow3,
             Expanded(child: _buildSaveButton()),
           ],
         ),
@@ -132,7 +132,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView>
   /// Save Button
   Widget _buildSaveButton() {
     return CustomElevatedButton(
-      padding: context.paddings.verticalNormal,
+      padding: context.paddings.verticalLow3,
       onPressed: () => updateProcess(
         context: context,
         profileViewModel: _profileViewModel,
@@ -144,7 +144,7 @@ class _ProfileInfosViewState extends ConsumerState<ProfileInfoView>
   /// Delete Button
   Widget _buildDeleteButton() {
     return CustomElevatedButton(
-      padding: context.paddings.verticalNormal,
+      padding: context.paddings.verticalLow3,
       backgroundColor: AppColors.greyLight,
       onPressed: () {
         customAlertDialog(

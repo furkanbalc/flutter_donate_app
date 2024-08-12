@@ -27,7 +27,7 @@ class _OnboarWidgetState extends ConsumerState<_OnboardWidget> {
           ),
         ),
         Padding(
-          padding: context.paddings.onlyBottomUltra,
+          padding: context.paddings.onlyBottomMedium3,
           child: Center(
             child: CustomImageWidget(
               image: AppPng.ellipsis.toPng,

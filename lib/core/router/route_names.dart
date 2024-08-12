@@ -9,7 +9,8 @@ enum AppRouteName {
   ageInfo('/ageInfo', 'AgeInfo'),
   home('/home', 'Home'),
   product('/product', 'Product'),
-  message('/message', 'Message'),
+  favorites('/favorites', 'Favorites'),
+  categories('/categories', 'Categories'),
   profile('/profile', 'Profile'),
   profileInfos('profileInfos', 'ProfileInfos'),
   addressInfos('addressInfos', 'AddressInfos'),
@@ -17,7 +18,7 @@ enum AppRouteName {
   addressDetail('addressDetail', 'AddressDetail'),
   contactUs('contactUs', 'ContacUs'),
   aboutApp('aboutApp', 'AboutApp'),
-  productDetail('/productDetail', 'ProductDetail'),
+  productDetail('productDetail', 'ProductDetail'),
   ;
 
   const AppRouteName(this.path, this.name);

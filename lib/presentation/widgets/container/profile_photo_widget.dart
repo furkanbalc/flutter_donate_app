@@ -61,8 +61,8 @@ class ProfilePhotoWidget extends StatelessWidget {
     return Container(
       height: imageSize,
       width: imageSize,
-      margin: context.paddings.allLow,
-      padding: padding ?? context.paddings.allCustom,
+      margin: context.paddings.allLow2,
+      padding: padding ?? context.paddings.allHigh3,
       decoration: BoxDecoration(
         color: AppColors.cascadingWhite,
         shape: BoxShape.circle,

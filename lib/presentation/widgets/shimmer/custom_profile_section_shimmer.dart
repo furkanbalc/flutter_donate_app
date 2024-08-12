@@ -11,7 +11,7 @@ class CustomProfileSectionShimmer extends StatelessWidget {
     return Container(
       height: 150,
       width: context.dynamicHeight(),
-      padding: context.paddings.allLow,
+      padding: context.paddings.allLow2,
       color: Colors.white,
       child: Shimmer.fromColors(
         baseColor: AppColors.greyLight.withOpacity(.1),
@@ -26,7 +26,7 @@ class CustomProfileSectionShimmer extends StatelessWidget {
                 color: AppColors.greyLighter,
               ),
             ),
-            context.sizedBoxWidthMedium,
+            context.sizedBoxWidthMedium1,
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.center,
@@ -38,13 +38,13 @@ class CustomProfileSectionShimmer extends StatelessWidget {
                       height: 20.0,
                       color: AppColors.greyLighter,
                     ),
-                    context.sizedBoxWidthLow,
+                    context.sizedBoxWidthLow2,
                     Container(
                       width: 20.0,
                       height: 20.0,
                       color: AppColors.greyLighter,
                     ),
-                    context.sizedBoxWidthLow,
+                    context.sizedBoxWidthLow2,
                     Container(
                       width: 20.0,
                       height: 20.0,
@@ -52,7 +52,7 @@ class CustomProfileSectionShimmer extends StatelessWidget {
                     ),
                   ],
                 ),
-                context.sizedBoxHeightLow,
+                context.sizedBoxHeightLow2,
                 Container(
                   width: 200.0,
                   height: 20.0,

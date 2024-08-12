@@ -12,7 +12,7 @@ class UserInfoSliverAppBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
-      backgroundColor: AppColors.whiteColor,
+      backgroundColor: AppColors.cascadingWhite,
       pinned: true,
       toolbarHeight: 0,
       bottom: PreferredSize(

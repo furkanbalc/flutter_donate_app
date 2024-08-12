@@ -25,17 +25,17 @@ class CustomCategoriesListShimmer extends StatelessWidget {
   /// Shimmer User Info Fields
   Widget _buildShimmerUserInfoFields(BuildContext context) {
     return Padding(
-      padding: context.paddings.allMedium,
+      padding: context.paddings.allMedium1,
       child: Row(
         children: [
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxWidthMedium,
+          context.sizedBoxWidthMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxWidthMedium,
+          context.sizedBoxWidthMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxWidthMedium,
+          context.sizedBoxWidthMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxWidthMedium,
+          context.sizedBoxWidthMedium1,
           _buildShimmerProfileInfoField(context),
         ],
       ),

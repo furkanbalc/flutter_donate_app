@@ -9,8 +9,8 @@ class ProfileInfoProfilePhoto extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.dynamicWidth(),
-      padding: context.paddings.verticalNormal,
-      margin: context.paddings.onlyTopNormal,
+      padding: context.paddings.verticalLow3,
+      margin: context.paddings.onlyTopLow3,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         image: DecorationImage(
@@ -23,7 +23,7 @@ class ProfileInfoProfilePhoto extends StatelessWidget {
       child: Center(
         child: ProfilePhotoWidget(
           imagePath: profileViewModel.profilPhotoUrl,
-          padding: context.paddings.allUltra,
+          padding: context.paddings.allMedium3,
           onTap: () {
             imagePickerBottomSheet(
               context: context,

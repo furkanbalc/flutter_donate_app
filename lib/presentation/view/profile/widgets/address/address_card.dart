@@ -16,7 +16,7 @@ class AddressCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
       child: Padding(
-        padding: context.paddings.allLow,
+        padding: context.paddings.allLow2,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [

@@ -21,7 +21,7 @@ class AuthBottomButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: context.paddings.zero,
-      padding: context.paddings.allNormal,
+      padding: context.paddings.allLow3,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         boxShadow: [

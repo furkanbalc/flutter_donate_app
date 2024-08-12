@@ -13,7 +13,7 @@ class AuthBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Padding(
-        padding: context.paddings.horizontalMedium,
+        padding: context.paddings.horizontalMedium1,
         child: child,
       ),
     );

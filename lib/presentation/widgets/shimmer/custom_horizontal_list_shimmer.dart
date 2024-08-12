@@ -18,7 +18,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
       children: [
         const SectionHeaderWidget(title: 'Son Eklenenler'),
         Padding(
-          padding: context.paddings.verticalMedium + context.paddings.onlyLeftMedium,
+          padding: context.paddings.verticalMedium2 + context.paddings.onlyLeftMedium2,
           child: Row(
             children: [
               Container(
@@ -45,7 +45,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                     Expanded(
                       child: Container(
                         width: context.dynamicWidth(.7),
-                        padding: context.paddings.allNormal,
+                        padding: context.paddings.allLow3,
                         decoration: const BoxDecoration(color: Colors.white),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,12 +67,12 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                                 ),
                               ],
                             ),
-                            context.sizedBoxHeightLow,
+                            context.sizedBoxHeightLow2,
                             _buildShimmerProfileInfoField(
                               width: context.dynamicWidth(.3),
                               height: context.dynamicWidth(.05),
                             ),
-                            context.sizedBoxHeightLow,
+                            context.sizedBoxHeightLow2,
                             _buildShimmerProfileInfoField(
                               width: double.infinity,
                               height: context.dynamicWidth(.05),
@@ -82,7 +82,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                               width: double.infinity,
                               height: context.dynamicWidth(.05),
                             ),
-                            context.sizedBoxHeightHigh,
+                            context.sizedBoxHeightMedium2,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -92,7 +92,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                                         width: context.dynamicWidth(.08),
                                         height: context.dynamicWidth(.08),
                                         shape: BoxShape.circle),
-                                    context.sizedBoxWidthLow,
+                                    context.sizedBoxWidthLow2,
                                     _buildShimmerProfileInfoField(
                                       width: context.dynamicWidth(.18),
                                       height: context.dynamicWidth(.05),
@@ -105,7 +105,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                                         width: context.dynamicWidth(.08),
                                         height: context.dynamicWidth(.08),
                                         shape: BoxShape.circle),
-                                    context.sizedBoxWidthLow,
+                                    context.sizedBoxWidthLow2,
                                     _buildShimmerProfileInfoField(
                                       width: context.dynamicWidth(.18),
                                       height: context.dynamicWidth(.05),
@@ -121,7 +121,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                   ],
                 ),
               ),
-              context.sizedBoxWidthMedium,
+              context.sizedBoxWidthMedium1,
               Container(
                 height: context.dynamicHeight(.4),
                 width: context.dynamicWidth(.25),
@@ -146,7 +146,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                     Expanded(
                       child: Container(
                         width: context.dynamicWidth(.3),
-                        padding: context.paddings.allNormal,
+                        padding: context.paddings.allLow3,
                         decoration: const BoxDecoration(color: Colors.white),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
@@ -155,12 +155,12 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                               width: context.dynamicWidth(.2),
                               height: context.dynamicWidth(.05),
                             ),
-                            context.sizedBoxHeightLow,
+                            context.sizedBoxHeightLow2,
                             _buildShimmerProfileInfoField(
                               width: context.dynamicWidth(.2),
                               height: context.dynamicWidth(.05),
                             ),
-                            context.sizedBoxHeightLow,
+                            context.sizedBoxHeightLow2,
                             _buildShimmerProfileInfoField(
                               width: context.dynamicWidth(.2),
                               height: context.dynamicWidth(.05),
@@ -170,7 +170,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                               width: context.dynamicWidth(.2),
                               height: context.dynamicWidth(.05),
                             ),
-                            context.sizedBoxHeightHigh,
+                            context.sizedBoxHeightMedium2,
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -180,7 +180,7 @@ class _CustomHorizontalListShimmerState extends State<CustomHorizontalListShimme
                                         width: context.dynamicWidth(.08),
                                         height: context.dynamicWidth(.08),
                                         shape: BoxShape.circle),
-                                    context.sizedBoxWidthLow,
+                                    context.sizedBoxWidthLow2,
                                     _buildShimmerProfileInfoField(
                                       width: context.dynamicWidth(.08),
                                       height: context.dynamicWidth(.05),

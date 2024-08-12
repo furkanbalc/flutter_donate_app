@@ -45,7 +45,7 @@ class HorizontalProductList extends StatelessWidget {
                   child: Column(
                     children: [
                       Padding(
-                        padding: context.paddings.allLow,
+                        padding: context.paddings.allLow2,
                         child: ClipRRect(
                           borderRadius: context.borders.circularBorderRadiusLow,
                           child: Stack(
@@ -94,13 +94,13 @@ class HorizontalProductList extends StatelessWidget {
                         ),
                       ),
                       Padding(
-                        padding: context.paddings.allLow,
+                        padding: context.paddings.allLow2,
                         child: Column(
                           children: [
                             Row(
                               children: [
                                 Container(
-                                  padding: context.paddings.horizontalNormal,
+                                  padding: context.paddings.horizontalLow3,
                                   decoration: BoxDecoration(
                                     color: AppColors.electricViolet
                                         .withOpacity(.1),
@@ -113,7 +113,7 @@ class HorizontalProductList extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Container(
-                                  padding: context.paddings.horizontalLow,
+                                  padding: context.paddings.horizontalLow2,
                                   decoration: BoxDecoration(
                                     color: AppColors.greenColor.withOpacity(.2),
                                     borderRadius:
@@ -125,7 +125,7 @@ class HorizontalProductList extends StatelessWidget {
                                 ),
                                 const SizedBox(width: 10),
                                 Container(
-                                  padding: context.paddings.horizontalLow,
+                                  padding: context.paddings.horizontalLow2,
                                   decoration: BoxDecoration(
                                     color: AppColors.blueColor.withOpacity(.2),
                                     borderRadius:
@@ -137,7 +137,7 @@ class HorizontalProductList extends StatelessWidget {
                                 ),
                               ],
                             ),
-                            context.sizedBoxHeightLow,
+                            context.sizedBoxHeightLow2,
                             Column(
                               crossAxisAlignment: CrossAxisAlignment.stretch,
                               children: [
@@ -171,7 +171,7 @@ class HorizontalProductList extends StatelessWidget {
                                       child: CustomSvgWidget(
                                           svg: AppSvg.profile.toSvg, width: 20),
                                     ),
-                                    context.sizedBoxWidthLow,
+                                    context.sizedBoxWidthLow2,
                                     Text(
                                       'Kullanıcı Adı',
                                       style: context.textStyles.bodySmall
@@ -192,7 +192,7 @@ class HorizontalProductList extends StatelessWidget {
                                           color: AppColors.electricViolet,
                                           size: 20),
                                     ),
-                                    context.sizedBoxWidthLow,
+                                    context.sizedBoxWidthLow2,
                                     Text(
                                       '9.4 km',
                                       style: context.textStyles.bodySmall

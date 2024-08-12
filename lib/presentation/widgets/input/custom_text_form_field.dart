@@ -105,7 +105,7 @@ class CustomTextFormField extends StatelessWidget {
             border: border,
             enabledBorder: border,
             fillColor: fillColor,
-            contentPadding: contentPadding ?? context.paddings.onlyLeftMedium + context.paddings.verticalMedium,
+            contentPadding: contentPadding ?? context.paddings.onlyLeftMedium1 + context.paddings.verticalMedium1,
             hintText: hintText,
             labelText: isTitle ?? false ? labelText : null,
             prefixIcon: prefixIcon,

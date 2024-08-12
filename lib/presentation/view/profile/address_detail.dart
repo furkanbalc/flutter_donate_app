@@ -76,7 +76,7 @@ class _AddAddressState extends ConsumerState<AddressDetail> {
     return Form(
       key: _addressViewModel.formKey,
       child: Padding(
-        padding: context.paddings.allNormal,
+        padding: context.paddings.allLow3,
         child: Column(
           children: [
             /// Country Field
@@ -88,7 +88,7 @@ class _AddAddressState extends ConsumerState<AddressDetail> {
                 readOnly: true,
               ),
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
 
             /// City Field
             ProfileInfoTextField(
@@ -101,7 +101,7 @@ class _AddAddressState extends ConsumerState<AddressDetail> {
                     context: context, addressViewModel: _addressViewModel);
               },
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
 
             /// County Field
             ProfileInfoTextField(
@@ -117,7 +117,7 @@ class _AddAddressState extends ConsumerState<AddressDetail> {
                           context: context,
                           message: 'Şehir seçimi yapmalısınız');
                 }),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             ProfileInfoTextField(
               controller: _addressViewModel.desc,
               validator: CustomValidators.emptyValidator,
@@ -125,7 +125,7 @@ class _AddAddressState extends ConsumerState<AddressDetail> {
               maxLines: 4,
               minLines: 1,
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
             _buildAddrees(),
           ],
         ),

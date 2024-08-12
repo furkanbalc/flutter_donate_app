@@ -35,7 +35,7 @@ class _AppState extends ConsumerState<App> {
       backgroundColor: AppColors.electricViolet,
       onPressed: () {},
       child: Padding(
-        padding: context.paddings.allLow,
+        padding: context.paddings.allLow2,
         child: const Icon(AppIcons.kAddIcon, size: 32, color: AppColors.whiteColor),
       ),
     );

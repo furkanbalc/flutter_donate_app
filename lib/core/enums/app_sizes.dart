@@ -1,6 +1,9 @@
 /// Uygulamada kullanilan size degerlerini tutar tekrar tekrar elle yazmak yerine enum tercih edildi
 enum AppSizes {
   /// Size: 4.0
+  min(2.0),
+
+  /// Size: 4.0
   low1(4.0),
 
   /// Size: 8.0
@@ -38,5 +41,6 @@ enum AppSizes {
   ;
 
   final double value;
+
   const AppSizes(this.value);
 }

@@ -65,8 +65,8 @@ class _CustomIntlPhoneNumberInputState
           searchBoxDecoration: InputDecoration(
             fillColor: AppColors.greyLight.withOpacity(.1),
             hintText: 'Ara...',
-            contentPadding: context.paddings.onlyLeftMedium +
-                context.paddings.verticalMedium,
+            contentPadding: context.paddings.onlyLeftMedium1 +
+                context.paddings.verticalMedium1,
             suffixIcon: const Icon(AppIcons.kSearchIcon),
           ),
           onInputChanged: widget.onChanged,

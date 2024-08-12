@@ -27,7 +27,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
           height: context.dynamicHeight(.12),
           child: AnimationLimiter(
             child: ListView.separated(
-              padding: context.paddings.horizontalMedium + context.paddings.verticalNormal,
+              padding: context.paddings.horizontalMedium1 + context.paddings.verticalLow3,
               itemCount: data?.length ?? 0,
               scrollDirection: Axis.horizontal,
               itemBuilder: (context, index) {
@@ -63,7 +63,7 @@ class _CategoriesListWidgetState extends State<CategoriesListWidget> {
                   ),
                 );
               },
-              separatorBuilder: (context, index) => context.sizedBoxWidthHigh,
+              separatorBuilder: (context, index) => context.sizedBoxWidthMedium2,
             ),
           ),
         );

@@ -27,7 +27,7 @@ class CustomIconButton extends StatelessWidget {
       onPressed: onPressed,
       icon: Container(
         margin: context.paddings.zero,
-        padding: padding ?? context.paddings.allLow,
+        padding: padding ?? context.paddings.allLow2,
         decoration: BoxDecoration(
           shape: shape ?? BoxShape.rectangle,
           color: backgroundColor,

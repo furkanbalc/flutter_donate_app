@@ -49,13 +49,13 @@ class _GenderInfoViewState extends ConsumerState<GenderInfoView> {
           title: LocaleKeys.user_info_tell_us_about_yourself.tr(),
           subTitle: LocaleKeys.user_info_share_your_gender.tr(),
         ),
-        context.sizedBoxHeightCustom,
+        context.sizedBoxHeightHigh3,
         Padding(
-          padding: context.paddings.onlyBottomUltra,
+          padding: context.paddings.onlyBottomMedium3,
           child: Column(
             children: [
               _buildManButton(),
-              context.sizedBoxHeightCustom,
+              context.sizedBoxHeightHigh3,
               _buildWomanButton(),
             ],
           ),

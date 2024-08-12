@@ -59,18 +59,18 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
         keyboardDismissBehavior: ScrollViewKeyboardDismissBehavior.manual,
         child: Column(
           children: [
-            context.sizedBoxHeightHigh,
+            context.sizedBoxHeightMedium2,
 
             /// User Info Title
             AuthHeader(
               title: LocaleKeys.user_info_complete_your_profile.tr(),
               subTitle: LocaleKeys.auth_fill_your_info.tr(),
             ),
-            context.sizedBoxHeightHigh,
+            context.sizedBoxHeightMedium2,
 
             /// Add Profile Photo
             _buildAddProfilePhoto(context),
-            context.sizedBoxHeightHigh,
+            context.sizedBoxHeightMedium2,
 
             /// User Info Forms
             _getFormFields(),
@@ -120,7 +120,7 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
                 textInputAction: TextInputAction.next,
               ),
             ),
-            context.sizedBoxWidthLow,
+            context.sizedBoxWidthLow2,
 
             /// Surname Field
             Expanded(
@@ -137,7 +137,7 @@ class _UserInfoViewState extends ConsumerState<UserInfoView> with UserInfoServic
             ),
           ],
         ),
-        context.sizedBoxHeightHigh,
+        context.sizedBoxHeightMedium2,
 
         /// Phone Number Field
         CustomIntlPhoneNumberInput(

@@ -20,8 +20,8 @@ import 'package:flutter_donate_app/domain/usecases/address_usecase.dart';
 import 'package:flutter_donate_app/domain/usecases/auth_usecases.dart';
 import 'package:flutter_donate_app/domain/usecases/product_usecase.dart';
 import 'package:flutter_donate_app/domain/usecases/profile_usecases.dart';
-import 'package:hive_flutter/hive_flutter.dart' as hive;
 import 'package:flutter_donate_app/domain/usecases/splash_usecase.dart';
+import 'package:hive_flutter/hive_flutter.dart' as hive;
 import 'package:get_it/get_it.dart';
 
 GetIt injector = GetIt.instance;

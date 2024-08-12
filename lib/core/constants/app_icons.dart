@@ -6,24 +6,31 @@ class AppIcons {
 
   static const IconData kHomeOutlinedIcon = Iconsax.home;
   static const IconData kHomeFilledIcon = Iconsax.home_15;
+
   //
   static const IconData kCategoryOutlinedIcon = Iconsax.category;
   static const IconData kCategoryFilledIcon = Iconsax.category5;
+
   //
   static const IconData kMessageOutlinedIcon = Iconsax.message;
   static const IconData kMessageFilledIcon = Iconsax.message5;
+
   //
   static const IconData kUserOutlinedIcon = Iconsax.user;
   static const IconData kUserFilledIcon = Icons.person;
+
   //
   static const IconData kFavoriteOutlinedIcon = Iconsax.heart;
   static const IconData kFavoriteFilledIcon = Iconsax.heart5;
+
   //
   static const IconData kLocationOutlinedIcon = Iconsax.location;
   static const IconData kLocationFilledIcon = Iconsax.location5;
   static const IconData kAddLocationIcon = Iconsax.location_add5;
+
   //
   static const IconData kStatisticOutlinedIcon = Iconsax.chart_2;
+  static const IconData kShareIcon = Icons.share;
   static const IconData kAddIcon = Iconsax.add;
   static const IconData kStatisticFilledIcon = Iconsax.chart_215;
   static const IconData kInfoIcon = Iconsax.info_circle;
@@ -32,7 +39,8 @@ class AppIcons {
   static const IconData kManIcon = Iconsax.man;
   static const IconData kWomanIcon = Iconsax.woman;
   static const IconData kEmailIcon = Iconsax.sms;
-  static const IconData kPhoneIcon = Iconsax.mobile4;
+  static const IconData kMobilePhoneIcon = Iconsax.mobile4;
+  static const IconData kCallFilledIcon = Iconsax.call5;
   static const IconData kTickIcon = Iconsax.tick_square;
   static const IconData kEditIcon = Iconsax.user_edit;
   static const IconData kPasswordIcon = Iconsax.password_check;

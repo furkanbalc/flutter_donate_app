@@ -20,7 +20,7 @@ class AutoPageSlider extends StatelessWidget {
       itemCount: _items.length,
       itemBuilder: (context, index, realIndex) {
         return Padding(
-          padding: context.paddings.allNormal + context.paddings.onlyTopLow,
+          padding: context.paddings.allLow3 + context.paddings.onlyTopLow2,
           child: ClipRRect(
             borderRadius: context.borders.circularBorderRadiusLow,
             child: CustomImageWidget(

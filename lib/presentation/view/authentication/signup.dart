@@ -62,7 +62,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
               title: LocaleKeys.auth_create_account.tr(),
               subTitle: LocaleKeys.auth_fill_your_info.tr(),
             ),
-            context.sizedBoxHeightMedium,
+            context.sizedBoxHeightMedium1,
 
             /// Signup Forms
             _buildForms(context),
@@ -90,7 +90,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           textInputAction: TextInputAction.next,
           unFocus: true,
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Password Field
         CustomTextFormField(
@@ -107,7 +107,7 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           unFocus: true,
           onFieldSubmitted: (_) => FocusScope.of(context).nextFocus(),
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Confirm Password Field
         CustomTextFormField(
@@ -123,11 +123,11 @@ class _SignUpViewState extends ConsumerState<SignupView> with SignupService {
           unFocus: true,
           obscureText: _signupViewModel.confirmPassObscure,
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Terms and Conditions
         CustomCheckBoxListTile(title: LocaleKeys.auth_i_have_read_registration_conditions.tr()),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// Signup Button
         CustomElevatedButton(

@@ -6,6 +6,7 @@ enum BottomBarItems {
   ;
 
   final String value;
+
   const BottomBarItems(this.value);
 }
 // enum AppNavBarItems {

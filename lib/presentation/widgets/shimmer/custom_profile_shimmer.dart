@@ -24,7 +24,7 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
       child: Column(
         children: [
           _buildShimmerProfilPhoto(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerUserInfoFields(context),
         ],
       ),
@@ -34,7 +34,7 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
   /// Shimmer Profil Photo
   Widget _buildShimmerProfilPhoto(BuildContext context) {
     return Container(
-      padding: context.paddings.allHigh,
+      padding: context.paddings.allMedium2,
       decoration: BoxDecoration(
         color: AppColors.whiteColor,
         image: DecorationImage(
@@ -66,19 +66,19 @@ class _CustomProfileInfoShimmerState extends State<CustomProfileInfoShimmer> {
     return Container(
       color: AppColors.whiteColor,
       padding:
-          context.paddings.horizontalMedium + context.paddings.verticalNormal,
+          context.paddings.horizontalMedium1 + context.paddings.verticalLow3,
       child: Column(
         children: [
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
         ],
       ),

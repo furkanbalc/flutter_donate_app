@@ -25,19 +25,19 @@ class CustomAddressListShimmer extends StatelessWidget {
   /// Shimmer User Info Fields
   Widget _buildShimmerUserInfoFields(BuildContext context) {
     return Padding(
-      padding: context.paddings.allMedium,
+      padding: context.paddings.allMedium1,
       child: Column(
         children: [
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildShimmerProfileInfoField(context),
         ],
       ),

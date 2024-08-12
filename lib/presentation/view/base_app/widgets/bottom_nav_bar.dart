@@ -32,10 +32,10 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
     if (location.startsWith(AppRouteName.home.path)) {
       return 0;
     }
-    if (location.startsWith(AppRouteName.productDetail.path)) {
+    if (location.startsWith(AppRouteName.categories.path)) {
       return 1;
     }
-    if (location.startsWith(AppRouteName.message.path)) {
+    if (location.startsWith(AppRouteName.favorites.path)) {
       return 2;
     }
     if (location.startsWith(AppRouteName.profile.path)) {
@@ -54,9 +54,9 @@ class _BottomNavBarState extends ConsumerState<BottomNavBar> {
       case 0:
         context.goNamed(AppRouteName.home.name);
       case 1:
-        context.goNamed(AppRouteName.productDetail.name);
+        context.goNamed(AppRouteName.categories.name);
       case 2:
-        context.goNamed(AppRouteName.message.name);
+        context.goNamed(AppRouteName.favorites.name);
       case 3:
         context.goNamed(AppRouteName.profile.name);
     }

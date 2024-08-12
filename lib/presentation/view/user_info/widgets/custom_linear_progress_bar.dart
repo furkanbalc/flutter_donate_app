@@ -12,7 +12,7 @@ class CustomLinearProgressBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: context.getAppBarHeight(),
-      padding: context.paddings.verticalMedium,
+      padding: context.paddings.verticalMedium1,
       color: AppColors.transparentColor,
       child: TweenAnimationBuilder<double>(
         duration: Durations.long4,

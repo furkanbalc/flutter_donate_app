@@ -21,11 +21,11 @@ class AuthHeader extends StatelessWidget {
           style: context.textStyles.headlineMedium
               .copyWith(fontWeight: FontWeight.w600),
         ),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
 
         /// SubTitle
         Padding(
-          padding: context.paddings.horizontalUltra,
+          padding: context.paddings.horizontalMedium3,
           child: Text(
             subTitle,
             textAlign: TextAlign.center,

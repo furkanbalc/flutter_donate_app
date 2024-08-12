@@ -50,7 +50,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
     return Column(
       children: [
         ProfileHeaderInfo(profileViewModel: _profileViewModel),
-        context.sizedBoxHeightMedium,
+        context.sizedBoxHeightMedium1,
         Expanded(child: _profileItemList(context)),
       ],
     );
@@ -60,7 +60,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
   Widget _profileItemList(BuildContext context) {
     return Container(
       padding:
-          context.paddings.horizontalMedium + context.paddings.onlyTopMedium,
+          context.paddings.horizontalMedium1 + context.paddings.onlyTopMedium1,
       color: AppColors.whiteColor,
       child: Column(
         children: [
@@ -107,7 +107,7 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
               context.goNamed(AppRouteName.aboutApp.name);
             },
           ),
-          context.sizedBoxHeightMedium,
+          context.sizedBoxHeightMedium1,
           _buildSignOutButton(context),
         ],
       ),
@@ -121,12 +121,12 @@ class _ProfileViewState extends ConsumerState<ProfileView> with SignOutService {
       onPressed: () =>
           signOutProcess(context: context, profileViewModel: _profileViewModel),
       child: Padding(
-        padding: context.paddings.verticalNormal,
+        padding: context.paddings.verticalLow3,
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             const Icon(AppIcons.kLogoutIcon),
-            context.sizedBoxWidthNormal,
+            context.sizedBoxWidthLow3,
             Text(
               LocaleKeys.profile_sign_out.tr(),
               style: context.textStyles.titleMedium

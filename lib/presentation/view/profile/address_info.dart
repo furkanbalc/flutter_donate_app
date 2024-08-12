@@ -60,11 +60,11 @@ class _AddressInfosState extends ConsumerState<AddressInfo> {
   /// All Address List
   Widget _buildAddressList() {
     return ListView.separated(
-      padding: context.paddings.allLow,
+      padding: context.paddings.allLow2,
       itemCount: _addressViewModel
               .getAddressFromFirestoreResponse.data.address?.length ??
           0,
-      separatorBuilder: (context, index) => context.sizedBoxHeightLow,
+      separatorBuilder: (context, index) => context.sizedBoxHeightLow2,
       itemBuilder: (BuildContext context, int index) {
         return _buildAddressListItem(context, index);
       },

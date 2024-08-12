@@ -8,7 +8,7 @@ class _AuthMethodButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: context.paddings.allMedium,
+      padding: context.paddings.allMedium1,
       decoration: BoxDecoration(
         border: Border.all(color: AppColors.greyLight),
         shape: BoxShape.circle,

@@ -32,17 +32,14 @@ class TimeOutException extends AppException {
 
 class CustomLocationServiceDisabledException extends AppException {
   CustomLocationServiceDisabledException([message])
-      : super(message,
-            "Location services are disabled. Please enable the services.");
+      : super(message, "Location services are disabled. Please enable the services.");
 }
 
 class CustomLocationPermissionDeniedException extends AppException {
-  CustomLocationPermissionDeniedException([message])
-      : super(message, "Location permissions are denied.");
+  CustomLocationPermissionDeniedException([message]) : super(message, "Location permissions are denied.");
 }
 
 class CustomLocationPermissionDeniedForeverException extends AppException {
   CustomLocationPermissionDeniedForeverException([message])
-      : super(message,
-            'Location permissions are permanently denied, we cannot request permissions.');
+      : super(message, 'Location permissions are permanently denied, we cannot request permissions.');
 }

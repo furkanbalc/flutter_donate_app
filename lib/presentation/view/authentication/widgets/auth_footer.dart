@@ -25,13 +25,13 @@ class AuthFooter extends StatelessWidget {
         /// Or Widget
         Padding(
           padding:
-              context.paddings.horizontalUltra + context.paddings.onlyTopUltra,
+              context.paddings.horizontalMedium3 + context.paddings.onlyTopMedium3,
           child: _buildOrWidget(context),
         ),
 
         /// Other Method Buttons
         Padding(
-          padding: context.paddings.verticalUltra,
+          padding: context.paddings.verticalMedium3,
           child: _buildOtherAuthMethods(context),
         ),
 
@@ -47,7 +47,7 @@ class AuthFooter extends StatelessWidget {
       children: [
         const Expanded(child: Divider(color: AppColors.greyLight)),
         Padding(
-          padding: context.paddings.horizontalNormal,
+          padding: context.paddings.horizontalLow3,
           child: Text(
             LocaleKeys.auth_or_with.tr(),
             style:
@@ -66,11 +66,11 @@ class AuthFooter extends StatelessWidget {
       children: [
         /// Apple Method Button
         _AuthMethodButton(icon: AppSvg.apple.toSvg),
-        context.sizedBoxWidthMedium,
+        context.sizedBoxWidthMedium1,
 
         /// Google Method Button
         _AuthMethodButton(icon: AppSvg.google.toSvg),
-        context.sizedBoxWidthMedium,
+        context.sizedBoxWidthMedium1,
 
         /// Facebook Method Button
         _AuthMethodButton(icon: AppSvg.facebook.toSvg),

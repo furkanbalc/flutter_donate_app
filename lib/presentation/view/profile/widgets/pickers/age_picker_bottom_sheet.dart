@@ -20,7 +20,7 @@ void agePickerBottomSheet({
           int.tryParse(profileViewModel.ageController.text)! - 18;
       return Container(
         height: context.dynamicHeight(.3),
-        padding: context.paddings.allLow,
+        padding: context.paddings.allLow2,
         child: Column(
           children: [
             Expanded(
